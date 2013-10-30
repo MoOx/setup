@@ -46,3 +46,7 @@ _Inspired by_
 - https://github.com/mathiasbynens/dotfiles
 - https://github.com/necolas/dotfiles
 - https://github.com/kud/my/
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/MoOx/dotfiles/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+

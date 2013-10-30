@@ -51,6 +51,9 @@ defaults write com.apple.universalaccess HIDScrollZoomModifierMask 262144
 # disable zoom with cmd+scroll
 defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool false
 
+# Enable AirDrop over Ethernet and on unsupported Macs:
+defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true
+
 # todo
 # machine name
 # network sharing

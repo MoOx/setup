@@ -1,4 +1,4 @@
-# My dotfiles: `$ fireinthehole`, that's it
+# `$ fireinthehole`, it's that simple
 
 <img alt="" align="right" src="http://25.media.tumblr.com/18d3313bf26f87bd14212087de1cf18f/tumblr_mtp2dqsu4p1rjorvbo1_250.gif" />
 
@@ -38,10 +38,9 @@ $ fireinthehole
 - `osxdefaults` run lots of `defaults write`
 - `snacktime` update brew, npm & gems
 
-
 ---
 
-Inspired by
+_Inspired by_
 
 - https://github.com/holman/dotfiles
 - https://github.com/mathiasbynens/dotfiles

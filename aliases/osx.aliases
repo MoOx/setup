@@ -1,31 +1,28 @@
 #!/bin/zsh
 
-#osx::global::disable_autocorrect
+export OSX_INSTALL_APP="/Applications/Install OS X Mavericks.app"
+
 ##
 # OS X aliases
 ##
-#alias updatedb="sudo /usr/libexec/locate.updatedb"
 alias flushdns="dscacheutil -flushcache"
 alias ss="/System/Library/Frameworks/ScreenSaver.framework/Resources/ScreenSaverEngine.app/Contents/MacOS/ScreenSaverEngine -background &"
-# Empty the Trash on all mounted volumes and the main HDD
-# Also, clear Apple’s System Logs to improve shell startup speed
-alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl"
 
+# Fuck crash
 alias fuckfinder="killall Finder"
 alias fuckdock="killall Dock"
 alias fuckosx="killall -KILL SystemUIServer Dock Finder NotificationCenter"
 
 # Show/hide hidden files in Finder
-alias show="defaults write com.apple.Finder AppleShowAllFiles -bool true && restartfinder"
-alias hide="defaults write com.apple.Finder AppleShowAllFiles -bool false && restartfinder"
+alias show="defaults write com.apple.Finder AppleShowAllFiles -bool true && fuckfinder"
+alias hide="defaults write com.apple.Finder AppleShowAllFiles -bool false && fuckfinder"
 
 # Hide/show all desktop icons (useful when presenting)
 alias desktop="defaults write com.apple.finder CreateDesktop -bool"
-alias hidedesktop="desktop false && restartfinder"
-alias showdesktop="desktop true && restartfinder"
+alias hidedesktop="desktop false && fuckfinder"
+alias showdesktop="desktop true && fuckfinder"
 
-OSX_APP="/Applications/Install OS X Mavericks.app"
-alias osx-bootableusb="sudo \"$OSX_APP/Contents/Resources/createinstallmedia\" --volume /Volumes/Untitled --applicationpath \"$OSX_APP\" --nointeraction"
+alias osx-bootableusb="sudo \"$OSX_INSTALL_APP/Contents/Resources/createinstallmedia\" --volume /Volumes/Untitled --applicationpath \"$OSX_INSTALL_APP\" --nointeraction"
 
 # Recursively delete `.DS_Store` files
 alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"

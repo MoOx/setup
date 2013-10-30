@@ -6,7 +6,7 @@ if ! brew tap | grep cask > /dev/null; then
   brew tap phinze/homebrew-cask
 fi
 
-brew install brew-cask
+brew install brew-cask 2>&1 | grep -v "already installed"
 
 echo_title_install "native OS X Apps.."
 
@@ -132,11 +132,11 @@ APPS_LOCAL=(
 #cask-install-async $APPS[@]
 
 for app in $APPS; do
-	brew cask install $app --appdir="/Applications"
+	brew cask install $app --appdir="/Applications" 2>&1 | grep -v "already installed"
 done
 
 for app in $APPS_LOCAL; do
-	brew cask install $app --appdir="$HOME/Applications"
+	brew cask install $app --appdir="$HOME/Applications" 2>&1 | grep -v "already installed"
 done
 
 # todo themes

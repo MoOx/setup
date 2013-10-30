@@ -19,24 +19,31 @@ if ! brew tap | grep dupes > /dev/null; then
 fi
 
 echo_title_install "brew packages"
-brew install git
-brew install hub
 
-brew install node
+PACKAGES=(
+	git
+	hub
 
-# for grunt-webfont
-brew install fontforge
-brew install ttfautohint
+	node
 
-# brew install ruby
-# brew install python
-#sudo easy_install pip ?
+	# for grunt-webfont
+	fontforge
+	ttfautohint
 
-brew install mysql
+	# ruby
+	# python
+	#sudo easy_install pip ?
 
-# brew install phantomjs
-# brew install casperjs
-# brew install slimerjs
+	mysql
 
-# brew install youtube-dl
-# brew install sub2srt
+	# phantomjs
+	# casperjs
+	# slimerjs
+
+	# youtube-dl
+	# sub2srt
+)
+
+for pkg in $PACKAGES; do
+	brew install $pkg 2>&1 | grep -v "already installed"
+done

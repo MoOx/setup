@@ -1,0 +1,27 @@
+#!/bin/zsh
+
+DIR_BIN="$( cd "$( dirname "${0}" )" && pwd )"
+source $DIR_BIN/dotfiles
+
+# dotfiles above should prepare/reload dotfiles
+# so the commandes below should be available as bin
+
+source osxdefaults
+
+if [ "$FULLFIRE" = "true" ]
+then
+	source appstore
+fi
+
+source brewi
+
+source npmi
+
+source gemi
+
+source apps
+
+# todo add cron setup
+
+echo ""
+echo_success "BOOYA $CHAR_BOOM $CHAR_BOOM $CHAR_BOOM $CHAR_BOOM $CHAR_BOOM"

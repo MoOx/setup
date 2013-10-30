@@ -1,0 +1,14 @@
+#!/bin/zsh
+
+# path aliases
+alias cddev="cd $DIR_DEV"
+alias cdclient="cddev; cd _clients; cd"
+
+# git aliases
+alias gitcommit="git commit -a -m"
+alias gitdeleteoutdated="git checkout master && git branch --merged | grep -v "\*" | xargs -n 1 git branch -d"
+
+# Dev local commands
+# alias localcompass="$DIR_DEV/compass/bin/compass"
+
+alias casksource="cd $(brew --prefix)/Library/Taps/phinze-cask"

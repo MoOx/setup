@@ -1,0 +1,331 @@
+/*jshint strict:true */
+/*globals slate:true*/
+
+// more examples here https://github.com/jigish/dotfiles/blob/master/slate.js
+// 
+// App object: https://github.com/jigish/slate/wiki/Application-Object
+
+// Monitors
+var monitor_huge = "2560x1440";
+var monitor_big = "1920x1080";
+var monitor_laptop = "1440x900";
+
+var positions = {};
+positions.full = slate.operation("move", {
+  "x": "screenOriginX",
+  "y": "screenOriginY",
+  "width": "screenSizeX",
+  "height": "screenSizeY"
+});
+positions.top__half = positions.full.dup({
+  "height": "screenSizeY/2"
+});
+positions.left__half = positions.full.dup({
+  "height": "screenSizeY",
+  "width": "screenSizeX/2"
+});
+positions.left_top__half = positions.left__half.dup({
+  "height": "screenSizeY/2"
+});
+positions.left_bottom__half = positions.left_top__half.dup({
+  "y": "screenOriginY+screenSizeY/2"
+});
+positions.left__3of4 = positions.full.dup({
+  "width": "screenSizeX/4*3"
+});
+
+positions.right__half = positions.full.dup({
+  "height": "screenSizeY",
+  "width": "screenSizeX/2",
+  "x": "screenOriginX+screenSizeX/2"
+});
+positions.right_top__half = positions.right__half.dup({
+  "height": "screenSizeY/2"
+});
+positions.right_bottom__half = positions.right_top__half.dup({
+  "y": "screenOriginY+screenSizeY/2"
+});
+positions.right__onethird = positions.full.dup({
+  "height": "screenSizeY",
+  "width": "screenSizeX/3",
+  "x": "screenOriginX+screenSizeX/3*2"
+});
+positions.right__1of4 = positions.full.dup({
+  "width": "screenSizeX/4",
+  "x": "screenOriginX+screenSizeX-screenSizeX/4"
+});
+positions.right__1of4__top__1of3 = positions.right__1of4.dup({
+  "height": "screenSizeY/3"
+});
+positions.right__1of4__top__2of3 = positions.right__1of4__top__1of3.dup({
+  "y": "screenOriginY+screenSizeY/3"
+});
+positions.right__1of4__top__3of3 = positions.right__1of4__top__1of3.dup({
+  "y": "screenOriginY+(screenSizeY/3*2)"
+});
+
+var tweetbotWidth = 600;
+positions.tweetbot = slate.operation("move", {
+  "screen": 0,
+  "x": "screenOriginX+screenSizeX-" + tweetbotWidth,
+  "y": "screenOriginY",
+  "width" : tweetbotWidth,
+  "height": "screenSizeY"
+});
+
+slate.log('❯ Positions defined');
+
+var hashes = {
+  main: {
+    full: {
+      "operations" : [positions.full.dup({"screen": 0})],
+      "ignore-fail" : true,
+      "repeat" : true
+    },
+    left__half: {
+      "operations" : [positions.left__half.dup({"screen": 0})],
+      "ignore-fail" : true,
+      "repeat" : true
+    },
+    right__half: {
+      "operations" : [positions.right__half.dup({"screen": 0})],
+      "ignore-fail" : true,
+      "repeat" : true
+    },
+    left__3of4: {
+      "operations" : [positions.left__3of4.dup({"screen": 0})],
+      "ignore-fail" : true,
+      "repeat" : true
+    },
+    right__1of4: {
+      "operations" : [positions.right__1of4.dup({"screen": 0})],
+      "ignore-fail" : true,
+      "repeat" : true
+    },
+    right__1of4__top__1of3: {
+      "operations" : [positions.right__1of4__top__1of3.dup({"screen": 0})],
+      "ignore-fail" : true,
+      "repeat" : true
+    },
+    right__1of4__top__2of3: {
+      "operations" : [positions.right__1of4__top__2of3.dup({"screen": 0})],
+      "ignore-fail" : true,
+      "repeat" : true
+    },
+    right__1of4__top__3of3: {
+      "operations" : [positions.right__1of4__top__3of3.dup({"screen": 0})],
+      "ignore-fail" : true,
+      "repeat" : true
+    }
+  },
+  secondary: {
+    left__half: {
+      "operations" : [positions.left__half.dup({"screen": 1})],
+      "ignore-fail" : true,
+      "repeat" : true
+    },
+    right__half: {
+      "operations" : [positions.right__half.dup({"screen": 1})],
+      "ignore-fail" : true,
+      "repeat" : true
+    },
+    right_top__half: {
+      "operations" : [positions.right_top__half.dup({"screen": 1})],
+      "ignore-fail" : true,
+      "repeat" : true
+    },
+    right_bottom__half: {
+      "operations" : [positions.right_bottom__half.dup({"screen": 1})],
+      "ignore-fail" : true,
+      "repeat" : true
+    }
+  }
+};
+
+slate.log('❯ Hashes defined');
+
+var layouts = {};
+
+layouts.imacExtended = slate.layout("layout:imacExtended", {
+  "Calendar": hashes.main.left__half,
+  "Wunderlist": hashes.main.right__half,
+  
+  "Google Chrome" : hashes.main.full,
+  "Firefox" : hashes.main.full,
+  "Aurora" : hashes.main.full, // Firefox
+  "UX" : hashes.main.full, // Firefox
+  "Sublime Text": hashes.main.full,
+
+  "Tweetbot" : {
+    "operations" : [positions.tweetbot],
+    "ignore-fail" : true,
+    "repeat" : true
+  },
+  
+  "iTerm" : hashes.secondary.left__half,
+  "Terminal" : hashes.secondary.left__half,
+  
+  "Skype": hashes.secondary.right_top__half,
+  "HipChat": hashes.secondary.right_top__half,
+  
+  "LimeChat": hashes.secondary.right_bottom__half
+});
+
+layouts.imac = slate.layout("layout:imac", {
+  "Calendar": hashes.main.left__half,
+  "Wunderlist": hashes.main.right__half,
+  
+  "Google Chrome" : hashes.main.left__3of4,
+  "Firefox" : hashes.main.left__3of4,
+  "Aurora" : hashes.main.left__3of4, // Firefox
+  "UX" : hashes.main.left__3of4, // Firefox
+  "Sublime Text": hashes.main.left__3of4,
+
+  "Tweetbot" : {
+    "operations" : [positions.tweetbot.dup({
+      "x": "screenOriginX+screenSizeX-screenSizeX/4-" + tweetbotWidth,
+    })],
+    "ignore-fail" : true,
+    "repeat" : true
+  },
+  
+  "iTerm" : hashes.main.right__1of4__top__1of3,
+  "Terminal" : hashes.main.right__1of4__top__1of3,
+  
+  "LimeChat": hashes.main.right__1of4__top__2of3,
+  "Skype": hashes.main.right__1of4__top__2of3,
+  
+  "HipChat": hashes.main.right__1of4__top__3of3,
+  "VLC": hashes.main.right__1of4__top__3of3,
+  "MPlayerX": hashes.main.right__1of4__top__3of3
+});
+
+layouts.laptopExtended = layouts.imacExtended;
+
+layouts.laptop = slate.layout("layout:laptop", {
+  
+});
+
+slate.log('❯ Layouts defined');
+
+// If VLC is running a video, just make it take a quarter of the laptop screen,
+// & make iTerm take the rest of the left half
+var adaptWhenVideoIsRunning = function() {  
+  var moved = false;
+  
+  slate.eachApp(function(app) {
+    // if there is a VLC or MPlayer runngin
+    if (app.name() === "VLC" || app.name() === "MPlayerX") {
+      app.eachWindow(function(window) {
+        if (
+            (
+              // if VLC is playing a video (VLC can be used for MP3 :))
+              (app.name() === "VLC" && window.title().match(/\.(avi|mkv|mp4)$/)) ||
+                // or if it's MPlayer
+                app.name() === "MPlayerX") &&
+              // and if it's visible (not an hidden window (eg. pause + minimized))
+              !window.isMinimizedOrHidden()
+        ) {
+          slate.log('Video is running');
+          
+          // mplayer is better for tvshow since it handle next episodes automatically :)
+          //if (app.name() === "MPlayerX" || app.name() === "VLC") {
+          // if two screens, move in the small screen on the top, using half of the height
+          if (slate.screenCount() === 2) {
+            window.doOperation(positions.top__half.dup({screen: 1}));
+            moved = true;
+          }
+          // if one screen, move in the small screen on the top, using half of the height
+          else if (slate.screenCount() === 1) {
+            // window.doOperation(positions.right__onethird);
+            // moved = true;
+          }
+          //}
+          
+          // make terminal smaller
+          slate.eachApp(function(app) {
+            if (app.name() === "iTerm" || app.name() === "Terminal") {
+              // assume one window ?
+              app.eachWindow(function(window) {
+                if (window.isMain()) {
+                  if (slate.screenCount() === 2) {
+                    window.doOperation(positions.left_bottom__half);
+                  }
+                }
+              });
+            }
+          });
+        }
+      });
+    }
+  });
+
+return moved;
+};
+
+// Layout Operations
+var layoutsOperations = {
+  imacExtended: slate.operation("layout", { "name": "layout:imacExtended" }),
+  imac: slate.operation("layout", { "name": "layout:imac" }),
+  laptopExtended: slate.operation("layout", { "name": "layout:laptopExtended" }),
+  laptop: slate.operation("layout", { "name": "layout:laptopLayout" })
+};
+
+var universalLayout = function() {  
+  slate.log('❯ Universal layout');
+
+  var screenCount = slate.screenCount();
+  var hugeMonitorIsHere = slate.screenForRef(monitor_huge);
+  var laptopMonitorIsHere = slate.screenForRef(monitor_laptop);
+  
+  if (screenCount === 2 && hugeMonitorIsHere) {
+    slate.log('Layout detected: imac extended');
+    layoutsOperations.imacExtended.run();
+  }
+  else if (screenCount === 1 && hugeMonitorIsHere) {
+    slate.log('Layout detected: imac');
+    layoutsOperations.imac.run();
+  }
+  else if (screenCount === 2 && laptopMonitorIsHere) {
+    slate.log('Layout detected: laptop extended');
+    layoutsOperations.laptopExtended.run();
+  }
+  else if (screenCount === 1 && laptopMonitorIsHere) {
+    slate.log('Layout detected: laptop');
+    layoutsOperations.laptop.run();
+  }
+  else {
+    slate.log("Unkown layout, ignored");
+  }
+  
+  slate.log("❯ Universal layout: adapt video player");
+  adaptWhenVideoIsRunning();
+};
+
+// Defaults when screens are detected
+slate.default([monitor_huge, monitor_big], "layout:imacExtended");
+slate.default([monitor_huge], "layout:imac");
+slate.default([monitor_big, monitor_laptop], "layout:laptopExtended");
+slate.default([monitor_laptop], "layout:laptop");
+
+slate.log('❯ Defaults done');
+
+slate.bindAll({
+    // Layout Bindings
+  "space:ctrl,alt" : universalLayout,
+  
+  // Window Hints
+  "esc:cmd" : slate.operation("hint"),
+
+  // Switch currently doesn't work well so I'm commenting it out until I fix it.
+  //"tab:cmd" : slate.operation("switch"),
+
+  // Grid
+  "esc:ctrl" : slate.operation("grid"),
+  
+  "1:cmd,alt,shift": function(win) {
+    win.doOperation(positions.full);
+  }
+});
+
+slate.log('❯ Binds done');

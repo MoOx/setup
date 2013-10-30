@@ -1,0 +1,49 @@
+#!/bin/zsh
+
+#load colors
+autoload colors && colors
+for COLOR in RED GREEN YELLOW BLUE MAGENTA CYAN BLACK WHITE; do
+    # todo wrap colours between %{ %} to avoid weird gaps in autocomplete
+    eval COLOR_$COLOR='$fg_no_bold[${(L)COLOR}]'
+    eval COLOR_$COLOR_BOLD='$fg_bold[${(L)COLOR}]'
+done
+eval COLOR_RESET='$reset_color'
+
+export CHAR_OK=✔
+export CHAR_ERROR=✗
+export CHAR_BOOM=💥
+export CHAR_STARTER=❯
+
+echo_info () {
+  echo "${COLOR_BLUE}i${COLOR_RESET} $1"
+}
+
+echo_user () {
+  echo "${COLOR_YELLOW}?${COLOR_RESET} $1"
+}
+
+echo_success () {
+  echo "${COLOR_GREEN}${CHAR_OK}${COLOR_RESET} $1"
+}
+
+echo_fail () {
+  echo "${COLOR_RED}${CHAR_ERROR}${COLOR_RESET} $1"
+  echo ''
+  exit
+}
+
+echo_title () {
+  echo "${COLOR_CYAN}${CHAR_STARTER} $@${COLOR_RESET}"
+}
+
+echo_title_install () {
+  echo_title "Installing" $1 "..."
+}
+
+echo_title_update () {
+  echo_title "Updating" $1 "..."
+}
+
+echo_title_installupdate () {
+  echo_title "Installing/Updating" $1 "..."
+}

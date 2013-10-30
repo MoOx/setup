@@ -1,0 +1,25 @@
+#!/bin/zsh
+
+##
+# Server aliases
+##
+
+# OS X native apache
+# alias apache.restart="sudo /usr/sbin/httpd -k restart"
+# alias ar="apache.restart"
+
+# nginx
+# alias nginx="sudo nginx"
+# alias nginxreload="nginx -s reload"
+# alias nr="nginxreload"
+
+# php
+#export PATH="$(brew --prefix josegonzalez/php/php54)/bin:$PATH"
+
+# MySQL (from brew)
+alias mysqlstart="mysql.server start"
+alias mysqlstop="mysql.server stop"
+
+# PostegreSQL (from brew)
+# alias pgsqlstart="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
+# alias pgsqlstop="pg_ctl -D /usr/local/var/postgres stop -s -m fast"

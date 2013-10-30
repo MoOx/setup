@@ -1,0 +1,5 @@
+#!/bin/zsh
+
+echo_title_update "brew"
+
+brew update && brew upgrade

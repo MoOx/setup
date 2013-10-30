@@ -1,0 +1,23 @@
+[user]
+	name = Maxime Thirouin
+	email = m@moox.io
+
+[github]
+	user = MoOx
+
+[hub]
+	protocol = https
+
+[credential]
+	helper = osxkeychain
+
+[core]
+	quotepath = false
+	editor = subl -n -w
+
+[push]
+	default = current
+
+# todo add aliases
+#https://github.com/kud/my/blob/master/dotfiles/.gitconfig#L24
+#git-pr https://gist.github.com/naholyr/4132423

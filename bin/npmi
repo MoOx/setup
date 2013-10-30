@@ -1,0 +1,27 @@
+#!/bin/zsh
+
+# npm is now included with Node
+echo_title_installupdate "NPM packages"
+
+if [ "$FULLFIRE" = "true" ]
+then
+	source npmu
+fi
+
+echo_title_install "NPM packages"
+
+typeset -A PACKAGES
+PACKAGES=(
+	autoprefixer autoprefixer
+	bower bower
+	grunt-cli grunt
+	happyplan-cli happyplan
+)
+
+for PKG in ${(k)PACKAGES}; do
+	if [ "$FULLFIRE" = "true" ] || ! type ${PACKAGES[$PKG]} > /dev/null; then
+		npm i -g $PKG
+	# else
+	# 	echo_info "${PACKAGES[$PKG]} available, skip install of $PKG"
+	fi
+done

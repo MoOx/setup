@@ -1,0 +1,151 @@
+#!/bin/zsh
+
+echo_title_install "brew cask"
+if ! brew tap | grep cask > /dev/null; then
+  echo_title "Tap brew cask"
+  brew tap phinze/homebrew-cask
+fi
+
+brew install brew-cask
+
+echo_title_install "native OS X Apps.."
+
+APPS=(
+	# enhance OS X with some small utilities
+	"xtra-finder"
+	"app-cleaner"
+
+	#	"noip_duc #todo"
+	"f-lux"
+	"alfred"
+	"shortcat"
+
+	# browsers
+	"chrome"
+	"firefox"
+
+	# sync & download
+	"dropbox"
+	"bit-torrent-sync"
+	"google-drive"
+	"transmission"
+
+	# multimedia
+	"vlc"
+	"mplayerx"
+	"rdio"
+	"subtitles"
+	"all2mp3"
+
+	# organization & workflow
+	# todo
+	#	"wunderlist"
+	#	"libreoffice"
+
+	# messengers
+	"skype"
+	"google-hangouts"
+
+	"sublime-text-3"
+	# todo
+	#	"prey"
+)
+
+# LOCAL APPS
+# todo add just for me ($USER = MoOx ?)
+APPS_LOCAL=(
+	"keepass-x-2"
+
+	"lastfm"
+	"firefox-aurora"
+	# todo
+	# "firefox-nightly"
+	# "firefox-ux"
+
+	# required by I don't know why
+	"x-quartz"
+
+	# for vpn
+	"tunnelblick"
+
+	# lazydev
+	"github"
+	"cyberduck"
+
+	# just in case
+	"imagealpha"
+	"imageoptim"
+
+	# more utilities
+	"mou"
+	"cloudapp"
+
+	# more messengers
+	"lime-chat"
+	"hip-chat"
+
+	"virtualbox"
+	"versions"
+
+	"steam"
+
+	"trim-enabler"
+	"synergy"
+	"super-duper"
+
+	# https://github.com/phinze/homebrew-cask/pull/1339
+	# "source-tree"
+	"shortcat"
+	"iterm2"
+	"slate"
+
+	"jubler"
+	"colors"
+
+	"integrity"
+	#"sitesucker" broken package
+	# todo site-sucker
+	"slowy"
+
+	"name-changer"
+	"coconutbattery"
+	# todo coconut-battery
+
+	"grand-perspective"
+
+	"logitech-control-center"
+	"logitech-unifying"
+
+	#"bodega # will I use it ?"
+	#""
+
+	"day-o"
+)
+
+# todo
+#gfx-card-status http://gfx.io/downloads/gfxCardStatus-2.3.zip
+#SetAPPSync
+#BootChamp
+
+# output is too ugly for now
+# https://github.com/phinze/homebrew-cask/issues/1323
+#cask-install-async $APPS[@]
+
+for app in $APPS; do
+	brew cask install $app --appdir="/Applications"
+done
+
+for app in $APPS_LOCAL; do
+	brew cask install $app --appdir="$HOME/Applications"
+done
+
+# todo themes
+#https://github.com/kud/my/blob/master/scripts/rocknroll#L135
+
+echo_title "Configuring Sublime Text"
+
+if ! type "subl" > /dev/null; then
+  ln -s /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/subl
+fi
+
+# todo add /opt/homebrew-cask/Caskroom/ to Alfred.app search scope

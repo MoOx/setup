@@ -1,0 +1,5 @@
+#!/bin/zsh
+
+echo_title_update "NPM"
+
+npm update -g --loglevel warn

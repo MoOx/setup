@@ -1,0 +1,68 @@
+#!/bin/zsh
+
+HISTFILE=~/.history
+HISTSIZE=SAVEHIST=99999
+setopt APPEND_HISTORY
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_FCNTL_LOCK
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_NO_STORE
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_VERIFY
+setopt INC_APPEND_HISTORY
+
+export LC_CTYPE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+export LANG="en_US"
+
+#export CC=llvm-gcc-4.2
+
+# find DIR_DOTFILES if not defined using symlink real dirname
+#__FILENAME__=${0} # only for sourced file, .zshrc is not sourced
+__FILENAME__=${ZDOTDIR-~}/.zshrc
+if [[ -z "$DIR_DOTFILES" ]] then
+	export DIR_DOTFILES=$(cd $(dirname $(readlink $__FILENAME__))/../ && pwd)
+fi
+source $DIR_DOTFILES/backpack/prompt.zsh
+
+export PATH=$DIR_DOTFILES/bin:$PATH
+
+export DIR_SYNC_BT=$HOME/BTSync
+export DIR_SYNC_DROPBOX=$HOME/Dropbox
+export DIR_APP=/Applications
+export DIR_DEV=$(readlink $HOME/Development)
+
+# my custom bin & sh scripts
+export PATH=$DIR_DEV/bin:$PATH
+
+# local bin, then local npm bin, then global npm bin
+export PATH=./bin:./node_modules/.bin:/usr/local/share/npm/bin:$PATH
+
+# disable ._ file
+export COPYFILE_DISABLE=true
+
+##
+# Source topic files
+##
+
+source $DIR_DOTFILES/backpack/functions.sh
+
+# load other aliases
+for source in `find $DIR_DOTFILES -maxdepth 2 -name \*.aliases`
+do
+  source $source
+done
+
+# also load aliases from projets
+for source in `find $DIR_DEV -maxdepth 3 -name \*.aliases`
+do
+  source $source
+done
+
+# load auto completion
+for source in `find $DIR_DOTFILES -maxdepth 3 -name \*.completion`
+do
+  source $source
+done

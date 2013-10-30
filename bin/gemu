@@ -1,0 +1,5 @@
+#!/bin/zsh
+
+echo_title_update "Gem"
+
+sudo gem update --system && sudo gem update

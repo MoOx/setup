@@ -1,0 +1,5 @@
+#!/bin/zsh
+
+# Submarine requires newer autoconf and automake versions than those provided by Apple
+alias subtitle="submarine -l fr "
+alias subtitles="subtitle *.avi"

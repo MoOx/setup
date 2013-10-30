@@ -1,0 +1,42 @@
+#!/bin/zsh
+
+if ! type "brew" > /dev/null; then
+  echo_title_install "Homebrew (brew)"
+  ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
+  brew doctor
+  # note: brew install run
+  # xcode-select --install
+  # yeah this is cool
+else
+	echo_title "Homebrew (brew) already installed"
+fi
+
+source brewu
+
+if ! brew tap | grep dupes > /dev/null; then
+	echo_title "Tap brew dupes"
+	brew tap homebrew/dupes
+fi
+
+echo_title_install "brew packages"
+brew install git
+brew install hub
+
+brew install node
+
+# for grunt-webfont
+brew install fontforge
+brew install ttfautohint
+
+# brew install ruby
+# brew install python
+#sudo easy_install pip ?
+
+brew install mysql
+
+# brew install phantomjs
+# brew install casperjs
+# brew install slimerjs
+
+# brew install youtube-dl
+# brew install sub2srt

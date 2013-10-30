@@ -1,0 +1,23 @@
+#!/bin/zsh
+
+export DIR_DOTFILES="$( cd "$( dirname "${0}" )"/../ && pwd )"
+
+source $DIR_DOTFILES/backpack/functions.sh
+
+echo "\n(╯°□°）╯ ︵ $CHAR_BOOM\n"
+
+# Ask for the administrator password upfront
+echo_title "Dude, give me full access NOW :"
+sudo -v
+
+# update from remote
+echo_title_update "Updating myself mofo !"
+git --git-dir="$DIR_DOTFILES/.git" --work-tree="$DIR_DOTFILES" pull origin master
+
+export FULLFIRE=false
+if [ "$1" = "--full" ]
+then
+	FULLFIRE=true
+fi
+
+source $DIR_DOTFILES/bin/kaboom

@@ -1,0 +1,3 @@
+#!/bin/zsh
+git clone http://github.com/MoOx/dotfiles.git ~/dotfiles
+. ~/dotfiles/bin/fireinthehole

@@ -18,6 +18,9 @@
 [push]
 	default = current
 
+[color]
+	ui = auto
+
 # todo add aliases
 #https://github.com/kud/my/blob/master/dotfiles/.gitconfig#L24
 #git-pr https://gist.github.com/naholyr/4132423

@@ -11,7 +11,7 @@ echo_title "Dude, give me full access NOW :"
 sudo -v
 
 # update from remote
-echo_title_update "Updating myself mofo !"
+echo_title_update "myself mofo !"
 git --git-dir="$DIR_DOTFILES/.git" --work-tree="$DIR_DOTFILES" pull origin master
 
 export FULLFIRE=false

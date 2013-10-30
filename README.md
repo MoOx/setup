@@ -26,7 +26,7 @@ $ fireinthehole
 
 ### Available commands
 
-- `apps` install OS X native apps
+- `apps` install all OS X native apps
 - `appstore` open the App Store
 - `brewi` install Homebrew & specified packages
 - `brewu` update brew

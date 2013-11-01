@@ -1,5 +1,11 @@
 #!/bin/zsh
 
+export OS=unix
+if [ "$(uname -s)" == "Darwin" ]
+then
+	export OS=osx
+fi
+
 HISTFILE=~/.history
 HISTSIZE=SAVEHIST=99999
 setopt APPEND_HISTORY

@@ -150,4 +150,8 @@ if ! type "subl" > /dev/null; then
 	ln -s /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/subl
 fi
 
-# todo add /opt/homebrew-cask/Caskroom/ to Alfred.app search scope
+# todo add to Alfred.app search scope
+# /Applications/Xcode.app/Contents/Applications/
+# /System/Library/CoreServices/
+# /System/Library/CoreServices/Applications/
+# /opt/homebrew-cask/Caskroom/

@@ -29,6 +29,8 @@ source $DIR_DOTFILES/backpack/prompt.zsh
 
 export PATH=$DIR_DOTFILES/bin:$PATH
 
+export EDITOR=subl
+
 export DIR_SYNC_BT=$HOME/BTSync
 export DIR_SYNC_DROPBOX=$HOME/Dropbox
 export DIR_APP=/Applications

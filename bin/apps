@@ -100,7 +100,9 @@ APPS_LOCAL=(
 	"slate"
 
 	"jubler"
+
 	"colors"
+	"gimp"
 
 	"integrity"
 	#"sitesucker" broken package

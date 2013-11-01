@@ -1,4 +1,5 @@
 #!/bin/zsh
+source $DIR_DOTFILES/backpack/functions.sh
 
 echo_title "Opening AppStore\nInstall your apps ;)"
 open /Applications/"App Store.app"

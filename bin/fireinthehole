@@ -1,7 +1,5 @@
 #!/bin/zsh
-
 export DIR_DOTFILES="$( cd "$( dirname "${0}" )"/../ && pwd )"
-
 source $DIR_DOTFILES/backpack/functions.sh
 
 echo "\n(╯°□°）╯ ︵ $CHAR_BOOM\n"

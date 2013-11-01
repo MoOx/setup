@@ -1,4 +1,5 @@
 #!/bin/zsh
+source $DIR_DOTFILES/backpack/functions.sh
 
 # npm is now included with Node
 echo_title_installupdate "NPM packages"

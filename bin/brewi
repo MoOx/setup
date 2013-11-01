@@ -1,4 +1,5 @@
 #!/bin/zsh
+source $DIR_DOTFILES/backpack/functions.sh
 
 if ! type "brew" > /dev/null; then
   echo_title_install "Homebrew (brew)"

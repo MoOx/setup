@@ -1,4 +1,5 @@
 #!/bin/zsh
+source $DIR_DOTFILES/backpack/functions.sh
 
 DIR_BIN="$( cd "$( dirname "${0}" )" && pwd )"
 source $DIR_BIN/dotfiles

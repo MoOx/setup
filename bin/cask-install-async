@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+source $DIR_DOTFILES/backpack/functions.sh
 
 if (process.argv.length < 1) {
 	console.error('Usage: cask-install-async [apps]')

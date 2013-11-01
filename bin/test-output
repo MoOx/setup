@@ -1,6 +1,5 @@
 #!/bin/zsh
-
-. $DIR_DOTFILES/backpack/functions.sh
+source $DIR_DOTFILES/backpack/functions.sh
 
 test_msg () {
   echo_info 'Info'

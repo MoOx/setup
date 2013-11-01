@@ -38,12 +38,6 @@ $ fireinthehole
 - `osxdefaults` run lots of `defaults write`
 - `snacktime` update brew, npm & gems
 
-## TODO
-
-- Move packages list as external files (osx apps, node/gems/brew packages...)
-- Dl & install Sublime Package
-- Themes (iterm, limechat, ...)
-
 ---
 
 _Inspired by_

@@ -144,10 +144,10 @@ done
 # todo themes
 #https://github.com/kud/my/blob/master/scripts/rocknroll#L135
 
-echo_title "Configuring Sublime Text"
 
 if ! type "subl" > /dev/null; then
-  ln -s /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/subl
+	echo_title "Configuring Sublime Text bin"
+	ln -s /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/subl
 fi
 
 # todo add /opt/homebrew-cask/Caskroom/ to Alfred.app search scope

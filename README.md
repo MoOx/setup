@@ -26,9 +26,9 @@ $ fireinthehole
 
 This command update the dotfiles themselve from the repo, then trigger `kaboom` which call every commands below.
 
-<img alt="preview" align="right" src="https://raw.github.com/MoOx/dotfiles/master/backpack/i/fireinthehole.png" />
-
 ### Available commands
+
+<img alt="preview" align="right" src="https://raw.github.com/MoOx/dotfiles/master/backpack/i/fireinthehole.png" />
 
 This commands should be available in your PATH & can be run independently.
 
@@ -45,9 +45,7 @@ This commands should be available in your PATH & can be run independently.
 - `snacktime` update brew, npm & gems
 - `test-output` test output functions, not very usefull :) 
 
----
-
-_Inspired by_
+## Inspired by
 
 - https://github.com/holman/dotfiles
 - https://github.com/mathiasbynens/dotfiles

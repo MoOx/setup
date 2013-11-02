@@ -24,11 +24,15 @@ $ curl --silent https://raw.github.com/MoOx/dotfiles/master/backpack/firstrun | 
 $ fireinthehole
 ```
 
-<img align="middle" src="https://raw.github.com/MoOx/dotfiles/master/backpack/i/fireinthehole.png" />
+This command update the dotfiles themselve from the repo, then trigger `kaboom` which call every commands below.
+
+<img alt="preview" align="right" src="https://raw.github.com/MoOx/dotfiles/master/backpack/i/fireinthehole.png" />
 
 ### Available commands
 
-- `apps` install all OS X native apps
+This commands should be available in your PATH & can be run independently.
+
+- `apps` install all OS X native apps & pre-configure some
 - `appstore` open the App Store
 - `brewi` install Homebrew & specified packages
 - `brewu` update brew
@@ -39,6 +43,7 @@ $ fireinthehole
 - `npmu` just an global npm update
 - `osxdefaults` run lots of `defaults write`
 - `snacktime` update brew, npm & gems
+- `test-output` test output functions, not very usefull :) 
 
 ---
 

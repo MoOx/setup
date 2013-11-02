@@ -5,8 +5,11 @@
 ##
 
 # OS X native apache
-# alias apache.restart="sudo /usr/sbin/httpd -k restart"
-# alias ar="apache.restart"
+alias apachestart="sudo apachectl start"
+alias apacherestart="sudo apachectl restart"
+alias apacheopen="open http://localhost/$USER/"
+alias apacheuserlink="sudo ln -s $HOME/Development /Library/WebServer/Documents/$USER 2>/dev/null"
+alias apacheuserinit="apacheuserlink && apacherestart && apacheopen"
 
 # nginx
 # alias nginx="sudo nginx"

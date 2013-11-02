@@ -9,7 +9,7 @@ fi
 
 brew install brew-cask 2>&1 | grep -v "already installed"
 
-echo_title_install "native OS X Apps.."
+echo_title_install "native OS X Apps"
 
 APPS=(
 	# enhance OS X with some small utilities

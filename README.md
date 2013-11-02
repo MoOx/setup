@@ -1,6 +1,6 @@
 # `$ fireinthehole`, it's that simple
 
-<img alt="" align="right" src="http://25.media.tumblr.com/18d3313bf26f87bd14212087de1cf18f/tumblr_mtp2dqsu4p1rjorvbo1_250.gif" />
+<img alt="" align="right" src="https://raw.github.com/MoOx/dotfiles/master/backpack/i/kabooya.gif" />
 
 (╯°□°）╯ ︵ 💥
 
@@ -14,15 +14,17 @@ This includes:
 
 ## First run
 
-```shell
+```
 $ curl --silent https://raw.github.com/MoOx/dotfiles/master/backpack/firstrun | zsh
 ```
 
 ## Periodic run
 
-```shell
+```
 $ fireinthehole
 ```
+
+<img align="middle" src="https://raw.github.com/MoOx/dotfiles/master/backpack/i/fireinthehole.png" />
 
 ### Available commands
 

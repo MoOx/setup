@@ -16,7 +16,7 @@
 	editor = subl -n -w
 
 [push]
-	default = current
+	default = simple
 
 [color]
 	ui = auto

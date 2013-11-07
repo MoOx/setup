@@ -2,10 +2,8 @@
 source $DIR_DOTFILES/backpack/functions.sh
 
 echo_title_install "brew cask"
-if ! brew tap | grep cask > /dev/null; then
-  echo_title "Tap brew cask"
-  brew tap phinze/homebrew-cask
-fi
+brewtap phinze/cask
+brewtap caskroom/versions
 
 brew install brew-cask 2>&1 | grep -v "already installed"
 
@@ -83,7 +81,7 @@ APPS_LOCAL=(
 
 	# more messengers
 	"lime-chat"
-	"hip-chat"
+	"hipchat"
 
 	"virtualbox"
 	"versions"

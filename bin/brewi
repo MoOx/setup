@@ -14,10 +14,7 @@ fi
 
 source brewu
 
-if ! brew tap | grep dupes > /dev/null; then
-	echo_title "Tap brew dupes"
-	brew tap homebrew/dupes
-fi
+brewtap homebrew/dupes
 
 echo_title_install "brew packages"
 

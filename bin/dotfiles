@@ -34,6 +34,7 @@ for source in `ls $DOTFILESCEPTION`; do
       then
         echo_user "File already exists: `basename $source`, what do you want to do? [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?"
         read -k action
+        echo ''
 
         case "$action" in
           o ) overwrite=true;;

@@ -94,8 +94,7 @@ APPS_LOCAL=(
 	"synergy"
 	"super-duper"
 
-	# https://github.com/phinze/homebrew-cask/pull/1339
-	# "source-tree"
+	"sourcetree"
 	"shortcat"
 	"iterm2"
 	"slate"

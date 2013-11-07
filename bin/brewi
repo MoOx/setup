@@ -29,6 +29,9 @@ PACKAGES=(
 	fontforge
 	ttfautohint
 
+	# to create favicons
+	icoutils
+
 	# ruby
 	# python
 	#sudo easy_install pip ?

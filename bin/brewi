@@ -24,6 +24,7 @@ echo_title_install "brew packages"
 PACKAGES=(
 	git
 	hub
+	ghi
 
 	node
 

@@ -74,3 +74,5 @@ for source in `find $DIR_DOTFILES -maxdepth 3 -name \*.completion`
 do
   source $source
 done
+
+function gi() { curl http://gitignore.io/api/$@ ;}

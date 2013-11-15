@@ -1,0 +1,9 @@
+#!/bin/zsh
+
+# easy brew tap function
+function brewtap() {
+ if ! brew tap | grep "${@}" > /dev/null; then
+   echo_title "Tap brew ${@}"
+   brew tap "${@}"
+ fi
+}

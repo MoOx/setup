@@ -11,8 +11,9 @@ echo_title_install "native OS X Apps"
 
 APPS=(
 	# enhance OS X with some small utilities
-	"xtra-finder"
-	"app-cleaner"
+	"xtrafinder"
+	"appcleaner"
+	"day-o"
 
 	#	"noip_duc #todo"
 	"f-lux"
@@ -25,7 +26,7 @@ APPS=(
 
 	# sync & download
 	"dropbox"
-	"bit-torrent-sync"
+	"bittorrent-sync"
 	"google-drive"
 	"transmission"
 
@@ -36,9 +37,6 @@ APPS=(
 	"subtitles"
 	"all2mp3"
 
-	# organization & workflow
-	# todo
-	#	"wunderlist"
 	#	"libreoffice"
 
 	# messengers
@@ -53,7 +51,7 @@ APPS=(
 # LOCAL APPS
 # todo add just for me ($USER = MoOx ?)
 APPS_LOCAL=(
-	"keepass-x-2"
+	"keepassx-2"
 
 	"lastfm"
 	"firefox-aurora"
@@ -62,7 +60,7 @@ APPS_LOCAL=(
 	# "firefox-ux"
 
 	# required by I don't know why
-	"x-quartz"
+	"xquartz"
 
 	# for vpn
 	"tunnelblick"
@@ -80,7 +78,7 @@ APPS_LOCAL=(
 	"cloudapp"
 
 	# more messengers
-	"lime-chat"
+	"limechat"
 	"hipchat"
 
 	"virtualbox"
@@ -90,7 +88,7 @@ APPS_LOCAL=(
 
 	"trim-enabler"
 	"synergy"
-	"super-duper"
+	"superduper"
 
 	"sourcetree"
 	"shortcat"
@@ -104,22 +102,18 @@ APPS_LOCAL=(
 
 	"integrity"
 	#"sitesucker" broken package
-	# todo site-sucker
 	"slowy"
 
-	"name-changer"
+	"namechanger"
 	"coconutbattery"
 	# todo coconut-battery
 
-	"grand-perspective"
+	"grandperspective"
 
 	"logitech-control-center"
 	"logitech-unifying"
 
-	#"bodega # will I use it ?"
-	#""
-
-	"day-o"
+	"bodega"
 )
 
 # todo

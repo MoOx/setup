@@ -1,16 +1,15 @@
-# `$ fireinthehole`, it's that simple
+# `$ fireinthehole` (╯°□°）╯ ︵ 💥
 
 <img alt="" align="right" src="https://raw.github.com/MoOx/dotfiles/master/backpack/i/kabooya.gif" />
 
-(╯°□°）╯ ︵ 💥
-
-Just run `fireinthehole` should setup the computer.
+Just run `fireinthehole`. It should setup the computer.
 This includes:
 
 - OS X configuration
 - Development environment
-- Apps
-- Add some commands to the PATH
+- Commands & aliases for CLI
+- OS native apps
+- Configured preferences
 
 ## First run
 
@@ -25,6 +24,7 @@ $ fireinthehole
 ```
 
 This command update the dotfiles themselve from the repo, then trigger `kaboom` which call every commands below.
+_Note: you will sometimes need to enter you password or some informations related to current installation_
 
 ### Available commands
 

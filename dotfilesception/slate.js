@@ -2,7 +2,7 @@
 /*globals slate:true*/
 
 // more examples here https://github.com/jigish/dotfiles/blob/master/slate.js
-// 
+//
 // App object: https://github.com/jigish/slate/wiki/Application-Object
 
 // Monitors
@@ -149,11 +149,11 @@ var layouts = {};
 layouts.imacExtended = slate.layout("layout:imacExtended", {
   "Calendar": hashes.main.left__half,
   "Wunderlist": hashes.main.right__half,
-  
+
   "Google Chrome" : hashes.main.full,
   "Firefox" : hashes.main.full,
   "Aurora" : hashes.main.full, // Firefox
-  "UX" : hashes.main.full, // Firefox
+  "Nightly" : hashes.main.full, // Firefox
   "Sublime Text": hashes.main.full,
 
   "Tweetbot" : {
@@ -161,24 +161,24 @@ layouts.imacExtended = slate.layout("layout:imacExtended", {
     "ignore-fail" : true,
     "repeat" : true
   },
-  
+
   "iTerm" : hashes.secondary.left__half,
   "Terminal" : hashes.secondary.left__half,
-  
+
   "Skype": hashes.secondary.right_top__half,
   "HipChat": hashes.secondary.right_top__half,
-  
+
   "LimeChat": hashes.secondary.right_bottom__half
 });
 
 layouts.imac = slate.layout("layout:imac", {
   "Calendar": hashes.main.left__half,
   "Wunderlist": hashes.main.right__half,
-  
+
   "Google Chrome" : hashes.main.left__3of4,
   "Firefox" : hashes.main.left__3of4,
   "Aurora" : hashes.main.left__3of4, // Firefox
-  "UX" : hashes.main.left__3of4, // Firefox
+  "Nightly" : hashes.main.left__3of4, // Firefox
   "Sublime Text": hashes.main.left__3of4,
 
   "Tweetbot" : {
@@ -188,13 +188,13 @@ layouts.imac = slate.layout("layout:imac", {
     "ignore-fail" : true,
     "repeat" : true
   },
-  
+
   "iTerm" : hashes.main.right__1of4__top__1of3,
   "Terminal" : hashes.main.right__1of4__top__1of3,
-  
+
   "LimeChat": hashes.main.right__1of4__top__2of3,
   "Skype": hashes.main.right__1of4__top__2of3,
-  
+
   "HipChat": hashes.main.right__1of4__top__3of3,
   "VLC": hashes.main.right__1of4__top__3of3,
   "MPlayerX": hashes.main.right__1of4__top__3of3
@@ -203,16 +203,16 @@ layouts.imac = slate.layout("layout:imac", {
 layouts.laptopExtended = layouts.imacExtended;
 
 layouts.laptop = slate.layout("layout:laptop", {
-  
+
 });
 
 slate.log('❯ Layouts defined');
 
 // If VLC is running a video, just make it take a quarter of the laptop screen,
 // & make iTerm take the rest of the left half
-var adaptWhenVideoIsRunning = function() {  
+var adaptWhenVideoIsRunning = function() {
   var moved = false;
-  
+
   slate.eachApp(function(app) {
     // if there is a VLC or MPlayer runngin
     if (app.name() === "VLC" || app.name() === "MPlayerX") {
@@ -227,7 +227,7 @@ var adaptWhenVideoIsRunning = function() {
               !window.isMinimizedOrHidden()
         ) {
           slate.log('Video is running');
-          
+
           // mplayer is better for tvshow since it handle next episodes automatically :)
           //if (app.name() === "MPlayerX" || app.name() === "VLC") {
           // if two screens, move in the small screen on the top, using half of the height
@@ -241,7 +241,7 @@ var adaptWhenVideoIsRunning = function() {
             // moved = true;
           }
           //}
-          
+
           // make terminal smaller
           slate.eachApp(function(app) {
             if (app.name() === "iTerm" || app.name() === "Terminal") {
@@ -271,13 +271,13 @@ var layoutsOperations = {
   laptop: slate.operation("layout", { "name": "layout:laptopLayout" })
 };
 
-var universalLayout = function() {  
+var universalLayout = function() {
   slate.log('❯ Universal layout');
 
   var screenCount = slate.screenCount();
   var hugeMonitorIsHere = slate.screenForRef(monitor_huge);
   var laptopMonitorIsHere = slate.screenForRef(monitor_laptop);
-  
+
   if (screenCount === 2 && hugeMonitorIsHere) {
     slate.log('Layout detected: imac extended');
     layoutsOperations.imacExtended.run();
@@ -297,7 +297,7 @@ var universalLayout = function() {
   else {
     slate.log("Unkown layout, ignored");
   }
-  
+
   slate.log("❯ Universal layout: adapt video player");
   adaptWhenVideoIsRunning();
 };
@@ -313,7 +313,7 @@ slate.log('❯ Defaults done');
 slate.bindAll({
     // Layout Bindings
   "space:ctrl,alt" : universalLayout,
-  
+
   // Window Hints
   "esc:cmd" : slate.operation("hint"),
 
@@ -322,7 +322,7 @@ slate.bindAll({
 
   // Grid
   "esc:ctrl" : slate.operation("grid"),
-  
+
   "1:cmd,alt,shift": function(win) {
     win.doOperation(positions.full);
   }

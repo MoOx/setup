@@ -37,7 +37,7 @@ APPS=(
 	"subtitles"
 	"all2mp3"
 
-	#	"libreoffice"
+	"libreoffice"
 
 	# messengers
 	"skype"

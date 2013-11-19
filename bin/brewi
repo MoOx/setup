@@ -49,3 +49,7 @@ PACKAGES=(
 for pkg in $PACKAGES; do
 	brew install $pkg 2>&1 | grep -v "already installed"
 done
+
+# mysql auto start
+ln -sfv /usr/local/opt/mysql/*.plist ~/Library/LaunchAgents
+launchctl load ~/Library/LaunchAgents/homebrew.mxcl.mysql.plist

@@ -19,6 +19,8 @@ brewtap homebrew/dupes
 echo_title_install "brew packages"
 
 PACKAGES=(
+	zsh-completions
+
 	git
 	hub
 	ghi

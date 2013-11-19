@@ -69,10 +69,10 @@ do
   source $source
 done
 
-# load auto completion
-for source in `find $DIR_DOTFILES -maxdepth 3 -name \*.completion`
-do
-  source $source
-done
+LOCAL_COMPLETION_PATH=$DIR_DOTFILES/completions
+fpath=($LOCAL_COMPLETION_PATH $fpath)
+fpath=($(brew --prefix)/share/zsh-completions $fpath)
+# Only unique entries please.
+typeset -U fpath
 
 function gitignore() { curl http://gitignore.io/api/$@ ;}

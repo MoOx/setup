@@ -55,9 +55,7 @@ APPS_LOCAL=(
 
 	"lastfm"
 	"firefox-aurora"
-	# todo
-	# "firefox-nightly"
-	# "firefox-ux"
+	"firefox-nightly"
 
 	# required by I don't know why
 	"xquartz"

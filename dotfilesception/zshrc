@@ -75,4 +75,4 @@ do
   source $source
 done
 
-function gi() { curl http://gitignore.io/api/$@ ;}
+function gitignore() { curl http://gitignore.io/api/$@ ;}

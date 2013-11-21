@@ -10,5 +10,11 @@ if ! type "git" > /dev/null; then
     fi
 fi
 
-git clone http://github.com/MoOx/dotfiles.git ~/dotfiles
-. ~/dotfiles/bin/fireinthehole
+if [[ ! -d $HOME/dotfiles ]]
+    git clone http://github.com/MoOx/dotfiles.git $HOME/dotfiles
+else
+    cd $HOME/dotfiles
+    git pull
+fi
+
+. $HOME/dotfiles/bin/fireinthehole

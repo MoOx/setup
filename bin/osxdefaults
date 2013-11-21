@@ -359,6 +359,6 @@ hash tmutil &> /dev/null && sudo tmutil disablelocal
 
 # Kill affected applications
 for app in "Address Book" "Calendar" "Contacts" "Dashboard" "Dock" "Finder"  \
-	"Mail" "Messages" "Safari" "SystemUIServer" "Terminal" ; do
+	"Mail" "Messages" "Safari" "SystemUIServer" ; do
   killall "${app}" > /dev/null 2>&1
 done

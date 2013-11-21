@@ -3,7 +3,7 @@ source $DIR_DOTFILES/backpack/functions.sh
 
 if ! type "brew" > /dev/null; then
   echo_title_install "Homebrew (brew)"
-  ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
+  ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go/install)"
   brew doctor
   # note: brew install run
   # xcode-select --install

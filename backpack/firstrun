@@ -1,3 +1,11 @@
 #!/bin/zsh
+if [[ "$(uname -s)" == "Darwin" ]]
+then
+    xcode-select --install
+fi
+echo "Press return when XCode Developer Tools are installed"
+read
+# todo add an alternative to grab xcode from another computer accessible by local network
+
 git clone http://github.com/MoOx/dotfiles.git ~/dotfiles
 . ~/dotfiles/bin/fireinthehole

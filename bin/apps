@@ -21,7 +21,7 @@ APPS=(
 	"shortcat"
 
 	# browsers
-	"chrome"
+	"google-chrome"
 	"firefox"
 
 	# sync & download

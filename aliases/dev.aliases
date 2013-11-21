@@ -11,4 +11,6 @@ alias gitdeleteoutdated="git checkout master && git branch --merged | grep -v "\
 # Dev local commands
 # alias localcompass="$DIR_DEV/compass/bin/compass"
 
-alias casksource="cd $(brew --prefix)/Library/Taps/phinze-cask"
+if ! type "brew" > /dev/null; then
+    alias casksource="cd $(brew --prefix)/Library/Taps/phinze-cask"
+fi

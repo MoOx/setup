@@ -71,7 +71,7 @@ done
 
 LOCAL_COMPLETION_PATH=$DIR_DOTFILES/completions
 fpath=($LOCAL_COMPLETION_PATH $fpath)
-if ! type "brew" > /dev/null; then
+if type "brew" > /dev/null; then
     fpath=($(brew --prefix)/share/zsh-completions $fpath)
 fi
 # Only unique entries please.

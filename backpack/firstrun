@@ -11,6 +11,7 @@ if ! type "git" > /dev/null; then
 fi
 
 if [[ ! -d $HOME/dotfiles ]]
+then
     git clone http://github.com/MoOx/dotfiles.git $HOME/dotfiles
 else
     cd $HOME/dotfiles

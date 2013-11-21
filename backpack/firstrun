@@ -1,5 +1,8 @@
 #!/bin/zsh
 
+# define zsh as default shell
+chsh -s /bin/zsh $USER
+
 if ! type "git" > /dev/null; then
     if [[ "$(uname -s)" == "Darwin" ]]
     then

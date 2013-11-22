@@ -25,7 +25,6 @@ fi
 
 echo_title "First run some applications"
 
-defaults write loginwindow AutoLaunchedApplicationDictionary -array-add '{ "Path" = "/path/to/itemname"; "Hide" = 0; }'
 open "/Applications/Alfred 2.app"
 open "/Applications/BitTorrent Sync.app"
 open "/Applications/Cloud.app"
@@ -41,10 +40,8 @@ open "$HOME/Applications/Last.fm.app"
 open "$HOME/Applications/LimeChat.app"
 open "$HOME/Applications/Slate.app"
 open "$HOME/Applications/Tunnelblick.app"
-#open "/Users/${USER}/Applications/"
 
 # todo add login items
-# defaults write loginwindow AutoLaunchedApplicationDictionary -array-add '{ "Path" = "/Applications/$APP.app"; "Hide" = 0; }'
 
 if ! type "say" > /dev/null
 then

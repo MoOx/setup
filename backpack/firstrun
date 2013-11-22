@@ -41,3 +41,10 @@ open "/Applications/Tunnelblick.app"
 open "/Applications/XtraFinder.app"
 open "/Applications/Day-O.app"
 #open "/Users/${USER}/Applications/"
+
+if ! type "say" > /dev/null
+then
+  say "YO BITCH, setup is done \!"
+  sleep 5
+  say "HEY BITCH ! Did you heard what I just said \?"
+fi

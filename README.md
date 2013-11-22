@@ -17,6 +17,9 @@ This includes:
 $ curl --silent https://raw.github.com/MoOx/dotfiles/master/backpack/firstrun | zsh
 ```
 
+When all Synced folder are set, run `prefs` to load synced preferences
+ (until Sync folders setup is included in the script)
+
 ## Periodic run
 
 ```
@@ -42,6 +45,7 @@ This commands should be available in your PATH & can be run independently.
 - `npmi` install specified node modules, globally
 - `npmu` just an global npm update
 - `osxdefaults` run lots of `defaults write`
+- `prefs` sync prefs from your Sync folder
 - `snacktime` update brew, npm & gems
 - `test-output` test output functions, not very usefull :) 
 

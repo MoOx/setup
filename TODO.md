@@ -58,23 +58,6 @@ Edit
 	<key>SockServiceName</key>
 	<string>ssh2</string>
 
-
-# Customize some icon (setfileicon is a custom command from my $DIR_SYNC/../bin included in my bashprofile)
-	$OS_ICONS_DIR=/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources
-
-	setfileicon $OS_ICONS_DIR/MovieFolderIcon.icns ~/Applications/Multimedia
-	setfileicon $OS_ICONS_DIR/UtilitiesFolder.icns ~/Applications/Utilities
-	setfileicon $OS_ICONS_DIR/MovieFolderIcon.icns ~/Movies
-	setfileicon $OS_ICONS_DIR/MusicFolderIcon.icns ~/Music
-
-	setfileicon $OS_ICONS_DIR/GroupFolder.icns $HD/Users
-	setfileicon $OS_ICONS_DIR/PicturesFolderIcon.icns $HD/Photos
-	setfileicon $OS_ICONS_DIR/MusicFolderIcon.icns $HD/AudioBooks
-	setfileicon $OS_ICONS_DIR/BurnableFolderIcon.icns $HD/Backup
-	setfileicon $OS_ICONS_DIR/DownloadsFolder.icns $HD/Downloads
-	setfileicon $OS_ICONS_DIR/ProfileBackgroundColor.icns $HD/Graphics
-	#setfileicon $OS_ICONS_DIR/com.apple.iphone.icns $HD/iPhone
-
 ### [Local mail with postfix relay](http://stevelorek.com/configure-postfix-relay-gmail-osx-lion.html)
 
 ### Enable local FTP Server

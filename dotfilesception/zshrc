@@ -37,10 +37,13 @@ export PATH=$DIR_DOTFILES/bin:$PATH
 
 export EDITOR=subl
 
-export DIR_SYNC_BT=$HOME/BTSync
-export DIR_SYNC_DROPBOX=$HOME/Dropbox
+export DIR_SYNC=$HOME/Sync
+export DIR_SYNC_DROPBOX=$DIR_SYNC/Dropbox
+export DIR_SYNC_LIBRARY=$DIR_SYNC/BTSync/Library
 export DIR_APP=/Applications
-export DIR_DEV=$(readlink $HOME/Development)
+export DIR_DEV=$DIR_SYNC/Development
+
+export OS_ICONS_DIR=/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources
 
 # my custom bin & sh scripts
 export PATH=$DIR_DEV/bin:$PATH

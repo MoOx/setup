@@ -9,7 +9,7 @@ if ! type "git" > /dev/null; then
         # todo add an alternative to grab xcode from another computer accessible by local network
         xcode-select --install
         echo "Press return when XCode Developer Tools are installed"
-        read -k 
+        read -k
     fi
 fi
 
@@ -22,3 +22,22 @@ else
 fi
 
 . $HOME/dotfiles/bin/fireinthehole --full
+
+echo_title "First run some applications"
+
+open "/Applications/Alfred\ 2.app"
+open "/Applications/BitTorrent Sync.app"
+open "/Applications/Cloud.app"
+open "/Applications/Dash.app"
+open "/Applications/Dropbox.app"
+open "/Applications/FirefoxNightly.app"
+open "/Applications/Flux.app"
+open "/Applications/Flycut.app"
+open "/Applications/Last.fm.app"
+open "/Applications/LimeChat.app"
+open "/Applications/Slate.app"
+open "/Applications/Shortcat.app"
+open "/Applications/Tunnelblick.app"
+open "/Applications/XtraFinder.app"
+open "/Applications/Day-O.app"
+#open "/Users/${USER}/Applications/"

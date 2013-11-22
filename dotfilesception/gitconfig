@@ -56,4 +56,7 @@
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 
+[merge]
+	conflictStyle = diff3
+
 # todo git-pr https://gist.github.com/naholyr/4132423

@@ -9,107 +9,108 @@ brew install brew-cask 2>&1 | grep -v "already installed"
 
 echo_title_install "native OS X Apps"
 
+typeset -A APPS
 APPS=(
 	# enhance OS X with some small utilities
-	"xtrafinder"
-	"appcleaner"
-	"day-o"
+	"XtraFinder" "xtrafinder"
+	"AppCleaner" "appcleaner"
+	"Day-O" "day-o"
 
 	#	"noip_duc #todo"
-	"f-lux"
-	"alfred"
-	"shortcat"
+	"Flux" "f-lux"
+	"Alfred 2" "alfred"
+	"Shortcat" "shortcat"
 
 	# browsers
-	"google-chrome"
-	"firefox"
+	"Google Chrome" "google-chrome"
+	"Firefox" "firefox"
 
 	# sync & download
-	"dropbox"
-	"bittorrent-sync"
-	"google-drive"
-	"transmission"
+	"Dropbox" "dropbox"
+	"BitTorrent Sync" "bittorrent-sync"
+	"Google Drive" "google-drive"
+	"Transmission" "transmission"
 
 	# multimedia
-	"vlc"
-	"mplayerx"
-	"rdio"
-	"subtitles"
-	"all2mp3"
+	"VLC" "vlc"
+	"MPlayerX" "mplayerx"
+	"Rdio" "rdio"
+	"Subtitles" "subtitles"
+	"All2MP3" "all2mp3"
 
-	"libreoffice"
+	"LibreOffice" "libreoffice"
 
 	# messengers
-	"skype"
-	"google-hangouts"
+	"Skype" "skype"
+	"/Library/Internet Plug-Ins/googletalkbrowserplugin.plugin" "google-hangouts"
 
-	"sublime-text-3"
+	"Sublime Text" "sublime-text-3"
 )
 
 # LOCAL APPS
 # todo add just for me ($USER = MoOx ?)
+typeset -A APPS_LOCAL
 APPS_LOCAL=(
-	"keepassx-2"
+	"KeePassX" "keepassx-2"
 
-	"lastfm"
-	"firefox-aurora"
-	"firefox-nightly"
+	"Last.fm" "lastfm"
+	"FirefoxAurora" "firefox-aurora"
+	"FirefoxNightly" "firefox-nightly"
 
 	# required by I don't know why
-	"xquartz"
+	"Utilities/XQuartz" "xquartz"
 
 	# for vpn
-	"tunnelblick"
+	"Tunnelblick" "tunnelblick"
 
 	# lazydev
-	"github"
-	"cyberduck"
+	"GitHub" "github"
+	"Cyberduck" "cyberduck"
 
 	# just in case
-	"imagealpha"
-	"imageoptim"
+	"ImageAlpha" "imagealpha"
+	"ImageOptim" "imageoptim"
 
 	# more utilities
-	"mou"
-	"cloudapp"
+	"Mou" "mou"
+	"Cloud" "cloudapp"
 
 	# more messengers
-	"limechat"
-	"hipchat"
+	"LimeChat" "limechat"
+	"HipChat" "hipchat"
 
-	"virtualbox"
-	"versions"
+	"VirtualBox" "virtualbox"
+	"Versions" "versions"
 
-	"steam"
+	"Steam" "steam"
 
-	"trim-enabler"
-	"synergy"
-	"superduper"
+	"Trim Enabler" "trim-enabler"
+	"Synergy" "synergy"
+	"SuperDuper!" "superduper"
 
-	"sourcetree"
-	"shortcat"
-	"iterm2"
-	"slate"
+	"SourceTree" "sourcetree"
+	"iTerm" "iterm2"
+	"Slate" "slate"
 
-	"jubler"
+	"Jubler" "jubler"
 
-	"colors"
-	"gimp"
+	"Colors" "colors"
+	"GIMP" "gimp"
 
-	"integrity"
-	#"sitesucker" broken package
-	"slowy"
+	"Integrity" "integrity"
+	#"Site Sucker" "sitesucker" broken package
+	"Slowy" "slowy"
 
-	"namechanger"
-	"coconutbattery"
+	"NameChanger" "namechanger"
+	"coconutBattery" "coconutbattery"
 	# todo coconut-battery
 
-	"grandperspective"
+	"GrandPerspective" "grandperspective"
 
-	"logitech-control-center"
-	"logitech-unifying"
+	"/Library/PreferencePanes/Logitech Control Center.prefPane" "logitech-control-center"
+	"Utilities/Logitech Unifying Software" "logitech-unifying"
 
-	"bodega"
+	"Bodega" "bodega"
 )
 
 # todo
@@ -121,12 +122,20 @@ APPS_LOCAL=(
 # https://github.com/phinze/homebrew-cask/issues/1323
 #cask-install-async $APPS[@]
 
-for app in $APPS; do
-	brew cask install $app --appdir="/Applications" 2>&1 | grep -v "already installed"
+for app in ${(k)APPS}; do
+	# install if not present already (skip "already installed" error)
+	if [ ! -d "$app" ] && [ ! -d "/Applications/$app.app/" ] && [ ! -d "$HOME/Applications/$app.app/" ]
+	then
+		brew cask install ${APPS[$app]} --appdir="/Applications"
+	fi
 done
 
-for app in $APPS_LOCAL; do
-	brew cask install $app --appdir="$HOME/Applications" 2>&1 | grep -v "already installed"
+for app in ${(k)APPS_LOCAL}; do
+	# install if not present already (skip "already installed" error)
+	if [ ! -d "$app" ] && [ ! -d "/Applications/$app.app/" ] && [ ! -d "$HOME/Applications/$app.app/" ]
+	then
+		brew cask install ${APPS_LOCAL[$app]} --appdir="$HOME/Applications"
+	fi
 done
 
 # todo themes

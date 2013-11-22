@@ -111,17 +111,7 @@ Copy your token from the token field & paste your token into ~/.github_token (`e
 
 Run apps you want to open during startup & activate that option in _Preferences_.
 
-	open /Applications/Alfred\ 2.app
-	open /Applications/Cloud.app
-	open /Applications/Dash.app
-	open /Applications/Flux.app
-	open /Applications/Flycut.app
-	open /Applications/LimeChat.app
-	open /Applications/Slate.app
-	open /Applications/Shortcat.app
-	open /Applications/Tunnelblick.app
-	open /Applications/XtraFinder.app
-	open /Users/${USER}/BTSync/Applications/Utilities/Day-O.app
+	
 
 ## Setup Internet Accounts
 

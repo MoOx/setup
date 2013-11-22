@@ -25,22 +25,26 @@ fi
 
 echo_title "First run some applications"
 
-open "/Applications/Alfred\ 2.app"
+defaults write loginwindow AutoLaunchedApplicationDictionary -array-add '{ "Path" = "/path/to/itemname"; "Hide" = 0; }'
+open "/Applications/Alfred 2.app"
 open "/Applications/BitTorrent Sync.app"
 open "/Applications/Cloud.app"
 open "/Applications/Dash.app"
 open "/Applications/Dropbox.app"
-open "/Applications/FirefoxNightly.app"
 open "/Applications/Flux.app"
 open "/Applications/Flycut.app"
-open "/Applications/Last.fm.app"
 open "/Applications/LimeChat.app"
-open "/Applications/Slate.app"
 open "/Applications/Shortcat.app"
-open "/Applications/Tunnelblick.app"
 open "/Applications/XtraFinder.app"
 open "/Applications/Day-O.app"
+open "$HOME/Applications/FirefoxNightly.app"
+open "$HOME/Applications/Last.fm.app"
+open "$HOME/Applications/Slate.app"
+open "$HOME/Applications/Tunnelblick.app"
 #open "/Users/${USER}/Applications/"
+
+# todo add login items
+# defaults write loginwindow AutoLaunchedApplicationDictionary -array-add '{ "Path" = "/Applications/$APP.app"; "Hide" = 0; }'
 
 if ! type "say" > /dev/null
 then

@@ -23,12 +23,10 @@ for source in `ls $DOTFILESCEPTION`; do
     overwrite=false
     backup=false
     skip=false
-    silent=false
 
     if [ -h $dest ] && [ $source = `readlink $dest` ]
     then
-      skip=true
-      silent=true
+      # meh, do nothing, just skip silently :)
     else
       if [ $overwrite_all = "false" ] && [ $backup_all = "false" ] && [ $skip_all = "false" ]
       then
@@ -46,26 +44,23 @@ for source in `ls $DOTFILESCEPTION`; do
           * ) ;;
         esac
       fi
-    fi
 
-    if [ $overwrite = "true" ] || [ $overwrite_all = "true" ]
-    then
-      rm -rf $dest
-      echo_success "removed $dest"
-    fi
-
-    if [ $backup = "true" ] || [ $backup_all = "true" ]
-    then
-      mv $dest $dest\.backup
-      echo_success "moved $dest to $dest.backup"
-    fi
-
-    if [ $skip = "false" ] && [ $skip_all = "false" ]
-    then
-      link_files $source $dest
-    else
-      if [ $silent = "false" ]
+      if [ $overwrite = "true" ] || [ $overwrite_all = "true" ]
       then
+        rm -rf $dest
+        echo_success "removed $dest"
+      fi
+
+      if [ $backup = "true" ] || [ $backup_all = "true" ]
+      then
+        mv $dest $dest\.backup
+        echo_success "moved $dest to $dest.backup"
+      fi
+
+      if [ $skip = "false" ] && [ $skip_all = "false" ]
+      then
+        link_files $source $dest
+      else
         echo_success "skipped $source"
       fi
     fi

@@ -173,10 +173,10 @@ defaults write org.m0k.transmission WarningLegal -bool false
 # /System/Library/CoreServices/Applications/
 # /opt/homebrew-cask/Caskroom/
 
-LIMECHAT_THEME=$HOME/Library/Application\ Support/LimeChat/Themes/LimeChat-theme-Monokai-Soda
-if ! type "$LIMECHAT_THEME.css" > /dev/null
+LIMECHAT_THEME="$HOME/Library/Application Support/LimeChat/Themes/LimeChat-theme-Monokai-Soda"
+if ls "$LIMECHAT_THEME.css" > /dev/null
 then
-	
+	echo_title "Installing LimeChat theme"
 	git clone https://github.com/MoOx/LimeChat-theme-Monokai-Soda.git $LIMECHAT_THEME
 	ln -s $LIMECHAT_THEME/LimeChat-theme-Monokai-Soda.* $LIMECHAT_THEME
 fi

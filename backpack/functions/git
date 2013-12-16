@@ -1,0 +1,24 @@
+#!/bin/zsh
+
+# Create a git.io short URL
+function gitio() {
+  if [ -z "${1}" -o -z "${2}" ]; then
+    echo "Usage: \`gitio slug url\`"
+    return 1
+  fi
+  curl -i http://git.io/ -F "url=${2}" -F "code=${1}"
+}
+
+function gitignore() { curl http://gitignore.io/api/$@ ;}
+
+# `np` with an optional argument `patch`/`minor`/`major`/`<version>`
+# defaults to `patch`
+function np() {
+  git pull --rebase && \
+  npm install && \
+  npm test && \
+  npm version ${1:=patch} && \
+  npm publish && \
+  git push origin master && \
+  git push origin master --tags
+}

@@ -79,5 +79,3 @@ if type "brew" > /dev/null; then
 fi
 # Only unique entries please.
 typeset -U fpath
-
-function gitignore() { curl http://gitignore.io/api/$@ ;}

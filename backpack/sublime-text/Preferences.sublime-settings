@@ -1,0 +1,40 @@
+{
+	"_bold_folder_labels": true,
+	"caret_style": "phase",
+	"color_scheme": "Packages/Monokai Extended/Monokai Extended.tmTheme",
+	"disable_colored_folder_labels": true,
+	"draw_white_space": "all",
+	"fade_fold_buttons": false,
+	"find_selected_text": true,
+	"folder_exclude_patterns":
+	[
+		"cache",
+		"logs",
+		".sass-cache",
+		".svn"
+	],
+	"font_options":
+	[
+		"subpixel_antialias"
+	],
+	"font_size": 13,
+	"highlight_line": true,
+	"highlight_modified_tabs": true,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"open_files_in_new_window": false,
+	"rulers":
+	[
+		80,
+		120
+	],
+	"save_on_focus_lost": false,
+	"shift_tab_unindent": true,
+	"show_full_path": true,
+	"tab_size": 2,
+	"theme": "Nil.sublime-theme",
+	"trim_automatic_white_space": false,
+	"trim_trailing_white_space_on_save": false
+}

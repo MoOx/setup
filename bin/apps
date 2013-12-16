@@ -188,7 +188,7 @@ fi
 ###
 # Prey project
 ###
-if ! type "/usr/share/prey/prey.sh" > /dev/null
+if ls "/usr/share/prey/prey.sh" > /dev/null
 then
 	echo_title "Installing Prey project tracker, we will need you Prey API_KEY"
 	echo_info "Please login into your Prey account to get your API key & paste it (or just type enter to bypass the install):"

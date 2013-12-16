@@ -1,6 +1,30 @@
 {
+	"auto_upgrade_last_run": null,
 	"installed_packages":
 	[
-		"Sass"
+		"CoffeeScript",
+		"Color Highlighter",
+		"DashDoc",
+		"EditorConfig",
+		"Emmet",
+		"Git",
+		"GitHubinator",
+		"Handlebars",
+		"HTML-CSS-JS Prettify",
+		"jQuery",
+		"JSHint Gutter",
+		"LiveStyle",
+		"Markdown Extended",
+		"Markdown Preview",
+		"Modific",
+		"Monokai Extended",
+		"Package Control",
+		"Puppet",
+		"SCSS",
+		"SideBarEnhancements",
+		"Sublimerge",
+		"SyncedSideBar",
+		"Theme - Nil",
+		"View In Browser"
 	]
 }

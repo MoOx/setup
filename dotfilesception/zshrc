@@ -49,7 +49,7 @@ export OS_ICONS_DIR=/System/Library/CoreServices/CoreTypes.bundle/Contents/Resou
 export PATH=$DIR_DEV/bin:$PATH
 
 # local bin, then local npm bin, then global npm bin
-export PATH=./bin:./node_modules/.bin:/usr/local/share/npm/bin:$PATH
+export PATH=./bin:./node_modules/.bin:/usr/local/share/npm/bin:/usr/local/bin:/usr/local/sbin:$PATH
 
 # disable ._ file
 export COPYFILE_DISABLE=true

@@ -178,7 +178,7 @@ defaults write org.m0k.transmission WarningLegal -bool false
 # /opt/homebrew-cask/Caskroom/
 
 LIMECHAT_THEME="$HOME/Library/Application Support/LimeChat/Themes/LimeChat-theme-Monokai-Soda"
-if ls "$LIMECHAT_THEME.css" > /dev/null
+if ! ls "$LIMECHAT_THEME.css" > /dev/null
 then
 	echo_title "Installing LimeChat theme"
 	git clone https://github.com/MoOx/LimeChat-theme-Monokai-Soda.git $LIMECHAT_THEME
@@ -188,7 +188,7 @@ fi
 ###
 # Prey project
 ###
-if ls "/usr/share/prey/prey.sh" > /dev/null
+if ! ls "/usr/share/prey/prey.sh" > /dev/null
 then
 	echo_title "Installing Prey project tracker, we will need you Prey API_KEY"
 	echo_info "Please login into your Prey account to get your API key & paste it (or just type enter to bypass the install):"

@@ -5,11 +5,16 @@
 ##
 
 # OS X native apache
+export APACHE_CONF="/etc/apache2/httpd.conf"
+export APACHE_CONF_DEV_PATH="$DIR_DEV/_.conf/apache/"
+alias apacheinitconf="echo \"\nInclude $APACHE_CONF_DEV_PATH/*.conf\" | sudo tee -a $APACHE_CONF && apachectl configtest && apacherestart"
+alias apacheconf="subl $APACHE_CONF"
+alias apacheconfigtest="apachectl configtest"
 alias apachestart="sudo apachectl start"
-alias apacherestart="sudo apachectl restart"
-alias apacheopen="open http://localhost/$USER/"
-alias apacheuserlink="sudo ln -s $HOME/Development /Library/WebServer/Documents/$USER 2>/dev/null"
-alias apacheuserinit="apacheuserlink && apacherestart && apacheopen"
+alias apacherestart="flushdns && sudo apachectl restart"
+alias apacheopen="open http://localhost/"
+
+alias apacheaddconf="subl $APACHE_CONF_DEV_PATH/local.conf /etc/hosts"
 
 # nginx
 # alias nginx="sudo nginx"
@@ -17,7 +22,9 @@ alias apacheuserinit="apacheuserlink && apacherestart && apacheopen"
 # alias nr="nginxreload"
 
 # php
-#export PATH="$(brew --prefix josegonzalez/php/php54)/bin:$PATH"
+export PHP_PATH="$(brew --prefix josegonzalez/php/php55)"
+export PATH="$PHP_PATH/bin:$PATH"
+alias phpini="subl /usr/local/etc/php/5.5/php.ini"
 
 # MySQL (from brew)
 alias mysqlstart="mysql.server start"

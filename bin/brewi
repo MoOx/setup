@@ -15,6 +15,7 @@ fi
 source brewu
 
 brewtap homebrew/dupes
+brewtap josegonzalez/homebrew-php
 
 echo_title_install "brew packages"
 
@@ -38,7 +39,9 @@ PACKAGES=(
 	# python
 	#sudo easy_install pip ?
 
+	php55
 	mysql
+	php55-http
 
 	# phantomjs
 	# casperjs

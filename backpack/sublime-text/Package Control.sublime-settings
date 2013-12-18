@@ -2,6 +2,7 @@
 	"auto_upgrade_last_run": null,
 	"installed_packages":
 	[
+		"ApacheConf.tmLanguage",
 		"CoffeeScript",
 		"Color Highlighter",
 		"DashDoc",

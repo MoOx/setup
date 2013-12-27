@@ -1,13 +1,22 @@
 #!/bin/zsh
 
-# `o` with no arguments opens current directory, otherwise opens the given
-# location
-function o() {
-  if [ $# -eq 0 ]; then
-    open .
+# Cross-platform Darwin open(1)
+# Simply add this function definition above any OSX script that uses the “open” command
+# For additional information on the “open” command, see https://developer.apple.com/library/mac/#documentation/darwin/reference/manpages/man1/open.1.html
+function open() {
+  if [[ $(uname) = "Darwin" ]]
+  then
+    # OS X
+    /usr/bin/open "$@"
   else
-    open "$@"
+    # credit: http://stackoverflow.com/questions/264395
+    xdg-open "$@" &> /dev/null &
   fi
+}
+
+# Open the given location current, or the current directory.
+function o() {
+  open ${@:-.}
 }
 
 # Create a new directory and enter it

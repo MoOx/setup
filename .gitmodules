@@ -1,0 +1,3 @@
+[submodule "submodules/terminal/pure"]
+	path = submodules/terminal/pure
+	url = https://github.com/sindresorhus/pure.git

@@ -16,10 +16,12 @@ fi
 if [[ ! -d $HOME/dotfiles ]]
 then
     git clone http://github.com/MoOx/dotfiles.git $HOME/dotfiles
+    git submodule init
 else
     cd $HOME/dotfiles
     git pull
 fi
+git submodule update
 
 . $HOME/dotfiles/bin/fireinthehole --full
 

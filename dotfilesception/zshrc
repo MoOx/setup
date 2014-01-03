@@ -31,9 +31,13 @@ __FILENAME__=${ZDOTDIR-~}/.zshrc
 if [[ -z "$DIR_DOTFILES" ]] then
 	export DIR_DOTFILES=$(cd $(dirname $(readlink $__FILENAME__))/../ && pwd)
 fi
-source $DIR_DOTFILES/backpack/prompt.zsh
 
 export PATH=$DIR_DOTFILES/bin:$PATH
+
+PURE_CMD_MAX_EXEC_TIME=1
+fpath=("$DIR_DOTFILES/backpack/functions" $fpath)
+autoload -U promptinit && promptinit
+prompt pure
 
 export EDITOR=subl
 
@@ -57,8 +61,6 @@ export COPYFILE_DISABLE=true
 ##
 # Source topic files
 ##
-
-source $DIR_DOTFILES/backpack/functions.sh
 
 # load other aliases
 for source in `find $DIR_DOTFILES -maxdepth 2 -name \*.aliases`

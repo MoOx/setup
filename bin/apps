@@ -125,15 +125,14 @@ APPS_LOCAL=(
 
 for app in ${(k)APPS}; do
 	# install if not present already (skip "already installed" error)
-	if [ ! -d "$app" ] && [ ! -d "/Applications/$app.app/" ] && [ ! -d "$HOME/Applications/$app.app/" ]
+	if ! $(ls "$app" &> /dev/null) && ! $(ls "/Applications/$app.app" &> /dev/null) && ! $(ls "$HOME/Applications/$app.app" &> /dev/null)
 	then
 		brew cask install ${APPS[$app]} --appdir="/Applications"
 	fi
 done
 
 for app in ${(k)APPS_LOCAL}; do
-	# install if not present already (skip "already installed" error)
-	if [ ! -d "$app" ] && [ ! -d "/Applications/$app.app/" ] && [ ! -d "$HOME/Applications/$app.app/" ]
+	if ! $(ls "$app" &> /dev/null) && ! $(ls "/Applications/$app.app" &> /dev/null) && ! $(ls "$HOME/Applications/$app.app" &> /dev/null)
 	then
 		brew cask install ${APPS_LOCAL[$app]} --appdir="$HOME/Applications"
 	fi

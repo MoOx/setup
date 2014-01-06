@@ -47,3 +47,17 @@ function s() {
     subl "$@"
   fi
 }
+
+function quit () {
+  for app in $*; do
+    osascript -e 'quit app "'$app'"'
+  done
+}
+
+function relaunch () {
+  for app in $*; do
+    osascript -e 'quit app "'$app'"'
+    sleep 1
+    open -a $app
+  done
+}

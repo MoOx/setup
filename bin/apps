@@ -45,18 +45,19 @@ APPS=(
 	"Skype" "skype"
 	"/Library/Internet Plug-Ins/googletalkbrowserplugin.plugin" "google-hangouts"
 
-	"Sublime Text" "sublime-text-3"
+	"Sublime Text" "sublime-text3"
 )
 
 # LOCAL APPS
 # todo add just for me ($USER = MoOx ?)
 typeset -A APPS_LOCAL
 APPS_LOCAL=(
-	"KeePassX" "keepassx-2"
+	"KeePassX" "keepassx2"
 
 	"Last.fm" "lastfm"
 	"FirefoxAurora" "firefox-aurora"
 	"FirefoxNightly" "firefox-nightly"
+	"Opera" "opera"
 
 	# required by I don't know why
 	"Utilities/XQuartz" "xquartz"
@@ -112,12 +113,16 @@ APPS_LOCAL=(
 	"Utilities/Logitech Unifying Software" "logitech-unifying"
 
 	"Bodega" "bodega"
+
+	#toadd
+	#openemu
+	#ntfs-free
+	#gfxcardstatus
+	#bootchamp
 )
 
 # todo
-#gfx-card-status http://gfx.io/downloads/gfxCardStatus-2.3.zip
 #SetAPPSync
-#BootChamp
 
 # output is too ugly for now
 # https://github.com/phinze/homebrew-cask/issues/1323

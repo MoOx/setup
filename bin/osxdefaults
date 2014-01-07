@@ -294,6 +294,10 @@ defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebK
 
 # Hide Safari’s bookmarks bar by default
 defaults write com.apple.Safari ShowFavoritesBar -bool false
+# Hide Safari’s sidebar in Top Sites
+defaults write com.apple.Safari ShowSidebarInTopSites -bool false
+# Disable Safari’s thumbnail cache for History and Top Sites
+defaults write com.apple.Safari DebugSnapshotsUpdatePolicy -int 2
 
 # Enable Safari’s debug menu
 defaults write com.apple.Safari IncludeInternalDebugMenu -bool true
@@ -395,7 +399,7 @@ defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 hash tmutil &> /dev/null && sudo tmutil disablelocal
 
 # Kill affected applications
-for app in "Address Book" "Calendar" "Contacts" "Dashboard" "Dock" "Finder"  \
+for app in "Address Book" "Calendar" "Contacts" "Dock" "Finder"  \
 	"Mail" "Messages" "Safari" "SystemUIServer" ; do
   killall "${app}" > /dev/null 2>&1
 done

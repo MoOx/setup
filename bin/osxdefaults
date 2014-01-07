@@ -389,6 +389,13 @@ defaults write com.apple.ActivityMonitor SortDirection -int 0
 defaults write com.apple.terminal StringEncodings -array 4
 
 ###
+# iTerm 2
+###
+
+# Don’t display the annoying prompt when quitting iTerm
+defaults write com.googlecode.iterm2 PromptOnQuit -bool false
+
+###
 # Time Machine
 ###
 

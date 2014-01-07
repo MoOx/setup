@@ -18,9 +18,10 @@ source brewi
 
 source npmi
 
-source gemi
-
 source apps
+
+# gem at the end because I don't really use it & this required passwd
+source gemi
 
 # todo add cron setup
 

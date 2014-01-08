@@ -44,7 +44,7 @@ systemsetup -setcomputersleep Off > /dev/null
 # There’s also a tool called GDB which can be used to find hidden preferences.
 ###
 
-chflags hidden $HOME/"Automatically Add to iTunes.localized"
+chflags hidden $HOME/"Automatically Add to iTunes.localized" &> /dev/null
 chflags nohidden $HOME/Library
 
 # recovery_message 'If this Mac is found, please call +33 6 78 13 54 39 - Si vous trouvez ce Mac, merci d\'appeler le 06 78 13 54 39': }

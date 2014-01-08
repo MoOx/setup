@@ -15,6 +15,7 @@ typeset -A PACKAGES
 PACKAGES=(
 	autoprefixer autoprefixer
 	bower bower
+	gulp gulp
 	grunt-cli grunt
 	happyplan-cli happyplan
 )

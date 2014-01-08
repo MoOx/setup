@@ -18,6 +18,7 @@ PACKAGES=(
 	gulp gulp
 	grunt-cli grunt
 	happyplan-cli happyplan
+	travis-encrypt travis-encrypt
 )
 
 for PKG in ${(k)PACKAGES}; do

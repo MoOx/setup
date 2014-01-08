@@ -141,9 +141,6 @@ defaults write com.apple.systemuiserver menuExtras -array \
   "$OSX_MENU_EXTRAS/Volume.menu" \
   "$OSX_MENU_EXTRAS/Battery.menu"
 
-# Menu bar: switch to dark menu bar in full screen mode
-defaults write -g NSFullScreenDarkMenu -bool true
-
 ###
 # Finder
 ###

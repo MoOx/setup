@@ -56,5 +56,5 @@ for pkg in $PACKAGES; do
 done
 
 # mysql auto start
-ln -sfv /usr/local/opt/mysql/*.plist ~/Library/LaunchAgents
-launchctl load ~/Library/LaunchAgents/homebrew.mxcl.mysql.plist
+ln -sfv /usr/local/opt/mysql/*.plist ~/Library/LaunchAgents &> /dev/null
+launchctl load ~/Library/LaunchAgents/homebrew.mxcl.mysql.plist &> /dev/null

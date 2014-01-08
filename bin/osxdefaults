@@ -132,14 +132,16 @@ defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 OSX_MENU_EXTRAS="/System/Library/CoreServices/Menu Extras"
 alias seeosxmenuextras=open $OSX_MENU_EXTRAS
 
-# pending status https://github.com/mathiasbynens/dotfiles/issues/320
 # hide the useless icons
-# defaults write ~/Library/Preferences/ByHost/com.apple.systemuiserver.* dontAutoLoad -array \
-#   "$OSX_MENU_EXTRAS/TimeMachine.menu" \
-#   "$OSX_MENU_EXTRAS/Volume.menu" \
-#   "$OSX_MENU_EXTRAS/User.menu" \
-#   "$OSX_MENU_EXTRAS/Bluetooth.menu" \
-#   "$OSX_MENU_EXTRAS/TextInput.menu"
+for domain in ~/Library/Preferences/ByHost/com.apple.systemuiserver.* ; do
+  defaults write $domain dontAutoLoad -array \
+    "$OSX_MENU_EXTRAS/TimeMachine.menu" \
+    "$OSX_MENU_EXTRAS/Volume.menu" \
+    "$OSX_MENU_EXTRAS/User.menu" \
+    "$OSX_MENU_EXTRAS/Bluetooth.menu" \
+    "$OSX_MENU_EXTRAS/TextInput.menu"
+done
+
 # define icons you want in menu bar
 defaults write com.apple.systemuiserver menuExtras -array \
   "$OSX_MENU_EXTRAS/TextInput.menu" \

@@ -10,8 +10,10 @@ sudo -v
 
 # update from remote
 echo_title_update "myself mofo !"
-git --git-dir="$DIR_DOTFILES/.git" --work-tree="$DIR_DOTFILES" pull origin master
-git --git-dir="$DIR_DOTFILES/.git" --work-tree="$DIR_DOTFILES" submodule update
+
+cd $DIR_DOTFILES
+git pull origin master
+git submodule update
 
 export FULLFIRE=false
 if [ "$1" = "--full" ]

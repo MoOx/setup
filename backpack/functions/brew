@@ -2,8 +2,15 @@
 
 # easy brew tap function
 function brewtap() {
- if ! brew tap | grep "${@}" > /dev/null; then
-   echo_title "Tap brew ${@}"
-   brew tap "${@}"
- fi
+  # if no tapped brew reference specified,
+  # using brew tap address & remove "hombrew-"
+  if ["$2" = ""]
+  then
+    2=$(echo $1 | sed -e 's/homebrew-//')
+  fi
+
+  if ! brew tap | grep "$2" > /dev/null; then
+    echo_title "Tap brew $1"
+    brew tap "$1"
+  fi
 }

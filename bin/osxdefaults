@@ -3,6 +3,9 @@ source $DIR_DOTFILES/backpack/functions.sh
 
 echo_title "Defining OS X options"
 
+# Set wallpaper
+#osascript -e "tell application \"System Events\" to set picture of every desktop to \"~/Dropbox/wallpapers/example.jpg\""
+
 COMPUTER_NAME="$USER"
 COMPUTER_MODEL=`sysctl -n hw.model`
 if [[ $COMPUTER_MODEL == "iMac"* ]]

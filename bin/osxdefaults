@@ -3,7 +3,7 @@ source $DIR_DOTFILES/backpack/functions.sh
 
 echo_title "Defining OS X options"
 
-COMPUTER_NAME="MoOx"
+COMPUTER_NAME="$USER"
 COMPUTER_MODEL=`sysctl -n hw.model`
 if [[ $COMPUTER_MODEL == "iMac"* ]]
 then

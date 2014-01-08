@@ -190,6 +190,9 @@ defaults write com.apple.finder FXInfoPanesExpanded -dict \
   OpenWith -bool true \
   Privileges -bool true
 
+# Allow QuickLook text selection
+defaults write com.apple.finder QLEnableTextSelection -bool true
+
 ###
 # Dock
 ###

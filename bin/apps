@@ -114,6 +114,17 @@ APPS_LOCAL=(
 
 	"Bodega" "bodega"
 
+	# QuickLook plugins from https://github.com/sindresorhus/quick-look-plugins
+	"/opt/homebrew-cask/Caskroom/qlcolorcode" "qlcolorcode"
+	"/opt/homebrew-cask/Caskroom/qlstephen" "qlstephen"
+	"/opt/homebrew-cask/Caskroom/qlmarkdown" "qlmarkdown"
+	"/opt/homebrew-cask/Caskroom/quicklook-json" "quicklook-json"
+	"/opt/homebrew-cask/Caskroom/qlprettypatch" "qlprettypatch"
+	"/opt/homebrew-cask/Caskroom/quicklook-csv" "quicklook-csv"
+	"/opt/homebrew-cask/Caskroom/betterzipql" "betterzipql"
+	"/opt/homebrew-cask/Caskroom/webp-quicklook" "webp-quicklook"
+	"/opt/homebrew-cask/Caskroom/suspicious-package" "suspicious-package"
+
 	#toadd
 	#openemu
 	#ntfs-free
@@ -142,6 +153,9 @@ for app in ${(k)APPS_LOCAL}; do
 		brew cask install ${APPS_LOCAL[$app]} --appdir="$HOME/Applications"
 	fi
 done
+
+# reset QuickLook plugins
+qlmanage -r &> /dev/null
 
 # todo themes
 #https://github.com/kud/my/blob/master/scripts/rocknroll#L135

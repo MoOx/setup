@@ -52,7 +52,7 @@ PACKAGES=(
 )
 
 for pkg in $PACKAGES; do
-	brew install $pkg 2>&1 | grep -v "already installed"
+	brewinstall $pkg
 done
 
 # mysql auto start

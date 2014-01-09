@@ -6,6 +6,7 @@ export OSX_INSTALL_APP="/Applications/Install OS X Mavericks.app"
 # OS X aliases
 ##
 alias flushdns="dscacheutil -flushcache"
+alias changedns="sudo networksetup -setdnsservers \"$(networksetup -listnetworkserviceorder | awk -F'\\) ' '/\(1\)/ {print $2}')\" $@"
 alias ss="/System/Library/Frameworks/ScreenSaver.framework/Resources/ScreenSaverEngine.app/Contents/MacOS/ScreenSaverEngine -background &"
 
 # Fuck crash

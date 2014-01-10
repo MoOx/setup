@@ -167,6 +167,7 @@ layouts.imacExtended = slate.layout("layout:imacExtended", {
 
   "Skype": hashes.secondary.right_top__half,
   "HipChat": hashes.secondary.right_top__half,
+  "Gitter": hashes.secondary.right_top__half,
 
   "LimeChat": hashes.secondary.right_bottom__half
 });
@@ -193,9 +194,11 @@ layouts.imac = slate.layout("layout:imac", {
   "Terminal" : hashes.main.right__1of4__top__1of3,
 
   "LimeChat": hashes.main.right__1of4__top__2of3,
-  "Skype": hashes.main.right__1of4__top__2of3,
 
+  "Skype": hashes.main.right__1of4__top__3of3,
+  "Gitter": hashes.main.right__1of4__top__3of3,
   "HipChat": hashes.main.right__1of4__top__3of3,
+
   "VLC": hashes.main.right__1of4__top__3of3,
   "MPlayerX": hashes.main.right__1of4__top__3of3
 });

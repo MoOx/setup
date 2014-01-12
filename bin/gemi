@@ -8,6 +8,7 @@ source gemu
 typeset -A PACKAGES
 PACKAGES=(
 	compass compass
+	scss-lint scss-lint
 )
 
 for PKG in ${(k)PACKAGES}; do

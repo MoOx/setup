@@ -19,6 +19,8 @@ PACKAGES=(
 	grunt-cli grunt
 	happyplan-cli happyplan
 	travis-encrypt travis-encrypt
+	csslint csslint
+	jshint jshint
 )
 
 for PKG in ${(k)PACKAGES}; do

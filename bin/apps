@@ -113,6 +113,7 @@ APPS_LOCAL=(
 	"Utilities/Logitech Unifying Software" "logitech-unifying"
 
 	"Bodega" "bodega"
+	"/opt/homebrew-cask/Caskroom/menumeters" "menumeters"
 
 	# QuickLook plugins from https://github.com/sindresorhus/quick-look-plugins
 	"/opt/homebrew-cask/Caskroom/qlcolorcode" "qlcolorcode"

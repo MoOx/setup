@@ -58,3 +58,11 @@ done
 # mysql auto start
 ln -sfv /usr/local/opt/mysql/*.plist ~/Library/LaunchAgents &> /dev/null
 launchctl load ~/Library/LaunchAgents/homebrew.mxcl.mysql.plist &> /dev/null
+# ddclient human configuration & auto start
+if ! ls /Library/LaunchDaemons/homebrew.mxcl.ddclient.plist > /dev/null
+then
+  sudo cp $DIR_DOTFILES/backpack/usr/local/etc/ddclient/ddclient.conf /usr/local/etc/ddclient
+  subl -w /usr/local/etc/ddclient/ddclient.conf
+  sudo cp -fv /usr/local/opt/ddclient/*.plist /Library/LaunchDaemons
+  sudo launchctl load /Library/LaunchDaemons/homebrew.mxcl.ddclient.plist
+fi

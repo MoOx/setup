@@ -38,7 +38,7 @@ APPS=(
 	"Subtitles" "subtitles"
 	"All2MP3" "all2mp3"
 
-	"/Applications/Adobe/Flash Player" "flash"
+	"Utilities/Adobe Flash Player Install Manager" "flash"
 	"LibreOffice" "libreoffice"
 
 	# messengers

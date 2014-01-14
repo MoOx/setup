@@ -1,7 +1,8 @@
 #!/bin/zsh
 source $DIR_DOTFILES/backpack/functions.sh
 
-if ! type "brew" > /dev/null; then
+if ! type "brew" > /dev/null
+then
   echo_title_install "Homebrew (brew)"
   ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go/install)"
   brew doctor
@@ -9,7 +10,7 @@ if ! type "brew" > /dev/null; then
   # xcode-select --install
   # yeah this is cool
 else
-	echo_title "Homebrew (brew) already installed"
+  echo_title "Homebrew (brew) already installed"
 fi
 
 source brewu
@@ -20,39 +21,42 @@ brewtap josegonzalez/homebrew-php
 echo_title_install "brew packages"
 
 PACKAGES=(
-	zsh-completions
+  # dyndns client updater
+  ddclient
 
-	git
-	hub
-	ghi
+  zsh-completions
 
-	node
+  git
+  hub
+  ghi
 
-	# for grunt-webfont
-	fontforge
-	ttfautohint
+  node
 
-	# to create favicons
-	icoutils
+  # for grunt-webfont
+  fontforge
+  ttfautohint
 
-	# ruby
-	# python
-	#sudo easy_install pip ?
+  # to create favicons
+  icoutils
 
-	php55
-	mysql
-	php55-http
+  # ruby
+  # python
+  #sudo easy_install pip ?
 
-	# phantomjs
-	# casperjs
-	# slimerjs
+  php55
+  mysql
+  php55-http
 
-	# youtube-dl
-	# sub2srt
+  # phantomjs
+  # casperjs
+  # slimerjs
+
+  # youtube-dl
+  # sub2srt
 )
 
 for pkg in $PACKAGES; do
-	brewinstall $pkg
+  brewinstall $pkg
 done
 
 # mysql auto start

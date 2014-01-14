@@ -21,6 +21,7 @@ PACKAGES=(
 	travis-encrypt travis-encrypt
 	csslint csslint
 	jshint jshint
+	jscs jscs
 )
 
 for PKG in ${(k)PACKAGES}; do

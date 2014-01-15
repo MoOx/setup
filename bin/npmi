@@ -1,33 +1,30 @@
 #!/bin/zsh
 source $DIR_DOTFILES/backpack/functions.sh
 
-# npm is now included with Node
 echo_title_installupdate "NPM packages"
 
 if [ "$FULLFIRE" = "true" ]
 then
-	source npmu
+  source npmu
 fi
 
-echo_title_install "NPM packages"
-
-typeset -A PACKAGES
 PACKAGES=(
-	autoprefixer autoprefixer
-	bower bower
-	gulp gulp
-	grunt-cli grunt
-	happyplan-cli happyplan
-	travis-encrypt travis-encrypt
-	csslint csslint
-	jshint jshint
-	jscs jscs
+  csslint
+  jshint
+  jscs
+
+  autoprefixer
+  bower
+  gulp
+  grunt-cli
+  happyplan-cli
+  travis-encrypt
 )
 
-for PKG in ${(k)PACKAGES}; do
-	if [ "$FULLFIRE" = "true" ] || ! type ${PACKAGES[$PKG]} > /dev/null; then
-		npm i -g $PKG
-	# else
-	# 	echo_info "${PACKAGES[$PKG]} available, skip install of $PKG"
-	fi
+DIR_NODE_MODULES=/usr/local/lib/node_modules
+for PKG in ${PACKAGES}; do
+  if ! ls $DIR_NODE_MODULES | grep -e "^$PKG-" &> /dev/null
+  then
+    npm i -g $PKG
+  fi
 done

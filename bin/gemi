@@ -3,25 +3,28 @@ source $DIR_DOTFILES/backpack/functions.sh
 
 echo_title_installupdate "Ruby Gems"
 
-source gemu
+if [ "$FULLFIRE" = "true" ]
+then
+  source gemu
+fi
 
-DIR_RUBYGEMS=/Library/Ruby/Gems/2.0.0/gems
-typeset -A PACKAGES
 PACKAGES=(
-	sass "sass --pre"
-	compass "compass --pre"
-	scss-lint "scss-lint"
+  sass
+  compass
+  scss-lint
 
-	ceaser-easing ceaser-easing
-	animate-sass ceaser-easing
-	compass-normalize compass-normalize
+  # for damebio
+  sass
+  compass
+  ceaser-easing
+  animate-sass
+  compass-normalize
 )
 
-for PKG in ${(k)PACKAGES}; do
-	if ! type $PKG > /dev/null || ! ls $DIR_RUBYGEMS/$PKG-* > /dev/null
-	then
-		sudo gem install ${PACKAGES[$PKG]}
-	# else
-	# 	echo_info "$PKG available, skip install of ${PACKAGES[$PKG]}"
-	fi
+DIR_RUBYGEMS=/Library/Ruby/Gems/2.0.0/gems
+for PKG in ${PACKAGES}; do
+  if ! ls $DIR_RUBYGEMS | grep -e "^$PKG-" &> /dev/null
+  then
+    sudo gem install $PKG
+  fi
 done

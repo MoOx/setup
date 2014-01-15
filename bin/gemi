@@ -14,8 +14,6 @@ PACKAGES=(
   scss-lint
 
   # for damebio
-  sass
-  compass
   ceaser-easing
   animate-sass
   compass-normalize

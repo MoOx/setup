@@ -5,16 +5,23 @@ echo_title_installupdate "Ruby Gems"
 
 source gemu
 
+DIR_RUBYGEMS=/Library/Ruby/Gems/2.0.0/gems
 typeset -A PACKAGES
 PACKAGES=(
-	compass compass
-	scss-lint scss-lint
+	sass "sass --pre"
+	compass "compass --pre"
+	scss-lint "scss-lint"
+
+	ceaser-easing ceaser-easing
+	animate-sass ceaser-easing
+	compass-normalize compass-normalize
 )
 
 for PKG in ${(k)PACKAGES}; do
-	if [ "$FULLFIRE" = "true" ] || ! type ${PACKAGES[$PKG]} > /dev/null; then
-		sudo gem install $PKG
+	if ! type $PKG > /dev/null || ! ls $DIR_RUBYGEMS/$PKG-* > /dev/null
+	then
+		sudo gem install ${PACKAGES[$PKG]}
 	# else
-	# 	echo_info "${PACKAGES[$PKG]} available, skip install of $PKG"
+	# 	echo_info "$PKG available, skip install of ${PACKAGES[$PKG]}"
 	fi
 done

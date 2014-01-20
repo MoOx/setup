@@ -26,6 +26,9 @@ PACKAGES=(
 
   zsh-completions
 
+  # essential missing commands to OSX
+  ssh-copy-id
+
   git
   hub
   ghi

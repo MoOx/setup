@@ -60,11 +60,6 @@ Edit
 
 ### [Local mail with postfix relay](http://stevelorek.com/configure-postfix-relay-gmail-osx-lion.html)
 
-### Enable local FTP Server
-
-	sudo -s launchctl load -w /System/Library/LaunchDaemons/ftp.plist
-
-
 ### Git(hub) Configuration
 
 [Token info](https://help.github.com/articles/creating-an-oauth-token-for-command-line-use)

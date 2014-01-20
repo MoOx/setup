@@ -27,6 +27,7 @@ PACKAGES=(
   zsh-completions
 
   # essential missing commands to OSX
+  tree
   ssh-copy-id
 
   git

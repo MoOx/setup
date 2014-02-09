@@ -2,6 +2,9 @@
 
 brewinstall zsh-completions
 
+# better than man
+npmig tldr
+
 # essential missing commands to OSX
 brewinstall tree
 brewinstall ssh-copy-id

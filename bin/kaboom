@@ -8,39 +8,39 @@ then
 fi
 
 # required first
-source $DOTFILES/components/osx/setup
-source $DOTFILES/components/git/setup
-source $DOTFILES/components/brew/setup
+setup osx
+setup git
+setup brew
 
-source $DOTFILES/components/cli/setup
-source $DOTFILES/components/node/setup
+setup cli
+setup node
 
-source $DOTFILES/apps/logitech/setup
-source $DOTFILES/apps/browsers/setup
-source $DOTFILES/apps/sublime-text3/setup
+setup logitech
+setup browsers
+setup sublime-text3
 
-source $DOTFILES/apps/slate/setup
-source $DOTFILES/apps/osx-enhancements/setup
+setup slate
+setup osx-enhancements
 
-source $DOTFILES/apps/download-and-sync/setup
+setup download-and-sync
 
-source $DOTFILES/components/dyndns/setup
-#source $DOTFILES/components/dnsmasq/setup
-source $DOTFILES/components/amp/setup
+setup dyndns
+#setup dnsmasq
+setup amp
 
-source $DOTFILES/apps/chat/setup
-source $DOTFILES/apps/multimedia/setup
+setup chat
+setup multimedia
 
-source $DOTFILES/apps/misc
+setup misc
 
 # stuff that require human interaction at the end
-source $DOTFILES/components/dyndns/setup
-source $DOTFILES/apps/prey/setup
+setup dyndns
+setup prey
 
 # gems are slow & require password (because I don't use bundler blah blah...)
-source $DOTFILES/components/ruby/setup
+setup ruby
 
-source $DOTFILES/apps/lazydev/setup
+setup lazydev
 # todo add cron setup
 
 echo ""

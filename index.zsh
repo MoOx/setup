@@ -15,14 +15,22 @@ export CHAR_OK=✔
 export CHAR_ERROR=✗
 export CHAR_BOOM=💥
 export CHAR_STARTER=❯
-echo_info () { echo "${COLOR_BLUE}i${COLOR_RESET} $1" }
-echo_user () { echo "${COLOR_YELLOW}?${COLOR_RESET} $1" }
-echo_success () { echo "${COLOR_GREEN}${CHAR_OK}${COLOR_RESET} $1" }
-echo_fail () { echo "${COLOR_RED}${CHAR_ERROR}${COLOR_RESET} $1|n"; exit }
-echo_title () { echo "${COLOR_CYAN}${CHAR_STARTER} $@${COLOR_RESET}" }
-echo_title_install () { echo_title "Installing" $1 "..." }
-echo_title_update () { echo_title "Updating" $1 "..." }
-echo_title_installupdate () { echo_title "Installing/Updating" $1 "..." }
+function echo_info () { echo "${COLOR_BLUE}i${COLOR_RESET} $1" }
+function echo_user () { echo "${COLOR_YELLOW}?${COLOR_RESET} $1" }
+function echo_success () { echo "${COLOR_GREEN}${CHAR_OK}${COLOR_RESET} $1" }
+function echo_fail () { echo "${COLOR_RED}${CHAR_ERROR}${COLOR_RESET} $1|n"; exit }
+function echo_title () { echo "${COLOR_CYAN}${CHAR_STARTER} $@${COLOR_RESET}" }
+function echo_title_install () { echo_title "Installing" $1 "..." }
+function echo_title_update () { echo_title "Updating" $1 "..." }
+function echo_title_installupdate () { echo_title "Installing/Updating" $1 "..." }
+function setup () {
+  if [[ -f "$DOTFILES/components/$1/setup" ]]
+  then
+    source "$DOTFILES/components/$1/setup"
+  else
+    source "$DOTFILES/apps/$1/setup"
+  fi
+}
 
 # stupid var to avoid Darwin test all the time
 # not sure it's better
@@ -32,7 +40,7 @@ if [[ $(uname) = "Darwin" ]]; then; export OS=osx; fi
 
 # use .localrc for SUPER SECRET CRAP that you don't
 # want in your public, versioned repo.
-if [[ -a ~/.localrc ]]; then; source ~/.localrc; fi
+if [[ -f ~/.localrc ]]; then; source ~/.localrc; fi
 
 ##
 # Source topic files

@@ -27,6 +27,9 @@ $ fireinthehole
 This command should update this repository, then trigger `kaboom` which is the earth of this _dotfiles_
 _Note: you will sometimes need to enter you password or some informations related to current installation_
 
+This command launch like everything you define. If you have nothing special, it shouldn't take more that 1m (mainly because of brew/gem update).
+_This is done that way to ensure you are fully up to date with what you define in there._
+
 ### How it works ?
 
 <img alt="preview" align="right" src="https://raw.github.com/MoOx/dotfiles/master/backpack/i/fireinthehole.png" />
@@ -50,6 +53,8 @@ Here is what is automatically handled by this awesome [index.zsh](index.zsh) (in
 - _component_/**functions/**: component functions should be defined here.
 - _component_/**setup**: component setup is done in this file.
 - _component_/***.symlink**: Any files ending in `*.symlink` get symlinked into your $HOME (_prefixed by **.**). This is so you can keep all of those versioned in your dotfiles but still keep those autoloaded files in your home directory. These get symlinked in when you run `$ dotfiles`.
+
+**Note: to setup one component only, just run `$ setup {component_name}`**
 
 ### Symlinked dotfiles
 

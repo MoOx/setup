@@ -427,7 +427,7 @@ for app in "Address Book" "Calendar" "Contacts" "Dock" "Finder"  \
 done
 
 # restart XtraFinder because killing Finder kill it too
-if ls "/Applications/XtraFinder.app"; then; open "/Applications/XtraFinder.app"; fi
+if ls "/Applications/XtraFinder.app" > /dev/null; then; open "/Applications/XtraFinder.app"; fi
 
 # Enable local FTP Server
 # used for some stuff (local wordpress) & wii ftp access

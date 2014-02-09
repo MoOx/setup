@@ -1,0 +1,59 @@
+#!/bin/zsh
+
+##
+# Synced folder
+##
+brewcaskinstall "BitTorrent Sync"
+brewcaskinstall "Dropbox"
+
+# cd $HOME/Library/Application\ Support/; ls -1 $DIR_SYNC_LIBRARY/Application\ Support/ | sed 's/\ /\\\ /g' | xargs rm -rf
+# ln -s $DIR_SYNC_LIBRARY/Application\ Support/* $HOME/Library/Application\ Support
+
+cd $HOME/Library/PreferencePanes/; ls -1 $DIR_SYNC_LIBRARY/PreferencePanes/ | sed 's/\ /\\\ /g' | xargs rm -rf
+ln -s $DIR_SYNC_LIBRARY/PreferencePanes/* $HOME/Library/PreferencePanes
+
+cd $HOME/Library/Preferences/; ls -1 $DIR_SYNC_LIBRARY/Preferences/ | sed 's/\ /\\\ /g' | xargs rm -rf
+ln -s $DIR_SYNC_LIBRARY/Preferences/* $HOME/Library/Preferences
+
+sudo rm -rf $HOME/Library/Fonts; ln -s $DIR_SYNC_LIBRARY/Fonts $HOME/Library/Fonts
+sudo rm -rf $HOME/Library/Messages; ln -s $DIR_SYNC_LIBRARY/Messages $HOME/Library/Messages
+
+sudo rm -rf $HOME/Music; ln -s $DIR_SYNC/Music $HOME/Music
+sudo rm -rf $HOME/iTunes; ln -s $HOME/Music $HOME/iTunes
+sudo rm -rf $HOME/Pictures; ln -s $DIR_SYNC/Pictures $HOME/Pictures
+
+# Customize some icon (setfileicon is a custom command from my Dev*/bin)
+setfileicon $OS_ICONS_DIR/GroupFolder.icns $DIR_SYNC
+setfileicon $OS_ICONS_DIR/UsersFolderIcon.icns $DIR_SYNC/BTSync
+setfileicon $OS_ICONS_DIR/LibraryFolderIcon.icns $DIR_SYNC/BTSync/Library
+setfileicon $OS_ICONS_DIR/DeveloperFolderIcon.icns $DIR_SYNC/Development
+setfileicon $OS_ICONS_DIR/PicturesFolderIcon.icns $DIR_SYNC/Pictures
+#setfileicon $OS_ICONS_DIR/MovieFolderIcon.icns $HOME/Movies
+setfileicon $OS_ICONS_DIR/MusicFolderIcon.icns $HOME/Music
+
+
+###
+# Transmission.app
+###
+brewcaskinstall "Transmission"
+
+# Use `~/Documents/Torrents` to store incomplete downloads
+defaults write org.m0k.transmission UseIncompleteDownloadFolder -bool true
+defaults write org.m0k.transmission IncompleteDownloadFolder -string "${HOME}/Downloads/Torrents"
+
+# Don’t prompt for confirmation before downloading
+defaults write org.m0k.transmission DownloadAsk -bool false
+
+# Trash original torrent files
+defaults write org.m0k.transmission DeleteOriginalTorrent -bool true
+
+# Hide the donate message
+defaults write org.m0k.transmission WarningDonate -bool false
+# Hide the legal disclaimer
+defaults write org.m0k.transmission WarningLegal -bool false
+
+##
+# Misc
+##
+brewcaskinstall "Cyberduck"
+brewcaskinstall "SuperDuper!" "superduper"

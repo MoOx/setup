@@ -1,42 +1,46 @@
 #!/bin/zsh
-source $DIR_DOTFILES/backpack/functions.sh
-
 DIR_BIN="$( cd "$( dirname "${0}" )" && pwd )"
 source $DIR_BIN/dotfiles
-
-# dotfiles above should prepare/reload dotfiles
-# so the commandes below should be available as bin
-
-source osxdefaults
 
 if [ "$FULLFIRE" = "true" ]
 then
 	source appstore
 fi
 
-source brewi
+# required first
+source $DOTFILES/components/osx/setup
+source $DOTFILES/components/git/setup
+source $DOTFILES/components/brew/setup
 
-source npmi
+source $DOTFILES/components/cli/setup
+source $DOTFILES/components/node/setup
 
-source apps
+source $DOTFILES/apps/logitech/setup
+source $DOTFILES/apps/browsers/setup
+source $DOTFILES/apps/sublime-text3/setup
 
-# gem at the end because I don't really use it & this required passwd
-source gemi
+source $DOTFILES/apps/slate/setup
+source $DOTFILES/apps/osx-enhancements/setup
 
+source $DOTFILES/apps/download-and-sync/setup
 
-# use dnsmasq, then Open DNS
-# echo_title "Setup DNS with DNSMasq & Open DNS"
-# changedns 127.0.0.1 208.67.222.222 208.67.220.220
-# if ! ls "/usr/local/etc/dnsmasq.conf" > /dev/null
-# then
-# 	brewinstall dnsmasq
-# 	DNSMASQ_CONF=/usr/local/etc/dnsmasq.conf
-# 	cp /usr/local/opt/dnsmasq/dnsmasq.conf.example $DNSMASQ_CONF
-# 	echo "\n\naddress=/dev/127.0.0.1\nlisten-address=127.0.0.1" | sudo tee -A $DNSMASQ_CONF
-# 	sudo cp -fv /usr/local/opt/dnsmasq/*.plist /Library/LaunchDaemons
-# 	sudo launchctl load /Library/LaunchDaemons/homebrew.mxcl.dnsmasq.plist
-# fi
+source $DOTFILES/components/dyndns/setup
+#source $DOTFILES/components/dnsmasq/setup
+source $DOTFILES/components/amp/setup
 
+source $DOTFILES/apps/chat/setup
+source $DOTFILES/apps/multimedia/setup
+
+source $DOTFILES/apps/misc
+
+# stuff that require human interaction at the end
+source $DOTFILES/components/dyndns/setup
+source $DOTFILES/apps/prey/setup
+
+# gems are slow & require password (because I don't use bundler blah blah...)
+source $DOTFILES/components/ruby/setup
+
+source $DOTFILES/apps/lazydev/setup
 # todo add cron setup
 
 echo ""

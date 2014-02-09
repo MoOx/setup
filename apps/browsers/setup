@@ -1,0 +1,11 @@
+#!/bin/zsh
+
+brewcaskinstall "Google Chrome"
+brewcaskinstall "Firefox"
+brewcaskinstall "Opera"
+
+brewcaskinstall "FirefoxNightly" "firefox-nightly" "$HOME/Applications"
+brewcaskinstall "FirefoxAurora" "firefox-aurora" "$HOME/Applications"
+
+brewcaskinstall "Utilities/Adobe Flash Player Install Manager" "flash"
+brewcaskinstall "/Library/Internet Plug-Ins/googletalkbrowserplugin.plugin" "google-hangouts"

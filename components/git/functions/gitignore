@@ -1,0 +1,3 @@
+#!/bin/zsh
+
+function gitignore() { curl http://gitignore.io/api/$@ ;}

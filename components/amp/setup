@@ -1,0 +1,31 @@
+#!/bin/zsh
+
+# Apache configuration
+if ! cat $APACHE_CONF | grep $APACHE_CONF_DEV_PATH > /dev/null
+then
+  echo_title "Configuring OS X Apache"
+  echo "\nInclude $APACHE_CONF_DEV_PATH/*.conf" | sudo tee -a $APACHE_CONF
+  apacheconfigtest
+  apacherestart
+fi
+
+# PHP
+if ! type "php" > /dev/null
+then
+  echo_title_install "PHP"
+  brewtap josegonzalez/homebrew-php
+  brewinstall php55
+  brewinstall php55-http
+fi
+
+# MySQL
+if ! type "mysql" > /dev/null
+then
+  echo_title_install "MySQL"
+  brewinstall mysql
+  if ! ls $HOME/Library/LaunchAgents/homebrew.mxcl.mysql.plist > /dev/null
+  then
+    ln -sfv /usr/local/opt/mysql/*.plist $HOME/Library/LaunchAgents
+    launchctl load $HOME/Library/LaunchAgents/homebrew.mxcl.mysql.plist
+  fi
+fi

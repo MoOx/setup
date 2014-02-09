@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+# easy brew install function
+# don't show "already installed"
+function brewinstall() {
+  brew install "${@}" 2>&1 | grep -v "already installed"
+}

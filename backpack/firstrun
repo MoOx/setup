@@ -4,22 +4,22 @@
 chsh -s /bin/zsh $USER
 
 if ! type "git" > /dev/null; then
-    if [[ "$(uname -s)" == "Darwin" ]]
-    then
-        # todo add an alternative to grab xcode from another computer accessible by local network
-        xcode-select --install
-        echo "Press return when XCode Developer Tools are installed"
-        read -k
-    fi
+  if [[ "$(uname -s)" == "Darwin" ]]
+  then
+    # todo add an alternative to grab xcode from another computer accessible by local network
+    xcode-select --install
+    echo "Press return when XCode Developer Tools are installed"
+    read -k
+  fi
 fi
 
 if [[ ! -d $HOME/dotfiles ]]
 then
-    git clone http://github.com/MoOx/dotfiles.git $HOME/dotfiles
-    git submodule init
+  git clone http://github.com/MoOx/dotfiles.git $HOME/dotfiles
+  git submodule init
 else
-    cd $HOME/dotfiles
-    git pull
+  cd $HOME/dotfiles
+  git pull
 fi
 git submodule update
 
@@ -27,6 +27,7 @@ git submodule update
 
 echo_title "First run some applications"
 
+# move that directly into each appropriated part
 open "/Applications/Alfred 2.app"
 open "/Applications/BitTorrent Sync.app"
 open "/Applications/Cloud.app"

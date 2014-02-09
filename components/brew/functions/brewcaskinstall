@@ -1,0 +1,39 @@
+#!/bin/zsh
+
+function brewcaskinstall() {
+  if [ $# -lt 1 ]
+  then
+    echo "Usage: brewcaskinstall app-cute-name [app-cli-name] [destination]"
+    echo ""
+    echo "       eg: brewcaskinstall \"My app\" myapp \$HOME/Applications"
+    echo ""
+    echo "       Default app-cli-name is app-cute-name to lower with space converted to dash"
+    echo "       Default destination is /Applications"
+  else
+    cuteName=$1
+    cliName=$2
+    dest=$3
+    if [ -e "$cliName" ]
+    then
+      dest="$cliName"
+      cliName=""
+    elif [[ "$dest" == "" ]]
+    then
+      dest="/Applications"
+    fi
+
+    if [[ "$cliName" == "" ]]
+    then
+      # Convert appname like "My App" to "my-app"
+      cliName="`echo $1 | tr '[:upper:]' '[:lower:]' | sed 's/ /-/g'`"
+    fi
+
+    #echo "$cuteName $cliName $dest"
+    # install if not present already (skip "already installed" error)
+    if ! $(ls "$cuteName" &> /dev/null) && ! $(ls "/Applications/$cuteName.app" &> /dev/null) && ! $(ls "$HOME/Applications/$cuteName.app" &> /dev/null)
+    then
+      echo_title_install "$cuteName ($cliName) into $dest"
+      brew cask install $cliName --appdir="$dest"
+    fi
+  fi
+}

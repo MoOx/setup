@@ -1,0 +1,17 @@
+#!/bin/zsh
+
+brewinstall zsh-completions
+
+# essential missing commands to OSX
+brewinstall tree
+brewinstall ssh-copy-id
+
+# for icon fonts mainly
+brewinstall fontforge
+brewinstall ttfautohint
+
+# to create favicons
+brewinstall icoutils
+
+brewtap tobli/browsertime
+brewinstall sitespeedio/sitespeedio/sitespeed.io

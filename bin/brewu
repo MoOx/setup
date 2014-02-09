@@ -1,6 +1,0 @@
-#!/bin/zsh
-source $DIR_DOTFILES/backpack/functions.sh
-
-echo_title_update "brew"
-
-brew update && brew upgrade

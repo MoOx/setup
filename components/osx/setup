@@ -1,0 +1,434 @@
+#!/bin/zsh
+echo_title "Defining OS X options"
+
+# Set wallpaper
+#osascript -e "tell application \"System Events\" to set picture of every desktop to \"~/Dropbox/wallpapers/example.jpg\""
+
+COMPUTER_NAME="$USER"
+COMPUTER_MODEL=`sysctl -n hw.model`
+if [[ $COMPUTER_MODEL == "iMac"* ]]
+then
+	COMPUTER_NAME="i$COMPUTER_NAME"
+elif [[ $COMPUTER_MODEL == "MacBook"* ]]
+then
+	COMPUTER_NAME="Mac$COMPUTER_NAME"
+fi
+# notifying computer name update only if name will be changed
+if [[ $COMPUTER_NAME != $(sudo scutil --get ComputerName) ]]
+then
+  echo_info "Computer name set to $COMPUTER_NAME"
+fi
+sudo scutil --set ComputerName $COMPUTER_NAME
+sudo scutil --set HostName $COMPUTER_NAME
+sudo scutil --set LocalHostName $COMPUTER_NAME
+sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string $COMPUTER_NAME
+
+# Disable the sound effects on boot
+sudo nvram SystemAudioVolume=" "
+
+# Never go into computer sleep mode
+systemsetup -setcomputersleep Off > /dev/null
+
+### http://superuser.com/questions/455755/how-to-explore-more-defaults-write-tweaks-on-os-x
+#
+# For most non-hidden settings, this is how you can find the correct preference keys in Terminal.app:
+#
+# 	defaults read > a
+# 	# Change the setting
+# 	defaults read > b
+# 	diff a b
+#
+# For hidden settings, it gets trickier. You can use the command-line strings utility on any binary executable and see if any of the resulting text looks like a preference key. E.g.:
+#
+# 	strings /System/Library/CoreServices/Finder.app/Contents/MacOS/Finder
+#
+# Here’s another example that will look through all .framework files in /System/Library/Frameworks/ and filter the output somewhat:
+#
+# 	strings /System/Library/Frameworks/*.framework/Versions/Current/* /System/Library/Frameworks/*/Frameworks/*/Versions/Current/* 2> /dev/null | grep -E '^[a-zA-Z0-9_.-]{10,80}$' | sort | uniq
+#
+# There’s also a tool called GDB which can be used to find hidden preferences.
+###
+
+chflags hidden $HOME/"Automatically Add to iTunes.localized" &> /dev/null
+chflags nohidden $HOME/Library
+
+# recovery_message 'If this Mac is found, please call +33 6 78 13 54 39 - Si vous trouvez ce Mac, merci d\'appeler le 06 78 13 54 39': }
+# https://github.com/boxen/puppet-osx/blob/master/manifests/recovery_message.pp
+
+###
+# Mouse
+###
+
+# Trackpad: enable tap to click for this user and for the login screen
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+
+# Trackpad: map bottom right corner to right-click
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 2
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -bool true
+defaults -currentHost write NSGlobalDomain com.apple.trackpad.trackpadCornerClickBehavior -int 1
+defaults -currentHost write NSGlobalDomain com.apple.trackpad.enableSecondaryClick -bool true
+
+# Use scroll gesture with the Ctrl (^) modifier key to zoom
+defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
+defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144
+# Follow the keyboard focus while zoomed in
+defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true
+
+###
+# Keyboard
+###
+
+# Enable full keyboard access for all controls
+# (e.g. enable Tab in modal dialogs)
+defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
+
+# Automatically illuminate built-in MacBook keyboard in low light
+defaults write com.apple.BezelServices kDim -bool true
+# Turn off keyboard illumination when computer is not used for 5 minutes
+defaults write com.apple.BezelServices kDimTime -int 300
+
+###
+# Global
+###
+
+# Always show scrollbars
+defaults write NSGlobalDomain AppleShowScrollBars -string "WhenScrolling"
+# Possible values: `WhenScrolling`, `Automatic` and `Always`
+
+# disable auto correct
+defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+
+# expand save dialog
+defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
+
+# expand print dialog
+defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
+
+# no .DS_Store on newtwork
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+
+# disk utility debug menu
+defaults write com.apple.DiskUtility DUDebugMenuEnabled -bool true
+
+# Disable the “Are you sure you want to open this application?” dialog
+defaults write com.apple.LaunchServices LSQuarantine -bool false
+
+# Use scroll gesture with the Ctrl (^) key to zoom
+defaults write com.apple.universalaccess HIDScrollZoomModifierMask 262144
+
+# disable zoom with cmd+scroll
+defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool false
+
+# Enable AirDrop over Ethernet and on unsupported Macs:
+defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true
+
+# Save to disk (not to iCloud) by default
+defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
+
+###
+# Menu bar
+###
+
+OSX_MENU_EXTRAS="/System/Library/CoreServices/Menu Extras"
+alias seeosxmenuextras=open $OSX_MENU_EXTRAS
+
+# hide the useless icons
+for domain in ~/Library/Preferences/ByHost/com.apple.systemuiserver.* ; do
+  defaults write $domain dontAutoLoad -array \
+    "$OSX_MENU_EXTRAS/TimeMachine.menu" \
+    "$OSX_MENU_EXTRAS/Volume.menu" \
+    "$OSX_MENU_EXTRAS/User.menu" \
+    "$OSX_MENU_EXTRAS/Bluetooth.menu" \
+    "$OSX_MENU_EXTRAS/TextInput.menu"
+done
+
+# define icons you want in menu bar
+defaults write com.apple.systemuiserver menuExtras -array \
+  "$OSX_MENU_EXTRAS/TextInput.menu" \
+  "$OSX_MENU_EXTRAS/Volume.menu" \
+  "$OSX_MENU_EXTRAS/Battery.menu"
+
+###
+# Finder
+###
+
+defaults write com.apple.finder ShowTabView -bool true
+defaults write com.apple.finder ShowPathbar -bool true
+defaults write com.apple.finder ShowStatusBar -bool true
+
+# Set sidebar icon size to medium
+defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 2
+
+# Finder: show all filename extensions
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+
+# Finder: allow text selection in Quick Look
+defaults write com.apple.finder QLEnableTextSelection -bool true
+
+# When performing a search, search the current folder by default
+defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
+
+# Disable the warning when changing a file extension
+defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
+
+# Enable spring loading for directories
+defaults write NSGlobalDomain com.apple.springing.enabled -bool true
+
+# Remove the spring loading delay for directories
+defaults write NSGlobalDomain com.apple.springing.delay -float 0
+
+# Use list view in all Finder windows by default
+# Four-letter codes for the other view modes: `icnv`, `clmv`, `Flwv`
+defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
+
+# Set Desktop as the default location for new Finder windows
+# For other paths, use `PfLo` and `file:///full/path/here/`
+# More about path here https://github.com/mathiasbynens/dotfiles/pull/285#issuecomment-31608378
+defaults write com.apple.finder NewWindowTarget -string "PfLo"
+defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/Downloads/"
+
+# Expand the following File Info panes:
+# “General”, “Open with”, and “Sharing & Permissions”
+defaults write com.apple.finder FXInfoPanesExpanded -dict \
+  General -bool true \
+  OpenWith -bool true \
+  Privileges -bool true
+
+# Allow QuickLook text selection
+defaults write com.apple.finder QLEnableTextSelection -bool true
+
+###
+# Dock
+###
+
+defaults write com.apple.dock tilesize -int 36
+
+# no boucing icons
+defaults write com.apple.dock no-bouncing -bool true
+
+# dim hidden apps
+defaults write com.apple.dock showhidden -bool true
+
+# Faster animation when switching spaces
+defaults write com.apple.dock expose-animation-duration -float 0.15
+
+# Minimize windows into their application’s icon
+defaults write com.apple.dock minimize-to-application -bool true
+
+# Enable spring loading for all Dock items
+defaults write com.apple.dock enable-spring-load-actions-on-all-items -bool true
+
+# Show indicator lights for open applications in the Dock
+defaults write com.apple.dock show-process-indicators -bool true
+
+###
+# Screen
+###
+
+# Save screenshots to the desktop
+defaults write com.apple.screencapture location -string "${HOME}/Desktop"
+
+# Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)
+defaults write com.apple.screencapture type -string "png"
+
+# Disable shadow in screenshots
+defaults write com.apple.screencapture disable-shadow -bool true
+
+# Enable subpixel font rendering on non-Apple LCDs
+defaults write NSGlobalDomain AppleFontSmoothing -int 2
+
+###
+# Hot corners
+###
+
+# Hot corners
+# Possible values:
+# 0: no-op
+# 2: Mission Control
+# 3: Show application windows
+# 4: Desktop
+# 5: Start screen saver
+# 6: Disable screen saver
+# 7: Dashboard
+# 10: Put display to sleep
+# 11: Launchpad
+# 12: Notification Center
+# Top left screen corner
+defaults write com.apple.dock wvous-tl-corner -int 0
+defaults write com.apple.dock wvous-tl-modifier -int 0
+# Top right screen corner
+defaults write com.apple.dock wvous-tr-corner -int 0
+defaults write com.apple.dock wvous-tr-modifier -int 0
+# Bottom * screen corner → Display to sleep
+defaults write com.apple.dock wvous-bl-corner -int 10
+defaults write com.apple.dock wvous-bl-modifier -int 0
+defaults write com.apple.dock wvous-br-corner -int 10
+defaults write com.apple.dock wvous-br-modifier -int 0
+
+###
+# Spaces
+###
+
+# Don’t automatically rearrange Spaces based on most recent use
+defaults write com.apple.dock mru-spaces -bool false
+
+###
+# Dashboard.app
+###
+
+# Disable Dashboard
+defaults write com.apple.dashboard mcx-disabled -bool true
+# Dashboard.app not as a space
+defaults write com.apple.dock dashboard-in-overlay -bool true
+
+
+###
+# Launchpad
+###
+
+# Reset Launchpad
+find ~/Library/Application\ Support/Dock -name "*.db" -maxdepth 1 -delete
+
+# Add iOS Simulator to Launchpad
+sudo ln -sf /Applications/Xcode.app/Contents/Applications/iPhone\ Simulator.app /Applications/iOS\ Simulator.app
+
+###
+# Safari & WebKit
+###
+
+# Set Safari’s home page to `about:blank` for faster loading
+defaults write com.apple.Safari HomePage -string "about:blank"
+
+# Prevent Safari from opening ‘safe’ files automatically after downloading
+defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
+
+# Allow hitting the Backspace key to go to the previous page in history
+defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2BackspaceKeyNavigationEnabled -bool true
+
+# Hide Safari’s bookmarks bar by default
+defaults write com.apple.Safari ShowFavoritesBar -bool false
+# Hide Safari’s sidebar in Top Sites
+defaults write com.apple.Safari ShowSidebarInTopSites -bool false
+# Disable Safari’s thumbnail cache for History and Top Sites
+defaults write com.apple.Safari DebugSnapshotsUpdatePolicy -int 2
+
+# Enable Safari’s debug menu
+defaults write com.apple.Safari IncludeInternalDebugMenu -bool true
+
+# Make Safari’s search banners default to Contains instead of Starts With
+defaults write com.apple.Safari FindOnPageMatchesWordStartsOnly -bool false
+
+# Remove useless icons from Safari’s bookmarks bar
+defaults write com.apple.Safari ProxiesInBookmarksBar "()"
+
+# Enable the Develop menu and the Web Inspector in Safari
+defaults write com.apple.Safari IncludeDevelopMenu -bool true
+defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
+defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool true
+
+# Add a context menu item for showing the Web Inspector in web views
+defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
+
+###
+# Mail.app
+###
+
+# Add the keyboard shortcut ⌘ + Enter to send an email in Mail.app
+defaults write com.apple.mail NSUserKeyEquivalents -dict-add "Send" -string "@\\U21a9"
+
+# Display emails in threaded mode, sorted by date (oldest at the top)
+defaults write com.apple.mail DraftsViewerAttributes -dict-add "DisplayInThreadedMode" -string "yes"
+defaults write com.apple.mail DraftsViewerAttributes -dict-add "SortedDescending" -string "yes"
+defaults write com.apple.mail DraftsViewerAttributes -dict-add "SortOrder" -string "received-date"
+
+###
+# Spotlight
+###
+
+# # Hide Spotlight tray-icon (and subsequent helper)
+# sudo chmod 600 /System/Library/CoreServices/Search.bundle/Contents/MacOS/Search
+
+# # Disable Spotlight indexing for any volume that gets mounted and has not yet
+# # been indexed before.
+# # Use `sudo mdutil -i off "/Volumes/foo"` to stop indexing any volume.
+# sudo defaults write /.Spotlight-V100/VolumeConfiguration Exclusions -array "/Volumes"
+# # Change indexing order and disable some file types
+# defaults write com.apple.spotlight orderedItems -array \
+#         '{"enabled" = 1;"name" = "APPLICATIONS";}' \
+#         '{"enabled" = 1;"name" = "SYSTEM_PREFS";}' \
+#         '{"enabled" = 1;"name" = "DIRECTORIES";}' \
+#         '{"enabled" = 1;"name" = "PDF";}' \
+#         '{"enabled" = 1;"name" = "FONTS";}' \
+#         '{"enabled" = 0;"name" = "DOCUMENTS";}' \
+#         '{"enabled" = 0;"name" = "MESSAGES";}' \
+#         '{"enabled" = 0;"name" = "CONTACT";}' \
+#         '{"enabled" = 0;"name" = "EVENT_TODO";}' \
+#         '{"enabled" = 0;"name" = "IMAGES";}' \
+#         '{"enabled" = 0;"name" = "BOOKMARKS";}' \
+#         '{"enabled" = 0;"name" = "MUSIC";}' \
+#         '{"enabled" = 0;"name" = "MOVIES";}' \
+#         '{"enabled" = 0;"name" = "PRESENTATIONS";}' \
+#         '{"enabled" = 0;"name" = "SPREADSHEETS";}' \
+#         '{"enabled" = 0;"name" = "SOURCE";}'
+# # Load new settings before rebuilding the index
+# killall mds > /dev/null 2>&1
+# # Make sure indexing is enabled for the main volume
+# sudo mdutil -i on / > /dev/null
+# # Rebuild the index from scratch
+# sudo mdutil -E / > /dev/null
+
+###############################################################################
+# Activity Monitor #
+###############################################################################
+
+# Show the main window when launching Activity Monitor
+defaults write com.apple.ActivityMonitor OpenMainWindow -bool true
+
+# Visualize CPU usage in the Activity Monitor Dock icon
+defaults write com.apple.ActivityMonitor IconType -int 5
+
+# Show all processes in Activity Monitor
+defaults write com.apple.ActivityMonitor ShowCategory -int 0
+
+# Sort Activity Monitor results by CPU usage
+defaults write com.apple.ActivityMonitor SortColumn -string "CPUUsage"
+defaults write com.apple.ActivityMonitor SortDirection -int 0
+
+###
+# Terminal
+###
+
+# Only use UTF-8 in Terminal.app
+defaults write com.apple.terminal StringEncodings -array 4
+
+###
+# iTerm 2
+###
+
+# Don’t display the annoying prompt when quitting iTerm
+defaults write com.googlecode.iterm2 PromptOnQuit -bool false
+
+###
+# Time Machine
+###
+
+# Prevent Time Machine from prompting to use new hard drives as backup volume
+defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
+
+# Disable local Time Machine backups
+hash tmutil &> /dev/null && sudo tmutil disablelocal
+
+# Kill affected applications
+for app in "Address Book" "Calendar" "Contacts" "Dock" "Finder"  \
+	"Mail" "Messages" "Safari" "SystemUIServer" ; do
+  killall "${app}" > /dev/null 2>&1
+done
+
+# restart XtraFinder because killing Finder kill it too
+if ls "/Applications/XtraFinder.app"; then; open "/Applications/XtraFinder.app"; fi
+
+# Enable local FTP Server
+# used for some stuff (local wordpress) & wii ftp access
+sudo launchctl load -w /System/Library/LaunchDaemons/ftp.plist > /dev/null 2>&1

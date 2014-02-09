@@ -1,6 +1,0 @@
-#!/bin/zsh
-source $DIR_DOTFILES/backpack/functions.sh
-
-brewu
-npmu
-gemu

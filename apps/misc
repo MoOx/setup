@@ -1,0 +1,12 @@
+#!/bin/zsh
+
+brewcaskinstall "KeePassX" "keepassx2"
+brewcaskinstall "LibreOffice"
+brewcaskinstall "Steam"
+
+#toadd
+#openemu
+#ntfs-free
+#gfxcardstatus
+#bootchamp
+#SetAPPSync

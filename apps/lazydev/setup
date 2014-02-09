@@ -1,0 +1,29 @@
+#!/bin/zsh
+
+# for vpn
+brewcaskinstall "Tunnelblick" $HOME/Applications
+
+# lazydev
+brewcaskinstall "GitHub" $HOME/Applications
+
+# just in case
+brewcaskinstall "ImageAlpha" $HOME/Applications
+brewcaskinstall "ImageOptim" $HOME/Applications
+
+# more utilities
+brewcaskinstall "Mou" $HOME/Applications
+brewcaskinstall "Cloud" "cloudapp" $HOME/Applications
+
+brewcaskinstall "VirtualBox" $HOME/Applications
+brewcaskinstall "Versions" $HOME/Applications
+
+brewcaskinstall "Synergy" $HOME/Applications
+
+brewcaskinstall "SourceTree" $HOME/Applications
+brewcaskinstall "iTerm" "iterm2" $HOME/Applications
+
+brewcaskinstall "Colors" $HOME/Applications
+
+brewcaskinstall "NameChanger" $HOME/Applications
+
+brewcaskinstall "GrandPerspective" $HOME/Applications

@@ -5,8 +5,8 @@
 # maybe use something similar too http://superuser.com/questions/221136/bypass-a-licence-agreement-when-mounting-a-dmg-on-the-command-line
 # or just open xcode bitch
 
-export DIR_DOTFILES="$( cd "$( dirname "${0}" )"/../ && pwd )"
-source $DIR_DOTFILES/backpack/functions.sh
+export DOTFILES="$( cd "$( dirname "${0}" )"/../ && pwd )"
+source $DOTFILES/index.zsh
 
 echo "\n(╯°□°）╯ ︵ $CHAR_BOOM\n"
 
@@ -17,7 +17,7 @@ sudo -v
 # update from remote
 echo_title_update "myself mofo !"
 
-cd $DIR_DOTFILES
+cd $DOTFILES
 git pull origin master
 git submodule update
 
@@ -27,4 +27,9 @@ then
 	FULLFIRE=true
 fi
 
-source $DIR_DOTFILES/bin/kaboom
+source $DOTFILES/bin/kaboom
+
+if ! type "say" > /dev/null
+then
+  say "Dude, it's done"
+fi

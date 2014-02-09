@@ -1,0 +1,25 @@
+#!/bin/zsh
+
+if ! type "node" > /dev/null
+then
+  echo_title_install "Node.js"
+  brewinstall node
+fi
+
+echo_title_installupdate "NPM packages"
+
+if [ "$FULLFIRE" = "true" ]
+then
+  npmug
+fi
+
+npmig csslint
+npmig jshint
+npmig jscs
+
+npmig autoprefixer
+npmig bower
+npmig gulp
+npmig grunt-cli
+npmig happyplan-cli
+npmig travis-encrypt

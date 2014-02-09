@@ -1,0 +1,38 @@
+#!/bin/zsh
+
+# enhance OS X with some small utilities
+brewcaskinstall "XtraFinder" "xtrafinder"
+brewcaskinstall "AppCleaner" "appcleaner"
+brewcaskinstall "Day-O" "day-o"
+
+brewcaskinstall "Flux" "f-lux"
+brewcaskinstall "Shortcat" "shortcat"
+
+brewcaskinstall "Alfred 2" "alfred"
+# todo add to Alfred.app search scope
+# /Applications/Xcode.app/Contents/Applications/
+# /System/Library/CoreServices/
+# /System/Library/CoreServices/Applications/
+# /opt/homebrew-cask/Caskroom/
+
+# required by I don't know why
+brewcaskinstall "Utilities/XQuartz" "xquartz"
+
+# Trim enable for non Apple SSD
+brewcaskinstall "Trim Enabler"
+
+brewcaskinstall "/opt/homebrew-cask/Caskroom/menumeters" "menumeters"
+
+# QuickLook plugins from https://github.com/sindresorhus/quick-look-plugins
+brewcaskinstall "/opt/homebrew-cask/Caskroom/qlcolorcode" "qlcolorcode"
+brewcaskinstall "/opt/homebrew-cask/Caskroom/qlstephen" "qlstephen"
+brewcaskinstall "/opt/homebrew-cask/Caskroom/qlmarkdown" "qlmarkdown"
+brewcaskinstall "/opt/homebrew-cask/Caskroom/quicklook-json" "quicklook-json"
+brewcaskinstall "/opt/homebrew-cask/Caskroom/qlprettypatch" "qlprettypatch"
+brewcaskinstall "/opt/homebrew-cask/Caskroom/quicklook-csv" "quicklook-csv"
+brewcaskinstall "/opt/homebrew-cask/Caskroom/betterzipql" "betterzipql"
+brewcaskinstall "/opt/homebrew-cask/Caskroom/webp-quicklook" "webp-quicklook"
+brewcaskinstall "/opt/homebrew-cask/Caskroom/suspicious-package" "suspicious-package"
+
+# reset QuickLook plugins
+qlmanage -r &> /dev/null

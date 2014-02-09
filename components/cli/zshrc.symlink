@@ -1,0 +1,63 @@
+#!/bin/zsh
+
+source $HOME/dotfiles/index.zsh
+
+HISTFILE=~/.history
+HISTSIZE=SAVEHIST=99999
+setopt APPEND_HISTORY
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_FCNTL_LOCK
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_NO_STORE
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_VERIFY
+setopt INC_APPEND_HISTORY
+#setopt PRINT_EXIT_VALUE
+
+export LC_CTYPE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+export LANG="en_US"
+
+#export CC=llvm-gcc-4.2
+
+# find DOTFILES if not defined using symlink real dirname
+#__FILENAME__=${0} # only for sourced file, .zshrc is not sourced
+__FILENAME__=${ZDOTDIR-~}/.zshrc
+if [[ -z "$DOTFILES" ]] then
+	export DOTFILES=$(cd $(dirname $(readlink $__FILENAME__))/../../ && pwd)
+fi
+
+if ! ls /usr/local/share/zsh/site-functions/prompt_pure_setup &> /dev/null
+then
+	ln -s "$DOTFILES/submodules/terminal/pure/pure.zsh" /usr/local/share/zsh/site-functions/prompt_pure_setup
+fi
+fpath=( "/usr/local/share/zsh/site-functions" $fpath )
+autoload -U promptinit && promptinit
+#PURE_CMD_MAX_EXEC_TIME=2
+prompt pure
+# add %F{red}%(?..[%?] )%f to include exit code [code]
+PROMPT='%(?.%F{green}.%F{red}❯%F{green})❯%f '
+
+export DIR_SYNC=$HOME/Sync
+export DIR_SYNC_DROPBOX=$DIR_SYNC/Dropbox
+export DIR_SYNC_LIBRARY=$DIR_SYNC/BTSync/Library
+export DIR_APP=/Applications
+export DIR_DEV=$DIR_SYNC/Development
+
+export OS_ICONS_DIR=/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources
+
+# my custom bin & sh scripts
+export PATH=$DIR_DEV/bin:$PATH
+# also load aliases from projets
+for source in `find $DIR_DEV -maxdepth 4 -name \*.aliases.zsh`
+do
+  source $source
+done
+
+# local bin, then local npm bin, then global npm bin
+export PATH=./bin:./node_modules/.bin:/usr/local/share/npm/bin:/usr/local/bin:/usr/local/sbin:$PATH
+
+# disable ._ file
+export COPYFILE_DISABLE=true

@@ -1,0 +1,17 @@
+#!/bin/zsh
+
+if ! type "ddclient" > /dev/null
+then
+  echo_title "Installing a Dynamic DNS client"
+  brewinstall ddclient
+
+  # ddclient human configuration & auto start
+  if ! ls /Library/LaunchDaemons/homebrew.mxcl.ddclient.plist > /dev/null
+  then
+    sudo cp ddclient.conf /usr/local/etc/ddclient
+    $EDITOR_SYNC /usr/local/etc/ddclient/ddclient.conf
+
+    sudo cp -fv /usr/local/opt/ddclient/*.plist /Library/LaunchDaemons
+    sudo launchctl load /Library/LaunchDaemons/homebrew.mxcl.ddclient.plist
+  fi
+fi

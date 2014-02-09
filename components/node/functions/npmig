@@ -1,0 +1,8 @@
+#!/bin/zsh
+
+function npmig() {
+  if ! ls $NODE_MODULES | grep -e "^$1" &> /dev/null
+  then
+    npm i -g $1
+  fi
+}

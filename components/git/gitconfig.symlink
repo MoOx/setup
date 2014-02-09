@@ -1,0 +1,67 @@
+[user]
+	name = Maxime Thirouin
+	email = m@moox.io
+
+[github]
+	user = MoOx
+
+[hub]
+	protocol = https
+
+[credential]
+	helper = osxkeychain
+
+[core]
+	quotepath = false
+	editor = subl -w
+	excludesfile = .gitignore_global
+
+[push]
+	default = simple
+
+[branch]
+	autosetuprebase = always
+
+[color]
+	ui = auto
+
+[color "status"]
+	untracked = cyan
+
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+	df = diff
+	dc = diff --cached
+	lg = log -p
+	oops = commit --amend
+	lol = log --graph --decorate --pretty=oneline --abbrev-commit
+	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+	ls = ls-files
+	ign = ls-files -o -i --exclude-standard
+	lgb = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	unstage = reset HEAD --
+	last = log -1 HEAD
+	rmdf = "!git rm $(git ls-files --deleted)"
+	sublimediff = "!git diff $@ | subl"
+	export = "!git clone --depth 1 $1 && rm -rf \"$(basename $1 .git)/.git\" -"
+	# Remove branches that have already been merged with master
+	dm = "!git checkout master && git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
+
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path =
+
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+
+[merge]
+	conflictStyle = diff3
+
+# todo git-pr https://gist.github.com/naholyr/4132423
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f

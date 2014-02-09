@@ -1,4 +1,0 @@
-#!/bin/zsh
-source $DIR_DOTFILES/backpack/functions.sh
-
-# launch a backup solution (super duper ?)

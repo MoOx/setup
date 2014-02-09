@@ -1,0 +1,12 @@
+#!/bin/zsh
+
+brewcaskinstall "Skype"
+brewcaskinstall "LimeChat" $HOME/Applications
+
+LIMECHAT_THEME="$HOME/Library/Application Support/LimeChat/Themes/LimeChat-theme-Monokai-Soda"
+if ! ls "$LIMECHAT_THEME.css" > /dev/null
+then
+	echo_title "Installing LimeChat theme"
+	git clone https://github.com/MoOx/LimeChat-theme-Monokai-Soda.git $LIMECHAT_THEME
+	ln -s $LIMECHAT_THEME/LimeChat-theme-Monokai-Soda.* $LIMECHAT_THEME
+fi

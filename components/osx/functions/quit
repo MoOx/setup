@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+function quit () {
+  for app in $*; do
+    osascript -e 'quit app "'$app'"'
+  done
+}

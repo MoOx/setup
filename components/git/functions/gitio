@@ -1,0 +1,10 @@
+#!/bin/zsh
+
+# Create a git.io short URL
+function gitio() {
+  if [ -z "${1}" -o -z "${2}" ]; then
+    echo "Usage: \`gitio {url} {slug}\`"
+    return 1
+  fi
+  curl -i http://git.io/ -F "url=${1}" -F "code=${2}"
+}

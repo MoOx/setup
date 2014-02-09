@@ -1,9 +1,9 @@
 #!/bin/zsh
-source $DIR_DOTFILES/backpack/functions.sh
+#source $DOTFILES/index.zsh
 
 echo_title_installupdate 'dotfiles'
 
-export DOTFILESCEPTION="$DIR_DOTFILES/dotfilesception"
+export DOTFILESCEPTION="$DOTFILES/dotfilesception"
 
 overwrite_all=false
 backup_all=false
@@ -14,9 +14,9 @@ then
   overwrite_all=true
 fi
 
-for source in `ls $DOTFILESCEPTION`; do
-  dest="$HOME/.${source}"
-  source="$DOTFILESCEPTION/${source}"
+for source in `find $DOTFILES -maxdepth 3 -name \*.symlink`
+do
+  dest="$HOME/.`basename \"${source%.*}\"`"
 
   if [ -f $dest ] || [ -d $dest ] || [ -h $dest ]
   then

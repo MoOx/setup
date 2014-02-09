@@ -1,0 +1,21 @@
+#!/bin/zsh
+
+if ! type "brew" > /dev/null
+then
+  echo_title_install "Homebrew (brew)"
+  ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go/install)"
+  brew doctor
+  # note: brew install run
+  # xcode-select --install
+  # yeah this is cool
+else
+  echo_title_update "Homebrew (brew)"
+  brewu
+fi
+
+brewtap homebrew/dupes
+
+# cask
+brewtap phinze/cask
+brewtap caskroom/versions
+brewinstall "brew-cask"

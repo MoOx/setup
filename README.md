@@ -27,8 +27,8 @@ $ fireinthehole
 This command should update this repository, then trigger `kaboom` which is the earth of this _dotfiles_
 _Note: you will sometimes need to enter you password or some informations related to current installation_
 
-This command launch like everything you define. If you have nothing special, it shouldn't take more that 1m (mainly because of brew/gem update).
-_This is done that way to ensure you are fully up to date with what you define in there._
+This command launch like everything you define. If you have nothing special, it should take around 30s (mainly because of brew/gem update).
+_This is done that way to ensure you are fully up to date with what you define here. Very concenient when I reopen my laptop (which occurs once in a month)._
 
 ### How it works ?
 

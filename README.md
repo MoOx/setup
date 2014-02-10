@@ -24,7 +24,7 @@ $ curl --silent https://raw.github.com/MoOx/dotfiles/master/backpack/firstrun | 
 $ fireinthehole
 ```
 
-This command should update this repository, then trigger `kaboom` which is the earth of this _dotfiles_
+This command should update this repository, then trigger `kaboom` which is the heart of this _dotfiles_
 _Note: you will sometimes need to enter you password or some informations related to current installation_
 
 This command launch like everything you define. If you have nothing special, it should take around 30s (mainly because of brew/gem update).

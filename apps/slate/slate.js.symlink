@@ -154,7 +154,7 @@ layouts.imacExtended = slate.layout("layout:imacExtended", {
   "Firefox" : hashes.main.full,
   "Aurora" : hashes.main.full, // Firefox
   "Nightly" : hashes.main.full, // Firefox
-  "Sublime Text": hashes.main.full,
+  "Sublime Text": hashes.main.right__half,
 
   "Tweetbot" : {
     "operations" : [positions.tweetbot],

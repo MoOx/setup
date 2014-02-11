@@ -22,8 +22,6 @@ brewcaskinstall "Synergy" $HOME/Applications
 brewcaskinstall "SourceTree" $HOME/Applications
 brewcaskinstall "iTerm" "iterm2" $HOME/Applications
 
-brewcaskinstall "Colors" $HOME/Applications
-
 brewcaskinstall "NameChanger" $HOME/Applications
 
 brewcaskinstall "GrandPerspective" $HOME/Applications

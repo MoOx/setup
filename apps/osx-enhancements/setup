@@ -22,6 +22,12 @@ brewcaskinstall "Utilities/XQuartz" "xquartz"
 brewcaskinstall "Trim Enabler"
 
 brewcaskinstall "/opt/homebrew-cask/Caskroom/menumeters" "menumeters"
+# append menumeter & do not touch other menu extras
+defaults write com.apple.systemuiserver menuExtras -array-add \
+  "/opt/homebrew-cask/Caskroom/menumeters/latest/MenuMeters Installer.app/Contents/Resources/MenuMeters.prefPane/Contents/Resources/MenuMeterMem.menu" \
+  "/opt/homebrew-cask/Caskroom/menumeters/latest/MenuMeters Installer.app/Contents/Resources/MenuMeters.prefPane/Contents/Resources/MenuMeterCPU.menu" \
+  "/opt/homebrew-cask/Caskroom/menumeters/latest/MenuMeters Installer.app/Contents/Resources/MenuMeters.prefPane/Contents/Resources/MenuCracker.menu"
+fuckosxmenubar
 
 # QuickLook plugins from https://github.com/sindresorhus/quick-look-plugins
 brewcaskinstall "/opt/homebrew-cask/Caskroom/qlcolorcode" "qlcolorcode"

@@ -45,10 +45,15 @@ positions.right_top__half = positions.right__half.dup({
 positions.right_bottom__half = positions.right_top__half.dup({
   "y": "screenOriginY+screenSizeY/2"
 });
-positions.right__onethird = positions.full.dup({
+positions.right__1of3 = positions.full.dup({
   "height": "screenSizeY",
   "width": "screenSizeX/3",
   "x": "screenOriginX+screenSizeX/3*2"
+});
+positions.right__2of3 = positions.full.dup({
+  "height": "screenSizeY",
+  "width": "2*screenSizeX/3",
+  "x": "screenOriginX+screenSizeX/3"
 });
 positions.right__1of4 = positions.full.dup({
   "width": "screenSizeX/4",
@@ -99,6 +104,11 @@ var hashes = {
     },
     right__1of4: {
       "operations" : [positions.right__1of4.dup({"screen": 0})],
+      "ignore-fail" : true,
+      "repeat" : true
+    },
+    right__2of3: {
+      "operations" : [positions.right__2of3.dup({"screen": 0})],
       "ignore-fail" : true,
       "repeat" : true
     },
@@ -154,7 +164,7 @@ layouts.imacExtended = slate.layout("layout:imacExtended", {
   "Firefox" : hashes.main.full,
   "Aurora" : hashes.main.full, // Firefox
   "Nightly" : hashes.main.full, // Firefox
-  "Sublime Text": hashes.main.right__half,
+  "Sublime Text": hashes.main.right__2of3,
 
   "Tweetbot" : {
     "operations" : [positions.tweetbot],
@@ -240,7 +250,7 @@ var adaptWhenVideoIsRunning = function() {
           }
           // if one screen, move in the small screen on the top, using half of the height
           else if (slate.screenCount() === 1) {
-            // window.doOperation(positions.right__onethird);
+            // window.doOperation(positions.right__1of3);
             // moved = true;
           }
           //}

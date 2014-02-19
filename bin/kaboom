@@ -1,4 +1,6 @@
 #!/bin/zsh
+source $DOTFILES/index.zsh
+
 DIR_BIN="$( cd "$( dirname "${0}" )" && pwd )"
 source $DIR_BIN/dotfiles
 

@@ -11,6 +11,7 @@ then
 else
   echo_title_update "Homebrew (brew)"
   brewu
+  brew cleanup
 fi
 
 brewtap homebrew/dupes

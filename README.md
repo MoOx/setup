@@ -45,7 +45,7 @@ Most of the time, components contains a `setup` file that you can use in `kaboom
 
 ### Component
 
-Here is what is automatically handled by this awesome [index.zsh](index.zsh) (inspired by [@holman](https://github.com/holman) work.
+Here is what is automatically handled by this awesome [index.zsh](index.zsh) (inspired by [@holman](https://github.com/holman) work).
 
 - _component_/***.zsh**: Any files ending in .zsh get loaded into your environment.
 - _component_/**path.zsh**: Any file named `path.zsh` is _loaded first_ and is expected to setup $PATH or similar.

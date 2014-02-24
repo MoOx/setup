@@ -23,9 +23,5 @@ if ! type "mysql" > /dev/null
 then
   echo_title_install "MySQL"
   brewinstall mysql
-  if ! ls $HOME/Library/LaunchAgents/homebrew.mxcl.mysql.plist > /dev/null
-  then
-    ln -sfv /usr/local/opt/mysql/*.plist $HOME/Library/LaunchAgents
-    launchctl load $HOME/Library/LaunchAgents/homebrew.mxcl.mysql.plist
-  fi
+  brewservicesstart mysql
 fi

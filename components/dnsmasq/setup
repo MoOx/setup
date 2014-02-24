@@ -9,6 +9,7 @@
 # 	DNSMASQ_CONF=/usr/local/etc/dnsmasq.conf
 # 	cp /usr/local/opt/dnsmasq/dnsmasq.conf.example $DNSMASQ_CONF
 # 	echo "\n\naddress=/dev/127.0.0.1\nlisten-address=127.0.0.1" | sudo tee -A $DNSMASQ_CONF
-# 	sudo cp -fv /usr/local/opt/dnsmasq/*.plist /Library/LaunchDaemons
-# 	sudo launchctl load /Library/LaunchDaemons/homebrew.mxcl.dnsmasq.plist
+# 	sudo brew services start dnsmasq
+# 	# sudo cp -fv /usr/local/opt/dnsmasq/*.plist /Library/LaunchDaemons
+# 	# sudo launchctl load /Library/LaunchDaemons/homebrew.mxcl.dnsmasq.plist
 # fi

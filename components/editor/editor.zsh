@@ -1,2 +1,2 @@
-export EDITOR="subl"
-export EDITOR_SYNC="subl -w"
+export EDITOR="atom"
+export EDITOR_SYNC="$EDITOR -w"

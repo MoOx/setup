@@ -164,6 +164,8 @@ layouts.imacExtended = slate.layout("layout:imacExtended", {
   "Firefox" : hashes.main.full,
   "Aurora" : hashes.main.full, // Firefox
   "Nightly" : hashes.main.full, // Firefox
+
+  "Atom": hashes.main.right__2of3,
   "Sublime Text": hashes.main.right__2of3,
 
   "Tweetbot" : {
@@ -190,6 +192,8 @@ layouts.imac = slate.layout("layout:imac", {
   "Firefox" : hashes.main.left__3of4,
   "Aurora" : hashes.main.left__3of4, // Firefox
   "Nightly" : hashes.main.left__3of4, // Firefox
+
+  "Atom": hashes.main.left__3of4,
   "Sublime Text": hashes.main.left__3of4,
 
   "Tweetbot" : {

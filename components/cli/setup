@@ -18,3 +18,7 @@ brewinstall icoutils
 
 brewtap tobli/browsertime
 brewinstall sitespeedio/sitespeedio/sitespeed.io
+
+#sudo pip install --upgrade asciinema
+#asciinema auth
+#asciinema rec

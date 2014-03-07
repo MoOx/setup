@@ -12,7 +12,7 @@ fi
 
 if ! type "npm" > /dev/null
 then
-	echo_title_install "NPM"
+  echo_title_install "NPM"
   curl -L https://www.npmjs.org/install.sh | sh
 fi
 

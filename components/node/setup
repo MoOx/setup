@@ -1,25 +1,41 @@
 #!/bin/zsh
 
+# Because Homebrew can handle correctly npm
+# we install node & npm separately
+# https://github.com/npm/npm/issues/3794
+
 if ! type "node" > /dev/null
 then
   echo_title_install "Node.js"
-  brewinstall node
+  brewinstall node --without-npm
 fi
 
-echo_title_installupdate "NPM packages"
-
-if [ "$FULLFIRE" = "true" ]
+if ! type "npm" > /dev/null
 then
-  npmug
+	echo_title_install "NPM"
+  curl -L https://www.npmjs.org/install.sh | sh
 fi
 
+echo_title_installupdate "NPM global packages"
+npmug
+
+# code quality tools
+npmig htmlhint
 npmig csslint
 npmig jshint
 npmig jscs
 
+# css tools
 npmig autoprefixer
-npmig bower
+
+# workflow tools
 npmig gulp
 npmig grunt-cli
+
+# happyplan launcher
 npmig happyplan-cli
+
 npmig travis-encrypt
+
+# did I use this one ?
+npmig bower

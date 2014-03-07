@@ -1,0 +1,18 @@
+#!/bin/zsh
+
+if ! type "apm" > /dev/null
+then
+	apm install editorconfig
+	apm install htmlhint
+	apm install csslint
+	apm install jshint
+	apm install css-color-highlighting
+	apm install rdio
+	apm install atom-prettify
+	apm install npm-install
+	apm install npm-docs
+	apm install show-in-folder
+	apm install open-in-github-app
+else
+	echo "Atom needs to be installed by hand (private beta). Please visit atom.io,\nthen use this setup again"
+fi

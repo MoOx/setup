@@ -1,5 +1,5 @@
 # editorconfig.org
-#root = true # not root, not at all !
+root = true
 
 [*]
 indent_style = spaces

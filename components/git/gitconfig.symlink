@@ -13,7 +13,7 @@
 
 [core]
 	quotepath = false
-	editor = subl -w
+	editor = atom -w
 	excludesfile = .gitignore_global
 
 [push]

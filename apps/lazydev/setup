@@ -25,3 +25,5 @@ brewcaskinstall "iTerm" "iterm2" $HOME/Applications
 brewcaskinstall "NameChanger" $HOME/Applications
 
 brewcaskinstall "GrandPerspective" $HOME/Applications
+
+brewinstall android-sdk

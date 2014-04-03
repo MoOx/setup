@@ -13,6 +13,15 @@ then
 	apm install npm-docs
 	apm install show-in-folder
 	apm install open-in-github-app
+	apm install gist-it
+	apm install travis-ci-status
+	apm install autocomplete-plus
+	apm install tabs-to-spaces
+	apm install autoclose-html
+	apm install language-apache
+	apm install merge-conflicts
+	apm install auto-update-packages
+
 else
 	echo "Atom needs to be installed by hand (private beta). Please visit atom.io,\nthen use this setup again"
 fi

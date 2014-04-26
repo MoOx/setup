@@ -5,6 +5,7 @@
 function npmpublish() {
   git pull --rebase && \
   npm install && \
+  rm -rf node_modules && \
   npm test && \
   npm version ${1:=patch} && \
   npm publish && \

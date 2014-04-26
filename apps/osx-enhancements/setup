@@ -13,7 +13,7 @@ brewcaskinstall "Alfred 2" "alfred"
 # /Applications/Xcode.app/Contents/Applications/
 # /System/Library/CoreServices/
 # /System/Library/CoreServices/Applications/
-# /opt/homebrew-cask/Caskroom/
+brew cask alfred link 2>&1 | grep -v "Alfred is already linked to homebrew-cask."
 
 # required by I don't know why
 brewcaskinstall "Utilities/XQuartz" "xquartz"

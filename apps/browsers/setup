@@ -9,3 +9,7 @@ brewcaskinstall "FirefoxAurora" "firefox-aurora" "$HOME/Applications"
 
 brewcaskinstall "Utilities/Adobe Flash Player Install Manager" "flash"
 brewcaskinstall "/Library/Internet Plug-Ins/googletalkbrowserplugin.plugin" "google-hangouts"
+
+# might be required http://software.intel.com/en-us/android/articles/intel-hardware-accelerated-execution-manager
+# brewinstall android-sdk
+brewcaskinstall genymotion

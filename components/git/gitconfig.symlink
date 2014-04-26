@@ -29,9 +29,13 @@
 	untracked = cyan
 
 [alias]
-	co = checkout
+	ch = checkout
 	br = branch
 	ci = commit
+	co = commit
+	com = commit -m
+	coma = commit -am
+	coa = commit -a
 	st = status
 	df = diff
 	dc = diff --cached

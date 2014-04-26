@@ -9,10 +9,6 @@ npmig tldr
 brewinstall tree
 brewinstall ssh-copy-id
 
-# for icon fonts mainly
-brewinstall fontforge
-brewinstall ttfautohint
-
 # to create favicons
 brewinstall icoutils
 

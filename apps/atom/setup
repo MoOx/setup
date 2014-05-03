@@ -3,9 +3,13 @@
 if ! type "apm" > /dev/null
 then
 	apm install editorconfig
+	apm install docblockr
+	apm install close-tags
 	apm install htmlhint
 	apm install csslint
-	apm install jshint
+	apm install linter
+	apm install linter-jscs
+	apm install linter-jshint
 	apm install css-color-highlighting
 	apm install rdio
 	apm install atom-prettify
@@ -17,7 +21,6 @@ then
 	apm install travis-ci-status
 	apm install autocomplete-plus
 	apm install tabs-to-spaces
-	apm install autoclose-html
 	apm install language-apache
 	apm install merge-conflicts
 	apm install auto-update-packages

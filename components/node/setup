@@ -12,6 +12,12 @@ then
   npmug
 fi
 
+# browserify all the things
+npmig browserify
+npmig testling
+npmig coverify
+npmig tape
+
 # code quality tools
 npmig htmlhint
 npmig csslint

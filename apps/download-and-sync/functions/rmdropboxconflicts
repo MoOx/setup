@@ -1,0 +1,5 @@
+#!/bin/zsh
+
+function rmdropboxconflicts() {
+	find $DIR_SYNC_DROPBOX -path "$DROPBOX_CONFLICT_RE" -exec rm -f {} \;
+}

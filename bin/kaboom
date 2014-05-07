@@ -15,7 +15,7 @@ setup git
 setup brew
 
 setup node
-setup cli
+setup _cli
 
 setup logitech
 setup browsers

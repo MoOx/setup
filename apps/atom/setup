@@ -2,6 +2,7 @@
 
 if ! type "apm" > /dev/null
 then
+	brewcaskinstall atom
 	apm install editorconfig
 	apm install docblockr
 	apm install close-tags
@@ -24,7 +25,4 @@ then
 	apm install language-apache
 	apm install merge-conflicts
 	apm install auto-update-packages
-
-else
-	echo "Atom needs to be installed by hand (private beta). Please visit atom.io,\nthen use this setup again"
 fi

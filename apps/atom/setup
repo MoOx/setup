@@ -5,27 +5,30 @@ then
 	brewcaskinstall atom
 fi
 
-apminstall editorconfig
-apminstall docblockr
-apminstall close-tags
-apminstall htmlhint
-apminstall csslint
-apminstall linter
-apminstall linter-jscs
-apminstall linter-jshint
-apminstall css-color-highlighting
-apminstall rdio
-apminstall atom-prettify
-apminstall npm-install
-apminstall npm-docs
-apminstall show-in-folder
-apminstall open-in-github-app
-apminstall gist-it
-apminstall travis-ci-status
-apminstall autocomplete-plus
-apminstall tabs-to-spaces
-apminstall language-apache
-apminstall merge-conflicts
-apminstall auto-update-packages
-
 dockutil --add "/Applications/Atom.app" --before "Console"
+
+if type "apm" > /dev/null
+then
+	apminstall editorconfig
+	apminstall docblockr
+	apminstall close-tags
+	apminstall htmlhint
+	apminstall csslint
+	apminstall linter
+	apminstall linter-jscs
+	apminstall linter-jshint
+	apminstall css-color-highlighting
+	apminstall rdio
+	apminstall atom-prettify
+	apminstall npm-install
+	apminstall npm-docs
+	apminstall show-in-folder
+	apminstall open-in-github-app
+	apminstall gist-it
+	apminstall travis-ci-status
+	apminstall autocomplete-plus
+	apminstall tabs-to-spaces
+	apminstall language-apache
+	apminstall merge-conflicts
+	apminstall auto-update-packages
+fi

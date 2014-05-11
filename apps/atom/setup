@@ -18,7 +18,7 @@ then
 	apminstall linter-jscs
 	apminstall linter-jshint
 	apminstall css-color-highlighting
-	apminstall rdio
+	apminstall Rdio
 	apminstall atom-prettify
 	apminstall npm-install
 	apminstall npm-docs

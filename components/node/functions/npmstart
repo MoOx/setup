@@ -1,0 +1,10 @@
+#!/bin/zsh
+
+function npmstart() {
+	if [ $# -gt 0 ]
+	then
+		cd $1
+		e
+	fi
+	npm start
+}

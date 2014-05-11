@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-brewcaskinstall "KeePassX" "keepassx2"
+brewcaskinstall "KeePassX" "keepassx"
 brewcaskinstall "LibreOffice"
 brewcaskinstall "Steam"
 dockutil --add "~/Applications/Steam.app" --after "Console"

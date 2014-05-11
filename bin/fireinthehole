@@ -8,14 +8,13 @@
 export DOTFILES="$( cd "$( dirname "${0}" )"/../ && pwd )"
 source $DOTFILES/index.zsh
 
-echo "\n(╯°□°）╯ ︵ $CHAR_BOOM\n"
-
 # Ask for the administrator password upfront
-echo_title "Dude, give me full access NOW :"
 sudo -v
 
 # update from remote
-echo_title_update "myself mofo !"
+echo_title_update " from remote"
+
+echo "\n(╯°□°）╯ ︵ $CHAR_BOOM\n"
 
 cd $DOTFILES
 git pull origin master
@@ -30,7 +29,7 @@ fi
 
 source $DOTFILES/bin/kaboom
 
-if ! type "say" > /dev/null
+if type "say" > /dev/null
 then
-  say "Dude, it's done"
+  say "Dude, dotfiles update is done"
 fi

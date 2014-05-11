@@ -209,7 +209,7 @@ dockutil --no-restart --add "/Applications/Messages.app"
 dockutil --no-restart --add "/Applications/iTunes.app"
 dockutil --no-restart --add "/Applications/Utilities/Console.app"
 dockutil --no-restart --add "/Applications/Stickies.app"
-dockutil --no-restart --add "/Applications" --view grid --display folder
+dockutil --no-restart --add "/Applications" --view grid --display folder --sort name
 
 # from AppStore
 dockutil --no-restart --add "/Applications/Wunderlist.app" --after "Calendar"

@@ -12,8 +12,9 @@ brewinstall ssh-copy-id
 # to create favicons
 brewinstall icoutils
 
+brewtap sitespeedio/sitespeedio
 brewtap tobli/browsertime
-brewinstall sitespeedio/sitespeedio/sitespeed.io
+brewinstall sitespeed.io
 
 #sudo pip install --upgrade asciinema
 #asciinema auth

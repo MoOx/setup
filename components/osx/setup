@@ -235,6 +235,13 @@ defaults write com.apple.dock enable-spring-load-actions-on-all-items -bool true
 # Show indicator lights for open applications in the Dock
 defaults write com.apple.dock show-process-indicators -bool true
 
+# Set wallpaper (no worries, `DefaultDesktop.jpg` is already a symlink and all wallpapers are in `/Library/Desktop Pictures/` (Default: `Wave.jpg`))
+# OSX_DEFAULT_WALLPAPER="/System/Library/CoreServices/DefaultDesktop.jpg"
+# OSX_WALLPAPER="/Library/Desktop Pictures/Wave.jpg"
+# rm -rf "~/Library/Application Support/Dock/desktoppicture.db"
+# sudo rm -rf $OSX_DEFAULT_WALLPAPER
+# sudo ln -s $OSX_WALLPAPER $OSX_DEFAULT_WALLPAPER
+
 ###
 # Screen
 ###

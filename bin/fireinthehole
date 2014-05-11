@@ -12,7 +12,7 @@ source $DOTFILES/index.zsh
 sudo -v
 
 # update from remote
-echo_title_update " from remote"
+echo_title_update "from remote"
 
 echo "\n(╯°□°）╯ ︵ $CHAR_BOOM\n"
 

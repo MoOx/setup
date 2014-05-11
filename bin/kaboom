@@ -19,7 +19,7 @@ setup _cli
 
 setup logitech
 setup browsers
-setup sublime-text3
+setup atom
 
 setup slate
 setup osx-enhancements

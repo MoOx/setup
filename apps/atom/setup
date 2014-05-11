@@ -3,26 +3,27 @@
 if ! type "apm" > /dev/null
 then
 	brewcaskinstall atom
-	apm install editorconfig
-	apm install docblockr
-	apm install close-tags
-	apm install htmlhint
-	apm install csslint
-	apm install linter
-	apm install linter-jscs
-	apm install linter-jshint
-	apm install css-color-highlighting
-	apm install rdio
-	apm install atom-prettify
-	apm install npm-install
-	apm install npm-docs
-	apm install show-in-folder
-	apm install open-in-github-app
-	apm install gist-it
-	apm install travis-ci-status
-	apm install autocomplete-plus
-	apm install tabs-to-spaces
-	apm install language-apache
-	apm install merge-conflicts
-	apm install auto-update-packages
 fi
+
+apminstall editorconfig
+apminstall docblockr
+apminstall close-tags
+apminstall htmlhint
+apminstall csslint
+apminstall linter
+apminstall linter-jscs
+apminstall linter-jshint
+apminstall css-color-highlighting
+apminstall rdio
+apminstall atom-prettify
+apminstall npm-install
+apminstall npm-docs
+apminstall show-in-folder
+apminstall open-in-github-app
+apminstall gist-it
+apminstall travis-ci-status
+apminstall autocomplete-plus
+apminstall tabs-to-spaces
+apminstall language-apache
+apminstall merge-conflicts
+apminstall auto-update-packages

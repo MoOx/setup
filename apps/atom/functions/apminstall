@@ -1,0 +1,8 @@
+#!/bin/zsh
+
+function apminstall() {
+	if ! ls "$ATOM_PATH/packages" | grep -e "^$1" &> /dev/null
+	then
+		apm install $1 --loglevel
+	fi
+}

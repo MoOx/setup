@@ -17,6 +17,6 @@ fi
 brewtap homebrew/dupes
 
 # cask
-brewtap phinze/cask
+brewtap caskroom/cask
 brewtap caskroom/versions
 brewinstall "brew-cask"

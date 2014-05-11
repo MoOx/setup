@@ -19,6 +19,7 @@ echo_title_update "myself mofo !"
 
 cd $DOTFILES
 git pull origin master
+git submodule init
 git submodule update
 
 export FULLFIRE=false

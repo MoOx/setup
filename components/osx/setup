@@ -242,6 +242,9 @@ defaults write com.apple.dock show-process-indicators -bool true
 # sudo rm -rf $OSX_DEFAULT_WALLPAPER
 # sudo ln -s $OSX_WALLPAPER $OSX_DEFAULT_WALLPAPER
 
+# Reset Launchpad, but keep the desktop wallpaper intact
+find "$HOME/Library/Application Support/Dock" -name "*-*.db" -maxdepth 1 -delete
+
 ###
 # Screen
 ###

@@ -1,9 +1,7 @@
 #!/bin/zsh
 
-export DIR_APP=/Applications
+alias dockutil="$DOTFILES/submodules/osx/dockutil/scripts/dockutil"
 
-export OSX_INSTALL_APP="/Applications/Install OS X Mavericks.app"
-export OSX_MENU_EXTRAS="/System/Library/CoreServices/Menu\ Extras"
 alias seeosxmenuextras="open $OSX_MENU_EXTRAS"
 
 ##

@@ -1,11 +1,17 @@
 #!/bin/zsh
 
-brewcaskinstall "Google Chrome"
-brewcaskinstall "Firefox"
-brewcaskinstall "Opera"
-
 brewcaskinstall "FirefoxNightly" "firefox-nightly" "$HOME/Applications"
+dockutil --no-restart --add "~/Applications/FirefoxNightly.app" --before "Safari"
+
 brewcaskinstall "FirefoxAurora" "firefox-aurora" "$HOME/Applications"
+
+brewcaskinstall "Firefox"
+dockutil --no-restart --add "/Applications/Firefox.app" --before "Safari"
+
+brewcaskinstall "Google Chrome"
+dockutil --no-restart --add "/Applications/Google Chrome.app" --after "Safari"
+
+brewcaskinstall "Opera"
 
 brewcaskinstall "Utilities/Adobe Flash Player Install Manager" "flash"
 brewcaskinstall "/Library/Internet Plug-Ins/googletalkbrowserplugin.plugin" "google-hangouts"
@@ -13,3 +19,5 @@ brewcaskinstall "/Library/Internet Plug-Ins/googletalkbrowserplugin.plugin" "goo
 # might be required http://software.intel.com/en-us/android/articles/intel-hardware-accelerated-execution-manager
 # brewinstall android-sdk
 brewcaskinstall genymotion
+
+fuckosxdock

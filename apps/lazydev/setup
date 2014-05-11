@@ -5,7 +5,7 @@ brewcaskinstall "Tunnelblick" $HOME/Applications
 
 # lazydev
 brewcaskinstall "GitHub" $HOME/Applications
-
+dockutil --no-restart --add "~/Applications/GitHub.app" --before "Atom"
 # just in case
 brewcaskinstall "ImageAlpha" $HOME/Applications
 brewcaskinstall "ImageOptim" $HOME/Applications
@@ -21,7 +21,10 @@ brewcaskinstall "Synergy" $HOME/Applications
 
 brewcaskinstall "SourceTree" $HOME/Applications
 brewcaskinstall "iTerm" "iterm2" $HOME/Applications
+dockutil --no-restart --add "~/Applications/iTerm.app" --before "Console"
 
 brewcaskinstall "NameChanger" $HOME/Applications
 
 brewcaskinstall "GrandPerspective" $HOME/Applications
+
+fuckosxdock

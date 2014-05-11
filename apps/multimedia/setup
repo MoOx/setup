@@ -3,9 +3,13 @@
 brewcaskinstall "VLC"
 brewcaskinstall "MPlayerX"
 brewcaskinstall "Rdio"
+dockutil --no-restart --add "/Applications/Rdio.app" --after "iTunes"
+
 brewcaskinstall "All2MP3"
 
 brewcaskinstall "Subtitles"
 brewcaskinstall "Jubler" $HOME/Applications
 
 brewcaskinstall "Last.fm" "lastfm" $HOME/Applications
+
+fuckosxdock

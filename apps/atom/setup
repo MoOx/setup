@@ -27,3 +27,5 @@ apminstall tabs-to-spaces
 apminstall language-apache
 apminstall merge-conflicts
 apminstall auto-update-packages
+
+dockutil --add "/Applications/Atom.app" --before "Console"

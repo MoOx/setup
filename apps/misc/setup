@@ -3,6 +3,7 @@
 brewcaskinstall "KeePassX" "keepassx2"
 brewcaskinstall "LibreOffice"
 brewcaskinstall "Steam"
+dockutil --add "~/Applications/Steam.app" --after "Console"
 
 #toadd
 #openemu

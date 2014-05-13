@@ -18,10 +18,5 @@
     'monokai-tweaked-syntax'
   ]
   'projectHome': '/Users/MoOx/Sync/Development'
-  'disabledPackages': [
-    'autocomplete-plus'
-  ]
-'autosave':
-  'enabled': true
-'jshint':
-  'validateOnlyOnSave': true
+'autosave': {}
+'autocomplete-plus': {}

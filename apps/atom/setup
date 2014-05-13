@@ -2,33 +2,51 @@
 
 if ! type "apm" > /dev/null
 then
-	brewcaskinstall atom
+  brewcaskinstall atom
 fi
 
 dockutil --add "/Applications/Atom.app" --before "Console"
 
 if type "apm" > /dev/null
 then
-	apminstall editorconfig
-	apminstall docblockr
-	apminstall close-tags
-	apminstall htmlhint
-	apminstall csslint
-	apminstall linter
-	apminstall linter-jscs
-	apminstall linter-jshint
-	apminstall css-color-highlighting
-	apminstall Rdio
-	apminstall atom-prettify
-	apminstall npm-install
-	apminstall npm-docs
-	apminstall show-in-folder
-	apminstall open-in-github-app
-	apminstall gist-it
-	apminstall travis-ci-status
-	apminstall autocomplete-plus
-	apminstall tabs-to-spaces
-	apminstall language-apache
-	apminstall merge-conflicts
-	apminstall auto-update-packages
+  apminstall auto-update-packages
+
+  # theme
+  apminstall monokai-tweaked-ui
+  apminstall monokai-tweaked-syntax
+
+  # editor enhancements
+  apminstall show-in-folder
+  apminstall open-in-github-app
+  apminstall gist-it
+  apminstall tabs-to-spaces
+  apminstall autocomplete-plus
+
+  apminstall atom-prettify
+  apminstall merge-conflicts
+
+  apminstall editorconfig
+  apminstall linter
+
+  apminstall docblockr
+  apminstall travis-ci-status
+
+  # html
+  apminstall close-tags
+  apminstall htmlhint
+
+  # css
+  apminstall csslint
+  apminstall css-color-highlighting
+
+  # js
+  apminstall linter-jscs
+  apminstall linter-jshint
+  apminstall linter-json
+
+  # nodejs
+  apminstall npm-install
+  apminstall npm-docs
+
+  apminstall language-apache
 fi

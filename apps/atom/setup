@@ -48,5 +48,9 @@ then
   apminstall npm-install
   apminstall npm-docs
 
+  #jsx
+  apminstall language-jsx
+  apminstall linter-jsxhint
+
   apminstall language-apache
 fi

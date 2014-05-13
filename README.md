@@ -62,6 +62,15 @@ The `dotfiles` command is pretty smart & will allow you to symlink you component
 When you run this command it will ask you if there is already existing files (to avoid file lose).  
 _Note that this command will not bother you for dotfiles alread symlinked._
 
+## Submodules
+
+### Update submodules
+
+```shell
+git submodule foreach git pull origin master
+git add -A submodules
+git commit -m "Update submodules"
+```
 
 ## Inspired by
 

@@ -6,68 +6,68 @@
 // App object: https://github.com/jigish/slate/wiki/Application-Object
 
 // Monitors
-var monitor_huge = "2560x1440";
-var monitor_big = "1920x1080";
-var monitor_laptop = "1440x900";
+var monitor_huge = "2560x1440"
+var monitor_big = "1920x1080"
+var monitor_laptop = "1440x900"
 
-var positions = {};
+var positions = {}
 positions.full = slate.operation("move", {
   "x": "screenOriginX",
   "y": "screenOriginY",
   "width": "screenSizeX",
   "height": "screenSizeY"
-});
+})
 positions.top__half = positions.full.dup({
   "height": "screenSizeY/2"
-});
+})
 positions.left__half = positions.full.dup({
   "height": "screenSizeY",
   "width": "screenSizeX/2"
-});
+})
 positions.left_top__half = positions.left__half.dup({
   "height": "screenSizeY/2"
-});
+})
 positions.left_bottom__half = positions.left_top__half.dup({
   "y": "screenOriginY+screenSizeY/2"
-});
+})
 positions.left__3of4 = positions.full.dup({
   "width": "screenSizeX/4*3"
-});
+})
 
 positions.right__half = positions.full.dup({
   "height": "screenSizeY",
   "width": "screenSizeX/2",
   "x": "screenOriginX+screenSizeX/2"
-});
+})
 positions.right_top__half = positions.right__half.dup({
   "height": "screenSizeY/2"
-});
+})
 positions.right_bottom__half = positions.right_top__half.dup({
   "y": "screenOriginY+screenSizeY/2"
-});
+})
 positions.right__1of3 = positions.full.dup({
   "height": "screenSizeY",
   "width": "screenSizeX/3",
   "x": "screenOriginX+screenSizeX/3*2"
-});
+})
 positions.right__2of3 = positions.full.dup({
   "height": "screenSizeY",
   "width": "2*screenSizeX/3",
   "x": "screenOriginX+screenSizeX/3"
-});
+})
 positions.right__1of4 = positions.full.dup({
   "width": "screenSizeX/4",
   "x": "screenOriginX+screenSizeX-screenSizeX/4"
-});
+})
 positions.right__1of4__top__1of3 = positions.right__1of4.dup({
   "height": "screenSizeY/3"
-});
+})
 positions.right__1of4__top__2of3 = positions.right__1of4__top__1of3.dup({
   "y": "screenOriginY+screenSizeY/3"
-});
+})
 positions.right__1of4__top__3of3 = positions.right__1of4__top__1of3.dup({
   "y": "screenOriginY+(screenSizeY/3*2)"
-});
+})
 
 var tweetbotWidth = 600;
 positions.tweetbot = slate.operation("move", {
@@ -76,9 +76,9 @@ positions.tweetbot = slate.operation("move", {
   "y": "screenOriginY",
   "width" : tweetbotWidth,
   "height": "screenSizeY"
-});
+})
 
-slate.log('❯ Positions defined');
+slate.log('❯ Positions defined')
 
 var hashes = {
   main: {
@@ -150,11 +150,11 @@ var hashes = {
       "repeat" : true
     }
   }
-};
+}
 
-slate.log('❯ Hashes defined');
+slate.log('❯ Hashes defined')
 
-var layouts = {};
+var layouts = {}
 
 layouts.imacExtended = slate.layout("layout:imacExtended", {
   "Calendar": hashes.main.left__half,
@@ -182,7 +182,7 @@ layouts.imacExtended = slate.layout("layout:imacExtended", {
   "Gitter": hashes.secondary.right_top__half,
 
   "LimeChat": hashes.secondary.right_bottom__half
-});
+})
 
 layouts.imac = slate.layout("layout:imac", {
   "Calendar": hashes.main.left__half,
@@ -215,15 +215,15 @@ layouts.imac = slate.layout("layout:imac", {
 
   "VLC": hashes.main.right__1of4__top__3of3,
   "MPlayerX": hashes.main.right__1of4__top__3of3
-});
+})
 
 layouts.laptopExtended = layouts.imacExtended;
 
 layouts.laptop = slate.layout("layout:laptop", {
 
-});
+})
 
-slate.log('❯ Layouts defined');
+slate.log('❯ Layouts defined')
 
 // If VLC is running a video, just make it take a quarter of the laptop screen,
 // & make iTerm take the rest of the left half
@@ -243,18 +243,18 @@ var adaptWhenVideoIsRunning = function() {
               // and if it's visible (not an hidden window (eg. pause + minimized))
               !window.isMinimizedOrHidden()
         ) {
-          slate.log('Video is running');
+          slate.log('Video is running')
 
           // mplayer is better for tvshow since it handle next episodes automatically :)
           //if (app.name() === "MPlayerX" || app.name() === "VLC") {
           // if two screens, move in the small screen on the top, using half of the height
           if (slate.screenCount() === 2) {
-            window.doOperation(positions.top__half.dup({screen: 1}));
+            window.doOperation(positions.top__half.dup({screen: 1}))
             moved = true;
           }
           // if one screen, move in the small screen on the top, using half of the height
           else if (slate.screenCount() === 1) {
-            // window.doOperation(positions.right__1of3);
+            // window.doOperation(positions.right__1of3)
             // moved = true;
           }
           //}
@@ -266,19 +266,19 @@ var adaptWhenVideoIsRunning = function() {
               app.eachWindow(function(window) {
                 if (window.isMain()) {
                   if (slate.screenCount() === 2) {
-                    window.doOperation(positions.left_bottom__half);
+                    window.doOperation(positions.left_bottom__half)
                   }
                 }
-              });
+              })
             }
-          });
+          })
         }
-      });
+      })
     }
-  });
+  })
 
 return moved;
-};
+}
 
 // Layout Operations
 var layoutsOperations = {
@@ -286,46 +286,46 @@ var layoutsOperations = {
   imac: slate.operation("layout", { "name": "layout:imac" }),
   laptopExtended: slate.operation("layout", { "name": "layout:laptopExtended" }),
   laptop: slate.operation("layout", { "name": "layout:laptopLayout" })
-};
+}
 
 var universalLayout = function() {
-  slate.log('❯ Universal layout');
+  slate.log('❯ Universal layout')
 
-  var screenCount = slate.screenCount();
-  var hugeMonitorIsHere = slate.screenForRef(monitor_huge);
-  var laptopMonitorIsHere = slate.screenForRef(monitor_laptop);
+  var screenCount = slate.screenCount()
+  var hugeMonitorIsHere = slate.screenForRef(monitor_huge)
+  var laptopMonitorIsHere = slate.screenForRef(monitor_laptop)
 
   if (screenCount === 2 && hugeMonitorIsHere) {
-    slate.log('Layout detected: imac extended');
-    layoutsOperations.imacExtended.run();
+    slate.log('Layout detected: imac extended')
+    layoutsOperations.imacExtended.run()
   }
   else if (screenCount === 1 && hugeMonitorIsHere) {
-    slate.log('Layout detected: imac');
-    layoutsOperations.imac.run();
+    slate.log('Layout detected: imac')
+    layoutsOperations.imac.run()
   }
   else if (screenCount === 2 && laptopMonitorIsHere) {
-    slate.log('Layout detected: laptop extended');
-    layoutsOperations.laptopExtended.run();
+    slate.log('Layout detected: laptop extended')
+    layoutsOperations.laptopExtended.run()
   }
   else if (screenCount === 1 && laptopMonitorIsHere) {
-    slate.log('Layout detected: laptop');
-    layoutsOperations.laptop.run();
+    slate.log('Layout detected: laptop')
+    layoutsOperations.laptop.run()
   }
   else {
-    slate.log("Unkown layout, ignored");
+    slate.log("Unkown layout, ignored")
   }
 
-  slate.log("❯ Universal layout: adapt video player");
-  adaptWhenVideoIsRunning();
-};
+  slate.log("❯ Universal layout: adapt video player")
+  adaptWhenVideoIsRunning()
+}
 
 // Defaults when screens are detected
-slate.default([monitor_huge, monitor_big], "layout:imacExtended");
-slate.default([monitor_huge], "layout:imac");
-slate.default([monitor_big, monitor_laptop], "layout:laptopExtended");
-slate.default([monitor_laptop], "layout:laptop");
+slate.default([monitor_huge, monitor_big], "layout:imacExtended")
+slate.default([monitor_huge], "layout:imac")
+slate.default([monitor_big, monitor_laptop], "layout:laptopExtended")
+slate.default([monitor_laptop], "layout:laptop")
 
-slate.log('❯ Defaults done');
+slate.log('❯ Defaults done')
 
 slate.bindAll({
     // Layout Bindings
@@ -341,8 +341,8 @@ slate.bindAll({
   "esc:ctrl" : slate.operation("grid"),
 
   "1:cmd,alt,shift": function(win) {
-    win.doOperation(positions.full);
+    win.doOperation(positions.full)
   }
-});
+})
 
-slate.log('❯ Binds done');
+slate.log('❯ Binds done')

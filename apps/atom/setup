@@ -43,6 +43,7 @@ then
   apminstall linter-jscs
   apminstall linter-jshint
   apminstall linter-json
+  apminstall language-jade
 
   # nodejs
   apminstall npm-install

@@ -8,7 +8,7 @@
   'userId': '9e20623847c7c22109bc7b34e71c459485f8781a'
 'editor':
   'showInvisibles': true
-  'fontFamily': 'Monaco'
+  'fontFamily': 'Consolas'
   'showIndentGuide': true
   'softTabs': false
   'fontSize': 14

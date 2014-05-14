@@ -6,9 +6,9 @@
 // App object: https://github.com/jigish/slate/wiki/Application-Object
 
 // Monitors
-var monitor_huge = "2560x1440"
-var monitor_big = "1920x1080"
-var monitor_laptop = "1440x900"
+var monitorXL = "2560x1440"
+var monitorL = "1920x1080"
+var monitorM = "1440x900"
 
 var positions = {}
 positions.full = slate.operation("move", {
@@ -33,6 +33,9 @@ positions.left_bottom__half = positions.left_top__half.dup({
 positions.left__3of4 = positions.full.dup({
   "width": "screenSizeX/4*3"
 })
+positions.left__2of3 = positions.full.dup({
+  "width": "screenSizeX/3*2"
+})
 
 positions.right__half = positions.full.dup({
   "height": "screenSizeY",
@@ -49,6 +52,12 @@ positions.right__1of3 = positions.full.dup({
   "height": "screenSizeY",
   "width": "screenSizeX/3",
   "x": "screenOriginX+screenSizeX/3*2"
+})
+positions.right__1of3__top__half = positions.right__1of3.dup({
+  "height": "screenSizeY/2"
+})
+positions.right__1of3__bottom__half = positions.right__1of3__top__half.dup({
+  "y": "screenOriginY+screenSizeY/2"
 })
 positions.right__2of3 = positions.full.dup({
   "height": "screenSizeY",
@@ -82,88 +91,52 @@ slate.log('❯ Positions defined')
 
 var hashes = {
   main: {
-    full: {
-      "operations" : [positions.full.dup({"screen": 0})],
-      "ignore-fail" : true,
-      "repeat" : true
-    },
-    left__half: {
-      "operations" : [positions.left__half.dup({"screen": 0})],
-      "ignore-fail" : true,
-      "repeat" : true
-    },
-    right__half: {
-      "operations" : [positions.right__half.dup({"screen": 0})],
-      "ignore-fail" : true,
-      "repeat" : true
-    },
-    left__3of4: {
-      "operations" : [positions.left__3of4.dup({"screen": 0})],
-      "ignore-fail" : true,
-      "repeat" : true
-    },
-    right__1of4: {
-      "operations" : [positions.right__1of4.dup({"screen": 0})],
-      "ignore-fail" : true,
-      "repeat" : true
-    },
-    right__2of3: {
-      "operations" : [positions.right__2of3.dup({"screen": 0})],
-      "ignore-fail" : true,
-      "repeat" : true
-    },
-    right__1of4__top__1of3: {
-      "operations" : [positions.right__1of4__top__1of3.dup({"screen": 0})],
-      "ignore-fail" : true,
-      "repeat" : true
-    },
-    right__1of4__top__2of3: {
-      "operations" : [positions.right__1of4__top__2of3.dup({"screen": 0})],
-      "ignore-fail" : true,
-      "repeat" : true
-    },
-    right__1of4__top__3of3: {
-      "operations" : [positions.right__1of4__top__3of3.dup({"screen": 0})],
-      "ignore-fail" : true,
-      "repeat" : true
-    }
+    full: { "operations" : [positions.full.dup({"screen": 0})] },
+    left__half: { "operations" : [positions.left__half.dup({"screen": 0})] },
+    right__half: { "operations" : [positions.right__half.dup({"screen": 0})] },
+    left__3of4: { "operations" : [positions.left__3of4.dup({"screen": 0})] },
+    left__2of3: { "operations" : [positions.left__2of3.dup({"screen": 0})] },
+    right__1of4: { "operations" : [positions.right__1of4.dup({"screen": 0})] },
+    right__1of3: { "operations" : [positions.right__1of3.dup({"screen": 0})] },
+    right__1of3__top__half: { "operations" : [positions.right__1of3__top__half.dup({"screen": 0})] },
+    right__1of3__bottom__half: { "operations" : [positions.right__1of3__bottom__half.dup({"screen": 0})] },
+    right__2of3: { "operations" : [positions.right__2of3.dup({"screen": 0})] },
+    right__1of4__top__1of3: { "operations" : [positions.right__1of4__top__1of3.dup({"screen": 0})] },
+    right__1of4__top__2of3: { "operations" : [positions.right__1of4__top__2of3.dup({"screen": 0})] },
+    right__1of4__top__3of3: { "operations" : [positions.right__1of4__top__3of3.dup({"screen": 0}) ]}
   },
   secondary: {
-    left__half: {
-      "operations" : [positions.left__half.dup({"screen": 1})],
-      "ignore-fail" : true,
-      "repeat" : true
-    },
-    right__half: {
-      "operations" : [positions.right__half.dup({"screen": 1})],
-      "ignore-fail" : true,
-      "repeat" : true
-    },
-    right_top__half: {
-      "operations" : [positions.right_top__half.dup({"screen": 1})],
-      "ignore-fail" : true,
-      "repeat" : true
-    },
-    right_bottom__half: {
-      "operations" : [positions.right_bottom__half.dup({"screen": 1})],
-      "ignore-fail" : true,
-      "repeat" : true
-    }
+    left__half: { "operations" : [positions.left__half.dup({"screen": 1})] },
+    right__half: { "operations" : [positions.right__half.dup({"screen": 1})] },
+    right_top__half: { "operations" : [positions.right_top__half.dup({"screen": 1})] },
+    right_bottom__half: { "operations" : [positions.right_bottom__half.dup({"screen": 1}) ]}
   }
 }
 
-slate.log('❯ Hashes defined')
+// default to ignore-fail & repeat
+Object.keys(hashes).forEach(function(type) {
+  Object.keys(hashes[type]).forEach(function(hashName) {
+    if (hashes[type][hashName]["ignore-fail"] === undefined) {
+      hashes[type][hashName]["ignore-fail"] = true
+    }
+    if (hashes[type][hashName]["repeat"] === undefined) {
+      hashes[type][hashName]["repeat"] = true
+    }
+  })
+})
+
+slate.log('❯ Hashes defined', hashes)
 
 var layouts = {}
 
-layouts.imacExtended = slate.layout("layout:imacExtended", {
+layouts.XL = slate.layout("layout:XL", {
   "Calendar": hashes.main.left__half,
   "Wunderlist": hashes.main.right__half,
 
-  "Google Chrome" : hashes.main.full,
   "Firefox" : hashes.main.full,
   "Aurora" : hashes.main.full, // Firefox
   "Nightly" : hashes.main.full, // Firefox
+  "Google Chrome" : hashes.main.full,
 
   "Atom": hashes.main.right__2of3,
   "Sublime Text": hashes.main.right__2of3,
@@ -184,14 +157,14 @@ layouts.imacExtended = slate.layout("layout:imacExtended", {
   "LimeChat": hashes.secondary.right_bottom__half
 })
 
-layouts.imac = slate.layout("layout:imac", {
+layouts.L = slate.layout("layout:L", {
   "Calendar": hashes.main.left__half,
   "Wunderlist": hashes.main.right__half,
 
-  "Google Chrome" : hashes.main.left__3of4,
   "Firefox" : hashes.main.left__3of4,
   "Aurora" : hashes.main.left__3of4, // Firefox
   "Nightly" : hashes.main.left__3of4, // Firefox
+  "Google Chrome" : hashes.main.left__3of4,
 
   "Atom": hashes.main.left__3of4,
   "Sublime Text": hashes.main.left__3of4,
@@ -217,15 +190,44 @@ layouts.imac = slate.layout("layout:imac", {
   "MPlayerX": hashes.main.right__1of4__top__3of3
 })
 
-layouts.laptopExtended = layouts.imacExtended;
+layouts.XM = layouts.XL;
 
-layouts.laptop = slate.layout("layout:laptop", {
+layouts.M = slate.layout("layout:M", {
+  "Calendar": hashes.main.full,
+  "Wunderlist": hashes.main.right__half,
 
+  "Firefox" : hashes.main.left__2of3,
+  "Aurora" : hashes.main.left__2of3, // Firefox
+  "Nightly" : hashes.main.left__2of3, // Firefox
+  "Google Chrome" : hashes.main.left__2of3,
+
+  "Atom": hashes.main.left__2of3,
+  "Sublime Text": hashes.main.left__2of3,
+
+  "Tweetbot" : {
+    "operations" : [positions.tweetbot.dup({
+      "x": "screenOriginX+screenSizeX-" + tweetbotWidth,
+    })],
+    "ignore-fail" : true,
+    "repeat" : true
+  },
+
+  "iTerm" : hashes.main.right__1of3__top__half,
+  "Terminal" : hashes.main.right__1of3__top__half,
+
+  "LimeChat": hashes.main.right__1of3__bottom__half,
+
+  "Skype": hashes.main.right__1of3__bottom__half,
+  "Gitter": hashes.main.right__1of3__bottom__half,
+  "HipChat": hashes.main.right__1of3__bottom__half,
+
+  "VLC": hashes.main.right__1of3__bottom__half,
+  "MPlayerX": hashes.main.right__1of3__bottom__half
 })
 
 slate.log('❯ Layouts defined')
 
-// If VLC is running a video, just make it take a quarter of the laptop screen,
+// If VLC is running a video, just make it take a quarter of the M screen,
 // & make iTerm take the rest of the left half
 var adaptWhenVideoIsRunning = function() {
   var moved = false;
@@ -282,48 +284,30 @@ return moved;
 
 // Layout Operations
 var layoutsOperations = {
-  imacExtended: slate.operation("layout", { "name": "layout:imacExtended" }),
-  imac: slate.operation("layout", { "name": "layout:imac" }),
-  laptopExtended: slate.operation("layout", { "name": "layout:laptopExtended" }),
-  laptop: slate.operation("layout", { "name": "layout:laptopLayout" })
+  XL: slate.operation("layout", { "name": "layout:XL" }),
+  L: slate.operation("layout", { "name": "layout:L" }),
+  XM: slate.operation("layout", { "name": "layout:XM" }),
+  M: slate.operation("layout", { "name": "layout:M" })
 }
 
 var universalLayout = function() {
   slate.log('❯ Universal layout')
 
-  var screenCount = slate.screenCount()
-  var hugeMonitorIsHere = slate.screenForRef(monitor_huge)
-  var laptopMonitorIsHere = slate.screenForRef(monitor_laptop)
+  var screenModifier = slate.screenCount() === 2 ? "X" : ""
+  var screenSize = slate.screenForRef(0).rect().width > 1440 ? "L" : "M"
+ 
+  // slate.log("❯ Universal layout ", screenSize, screenModifier, layoutsOperations[screenModifier + screenSize])
+  layoutsOperations[screenModifier + screenSize].run()
 
-  if (screenCount === 2 && hugeMonitorIsHere) {
-    slate.log('Layout detected: imac extended')
-    layoutsOperations.imacExtended.run()
-  }
-  else if (screenCount === 1 && hugeMonitorIsHere) {
-    slate.log('Layout detected: imac')
-    layoutsOperations.imac.run()
-  }
-  else if (screenCount === 2 && laptopMonitorIsHere) {
-    slate.log('Layout detected: laptop extended')
-    layoutsOperations.laptopExtended.run()
-  }
-  else if (screenCount === 1 && laptopMonitorIsHere) {
-    slate.log('Layout detected: laptop')
-    layoutsOperations.laptop.run()
-  }
-  else {
-    slate.log("Unkown layout, ignored")
-  }
-
-  slate.log("❯ Universal layout: adapt video player")
+  // slate.log("❯ Universal layout: adapt video player")
   adaptWhenVideoIsRunning()
 }
 
 // Defaults when screens are detected
-slate.default([monitor_huge, monitor_big], "layout:imacExtended")
-slate.default([monitor_huge], "layout:imac")
-slate.default([monitor_big, monitor_laptop], "layout:laptopExtended")
-slate.default([monitor_laptop], "layout:laptop")
+slate.default([monitorXL, monitorL], "layout:XL")
+slate.default([monitorXL], "layout:L")
+slate.default([monitorL, monitorM], "layout:XM")
+slate.default([monitorM], "layout:M")
 
 slate.log('❯ Defaults done')
 

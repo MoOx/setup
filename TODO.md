@@ -1,15 +1,13 @@
 # TODO
 
+- Firefox about:config mousewheel.with_meta.action 0 (disable zoom when cmd+mousewheel)
 - Finish First-run.md
-- Move packages list as external files (osx apps, node/gems/brew packages...)
-- Dl & install Sublime Package
 - Themes (iterm, limechat, ...)
 - IE VMs
 
 		curl -s https://raw.github.com/xdissent/ievms/master/ievms.sh | INSTALL_PATH="$HD/Users/MoOx/VMs/ievms" IEVMS_VERSIONS="6 9" bash
 
 `/!\` Eventually install & configure a software like [Synergy](http://synergy-foss.org/download/?list) to be able to control/configure the fresh OS while you are working on another one.
-
 
 - network sharing
 - configure ssh access + change port
@@ -85,12 +83,6 @@ Copy your token from the token field & paste your token into ~/.github_token (`e
 [Paste clipboard content as a new key on your Github account settings](https://github.com/settings/ssh)
 
 
-## First run some apps
-
-Run apps you want to open during startup & activate that option in _Preferences_.
-
-	
-
 ## Setup Internet Accounts
 
 System Preferences > Internet Accounts
@@ -99,10 +91,6 @@ System Preferences > Internet Accounts
 
 Remove duplicate OS X notifications: System Preferences > Notifications Center > Remove Twitter from center & choose "None" for alert style.
 
-
-## Setup MenuMeters
-
-System Preferences > MenuMeters
 
 ### Setup n64 emulator with high resolution textures
 

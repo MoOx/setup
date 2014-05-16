@@ -6,25 +6,27 @@ brewcaskinstall "Tunnelblick" $HOME/Applications
 # lazydev
 brewcaskinstall "GitHub" $HOME/Applications
 dockutil --no-restart --add "~/Applications/GitHub.app" --before "Atom"
+brewcaskinstall "Versions" $HOME/Applications
+brewcaskinstall "SourceTree" $HOME/Applications
+
 # just in case
-brewcaskinstall "ImageAlpha" $HOME/Applications
 brewcaskinstall "ImageOptim" $HOME/Applications
+brewcaskinstall "ImageAlpha" $HOME/Applications
 
 # more utilities
 brewcaskinstall "Mou" $HOME/Applications
 brewcaskinstall "Cloud" "cloudapp" $HOME/Applications
 
-brewcaskinstall "VirtualBox" $HOME/Applications
-brewcaskinstall "Versions" $HOME/Applications
-
 brewcaskinstall "Synergy" $HOME/Applications
 
-brewcaskinstall "SourceTree" $HOME/Applications
 brewcaskinstall "iTerm" "iterm2" $HOME/Applications
 dockutil --no-restart --add "~/Applications/iTerm.app" --before "Console"
 
 brewcaskinstall "NameChanger" $HOME/Applications
 
 brewcaskinstall "GrandPerspective" $HOME/Applications
+
+brewcaskinstall "VirtualBox" $HOME/Applications
+brewcaskinstall "VMWare Fusion" $HOME/vmware-fusion
 
 fuckosxdock

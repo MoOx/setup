@@ -7,3 +7,5 @@ command -v npm > /dev/null && alias npme="npm --registry http://registry.npmjs.e
 alias npmug="npm update -g --loglevel warn"
 
 alias npmr="npm run"
+
+alias npms="npmstart" #npmstart function

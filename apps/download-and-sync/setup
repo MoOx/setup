@@ -6,17 +6,7 @@
 brewcaskinstall "BitTorrent Sync"
 brewcaskinstall "Dropbox"
 
-# cd $HOME/Library/Application\ Support/; ls -1 $DIR_SYNC_LIBRARY/Application\ Support/ | sed 's/\ /\\\ /g' | xargs rm -rf
-# ln -s $DIR_SYNC_LIBRARY/Application\ Support/* $HOME/Library/Application\ Support
-
-cd $HOME/Library/PreferencePanes/; ls -1 $DIR_SYNC_LIBRARY/PreferencePanes/ | sed 's/\ /\\\ /g' | xargs rm -rf
-ln -s $DIR_SYNC_LIBRARY/PreferencePanes/* $HOME/Library/PreferencePanes
-
-cd $HOME/Library/Preferences/; ls -1 $DIR_SYNC_LIBRARY/Preferences/ | sed 's/\ /\\\ /g' | xargs rm -rf
-ln -s $DIR_SYNC_LIBRARY/Preferences/* $HOME/Library/Preferences
-
-sudo rm -rf $HOME/Library/Fonts; ln -s $DIR_SYNC_LIBRARY/Fonts $HOME/Library/Fonts
-sudo rm -rf $HOME/Library/Messages; ln -s $DIR_SYNC_LIBRARY/Messages $HOME/Library/Messages
+sudo rm -rf $HOME/Library/Fonts; ln -s $DIR_SYNC/Fonts $HOME/Library/Fonts
 
 sudo rm -rf $HOME/Music; ln -s $DIR_SYNC/Music $HOME/Music
 sudo rm -rf $HOME/iTunes; ln -s $HOME/Music $HOME/iTunes

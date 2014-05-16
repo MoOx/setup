@@ -6,7 +6,7 @@
 brewcaskinstall "BitTorrent Sync"
 brewcaskinstall "Dropbox"
 
-sudo rm -rf $HOME/Library/Fonts; ln -s $DIR_SYNC/Fonts $HOME/Library/Fonts
+sudo rm -rf $HOME/Library/Fonts; ln -s $DIR_SYNC_BTSYNC/Fonts $HOME/Library/Fonts
 
 sudo rm -rf $HOME/Music; ln -s $DIR_SYNC/Music $HOME/Music
 sudo rm -rf $HOME/iTunes; ln -s $HOME/Music $HOME/iTunes

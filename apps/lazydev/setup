@@ -27,6 +27,6 @@ brewcaskinstall "NameChanger" $HOME/Applications
 brewcaskinstall "GrandPerspective" $HOME/Applications
 
 brewcaskinstall "VirtualBox" $HOME/Applications
-brewcaskinstall "VMWare Fusion" $HOME/vmware-fusion
+brewcaskinstall "VMWare Fusion" $HOME/Applications
 
 fuckosxdock

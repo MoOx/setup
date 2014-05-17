@@ -1,0 +1,39 @@
+#!/bin/zsh
+
+dockutil --no-restart --remove all
+dockutil --no-restart --add "/Applications/Safari.app"
+dockutil --no-restart --add "/Applications/Xcode.app/Contents/Applications/iPhone Simulator.app"
+dockutil --no-restart --add "/Applications/Mail.app"
+dockutil --no-restart --add "/Applications/Calendar.app"
+dockutil --no-restart --add "/Applications/Messages.app"
+dockutil --no-restart --add "/Applications/iTunes.app"
+dockutil --no-restart --add "/Applications/Utilities/Console.app"
+dockutil --no-restart --add "/Applications/Stickies.app"
+dockutil --no-restart --add "/Applications" --view grid --display folder --sort name
+
+# from AppStore
+dockutil --no-restart --add "/Applications/Wunderlist.app" --after "Calendar"
+dockutil --no-restart --add "/Applications/Tweetbot.app" --before "Messages"
+
+defaults write com.apple.dock tilesize -int 36
+
+# no boucing icons
+defaults write com.apple.dock no-bouncing -bool true
+
+# dim hidden apps
+defaults write com.apple.dock showhidden -bool true
+
+# Faster animation when switching spaces
+defaults write com.apple.dock expose-animation-duration -float 0.15
+
+# Minimize windows into their application’s icon
+defaults write com.apple.dock minimize-to-application -bool true
+
+# Enable spring loading for all Dock items
+defaults write com.apple.dock enable-spring-load-actions-on-all-items -bool true
+
+# Show indicator lights for open applications in the Dock
+defaults write com.apple.dock show-process-indicators -bool true
+
+# Dashboard.app not as a space
+defaults write com.apple.dock dashboard-in-overlay -bool true

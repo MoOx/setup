@@ -11,10 +11,11 @@ alias flushdns="dscacheutil -flushcache"
 alias changedns="sudo networksetup -setdnsservers \"$(networksetup -listnetworkserviceorder | awk -F'\\) ' '/\(1\)/ {print $2}')\" $@"
 alias ss="/System/Library/Frameworks/ScreenSaver.framework/Resources/ScreenSaverEngine.app/Contents/MacOS/ScreenSaverEngine -background &"
 
+alias killa="killall '${app}' > /dev/null 2>&1"
 # Fuck crash
-alias fuckosxfinder="killall Finder; if ls /Applications/XtraFinder.app 2>&1 > /dev/null; then; open /Applications/XtraFinder.app; fi"
-alias fuckosxdock="killall Dock"
-alias fuckosxmenubar="killall SystemUIServer NotificationCenter"
+alias fuckosxfinder="killa Finder; if ls /Applications/XtraFinder.app 2>&1 > /dev/null; then; open /Applications/XtraFinder.app; fi"
+alias fuckosxdock="killa Dock"
+alias fuckosxmenubar="killa SystemUIServer NotificationCenter"
 alias fuckosx="fuckosxfinder && fuckosxdock && fuckosxmenubar"
 
 # Show/hide hidden files in Finder

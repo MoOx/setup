@@ -365,6 +365,12 @@ defaults write com.apple.mail DraftsViewerAttributes -dict-add "DisplayInThreade
 defaults write com.apple.mail DraftsViewerAttributes -dict-add "SortedDescending" -string "yes"
 defaults write com.apple.mail DraftsViewerAttributes -dict-add "SortOrder" -string "received-date"
 
+defaults write com.apple.mail "NSToolbar Configuration MainWindow" -dict \
+  "TB Icon Size Mode" 1 \
+  "TB Is Shown" 1 \
+  "TB Size Mode" 1 \
+  "TB Item Identifiers" '("deleteMessages:",NSToolbarFlexibleSpaceItem,NSToolbarSpaceItem,"orderFrontColorPanel:",NSToolbarSpaceItem,"showComposeWindow:","checkNewMail:",NSToolbarFlexibleSpaceItem,"moveMessagesFromToolbar:",NSToolbarSpaceItem,"addSenderToContacts:","showAllHeaders:",NSToolbarFlexibleSpaceItem,Search)'
+
 ###
 # Spotlight
 ###

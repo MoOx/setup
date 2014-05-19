@@ -26,12 +26,31 @@ defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/Down
 # Expand the following File Info panes:
 # “General”, “Open with”, and “Sharing & Permissions”
 defaults write com.apple.finder FXInfoPanesExpanded -dict \
-	General -bool true \
-	OpenWith -bool true \
-	Privileges -bool true
+  General -bool true \
+  OpenWith -bool true \
+  Privileges -bool true
 
 # Allow QuickLook text selection
 defaults write com.apple.finder QLEnableTextSelection -bool true
 
 chflags hidden $HOME/"Automatically Add to iTunes.localized" &> /dev/null
 chflags nohidden $HOME/Library
+
+
+# XtraFinder options
+defaults write com.apple.finder "XtraFinder_XFAutoArrangeByNamePlugin" 1
+defaults write com.apple.finder "XtraFinder_XFBackspaceToGoBackPlugin" 1
+defaults write com.apple.finder "XtraFinder_XFCopyPathMenuPlugin" 1
+defaults write com.apple.finder "XtraFinder_XFCopyPathMenuPlugin_Default" 0
+defaults write com.apple.finder "XtraFinder_XFCutAndPastePlugin" 1
+defaults write com.apple.finder "XtraFinder_XFFoldersOnTopPlugin" 1
+defaults write com.apple.finder "XtraFinder_XFHideDotFilesOnDesktopPlugin" 1
+defaults write com.apple.finder "XtraFinder_XFMakeSymbolicLinkActionPlugin" 1
+defaults write com.apple.finder "XtraFinder_XFNewFileActionPlugin" 1
+defaults write com.apple.finder "XtraFinder_XFShowAllFilesActionPlugin" 1
+defaults write com.apple.finder "XtraFinder_XFShowAllFilesActionPlugin_Shortcut" -dict \
+  keyChars -string ">" \
+  keyCharsIgnoringModifiers -string ">" \
+  keyCode 50 \
+  modifierFlags 1179648 \
+  modifiers 768

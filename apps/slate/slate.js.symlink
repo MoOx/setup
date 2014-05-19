@@ -154,6 +154,7 @@ layouts.XL = slate.layout("layout:XL", {
   "HipChat": hashes.secondary.right_top__half,
   "Gitter": hashes.secondary.right_top__half,
   "Slack": hashes.secondary.right_top__half,
+  "Messages": hashes.secondary.right_top__half,
 
   "LimeChat": hashes.secondary.right_bottom__half
 })
@@ -183,10 +184,11 @@ layouts.L = slate.layout("layout:L", {
 
   "LimeChat": hashes.main.right__1of4__top__2of3,
 
+  "Messages": hashes.main.right__1of4__top__3of3,
   "Skype": hashes.main.right__1of4__top__3of3,
-  "Gitter": hashes.main.right__1of4__top__3of3,
   "HipChat": hashes.main.right__1of4__top__3of3,
   "Slack": hashes.main.right__1of4__top__3of3,
+  "Gitter": hashes.main.right__1of4__top__3of3,
 
   "VLC": hashes.main.right__1of4__top__3of3,
   "MPlayerX": hashes.main.right__1of4__top__3of3
@@ -223,6 +225,7 @@ layouts.M = slate.layout("layout:M", {
   "Gitter": hashes.main.right__1of3__bottom__half,
   "HipChat": hashes.main.right__1of3__bottom__half,
   "Slack": hashes.main.right__1of3__bottom__half,
+  "Messages": hashes.main.right__1of3__bottom__half,
 
   "VLC": hashes.main.right__1of3__bottom__half,
   "MPlayerX": hashes.main.right__1of3__bottom__half

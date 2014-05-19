@@ -14,8 +14,8 @@
   'fontSize': 14
 'core':
   'themes': [
-    'monokai-tweaked-ui'
-    'monokai-tweaked-syntax'
+    'atom-light-ui'
+    'atom-light-syntax'
   ]
   'projectHome': '/Users/MoOx/Sync/Development'
 'autosave': {}

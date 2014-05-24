@@ -12,8 +12,8 @@ then
   apminstall auto-update-packages
 
   # theme
-  apminstall monokai-tweaked-ui
-  apminstall monokai-tweaked-syntax
+  #apminstall monokai-tweaked-ui
+  #apminstall monokai-tweaked-syntax
 
   # editor enhancements
   apminstall show-in-folder
@@ -22,8 +22,8 @@ then
   apminstall tabs-to-spaces
   apminstall autocomplete-plus
 
-  apminstall atom-prettify
   apminstall merge-conflicts
+  apminstall git-blame
 
   apminstall editorconfig
   apminstall linter
@@ -31,9 +31,19 @@ then
   apminstall docblockr
   apminstall travis-ci-status
 
+	# editor ui
+	apminstall swap-panes
+	apminstall move-panes
+	apminstall resize-panes
+	apminstall maximize-panes
+
+	#html/css/js
+	apminstall atom-beautify
+
   # html
   apminstall close-tags
   apminstall htmlhint
+	atom-beautify package
 
   # css
   apminstall csslint

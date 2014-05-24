@@ -36,7 +36,7 @@
 	com = commit -m
 	coma = commit -am
 	coa = commit -a
-	st = status
+	st = stash -u
 	df = diff
 	dc = diff --cached
 	lg = log -p

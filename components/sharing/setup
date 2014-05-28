@@ -1,0 +1,18 @@
+#!/bin/zsh
+
+gemig gifme
+gimg cloudapp_api
+
+brewinstall imagemagick
+brewinstall ffmpeg
+
+CLOUDAPP_CREDS=$HOME/.cloudapp
+if ! ls $CLOUDAPP_CREDS &> /dev/null
+then
+  echo "Enter Cloud.app login/password"
+  read CLOUDAPP_LOGIN
+  read CLOUDAPP_PWD
+
+	echo $CLOUDAPP_LOGIN >> $CLOUDAPP_CREDS
+	echo $CLOUDAPP_PWD >> $CLOUDAPP_CREDS
+fi

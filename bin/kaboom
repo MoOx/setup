@@ -43,6 +43,9 @@ setup prey
 setup ruby
 
 setup lazydev
+
+setup sharing
+
 # todo add cron setup
 
 echo ""

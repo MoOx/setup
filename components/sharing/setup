@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 gemig gifme
-gimg cloudapp_api
+gemig cloudapp_api
 
 brewinstall imagemagick
 brewinstall ffmpeg

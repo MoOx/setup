@@ -12,8 +12,8 @@ then
   apminstall auto-update-packages
 
   # theme
-  #apminstall monokai-tweaked-ui
-  #apminstall monokai-tweaked-syntax
+  apminstall monokai-tweaked-ui
+  apminstall monokai-tweaked-syntax
 
   # editor enhancements
   apminstall show-in-folder
@@ -21,38 +21,40 @@ then
   apminstall gist-it
   apminstall tabs-to-spaces
   apminstall autocomplete-plus
+  apm install sublime-tabs
 
   apminstall merge-conflicts
   apminstall git-blame
 
   apminstall editorconfig
-  apminstall linter
+  apminstall linter # for linter-*
 
   apminstall docblockr
   apminstall travis-ci-status
 
-	# editor ui
-	apminstall swap-panes
-	apminstall move-panes
-	apminstall resize-panes
-	apminstall maximize-panes
+  # editor ui
+  apminstall swap-panes
+  apminstall move-panes
+  apminstall resize-panes
+  apminstall maximize-panes
 
-	#html/css/js
-	apminstall atom-beautify
+  # html/css/js
+  apminstall atom-beautify
 
   # html
   apminstall close-tags
   apminstall htmlhint
-	atom-beautify package
 
   # css
-  apminstall csslint
-  apminstall css-color-highlighting
+  apminstall linter-csslint
+  #apminstall css-color-highlighting
+  apminstall color-picker
+  apminstall bezier-curve-editor
 
   # js
   apminstall linter-jscs
   apminstall linter-jshint
-  apminstall linter-json
+  apminstall linter-jsonlint
   apminstall language-jade
 
   # nodejs

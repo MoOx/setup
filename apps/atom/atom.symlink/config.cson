@@ -8,17 +8,25 @@
   'userId': '9e20623847c7c22109bc7b34e71c459485f8781a'
 'editor':
   'showInvisibles': true
-  'fontFamily': 'Consolas'
   'showIndentGuide': true
   'softTabs': false
-  'fontSize': 14
+  'fontSize': 12
+  'fontFamily': 'Menlo'
 'core':
+  'projectHome': '/Users/MoOx/Sync/Development'
+  'disabledPackages': [
+    'sublime-tabs'
+    'css-color-highlighting'
+  ]
   'themes': [
-    'atom-light-ui'
+    'unity-dark-ui'
     'atom-light-syntax'
   ]
-  'projectHome': '/Users/MoOx/Sync/Development'
 'autosave': {}
 'autocomplete-plus': {}
 'Rdio':
   'showEqualizer (WindowResizePerformanceIssue )': false
+'whitespace': {}
+'sublime-tabs':
+  'showOnRightSide': true
+'tree-view': {}

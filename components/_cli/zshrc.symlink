@@ -71,5 +71,6 @@ export LESS_TERMCAP_ZW=$(tput rsupm)
 
 
 alias list-aliases="alias | sed 's/=.*//'"
-# show non _prefixed functions
-alias list-functions="declare -f | grep '^[a-z].* () {' | sed 's/{$//'"
+alias list-functions="declare -f | grep '^[a-z].* () {' | sed 's/{$//'" # show non _prefixed functions
+alias list="cat <(list-aliases) <(list-functions) | sort"
+alias search="list | grep"

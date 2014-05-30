@@ -65,6 +65,10 @@ List all aliases & functions (except _*). You should try that. Just mix `list-al
 
 _Obviously you will get a long list ;)_
 
+### `$ search {query}`
+
+List all aliases & functions (except _*) that will match the query (it's a `list | grep` alias)
+
 ---
 
 ## How it works ?

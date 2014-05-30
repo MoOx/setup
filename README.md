@@ -1,16 +1,17 @@
-# `$ fireinthehole` (╯°□°）╯ ︵ 💥
+# MoOx `dotfiles`
+
+> When dotfiles go crazy.
 
 <img alt="" align="right" src="https://raw.github.com/MoOx/dotfiles/master/backpack/i/kabooya.gif" />
 
 Just run `fireinthehole`. It should setup the computer.
-This includes:
 
 - Commands & aliases for CLI
-- OS X configuration
+- OS configuration
 - Development environment
-- OS native apps
-- Configured preferences
-- Whatever you want
+- Packages & OS native apps
+- Configured preferences for everything (OS, apps)
+- Whatever you have defined (see [component](#component-definition) definition)
 
 ## First run
 
@@ -18,21 +19,55 @@ This includes:
 $ curl --silent https://raw.github.com/MoOx/dotfiles/master/backpack/firstrun | zsh
 ```
 
-## Periodic run
-
-```
-$ fireinthehole
-```
-
-This command should update this repository, then trigger `kaboom` which is the heart of this _dotfiles_
-_Note: you will sometimes need to enter you password or some informations related to current installation_
-
-This command launch like everything you define. If you have nothing special, it should take around 30s (mainly because of brew/gem update).
-_This is done that way to ensure you are fully up to date with what you define here. Very concenient when I reopen my laptop (which occurs once in a month)._
-
-### How it works ?
+## Commands & aliases
 
 <img alt="preview" align="right" src="https://raw.github.com/MoOx/dotfiles/master/backpack/i/fireinthehole.png" />
+
+### `$ fireinthehole` (╯°□°）╯ ︵ 💥
+
+This command should update this repository, then trigger `kaboom` (which is the heart of this _dotfiles_).
+_Note: you will sometimes need to enter you password or some informations related to current installation_.
+
+This command launch like everything you define. If you have nothing special, it should take around 30s (mainly because of brew/npm/gem updates).
+
+_This is done that way to ensure you are fully up to date with what you define here. Very concenient when I reopen my laptop (which occurs once or twice in a month) to sync everythings, includings new apps, alias, preferences, packages...._
+
+### `$ e [file]`
+
+Open a file/directory in your [configured editor](components/editor/editor.zsh).
+If you don't provide an argument, this will open the current folder.
+
+### `$ dotfiles`
+
+Move into your dotfiles dir & open in you configured editor.
+
+### `$ dotfiles-link`
+
+Link all `*.symlink` files into your `~/`.
+When you run this command it will ask you if there is already existing files (to avoid file lose).  
+_Note that this command will not bother you for dotfiles alread symlinked._
+
+### `$ dotfiles-submodules-update`
+
+Update & commit updated submodules
+
+### `$ appstore`
+
+Open the AppStore (at least on OS X).
+
+### `$ fuckosx`
+
+Reload OSX Finder, Dock & Menubar. Alias for `fuckosxfinder`, `fuckosxdock` & `fuckosxmenubar`.
+
+### `$ list`
+
+List all aliases & functions (except _*). You should try that. Just mix `list-aliases` & `list-functions`.
+
+_Obviously you will get a long list ;)_
+
+---
+
+## How it works ?
 
 Additionally to `fireinthehole` and `kaboom`, there is a lot of others commands available in each components.
 This dotfiles, like [holman](https://github.com/holman/dotfiles#topical) ones, are built around topic areas.
@@ -41,38 +76,25 @@ _Note: some components may require other(s) (eg: `brew` component is used a lot 
 
 Most of the time, components contains a `setup` file that you can use in `kaboom`.
 
-**[`kaboom`](bin/kaboom) mainly just run components `setup`.**
+**[`kaboom`](bin/kaboom) mainly just run components `setup` in the predefined order.**
 
-### Component
+## Component definition
 
 Here is what is automatically handled by this awesome [index.zsh](index.zsh) (inspired by [@holman](https://github.com/holman) work).
 
-- _component_/***.zsh**: Any files ending in .zsh get loaded into your environment.
-- _component_/**path.zsh**: Any file named `path.zsh` is _loaded first_ and is expected to setup $PATH or similar.
-- _component_/**completion.zsh**: Any file named `completion.zsh` is _loaded last_ and is expected to setup autocomplete.
-- _component_/**functions/**: component functions should be defined here.
-- _component_/**setup**: component setup is done in this file.
-- _component_/***.symlink**: Any files ending in `*.symlink` get symlinked into your $HOME (_prefixed by **.**). This is so you can keep all of those versioned in your dotfiles but still keep those autoloaded files in your home directory. These get symlinked in when you run `$ dotfiles`.
+- `component/*.zsh`: Any files ending in .zsh get loaded into your environment.
+- `component/path.zsh`: Any file named `path.zsh` is _loaded first_ and is expected to setup $PATH or similar.
+- `component/completion.zsh`: Any file named `completion.zsh` is _loaded last_ and is expected to setup autocomplete.
+- `component/functions/`: component functions should be defined here.
+- `component/setup`: component setup is done in this file.
+- `component/*.symlink`: Any files ending in `*.symlink` get symlinked into your $HOME (_prefixed by `.`_). This is so you can keep all of those versioned in your dotfiles but still keep those autoloaded files in your home directory. These get symlinked in when you run `$ dotfiles-link`.
+- `component/README.md`: Please provide doc for each components.
 
 **Note: to setup one component only, just run `$ setup {component_name}`**
 
-### Symlinked dotfiles
+---
 
-The `dotfiles` command is pretty smart & will allow you to symlink you components files to `$HOME/.*`.
-When you run this command it will ask you if there is already existing files (to avoid file lose).  
-_Note that this command will not bother you for dotfiles alread symlinked._
-
-## Submodules
-
-### Update submodules
-
-```shell
-git submodule foreach git pull origin master
-git add -A submodules
-git commit -m "Update submodules"
-```
-
-# Find `defaults write`
+## Find more `defaults write`
 
 http://superuser.com/questions/455755/how-to-explore-more-defaults-write-tweaks-on-os-x
 
@@ -94,6 +116,8 @@ and filter the output somewhat:
 	strings /System/Library/Frameworks/*.framework/Versions/Current/* /System/Library/Frameworks/*/Frameworks/*/Versions/Current/* 2> /dev/null | grep -E '^[a-zA-Z0-9_.-]{10,80}$' | sort | uniq
 
 There’s also a tool called GDB which can be used to find hidden preferences.
+
+---
 
 ## Inspired by
 

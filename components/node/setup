@@ -12,6 +12,8 @@ then
   npmug
 fi
 
+npmig component
+
 # browserify all the things
 npmig browserify
 npmig testling

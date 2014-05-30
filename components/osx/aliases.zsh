@@ -13,7 +13,7 @@ alias ss="/System/Library/Frameworks/ScreenSaver.framework/Resources/ScreenSaver
 
 alias killa="killall '${app}' > /dev/null 2>&1"
 # Fuck crash
-alias fuckosxfinder="killa Finder; if ls /Applications/XtraFinder.app 2>&1 > /dev/null; then; open /Applications/XtraFinder.app; fi"
+alias fuckosxfinder="killa Finder; if [ -e /Applications/XtraFinder.app ]; then; open /Applications/XtraFinder.app; fi"
 alias fuckosxdock="killa Dock"
 alias fuckosxmenubar="killa SystemUIServer NotificationCenter"
 alias fuckosx="fuckosxfinder && fuckosxdock && fuckosxmenubar"

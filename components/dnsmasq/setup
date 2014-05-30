@@ -3,7 +3,7 @@
 # use dnsmasq, then Open DNS
 # echo_title "Setup DNS with DNSMasq & Open DNS"
 # changedns 127.0.0.1 208.67.222.222 208.67.220.220
-# if ! ls "/usr/local/etc/dnsmasq.conf" > /dev/null
+# if [ ! -e "/usr/local/etc/dnsmasq.conf" ]
 # then
 # 	brewinstall dnsmasq
 # 	DNSMASQ_CONF=/usr/local/etc/dnsmasq.conf

@@ -4,7 +4,7 @@ brewcaskinstall "LimeChat" $HOME/Applications
 dockutil --no-restart --add "~/Applications/LimeChat.app" --after "Messages"
 
 LIMECHAT_THEME="$HOME/Library/Application Support/LimeChat/Themes/LimeChat-theme-Monokai-Soda"
-if ! ls "$LIMECHAT_THEME.css" > /dev/null
+if [ ! -e "$LIMECHAT_THEME.css" ]
 then
 	echo_title "Installing LimeChat theme"
 	git clone https://github.com/MoOx/LimeChat-theme-Monokai-Soda.git $LIMECHAT_THEME

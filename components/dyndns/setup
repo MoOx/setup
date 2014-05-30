@@ -6,7 +6,7 @@ then
   brewinstall ddclient
 
   # ddclient human configuration & auto start
-  if ! ls /Library/LaunchDaemons/homebrew.mxcl.ddclient.plist > /dev/null
+  if [ ! -e /Library/LaunchDaemons/homebrew.mxcl.ddclient.plist ]
   then
     sudo cp ddclient.conf /usr/local/etc/ddclient
     $EDITOR_SYNC /usr/local/etc/ddclient/ddclient.conf

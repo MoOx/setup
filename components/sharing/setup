@@ -7,7 +7,7 @@ brewinstall imagemagick
 brewinstall ffmpeg
 
 CLOUDAPP_CREDS=$HOME/.cloudapp
-if ! ls $CLOUDAPP_CREDS &> /dev/null
+if [ ! -e $CLOUDAPP_CREDS ]
 then
   echo "Enter Cloud.app login/password"
   read CLOUDAPP_LOGIN

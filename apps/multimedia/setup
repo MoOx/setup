@@ -2,8 +2,9 @@
 
 brewcaskinstall "VLC"
 brewcaskinstall "MPlayerX"
-brewcaskinstall "Rdio"
-dockutil --no-restart --add "/Applications/Rdio.app" --after "iTunes"
+
+#brewcaskinstall "Rdio"
+#dockutil --no-restart --add "/Applications/Rdio.app" --after "iTunes"
 
 brewcaskinstall "All2MP3"
 

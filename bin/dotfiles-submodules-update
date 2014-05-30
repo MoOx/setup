@@ -1,0 +1,5 @@
+#!/bin/zsh
+
+git submodule foreach git pull origin master
+git add -A submodules
+git commit -m "Update submodules"

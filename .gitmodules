@@ -1,6 +1,6 @@
 [submodule "submodules/terminal/pure"]
-	path = submodules/terminal/pure
+	path = submodules/pure
 	url = https://github.com/sindresorhus/pure.git
 [submodule "submodules/osx/dockutil"]
-	path = submodules/osx/dockutil
+	path = submodules/dockutil
 	url = https://github.com/kcrawford/dockutil.git

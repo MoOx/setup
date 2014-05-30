@@ -1,0 +1,10 @@
+#!/bin/zsh
+
+for file in "$@"
+do
+  echo
+	if [ -e $file ]
+	then
+		rm $file
+	fi
+done

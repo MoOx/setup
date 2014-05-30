@@ -33,6 +33,7 @@ fi
 PURE_SETUP_PATH=/usr/local/share/zsh/site-functions/prompt_pure_setup
 if [ ! -e  $PURE_SETUP_PATH ]
 then
+	silent-rm $PURE_SETUP_PATH
 	ln -s "$DOTFILES/submodules/pure/pure.zsh" $PURE_SETUP_PATH
 fi
 fpath=( "/usr/local/share/zsh/site-functions" $fpath )

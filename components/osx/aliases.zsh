@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-alias dockutil="$DOTFILES/submodules/osx/dockutil/scripts/dockutil"
+alias dockutil="$DOTFILES/submodules/dockutil/scripts/dockutil"
 
 alias seeosxmenuextras="open $OSX_MENU_EXTRAS"
 

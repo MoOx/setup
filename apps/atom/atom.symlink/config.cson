@@ -16,7 +16,6 @@
   'projectHome': '/Users/MoOx/Sync/Development'
   'disabledPackages': [
     'sublime-tabs'
-    'css-color-highlighting'
   ]
   'themes': [
     'unity-dark-ui'

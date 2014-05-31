@@ -39,7 +39,7 @@ If you don't provide an argument, this will open the current folder.
 
 ### `$ dotfiles`
 
-Move into your dotfiles dir & open in you configured editor.
+Open your dotfiles in [your configured editor](components/editor/editor.zsh).
 
 ### `$ dotfiles-link`
 

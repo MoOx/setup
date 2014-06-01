@@ -1,6 +1,5 @@
 #!/bin/zsh
 
-export DIR_SYNC=$HOME/Sync
 export DIR_SYNC_BTSYNC=$DIR_SYNC/BTSync
 export DIR_SYNC_DROPBOX=$DIR_SYNC/Dropbox
 

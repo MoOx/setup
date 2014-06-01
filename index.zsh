@@ -28,7 +28,7 @@ function setup () {
   then
     source "$DOTFILES/components/$1/setup"
   else
-    source "$DOTFILES/apps/$1/setup"
+    echo "Fail to setup $1: no setup file in '$DOTFILES/components/$1/setup'"
   fi
 }
 
@@ -46,7 +46,7 @@ if [[ -f ~/.localrc ]]; then; source ~/.localrc; fi
 # Source topic files
 ##
 typeset -U config_files
-config_files=($DOTFILES/*/**/*.zsh)
+config_files=($DOTFILES/components/*/**/*.zsh)
 
 # load the path files
 for file in ${(M)config_files:#*/path.zsh}; do; source $file; done;

@@ -18,7 +18,7 @@
     'sublime-tabs'
   ]
   'themes': [
-    'unity-dark-ui'
+    'yosemite-unity-ui'
     'atom-light-syntax'
   ]
 'autosave': {}

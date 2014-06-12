@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+alias .f="open $DOTFILES"
+
 alias cd..="cd .."
 alias h=history
 

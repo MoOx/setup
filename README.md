@@ -32,22 +32,27 @@ This command launch like everything you define. If you have nothing special, it 
 
 _This is done that way to ensure you are fully up to date with what you define here. Very concenient when I reopen my laptop (which occurs once or twice in a month) to sync everythings, includings new apps, alias, preferences, packages...._
 
+### `$ .f`
+
+Open your dotfiles using `open` command (eg: on OS X, Finder.app).
+
 ### `$ e [file]`
 
 Open a file/directory in your [configured editor](components/editor/editor.zsh).
 If you don't provide an argument, this will open the current folder.
 
-### `$ dotfiles`
+
+### `$ .fe`
 
 Open your dotfiles in [your configured editor](components/editor/editor.zsh).
 
-### `$ dotfiles-link`
+### `$ .symlinks`
 
 Link all `*.symlink` files into your `~/`.
 When you run this command it will ask you if there is already existing files (to avoid file lose).  
 _Note that this command will not bother you for dotfiles alread symlinked._
 
-### `$ dotfiles-submodules-update`
+### `$ .submodules-update`
 
 Update & commit updated submodules
 
@@ -91,7 +96,7 @@ Here is what is automatically handled by this awesome [index.zsh](index.zsh) (in
 - `component/completion.zsh`: Any file named `completion.zsh` is _loaded last_ and is expected to setup autocomplete.
 - `component/functions/`: component functions should be defined here.
 - `component/setup`: component setup is done in this file.
-- `component/*.symlink`: Any files ending in `*.symlink` get symlinked into your $HOME (_prefixed by `.`_). This is so you can keep all of those versioned in your dotfiles but still keep those autoloaded files in your home directory. These get symlinked in when you run `$ dotfiles-link`.
+- `component/*.symlink`: Any files ending in `*.symlink` get symlinked into your $HOME (_prefixed by `.`_). This is so you can keep all of those versioned in your dotfiles but still keep those autoloaded files in your home directory. These get symlinked in when you run `$ .symlinks`.
 - `component/README.md`: Please provide doc for each components.
 
 **Note: to setup one component only, just run `$ setup {component_name}`**

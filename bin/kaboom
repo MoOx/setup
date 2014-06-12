@@ -2,7 +2,7 @@
 source $DOTFILES/index.zsh
 
 DIR_BIN="$( cd "$( dirname "${0}" )" && pwd )"
-source $DIR_BIN/dotfiles-link
+source $DIR_BIN/.symlinks
 
 if [ "$FULLFIRE" = "true" ]
 then

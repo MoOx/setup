@@ -1,2 +1,3 @@
 #!/bin/zsh
-alias dotfiles="e $DOTFILES"
+
+alias .fe="e $DOTFILES"

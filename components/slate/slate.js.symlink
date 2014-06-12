@@ -37,6 +37,11 @@ positions.left__2of3 = positions.full.dup({
   "width": "screenSizeX/3*2"
 })
 
+positions.center_1of2 = positions.left__half.dup({
+  "x": "screenOriginX+screenSizeX/4"
+})
+
+
 positions.right__half = positions.full.dup({
   "height": "screenSizeY",
   "width": "screenSizeX/2",
@@ -96,6 +101,7 @@ var hashes = {
     right__half: { "operations" : [positions.right__half.dup({"screen": 0})] },
     left__3of4: { "operations" : [positions.left__3of4.dup({"screen": 0})] },
     left__2of3: { "operations" : [positions.left__2of3.dup({"screen": 0})] },
+    center_1of2: { "operations" : [positions.center_1of2.dup({"screen": 0})] },
     right__1of4: { "operations" : [positions.right__1of4.dup({"screen": 0})] },
     right__1of3: { "operations" : [positions.right__1of3.dup({"screen": 0})] },
     right__1of3__top__half: { "operations" : [positions.right__1of3__top__half.dup({"screen": 0})] },
@@ -168,8 +174,8 @@ layouts.L = slate.layout("layout:L", {
   "Nightly" : hashes.main.left__3of4, // Firefox
   "Google Chrome" : hashes.main.left__3of4,
 
-  "Atom": hashes.main.left__3of4,
-  "Sublime Text": hashes.main.left__3of4,
+  "Atom": hashes.main.center_1of2,
+  "Sublime Text": hashes.main.center_1of2,
 
   "Tweetbot" : {
     "operations" : [positions.tweetbot.dup({

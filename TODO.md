@@ -7,8 +7,6 @@
 
 		curl -s https://raw.github.com/xdissent/ievms/master/ievms.sh | INSTALL_PATH="$HD/Users/MoOx/VMs/ievms" IEVMS_VERSIONS="6 9" bash
 
-`/!\` Eventually install & configure a software like [Synergy](http://synergy-foss.org/download/?list) to be able to control/configure the fresh OS while you are working on another one.
-
 - network sharing
 - configure ssh access + change port
 - update default Contacts.app template

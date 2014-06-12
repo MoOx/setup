@@ -1,0 +1,24 @@
+# Synergy configuration file
+#
+# http://synergy-project.org/wiki/Text_Config
+# http://synergy2.sourceforge.net/configuration.html
+
+section: screens
+	MacMoOx:
+	iMoOx:
+end
+
+section: links
+	MacMoOx:
+		right = iMoOx
+
+	iMoOx:
+		left  = MacMoOx
+end
+
+section: aliases
+	MacMoOx:
+		MacMoOx.local
+	iMoOx:
+		iMoOx.local
+end

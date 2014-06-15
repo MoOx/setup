@@ -11,7 +11,7 @@ then
 	ln -s $LIMECHAT_THEME/LimeChat-theme-Monokai-Soda.* $LIMECHAT_THEME
 else
 	echo_title_update "LimeChat theme"
-	git -C $LIMECHAT_THEME
+	git -C $LIMECHAT_THEME pull
 fi
 
 brewcaskinstall "Skype"

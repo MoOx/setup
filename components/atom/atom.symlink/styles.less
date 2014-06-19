@@ -18,10 +18,15 @@
   // font-weight: 300;
 }
 
-.invisible-character {
-    color: rgba(0, 0, 0, .6);
+.editor .invisible-character {
+    opacity: 1;
     text-shadow: none;
+    //color: rgba(0, 0, 0, .6);
 }
+
+  .editor .leading-whitespace {
+    color: rgba(0, 0, 0, .2);
+  }
 
   .editor .indent-guide {
     opacity: 1;
@@ -29,12 +34,8 @@
     box-shadow: inset 1px 0 rgba(0, 0, 0, .1);
   }
 
-  .leading-whitespace {
-    color: rgba(0, 0, 0, .5);
-    font-weight: 100;
-  }
-
 // .tooltip {
 //   display: block;
 // }
 // .tooltip-inner { white-space: nowrap; }
+//

@@ -18,6 +18,7 @@ then
   # apminstall monokai-tweaked-ui
   # apminstall monokai-tweaked-syntax
   apminstall yosemite-ui
+  apminstall file-type-icons
 
   # editor enhancements
   apminstall show-in-folder

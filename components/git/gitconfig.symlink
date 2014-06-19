@@ -37,6 +37,7 @@
 	coma = commit -am
 	coa = commit -a
 	st = stash -u
+	sync = "!git stash -u && git pull && git stash pop"
 	df = diff
 	dc = diff --cached
 	lg = log -p

@@ -52,6 +52,10 @@ Link all `*.symlink` files into your `~/`.
 When you run this command it will ask you if there is already existing files (to avoid file lose).  
 _Note that this command will not bother you for dotfiles alread symlinked._
 
+### `$ .submodules-add {name} {git://...}`
+
+Add a submodule under your dotfiles submodule path
+
 ### `$ .submodules-update`
 
 Update & commit updated submodules

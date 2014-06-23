@@ -1,0 +1,3 @@
+#!/bin/zsh
+
+git submodule add $2 $DOTFILES/submodules/$1

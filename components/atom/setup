@@ -17,10 +17,13 @@ then
   # theme
   # apminstall monokai-tweaked-ui
   # apminstall monokai-tweaked-syntax
-  apminstall yosemite-ui
+  # apminstall unity-ui
+  # apminstall unity-dark-ui
+  apminstall yosemite-unity-ui
   apminstall file-type-icons
 
   # editor enhancements
+  apminstall zen
   apminstall show-in-folder
   apminstall open-in-github-app
   apminstall gist-it
@@ -52,7 +55,7 @@ then
 
   # css
   apminstall linter-csslint
-  #apminstall css-color-highlighting
+  apminstall css-color-highlighting
   apminstall color-picker
   apminstall bezier-curve-editor
 
@@ -62,13 +65,14 @@ then
   apminstall linter-jsonlint
   apminstall language-jade
 
-  # nodejs
-  apminstall npm-install
-  apminstall npm-docs
+    # nodejs
+    apminstall npm-install
+    apminstall npm-docs
 
-  #jsx
-  apminstall language-jsx
-  apminstall linter-jsxhint
+    # jsx
+    apminstall language-jsx
+    apminstall linter-jsxhint
 
+  # NO COMMENT
   apminstall language-apache
 fi

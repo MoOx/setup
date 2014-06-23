@@ -4,6 +4,6 @@
 [submodule "submodules/osx/dockutil"]
 	path = submodules/dockutil
 	url = https://github.com/kcrawford/dockutil.git
-[submodule "/Users/MoOx/dotfiles/submodules/zsh-syntax-highlighting"]
-	path = /Users/MoOx/dotfiles/submodules/zsh-syntax-highlighting
-	url = git://github.com/zsh-users/zsh-syntax-highlighting.git
+[submodule "submodules/zsh-syntax-highlighting"]
+	path = submodules/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting.git

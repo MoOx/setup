@@ -29,7 +29,7 @@ then
   apminstall gist-it
   apminstall tabs-to-spaces
   apminstall autocomplete-plus
-  apm install sublime-tabs
+  apminstall sublime-tabs
 
   apminstall merge-conflicts
   apminstall git-blame

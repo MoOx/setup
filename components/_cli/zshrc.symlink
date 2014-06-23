@@ -74,3 +74,5 @@ alias list-aliases="alias | sed 's/=.*//'"
 alias list-functions="declare -f | grep '^[a-z].* () {' | sed 's/{$//'" # show non _prefixed functions
 alias list="cat <(list-aliases) <(list-functions) | sort"
 alias search="list | grep"
+
+source $DOTFILES/submodules/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

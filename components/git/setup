@@ -17,3 +17,8 @@ then
   echo_title_install "GitHub issues cli tools"
   brewinstall ghi
 fi
+
+brewcaskinstall "GitHub" $HOME/Applications
+dockutil --no-restart --add "~/Applications/GitHub.app" --before "Atom"
+
+brewcaskinstall "SourceTree" $HOME/Applications

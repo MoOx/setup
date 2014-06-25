@@ -3,12 +3,6 @@
 # for vpn
 brewcaskinstall "Tunnelblick" $HOME/Applications
 
-# lazydev
-brewcaskinstall "GitHub" $HOME/Applications
-dockutil --no-restart --add "~/Applications/GitHub.app" --before "Atom"
-brewcaskinstall "Versions" $HOME/Applications
-brewcaskinstall "SourceTree" $HOME/Applications
-
 # just in case
 brewcaskinstall "ImageOptim" $HOME/Applications
 brewcaskinstall "ImageAlpha" $HOME/Applications

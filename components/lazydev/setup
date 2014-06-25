@@ -13,9 +13,6 @@ brewcaskinstall "Cloud" "cloudapp" $HOME/Applications
 
 brewcaskinstall "Synergy" $HOME/Applications
 
-brewcaskinstall "iTerm" "iterm2" $HOME/Applications
-dockutil --no-restart --add "~/Applications/iTerm.app" --before "Console"
-
 brewcaskinstall "NameChanger" $HOME/Applications
 
 brewcaskinstall "GrandPerspective" $HOME/Applications

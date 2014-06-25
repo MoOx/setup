@@ -16,8 +16,11 @@ black
 hsl(0, 0%, 13%)
 aple rgb 26 26 26
 
-black bright hsl(0, 0%, 23%)
-apple rgb 44 44 44
+black bright
+(grey)
+#556270
+hsl(211, 14%, 39%)
+apple rgba 68 79 94
 
 red
 #C75646
@@ -72,8 +75,3 @@ apple rgb 72 193 178
 cyan bright
 hsl(175, 55%, 55%)
 apple rgb 105 205 195
-
-grey
-#556270
-hsl(211, 14%, 39%)
-apple rgba 68 79 94

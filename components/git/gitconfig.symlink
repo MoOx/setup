@@ -55,15 +55,8 @@
 	# Remove branches that have already been merged with master
 	dm = "!git checkout master && git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
 
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path =
-
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
-
 [merge]
+	tool = opendiff
 	conflictStyle = diff3
 
 # todo git-pr https://gist.github.com/naholyr/4132423

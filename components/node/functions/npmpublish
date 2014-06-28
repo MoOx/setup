@@ -3,7 +3,6 @@
 # `np` with an optional argument `patch`/`minor`/`major`/`<version>`
 # defaults to `patch`
 function npmpublish() {
-  git stash save beforenpmpublish 2> /dev/null
   git pull --rebase && \
   rm -rf node_modules && \
   npm install && \
@@ -12,5 +11,4 @@ function npmpublish() {
   npm publish && \
   git push origin master && \
   git push origin master --tags
-  git stash pop beforenpmpublish 2> /dev/null
 }

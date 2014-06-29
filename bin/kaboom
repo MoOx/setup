@@ -10,9 +10,9 @@ then
 fi
 
 # required first
-setup git
 setup brew
 setup osx
+setup git
 
 setup node
 setup _cli

@@ -12,7 +12,13 @@ then
   npmug
 fi
 
+# release tool
+npmig mversion
+
+# build tools
 npmig component
+npmig gulp
+npmig grunt-cli
 
 # browserify all the things
 npmig browserify
@@ -29,10 +35,6 @@ npmig jscs
 # css tools
 npmig autoprefixer
 
-# workflow tools
-npmig gulp
-npmig grunt-cli
-
 # happyplan launcher
 npmig happyplan-cli
 
@@ -40,5 +42,4 @@ npmig travis-encrypt
 
 # package helpers
 npmig pkg-name
-npmig mversion
 npmig bower

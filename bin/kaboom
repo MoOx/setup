@@ -11,6 +11,14 @@ fi
 
 # required first
 setup brew
+
+if type "say" > /dev/null
+then
+	say "Password might be required"
+fi
+# Ask for the administrator password upfront
+sudo -v
+
 setup osx
 setup git
 

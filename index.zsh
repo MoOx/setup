@@ -46,19 +46,19 @@ if [[ -f ~/.localrc ]]; then; source ~/.localrc; fi
 # Source topic files
 ##
 typeset -U config_files
-config_files=($DOTFILES/components/*/**/*.zsh)
+config_files=($DOTFILES/components/*/*.zsh)
 
 # load the path files
 for file in ${(M)config_files:#*/path.zsh}
 do
   source $file
-done;
+done
 
 # load everything but the path and completion files
 for file in ${${config_files:#*/path.zsh}:#*/completion.zsh}
 do
   source $file
-done;
+done
 
 # initialize autocomplete here, otherwise functions won't be loaded
 autoload -U compinit
@@ -67,14 +67,14 @@ compinit
 for file in ${(M)config_files:#*/completion.zsh}
 do
   source $file
-done;
+done
 unset config_files
 
 ##
 # Load all functions files
 ##
 typeset -U config_files
-function_files=($DOTFILES/**/functions/*)
+function_files=($DOTFILES/*/*/functions/*)
 for file in $function_files
 do
   [ -r "$file" ] && [ -f "$file" ] && source "$file"

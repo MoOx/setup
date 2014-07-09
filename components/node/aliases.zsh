@@ -5,7 +5,6 @@ command -v npm > /dev/null && alias npme="npm --registry http://registry.npmjs.e
 
 # global npm update
 alias npmug="npm update -g --loglevel warn"
-
+alias npmi="npm install"
 alias npmr="npm run --silent"
-
-alias npms="npmstart" #npmstart function
+alias npms="npmstart" # npmstart function

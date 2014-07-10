@@ -307,6 +307,15 @@ var universalLayout = function() {
   var screenModifier = slate.screenCount() === 2 ? "X" : ""
   var screenSize = slate.screenForRef(0).rect().width > 1440 ? "L" : "M"
  
+  // if there is app(s) that require fullscreen (video games ?)
+  // we just use the secondary screen as a main screen for other apps
+  ifApp([
+    "insurgency_osx"
+  ], function(app) {
+    screenModifier = ""
+    screenSize += "_alt"
+  })
+
   // slate.log("❯ Universal layout ", screenSize, screenModifier, layoutsOperations[screenModifier + screenSize])
   layoutsOperations[screenModifier + screenSize].run()
 

@@ -161,76 +161,82 @@ layouts.XL = slate.layout("layout:XL", {
   "LimeChat": hashes.secondary.right_bottom__half
 })
 
-layouts.L = slate.layout("layout:L", {
-  "Calendar": hashes.main.left__half,
-  "Wunderlist": hashes.main.right__half,
+layouts.XM = layouts.XL
 
-  "Firefox" : hashes.main.left__3of4,
-  "Aurora" : hashes.main.left__3of4, // Firefox
-  "Nightly" : hashes.main.left__3of4, // Firefox
-  "Google Chrome" : hashes.main.left__3of4,
+;[{key: "L", hashKey: "main"}, {key: "L_alt", hashKey: "secondary"}].forEach(function(layoutOpts) {
+  var h = hashes[layoutOpts.hashKey]
+  layouts[layoutOpts.key] = slate.layout("layout:" + layoutOpts.key, {
+    "Calendar": h.left__half,
+    "Wunderlist": h.right__half,
 
-  "Atom": hashes.main.center_1of2,
-  "Sublime Text": hashes.main.center_1of2,
+    "Firefox" : h.left__3of4,
+    "Aurora" : h.left__3of4, // Firefox
+    "Nightly" : h.left__3of4, // Firefox
+    "Google Chrome" : h.left__3of4,
 
-  "Tweetbot" : {
-    "operations" : [positions.tweetbot.dup({
-      "x": "screenOriginX+screenSizeX-screenSizeX/4-" + tweetbotWidth,
-    })],
-    "ignore-fail" : true,
-    "repeat" : true
-  },
+    "Atom": h.center_1of2,
+    "Sublime Text": h.center_1of2,
 
-  "iTerm" : hashes.main.right__1of4__top__1of3,
-  "Terminal" : hashes.main.right__1of4__top__1of3,
+    "Tweetbot" : {
+      "operations" : [positions.tweetbot.dup({
+        "x": "screenOriginX+screenSizeX-screenSizeX/4-" + tweetbotWidth,
+      })],
+      "ignore-fail" : true,
+      "repeat" : true
+    },
 
-  "LimeChat": hashes.main.right__1of4__top__2of3,
+    "iTerm" : h.right__1of4__top__1of3,
+    "Terminal" : h.right__1of4__top__1of3,
 
-  "Messages": hashes.main.right__1of4__top__3of3,
-  "Skype": hashes.main.right__1of4__top__3of3,
-  "HipChat": hashes.main.right__1of4__top__3of3,
-  "Slack": hashes.main.right__1of4__top__3of3,
-  "Gitter": hashes.main.right__1of4__top__3of3,
+    "LimeChat": h.right__1of4__top__2of3,
 
-  "VLC": hashes.main.right__1of4__top__3of3,
-  "MPlayerX": hashes.main.right__1of4__top__3of3
+    "Messages": h.right__1of4__top__3of3,
+    "Skype": h.right__1of4__top__3of3,
+    "HipChat": h.right__1of4__top__3of3,
+    "Slack": h.right__1of4__top__3of3,
+    "Gitter": h.right__1of4__top__3of3,
+
+    "VLC": h.right__1of4__top__3of3,
+    "MPlayerX": h.right__1of4__top__3of3
+  })
 })
+//
+;[{key: "M", hashKey: "main"}, {key: "M_alt", hashKey: "secondary"}].forEach(function(layoutOpts) {
+  var h = hashes[layoutOpts.hashKey]
+  layouts[layoutOpts.key] = slate.layout("layout:" + layoutOpts.key, {
+    "Calendar": h.full,
+    "Wunderlist": h.right__half,
 
-layouts.XM = layouts.XL;
+    "Firefox" : h.left__2of3,
+    "Aurora" : h.left__2of3, // Firefox
+    "Nightly" : h.left__2of3, // Firefox
+    "Google Chrome" : h.left__2of3,
 
-layouts.M = slate.layout("layout:M", {
-  "Calendar": hashes.main.full,
-  "Wunderlist": hashes.main.right__half,
+    "Atom": h.left__2of3,
+    "Sublime Text": h.left__2of3,
 
-  "Firefox" : hashes.main.left__2of3,
-  "Aurora" : hashes.main.left__2of3, // Firefox
-  "Nightly" : hashes.main.left__2of3, // Firefox
-  "Google Chrome" : hashes.main.left__2of3,
+    "Tweetbot" : {
+      "operations" : [positions.tweetbot.dup({
+        "x": "screenOriginX+screenSizeX-" + tweetbotWidth,
+      })],
+      "ignore-fail" : true,
+      "repeat" : true
+    },
 
-  "Atom": hashes.main.left__2of3,
-  "Sublime Text": hashes.main.left__2of3,
+    "iTerm" : h.right__1of3__top__half,
+    "Terminal" : h.right__1of3__top__half,
 
-  "Tweetbot" : {
-    "operations" : [positions.tweetbot.dup({
-      "x": "screenOriginX+screenSizeX-" + tweetbotWidth,
-    })],
-    "ignore-fail" : true,
-    "repeat" : true
-  },
+    "LimeChat": h.right__1of3__bottom__half,
 
-  "iTerm" : hashes.main.right__1of3__top__half,
-  "Terminal" : hashes.main.right__1of3__top__half,
+    "Messages": h.right__1of3__bottom__half,
+    "Skype": h.right__1of3__bottom__half,
+    "HipChat": h.right__1of3__bottom__half,
+    "Slack": h.right__1of3__bottom__half,
+    "Gitter": h.right__1of3__bottom__half,
 
-  "LimeChat": hashes.main.right__1of3__bottom__half,
-
-  "Messages": hashes.main.right__1of3__bottom__half,
-  "Skype": hashes.main.right__1of3__bottom__half,
-  "HipChat": hashes.main.right__1of3__bottom__half,
-  "Slack": hashes.main.right__1of3__bottom__half,
-  "Gitter": hashes.main.right__1of3__bottom__half,
-
-  "VLC": hashes.main.right__1of3__bottom__half,
-  "MPlayerX": hashes.main.right__1of3__bottom__half
+    "VLC": h.right__1of3__bottom__half,
+    "MPlayerX": h.right__1of3__bottom__half
+  })
 })
 
 slate.log('❯ Layouts defined')
@@ -293,9 +299,11 @@ return moved;
 // Layout Operations
 var layoutsOperations = {
   XL: slate.operation("layout", { "name": "layout:XL" }),
-  L: slate.operation("layout", { "name": "layout:L" }),
   XM: slate.operation("layout", { "name": "layout:XM" }),
-  M: slate.operation("layout", { "name": "layout:M" })
+  L: slate.operation("layout", { "name": "layout:L" }),
+  L_alt: slate.operation("layout", { "name": "layout:L_alt" }),
+  M: slate.operation("layout", { "name": "layout:M" }),
+  M_alt: slate.operation("layout", { "name": "layout:M_alt" })
 }
 
 var universalLayout = function() {

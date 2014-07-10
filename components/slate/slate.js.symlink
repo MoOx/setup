@@ -241,59 +241,54 @@ layouts.XM = layouts.XL
 
 slate.log('❯ Layouts defined')
 
-// If VLC is running a video, just make it take a quarter of the M screen,
-// & make iTerm take the rest of the left half
-var adaptWhenVideoIsRunning = function() {
-  var moved = false;
+var ifApp = function(apps, callback) {
+  apps = typeof apps === "string" ? [apps] : apps;
 
   slate.eachApp(function(app) {
-    // if there is a VLC or MPlayer runngin
-    if (app.name() === "VLC" || app.name() === "MPlayerX") {
-      app.eachWindow(function(window) {
-        if (
-            (
-              // if VLC is playing a video (VLC can be used for MP3 :))
-              (app.name() === "VLC" && window.title().match(/\.(avi|mkv|mp4)$/)) ||
-                // or if it's MPlayer
-                app.name() === "MPlayerX") &&
-              // and if it's visible (not an hidden window (eg. pause + minimized))
-              !window.isMinimizedOrHidden()
-        ) {
-          slate.log('Video is running')
+    if (apps.indexOf(app.name()) > -1) {
+      callback(app)
+    }
+  })
+}
 
-          // mplayer is better for tvshow since it handle next episodes automatically :)
-          //if (app.name() === "MPlayerX" || app.name() === "VLC") {
-          // if two screens, move in the small screen on the top, using half of the height
-          if (slate.screenCount() === 2) {
-            window.doOperation(positions.top__half.dup({screen: 1}))
-            moved = true;
-          }
-          // if one screen, move in the small screen on the top, using half of the height
-          else if (slate.screenCount() === 1) {
-            // window.doOperation(positions.right__1of3)
-            // moved = true;
-          }
-          //}
+// If a player is running a video, just make it take a quarter of the M screen,
+// & make terminals take the rest of the left half
+var adaptWhenVideoIsRunning = function() {
+  ifApp(["VLC", "MPlayerX"], function(app) {
+    app.eachWindow(function(window) {
+      if (
+          (
+            // if VLC is playing a video (VLC can be used for MP3 :))
+            (app.name() === "VLC" && window.title().match(/\.(avi|mkv|mp4)$/)) ||
+              // or if it's MPlayer
+              app.name() === "MPlayerX") &&
+            // and if it's visible (not an hidden window (eg. pause + minimized))
+            !window.isMinimizedOrHidden()
+      ) {
+        slate.log('Video is running')
 
-          // make terminal smaller
+        // if two screens, move in the small screen on the top, using half of the height
+        if (slate.screenCount() === 2) {
+          window.doOperation(positions.top__half.dup({screen: 1}))
+
+          // make terminals smaller
           slate.eachApp(function(app) {
             if (app.name() === "iTerm" || app.name() === "Terminal") {
-              // assume one window ?
               app.eachWindow(function(window) {
                 if (window.isMain()) {
-                  if (slate.screenCount() === 2) {
-                    window.doOperation(positions.left_bottom__half)
-                  }
+                  window.doOperation(positions.left_bottom__half)
                 }
               })
             }
           })
         }
-      })
-    }
+        // if one screen, move in the small screen on the top, using half of the height
+        // else if (slate.screenCount() === 1) {
+          // window.doOperation(positions.right__1of3)
+        // }
+      }
+    })
   })
-
-return moved;
 }
 
 // Layout Operations

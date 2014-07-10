@@ -41,7 +41,6 @@ positions.center_1of2 = positions.left__half.dup({
   "x": "screenOriginX+screenSizeX/4"
 })
 
-
 positions.right__half = positions.full.dup({
   "height": "screenSizeY",
   "width": "screenSizeX/2",
@@ -94,30 +93,27 @@ positions.tweetbot = slate.operation("move", {
 
 slate.log('❯ Positions defined')
 
-var hashes = {
-  main: {
-    full: { "operations" : [positions.full.dup({"screen": 0})] },
-    left__half: { "operations" : [positions.left__half.dup({"screen": 0})] },
-    right__half: { "operations" : [positions.right__half.dup({"screen": 0})] },
-    left__3of4: { "operations" : [positions.left__3of4.dup({"screen": 0})] },
-    left__2of3: { "operations" : [positions.left__2of3.dup({"screen": 0})] },
-    center_1of2: { "operations" : [positions.center_1of2.dup({"screen": 0})] },
-    right__1of4: { "operations" : [positions.right__1of4.dup({"screen": 0})] },
-    right__1of3: { "operations" : [positions.right__1of3.dup({"screen": 0})] },
-    right__1of3__top__half: { "operations" : [positions.right__1of3__top__half.dup({"screen": 0})] },
-    right__1of3__bottom__half: { "operations" : [positions.right__1of3__bottom__half.dup({"screen": 0})] },
-    right__2of3: { "operations" : [positions.right__2of3.dup({"screen": 0})] },
-    right__1of4__top__1of3: { "operations" : [positions.right__1of4__top__1of3.dup({"screen": 0})] },
-    right__1of4__top__2of3: { "operations" : [positions.right__1of4__top__2of3.dup({"screen": 0})] },
-    right__1of4__top__3of3: { "operations" : [positions.right__1of4__top__3of3.dup({"screen": 0}) ]}
-  },
-  secondary: {
-    left__half: { "operations" : [positions.left__half.dup({"screen": 1})] },
-    right__half: { "operations" : [positions.right__half.dup({"screen": 1})] },
-    right_top__half: { "operations" : [positions.right_top__half.dup({"screen": 1})] },
-    right_bottom__half: { "operations" : [positions.right_bottom__half.dup({"screen": 1}) ]}
+var hashes = {}
+;[{screen: 0, key: "main"}, {screen: 1, key: "secondary"}].forEach(function(hashOpts) {
+  hashes[hashOpts.key] = {
+    full: { "operations" : [positions.full.dup({"screen": hashOpts.screen})] },
+    left__half: { "operations" : [positions.left__half.dup({"screen": hashOpts.screen})] },
+    left__3of4: { "operations" : [positions.left__3of4.dup({"screen": hashOpts.screen})] },
+    left__2of3: { "operations" : [positions.left__2of3.dup({"screen": hashOpts.screen})] },
+    center_1of2: { "operations" : [positions.center_1of2.dup({"screen": hashOpts.screen})] },
+    right__half: { "operations" : [positions.right__half.dup({"screen": hashOpts.screen})] },
+    right_top__half: { "operations" : [positions.right_top__half.dup({"screen": hashOpts.screen})] },
+    right_bottom__half: { "operations" : [positions.right_bottom__half.dup({"screen": hashOpts.screen}) ]},
+    right__1of4: { "operations" : [positions.right__1of4.dup({"screen": hashOpts.screen})] },
+    right__1of3: { "operations" : [positions.right__1of3.dup({"screen": hashOpts.screen})] },
+    right__1of3__top__half: { "operations" : [positions.right__1of3__top__half.dup({"screen": hashOpts.screen})] },
+    right__1of3__bottom__half: { "operations" : [positions.right__1of3__bottom__half.dup({"screen": hashOpts.screen})] },
+    right__2of3: { "operations" : [positions.right__2of3.dup({"screen": hashOpts.screen})] },
+    right__1of4__top__1of3: { "operations" : [positions.right__1of4__top__1of3.dup({"screen": hashOpts.screen})] },
+    right__1of4__top__2of3: { "operations" : [positions.right__1of4__top__2of3.dup({"screen": hashOpts.screen})] },
+    right__1of4__top__3of3: { "operations" : [positions.right__1of4__top__3of3.dup({"screen": hashOpts.screen}) ]}
   }
-}
+})
 
 // default to ignore-fail & repeat
 Object.keys(hashes).forEach(function(type) {

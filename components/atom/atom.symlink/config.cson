@@ -16,16 +16,24 @@
   'projectHome': '/Users/MoOx/Sync/Development'
   'disabledPackages': [
     'sublime-tabs'
+    'autosave'
   ]
   'themes': [
     'yosemite-unity-ui'
     'atom-light-syntax'
   ]
+  'useReactEditor': true
 'autosave': {}
-'autocomplete-plus': {}
+'autocomplete-plus':
+  'includeCompletionsFromAllBuffers': true
 'Rdio':
   'showEqualizer (WindowResizePerformanceIssue )': false
 'whitespace': {}
 'sublime-tabs':
   'showOnRightSide': true
-'tree-view': {}
+'tree-view':
+  'showOnRightSide': true
+'color':
+  'fillColorAsBackground': false
+'autocomplete':
+  'includeCompletionsFromAllBuffers': true

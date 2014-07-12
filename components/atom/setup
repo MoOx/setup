@@ -55,7 +55,7 @@ then
 
   # css
   apminstall linter-csslint
-  apminstall css-color-highlighting
+  apminstall atom-color-highlight
   apminstall color-picker
   apminstall bezier-curve-editor
 

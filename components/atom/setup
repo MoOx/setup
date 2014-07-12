@@ -15,10 +15,6 @@ then
   apminstall auto-update-packages
 
   # theme
-  # apminstall monokai-tweaked-ui
-  # apminstall monokai-tweaked-syntax
-  # apminstall unity-ui
-  # apminstall unity-dark-ui
   apminstall yosemite-unity-ui
   apminstall file-type-icons
 

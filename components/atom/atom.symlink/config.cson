@@ -37,3 +37,7 @@
   'fillColorAsBackground': false
 'autocomplete':
   'includeCompletionsFromAllBuffers': true
+'break':
+  'microBreakIntervalInSeconds': 600
+  'macroBreakIntervalInMicroAmount': 6
+'atom-color-highlight': {}

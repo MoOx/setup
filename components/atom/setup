@@ -18,22 +18,27 @@ then
   apminstall file-type-icons
 
   # editor enhancements
-  apminstall zen
+  apminstall recent-projects
   apminstall show-in-folder
+  apminstall zen
   apminstall open-in-github-app
   apminstall gist-it
   apminstall tabs-to-spaces
   apminstall autocomplete-plus
-  apminstall sublime-tabs
+  #apminstall sublime-tabs
 
+  # git
   apminstall merge-conflicts
   apminstall git-blame
 
+  # code quality
   apminstall editorconfig
   apminstall linter # for linter-*
-
   apminstall docblockr
   apminstall travis-ci-status
+
+  # health
+  apminstall break
 
   # editor ui
   apminstall swap-panes

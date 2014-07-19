@@ -112,6 +112,7 @@ Here is what is automatically handled by this awesome [index.zsh](index.zsh) (in
 http://superuser.com/questions/455755/how-to-explore-more-defaults-write-tweaks-on-os-x
 
 For most non-hidden settings, this is how you can find the correct preference keys in Terminal.app:
+
 	defaults read > a
 	# Change the setting
 	defaults read > b

@@ -48,9 +48,9 @@ defaults write com.apple.finder "XtraFinder_XFHideDotFilesOnDesktopPlugin" 1
 defaults write com.apple.finder "XtraFinder_XFMakeSymbolicLinkActionPlugin" 1
 defaults write com.apple.finder "XtraFinder_XFNewFileActionPlugin" 1
 defaults write com.apple.finder "XtraFinder_XFShowAllFilesActionPlugin" 1
-defaults write com.apple.finder "XtraFinder_XFShowAllFilesActionPlugin_Shortcut" -dict \
-  keyChars -string ">" \
-  keyCharsIgnoringModifiers -string ">" \
-  keyCode 50 \
-  modifierFlags 1179648 \
-  modifiers 768
+# defaults write com.apple.finder "XtraFinder_XFShowAllFilesActionPlugin_Shortcut" -dict \
+#   keyChars -string ">" \
+#   keyCharsIgnoringModifiers -string ">" \
+#   keyCode 50 \
+#   modifierFlags 1179648 \
+#   modifiers 768

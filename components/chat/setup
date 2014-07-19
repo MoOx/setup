@@ -2,6 +2,7 @@
 
 brewcaskinstall "LimeChat" $HOME/Applications
 dockutil --no-restart --add "~/Applications/LimeChat.app" --after "Messages"
+openifnot "LimeChat" "$HOME/Applications/LimeChat.app"
 
 LIMECHAT_THEME="$LIMECHAT_THEMES/LimeChat-theme-Monokai-Soda"
 if [ ! -e "$LIMECHAT_THEME.css" ]

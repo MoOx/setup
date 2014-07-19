@@ -4,7 +4,9 @@
 # Synced folder
 ##
 brewcaskinstall "BitTorrent Sync"
+openifnot "BitTorrent Sync" "/Applications/BitTorrent Sync.app"
 brewcaskinstall "Dropbox"
+openifnot "Dropbox" "/Applications/Dropbox.app"
 
 sudo rm -rf $HOME/Library/Fonts; ln -s $DIR_SYNC_BTSYNC/Fonts $HOME/Library/Fonts
 
@@ -21,6 +23,11 @@ setfileicon $OS_ICONS_DIR/PicturesFolderIcon.icns $DIR_SYNC/Pictures
 #setfileicon $OS_ICONS_DIR/MovieFolderIcon.icns $HOME/Movies
 setfileicon $OS_ICONS_DIR/MusicFolderIcon.icns $HOME/Music
 
+###
+# Cloud.app
+###
+brewcaskinstall "Cloud" "cloudapp" $HOME/Applications
+openifnot "Cloud" "$HOME/Applications/Cloud.app"
 
 ###
 # Transmission.app

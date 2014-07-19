@@ -1,0 +1,9 @@
+#!/bin/zsh
+
+function openifnot() {
+  RUNNING=$(ps -A | grep -i "$1" | grep -v grep)
+  if [ "$RUNNING" = "" ]
+  then
+    open $2
+  fi
+}

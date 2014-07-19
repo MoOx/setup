@@ -4,11 +4,16 @@
 brewcaskinstall "XtraFinder" "xtrafinder"
 brewcaskinstall "AppCleaner" "appcleaner"
 brewcaskinstall "Day-O" "day-o"
+openifnot "Day-O" "/Applications/Day-O.app"
 
 brewcaskinstall "Flux" "f-lux"
-brewcaskinstall "Shortcat" "shortcat"
+openifnot "Flux" "/Applications/Flux.app"
+
+#brewcaskinstall "Shortcat" "shortcat"
+#openifnot "Shortcat" "/Applications/Shortcat.app"
 
 brewcaskinstall "Alfred 2" "alfred"
+openifnot "Alfred 2" "/Applications/Alfred 2.app"
 # todo add to Alfred.app search scope
 # /Applications/Xcode.app/Contents/Applications/
 # /System/Library/CoreServices/

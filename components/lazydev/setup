@@ -9,7 +9,6 @@ brewcaskinstall "ImageAlpha" $HOME/Applications
 
 # more utilities
 brewcaskinstall "Mou" $HOME/Applications
-brewcaskinstall "Cloud" "cloudapp" $HOME/Applications
 
 brewcaskinstall "Synergy" $HOME/Applications
 

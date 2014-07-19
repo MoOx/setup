@@ -19,13 +19,13 @@ alias fuckosxmenubar="killa SystemUIServer NotificationCenter"
 alias fuckosx="fuckosxfinder && fuckosxdock && fuckosxmenubar"
 
 # Show/hide hidden files in Finder
-alias show="defaults write com.apple.Finder AppleShowAllFiles -bool true && fuckfinder"
-alias hide="defaults write com.apple.Finder AppleShowAllFiles -bool false && fuckfinder"
+alias show="defaults write com.apple.Finder AppleShowAllFiles -bool true && fuckosxfinder"
+alias hide="defaults write com.apple.Finder AppleShowAllFiles -bool false && fuckosxfinder"
 
 # Hide/show all desktop icons (useful when presenting)
 alias desktop="defaults write com.apple.finder CreateDesktop -bool"
-alias hidedesktop="desktop false && fuckfinder"
-alias showdesktop="desktop true && fuckfinder"
+alias hidedesktop="desktop false && fuckosxfinder"
+alias showdesktop="desktop true && fuckosxfinder"
 
 alias osx-bootableusb="sudo \"$OSX_INSTALL_APP/Contents/Resources/createinstallmedia\" --volume /Volumes/Untitled --applicationpath \"$OSX_INSTALL_APP\" --nointeraction"
 

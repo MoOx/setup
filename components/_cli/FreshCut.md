@@ -1,77 +1,101 @@
-# FreshCut Terminal.app
+# FreshCut
+
+Useful tool: [CSS Colors](http://leaverou.github.io/css-colors/)
 
 ## Colors
 
-white
-#F8F8F2
-hsl(60, 29%, 96%)
-apple rbg 245 245 237
+### White
 
-normal bright
-hsl(60, 39%, 99%)
-apple rgb 252 253 250
+	#f8f8f2
+	hsl(60, 29%, 96%)
+	apple rbg(245, 245, 237)
 
-black
-#222
-hsl(0, 0%, 13%)
-aple rgb 26 26 26
+### White (bright)
 
-black bright
-(grey)
-#556270
-hsl(211, 14%, 39%)
-apple rgba 68 79 94
+	#fdfdfb
+	hsl(60, 39%, 99%)
+	apple rgb(252, 253, 250)
 
-red
-#C75646
-hsl(7, 54%, 53%)
-apple rgb 182 67 51
+### Black
 
-red bright
-hsl(7, 54%, 63%)
-apple rgb 197 101 88
+	#222
+	hsl(0, 0%, 13%)
+	apple rgb(26, 26, 26)
 
-green
-#8FBE00
-hsl(78, 74%, 55%)
-apple rgb 164 223 0
+### Black (bright) (grey)
 
-green bright
-hsl(78, 74%, 65%)
-apple rgb 183 230 57
+	#556270
+	hsl(211, 14%, 39%)
+	apple rgb( 68, 79, 94)
 
-yellow
-#E9EE00
-hsl(61, 99%, 47%)
-apple rgb 231 240 0
+### Red
 
-yellow bright
-hsl(61, 99%, 57%)
-apple rgb 251 255 0
+	#c75646
+	hsl(7, 54%, 53%)
+	apple rgb(182, 67, 51)
 
-blue
-#00A8C6
-hsl(190, 100%, 50%)
-apple rgb 27 152 196
+### Red (bright)
 
-blue bright
-hsl(190, 100%, 50%)
-apple rgb 55 212 255
+	#d3796d
+	hsl(7, 54%, 63%)
+	apple rgb(197, 101, 88)
 
-magenta
-#00A8C6
-hsl(274, 100%, 67%)
-apple rgb 160 49 255
+### Green
 
-magenta bright
-hsl(274, 100%, 77%)
-apple rgb 187 108 255
+	#8fbe00
+	hsl(78, 74%, 55%)
+	apple rgb(164, 223, 0)
 
-cyan
-#4ECDC4
-hsl(175, 55%, 55%)
-apple rgb 72 193 178
+### Green (bright)
 
-cyan bright
-hsl(175, 55%, 55%)
-apple rgb 105 205 195
+	#c0e763
+	hsl(78, 74%, 65%)
+	apple rgb(183, 230, 57)
+
+### Yellow
+
+	#e9ee00
+	hsl(61, 99%, 47%)
+	apple rgb(231, 240, 0)
+
+### Yellow (bright)
+
+	#fafd24
+	hsl(61, 99%, 57%)
+	apple rgb(251, 255, 0)
+
+### Blue
+
+	#00a8c6
+	hsl(190, 100%, 40%)
+	apple rgb(27, 152, 196)
+
+### Blue (bright)
+
+	#00d4ff
+	hsl(190, 100%, 50%)
+	apple rgb(55, 212, 255)
+
+### Magenta
+
+	#b656ff
+	hsl(274, 100%, 67%)
+	apple rgb(160, 49, 255)
+
+### Magenta (bright)
+
+	#cc89ff
+	hsl(274, 100%, 77%)
+	apple rgb(187, 108, 255)
+
+### Cyan
+
+	#4ecdc4
+	hsl(175, 55%, 55%)
+	apple rgb(72, 193, 178)
+
+### Cyan (bright)
+
+	#74d6ce
+	hsl(175, 55%, 65%)
+	apple rgb(105, 205, 195)

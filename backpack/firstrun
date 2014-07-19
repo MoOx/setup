@@ -29,25 +29,6 @@ git submodule update
 
 . $HOME/dotfiles/bin/fireinthehole --full
 
-echo_title "First run some applications"
-
-# move that directly into each appropriated part
-open "/Applications/Alfred 2.app"
-open "/Applications/BitTorrent Sync.app"
-open "/Applications/Cloud.app"
-open "/Applications/Dash.app"
-open "/Applications/Dropbox.app"
-open "/Applications/Flux.app"
-open "/Applications/Flycut.app"
-open "/Applications/Shortcat.app"
-open "/Applications/XtraFinder.app"
-open "/Applications/Day-O.app"
-open "$HOME/Applications/FirefoxNightly.app"
-open "$HOME/Applications/Last.fm.app"
-open "$HOME/Applications/LimeChat.app"
-open "$HOME/Applications/Slate.app"
-open "$HOME/Applications/Tunnelblick.app"
-
 # todo add login items
 
 if ! type "say" > /dev/null

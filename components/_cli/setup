@@ -2,6 +2,11 @@
 
 brewinstall zsh-completions
 
+brewcaskinstall "iTerm" "iterm2" $HOME/Applications
+-dockutil --no-restart --add "~/Applications/iTerm.app" --before "Console"
+
+source $DOTFILES/components/_cli/preferences/iTerm2
+
 # better than man
 npmig tldr
 

@@ -1,0 +1,5 @@
+#!/bin/sh
+
+function quit() {
+  pkill -SIGTERM  "$@"
+}

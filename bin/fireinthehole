@@ -1,10 +1,5 @@
 #!/bin/zsh
 
-# to skip "Agreeing to the Xcode/iOS license requires admin privileges, please re-run as root via sudo."
-# sudo xcodebuild -license
-# maybe use something similar too http://superuser.com/questions/221136/bypass-a-licence-agreement-when-mounting-a-dmg-on-the-command-line
-# or just open xcode bitch
-
 export DOTFILES="$( cd "$( dirname "${0}" )"/../ && pwd )"
 source $DOTFILES/index.zsh
 

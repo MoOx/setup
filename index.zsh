@@ -24,11 +24,12 @@ function echo_title_install () { echo_title "Installing" $1 "..." }
 function echo_title_update () { echo_title "Updating" $1 "..." }
 function echo_title_installupdate () { echo_title "Installing/Updating" $1 "..." }
 function setup () {
-  if [[ -f "$DOTFILES/components/$1/setup" ]]
+  COMPONENT_SETUP="$DOTFILES/components/$1/setup"
+  if [[ -f "$COMPONENT_SETUP" ]]
   then
-    source "$DOTFILES/components/$1/setup"
+    source "$COMPONENT_SETUP"
   else
-    echo "Fail to setup $1: no setup file in '$DOTFILES/components/$1/setup'"
+    echo "Fail to setup $1: no setup file in '$COMPONENT_SETUP'"
   fi
 }
 

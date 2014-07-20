@@ -16,7 +16,7 @@ alias apacheaddconf="e $APACHE_CONF_DEV_PATH/local.conf /etc/hosts"
 # alias nr="nginxreload"
 
 # php
-export PHP_PATH="$(brew --prefix josegonzalez/php/php55)"
+command -v brew > /dev/null && export PHP_PATH="$(brew --prefix josegonzalez/php/php55)"
 export PATH="$PHP_PATH/bin:$PATH"
 alias phpini="e /usr/local/etc/php/5.5/php.ini"
 

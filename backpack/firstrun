@@ -50,7 +50,13 @@ else
   echo "dotfiles have been downloaded"
   echo ""
   echo "Running installation"
-. $HOME/dotfiles/bin/fireinthehole --full
+
+  if [[ ! -d $HOME/Applications ]]
+  then
+    mkdir $HOME/Applications
+  fi
+
+  . $HOME/dotfiles/bin/fireinthehole --full
 
   # todo add login items
 

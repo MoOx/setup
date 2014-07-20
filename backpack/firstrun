@@ -7,14 +7,19 @@ echo "Visit https://appleseed.apple.com/sp/betaprogram to get OS X beta update"
 open "https://appleseed.apple.com/sp/betaprogram"
 read -k
 
-if ! type "git" > /dev/null; then
-  if [[ "$(uname -s)" == "Darwin" ]]
-  then
-    # todo add an alternative to grab xcode from another computer accessible by local network
-    xcode-select --install
-    echo "Press return when XCode Developer Tools are installed"
-    read -k
-  fi
+if [[ "$(uname -s)" == "Darwin" ]]
+then
+  # todo add an alternative to grab xcode from another computer accessible by local network
+
+  echo "Before running myself, please be sure you have `git` command working".
+  echo "You may need Xcode (and eventually Command line tools)"
+  echo "You can try the following if you are on a stable OS X version (with stable Xcode)"
+  echo "  xcode-select --install"
+  echo "If you are on an Developer Preview/Beta try (replace {VERSION})"
+  echo "  sudo xcode-select --switch /Applications/Xcode{VERSION}-Beta.app/Contents/Developer/"
+  echo "  xcode-select --install"
+  echo "Press return when `git` command is available"
+  read -k
 fi
 
 if [[ ! -d $HOME/dotfiles ]]
@@ -27,13 +32,24 @@ else
 fi
 git submodule update
 
+if [[ ! -d $HOME/dotfiles/.git ]]
+then
+  echo "dotfiles have not been downloaded correctly"
+  echo ""
+  echo "Aborting"
+
+else
+  echo "dotfiles have been downloaded"
+  echo ""
+  echo "Running installation"
 . $HOME/dotfiles/bin/fireinthehole --full
 
-# todo add login items
+  # todo add login items
 
-if ! type "say" > /dev/null
-then
-  say "YO BITCH, setup is done \!"
-  sleep 5
-  say "HEY BITCH ! Did you heard what I just said \?"
+  if ! type "say" > /dev/null
+  then
+    say "YO BITCH, setup is done \!"
+    sleep 5
+    say "HEY BITCH ! Did you heard what I just said \?"
+  fi
 fi

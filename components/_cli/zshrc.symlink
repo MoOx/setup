@@ -46,7 +46,7 @@ PROMPT='%(?.%F{green}.%F{red}❯%F{green})❯%f '
 export OS_ICONS_DIR=/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources
 
 # also load aliases from projets
-if [[ !d $DIR_DEV ]]
+if [[ -d $DIR_DEV ]]
 then
   for source in `find $DIR_DEV -maxdepth 4 -name \*.aliases.zsh`
   do

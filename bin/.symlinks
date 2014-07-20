@@ -3,8 +3,6 @@
 
 echo_title_installupdate 'dotfiles'
 
-export DOTFILESCEPTION="$DOTFILES/dotfilesception"
-
 overwrite_all=false
 backup_all=false
 skip_all=false

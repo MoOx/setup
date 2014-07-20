@@ -13,7 +13,7 @@ fi
 if ! type "php" > /dev/null
 then
   echo_title_install "PHP"
-  brewtap josegonzalez/homebrew-php
+  brewtap homebrew/homebrew-php
   brewinstall php55
   brewinstall php55-http
 fi

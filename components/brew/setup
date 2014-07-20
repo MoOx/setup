@@ -12,6 +12,7 @@ else
 fi
 
 brewtap homebrew/dupes
+brewtap homebrew/versions
 
 # cask
 brewtap caskroom/cask

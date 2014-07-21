@@ -26,7 +26,7 @@ setfileicon $OS_ICONS_DIR/MusicFolderIcon.icns $HOME/Music
 ###
 # Cloud.app
 ###
-brewcaskinstall "Cloud" "cloudapp" $HOME/Applications
+brewcaskinstall "Cloud" $HOME/Applications
 openifnot "Cloud" "$HOME/Applications/Cloud.app"
 
 ###

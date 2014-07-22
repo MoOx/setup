@@ -3,10 +3,13 @@
 # Apache configuration
 if ! cat $APACHE_CONF | grep $APACHE_CONF_DEV_PATH > /dev/null
 then
-  echo_title "Configuring OS X Apache"
-  echo "\nInclude $APACHE_CONF_DEV_PATH/*.conf" | sudo tee -a $APACHE_CONF
-  apacheconfigtest
-  apacherestart
+  if ls $APACHE_CONF_DEV_PATH 2> /dev/null
+  then
+    echo_title "Configuring OS X Apache"
+    echo "\nInclude $APACHE_CONF_DEV_PATH/*.conf" | sudo tee -a $APACHE_CONF
+    apacheconfigtest
+    apacherestart
+  fi
 fi
 
 # PHP
@@ -24,5 +27,6 @@ if ! type "mysql" > /dev/null
 then
   echo_title_install "MySQL"
   brewinstall mysql
-  brewservicesstart mysql
+  ln -sfv /usr/local/opt/mysql/*.plist ~/Library/LaunchAgents
+  launchctl load ~/Library/LaunchAgents/homebrew.mxcl.mysql.plist
 fi

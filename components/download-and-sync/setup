@@ -8,11 +8,21 @@ openifnot "BitTorrent Sync" "/Applications/BitTorrent Sync.app"
 brewcaskinstall "Dropbox"
 openifnot "Dropbox" "/Applications/Dropbox.app"
 
-sudo rm -rf $HOME/Library/Fonts; ln -s $DIR_SYNC_BTSYNC/Fonts $HOME/Library/Fonts
+if ls $DIR_SYNC_BTSYNC/Fonts > /dev/null
+then
+  sudo rm -rf $HOME/Library/Fonts; ln -s $DIR_SYNC_BTSYNC/Fonts $HOME/Library/Fonts
+fi
 
-sudo rm -rf $HOME/Music; ln -s $DIR_SYNC/Music $HOME/Music
-sudo rm -rf $HOME/iTunes; ln -s $HOME/Music $HOME/iTunes
-sudo rm -rf $HOME/Pictures; ln -s $DIR_SYNC/Pictures $HOME/Pictures
+if ls $DIR_SYNC/Music > /dev/null
+then
+  sudo rm -rf $HOME/Music; ln -s $DIR_SYNC/Music $HOME/Music
+	sudo rm -rf $HOME/iTunes; ln -s $HOME/Music $HOME/iTunes
+fi
+
+if ls $DIR_SYNC/Pictures > /dev/null
+then
+  sudo rm -rf $HOME/Pictures; ln -s $DIR_SYNC/Pictures $HOME/Pictures
+fi
 
 # Customize some icon (setfileicon is a custom command from my Dev*/bin)
 setfileicon $OS_ICONS_DIR/GroupFolder.icns $DIR_SYNC

@@ -14,7 +14,7 @@ fi
 
 # PHP
 
-if ! ls $(brew --prefix)/bin/php > /dev/null
+if ! ls $(brew --prefix)/bin/php &> /dev/null
 then
   echo_title_install "PHP"
   brewtap homebrew/homebrew-php

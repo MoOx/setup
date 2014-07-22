@@ -2,7 +2,10 @@
 
 # enhance OS X with some small utilities
 brewcaskinstall "XtraFinder" "xtrafinder"
+fuckosxfinder
+
 brewcaskinstall "AppCleaner" "appcleaner"
+
 brewcaskinstall "Day-O" "day-o"
 openifnot "Day-O" "/Applications/Day-O.app"
 

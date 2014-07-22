@@ -10,6 +10,6 @@ then
 	open "https://panel.preyproject.com/profile"
 	read API_KEY
 	if [ "$API_KEY" != "" ]; then
-		API_KEY="$API_KEY" brew cask install prey
+		API_KEY="$API_KEY" brew cask install prey --force
 	fi
 fi

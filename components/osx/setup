@@ -96,12 +96,6 @@ defaults write com.apple.dock mru-spaces -bool false
 # Reset Launchpad
 find ~/Library/Application\ Support/Dock -name "*.db" -maxdepth 1 -delete
 
-###
-# iTerm 2
-###
-
-# Don’t display the annoying prompt when quitting iTerm
-defaults write com.googlecode.iterm2 PromptOnQuit -bool false
 
 ###
 # Time Machine

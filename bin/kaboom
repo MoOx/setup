@@ -29,14 +29,15 @@ setup git
 setup node
 setup _cli
 
+setup atom
+
+setup download-and-sync
+
 setup logitech
 setup browsers
-setup atom
 
 setup slate
 setup osx-enhancements
-
-setup download-and-sync
 
 setup dyndns
 #setup dnsmasq

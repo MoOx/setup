@@ -9,7 +9,7 @@ if [ ! -e "$LIMECHAT_THEME.css" ]
 then
   echo_title_install "LimeChat theme"
   git clone https://github.com/MoOx/LimeChat-theme-Monokai-Soda.git $LIMECHAT_THEME
-  ln -s $LIMECHAT_THEME/LimeChat-theme-Monokai-Soda.* $LIMECHAT_THEME
+  ln -s $LIMECHAT_THEME/LimeChat-theme-Monokai-Soda.* $LIMECHAT_THEMES
 else
   echo_title_update "LimeChat theme"
   git -C $LIMECHAT_THEME pull

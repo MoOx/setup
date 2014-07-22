@@ -9,10 +9,11 @@ brewinstall ffmpeg
 CLOUDAPP_CREDS=$HOME/.cloudapp
 if [ ! -e $CLOUDAPP_CREDS ]
 then
-  echo "Enter Cloud.app login/password"
+  echo "Enter Cloud.app login"
   read CLOUDAPP_LOGIN
+  echo "Enter Cloud.app password"
   read CLOUDAPP_PWD
 
-	echo $CLOUDAPP_LOGIN >> $CLOUDAPP_CREDS
-	echo $CLOUDAPP_PWD >> $CLOUDAPP_CREDS
+  echo $CLOUDAPP_LOGIN >> $CLOUDAPP_CREDS
+  echo $CLOUDAPP_PWD >> $CLOUDAPP_CREDS
 fi

@@ -1,2 +1,2 @@
-command -v brew > /dev/null && alias casksource="cd $(brew --prefix)/Library/Taps/phinze-cask"
+command -v brew > /dev/null && alias caskroom="cd $(brew --prefix)/Library/Taps/caskroom"
 alias brewu="brew update && brew upgrade"

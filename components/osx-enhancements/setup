@@ -9,8 +9,9 @@ openifnot "Day-O" "/Applications/Day-O.app"
 brewcaskinstall "Flux"
 openifnot "Flux" "/Applications/Flux.app"
 
-#brewcaskinstall "Shortcat" "shortcat"
-#openifnot "Shortcat" "/Applications/Shortcat.app"
+# I surprise myself never using this, maybe later
+# brewcaskinstall "Shortcat" "shortcat"
+# openifnot "Shortcat" "/Applications/Shortcat.app"
 
 # New Spotlight kills Alfred :/
 # brewcaskinstall "Alfred 2" "alfred"

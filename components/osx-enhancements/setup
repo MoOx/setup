@@ -12,13 +12,14 @@ openifnot "Flux" "/Applications/Flux.app"
 #brewcaskinstall "Shortcat" "shortcat"
 #openifnot "Shortcat" "/Applications/Shortcat.app"
 
-brewcaskinstall "Alfred 2" "alfred"
-openifnot "Alfred 2" "/Applications/Alfred 2.app"
-# todo add to Alfred.app search scope
-# /Applications/Xcode.app/Contents/Applications/
-# /System/Library/CoreServices/
-# /System/Library/CoreServices/Applications/
-brew cask alfred link 2>&1 | grep -v "Alfred is already linked to homebrew-cask."
+# New Spotlight kills Alfred :/
+# brewcaskinstall "Alfred 2" "alfred"
+# openifnot "Alfred 2" "/Applications/Alfred 2.app"
+# # todo add to Alfred.app search scope
+# # /Applications/Xcode.app/Contents/Applications/
+# # /System/Library/CoreServices/
+# # /System/Library/CoreServices/Applications/
+# brew cask alfred link 2>&1 | grep -v "Alfred is already linked to homebrew-cask."
 
 # required by I don't know why
 brewcaskinstall "Utilities/XQuartz" "xquartz"

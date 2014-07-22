@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 # hide the useless icons
-if ls $HOME/Library/Preferences/ByHost/com.apple.systemuiserver.* 2&> /dev/null
+if ls $HOME/Library/Preferences/ByHost/ | grep com.apple.systemuiserver &> /dev/null
 then
 	for domain in $HOME/Library/Preferences/ByHost/com.apple.systemuiserver.*
 	do

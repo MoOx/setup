@@ -10,7 +10,7 @@ then
 fi
 
 # todo get this app not from appstore
-# https://github.com/TermiT/Flycut
+# https://github.com/TermiT/Flycut/issues/56
 openifnot "Flycut" "/Applications/Flycut.app"
 
 # required first

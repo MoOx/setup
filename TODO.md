@@ -69,18 +69,6 @@ Copy your token from the token field & paste your token into ~/.github_token (`e
 	git config --global github.user MoOx
 	git config --global github.token $(cat ~/.github_token)
 
-#### [Github SSH Key](https://help.github.com/articles/generating-ssh-keys)
-
-	cd ~/.ssh
-	mkdir key_backup
-	cp id_rsa* key_backup
-	rm id_rsa*
-	ssh-keygen -t rsa -C "m@moox.io"
-	pbcopy < ~/.ssh/id_rsa.pub
-
-[Paste clipboard content as a new key on your Github account settings](https://github.com/settings/ssh)
-
-
 ## Setup Internet Accounts
 
 System Preferences > Internet Accounts

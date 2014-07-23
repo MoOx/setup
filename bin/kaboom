@@ -28,6 +28,7 @@ setup git
 
 setup node
 setup _cli
+setup ssh
 
 setup atom
 

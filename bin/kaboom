@@ -19,6 +19,10 @@ setup brew
 if type "say" > /dev/null
 then
 	say "Password might be required"
+	if [ "$FULLFIRE" = "true" ]
+	then
+		say "And be careful, since it's you first run, it will probably be asked more than once. Check often until process is complete."
+	fi
 fi
 # Ask for the administrator password upfront
 sudo -v

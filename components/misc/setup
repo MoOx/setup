@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+brewcaskinstall "java"
+
 brewcaskinstall "KeePassX" "keepassx"
 brewcaskinstall "LibreOffice"
 

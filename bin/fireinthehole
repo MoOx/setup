@@ -3,13 +3,13 @@
 export DOTFILES="$( cd "$( dirname "${0}" )"/../ && pwd )"
 source $DOTFILES/index.zsh
 
+echo "\n(╯°□°）╯ ︵ $CHAR_BOOM\n"
+
 # Ask for the administrator password upfront
 sudo -v
 
 # update from remote
 echo_title_update "from remote"
-
-echo "\n(╯°□°）╯ ︵ $CHAR_BOOM\n"
 
 cd $DOTFILES
 git pull origin master

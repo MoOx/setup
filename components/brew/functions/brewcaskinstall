@@ -3,23 +3,28 @@
 function brewcaskinstall() {
   if [ $# -lt 1 ]
   then
-    echo "Usage: brewcaskinstall app-cute-name [app-cli-name] [destination]"
+    echo "Usage: brewcaskinstall app-cute-name|path [app-cli-name] [destination]"
     echo ""
     echo "       eg: brewcaskinstall \"My app\" myapp \$HOME/Applications"
+    echo "           brewcaskinstall \"/Library/Java/JavaVirtualMachines/\" \"java\""
     echo ""
     echo "       Default app-cli-name is app-cute-name to lower with space converted to dash"
     echo "       Default destination is /Applications"
   else
     cuteName=$1
-    cliName=$2
-    dest=$3
-    if [ -e "$cliName" ]
+
+    if [ -e "$2" ]
     then
       dest="$cliName"
       cliName=""
-    elif [[ "$dest" == "" ]]
-    then
-      dest="/Applications"
+    else
+      cliName=$2
+      if [[ "$3" == "" ]]
+      then
+        dest="/Applications"
+      else
+        dest=$3
+      fi
     fi
 
     if [[ "$cliName" == "" ]]

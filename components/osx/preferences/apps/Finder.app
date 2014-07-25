@@ -20,6 +20,8 @@ plistbuddy com.apple.finder "Add :NSToolbar\ Configuration\ Browser:TB\ Item\ Id
 plistbuddy com.apple.finder "Add :NSToolbar\ Configuration\ Browser:TB\ Item\ Identifiers:$i string com.apple.finder.SRCH" && ((i++))
 unset i
 
+defaults write com.apple.finder AppleShowAllExtensions -bool true
+
 defaults write com.apple.finder ShowTabView -bool true
 defaults write com.apple.finder ShowPathbar -bool true
 defaults write com.apple.finder ShowStatusBar -bool true

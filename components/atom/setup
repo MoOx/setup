@@ -67,6 +67,7 @@ then
   apminstall linter-jshint
   apminstall linter-jsonlint
   apminstall language-jade
+  apminstall mocha-test-runner
 
     # nodejs
     apminstall npm-install

@@ -120,6 +120,11 @@ source $DOTFILES/components/osx/preferences/apps/Finder.app
 source $DOTFILES/components/osx/preferences/apps/Mail.app
 source $DOTFILES/components/osx/preferences/apps/Safari.app
 
+openifnot "Tweetbot" "/Applications/Tweetbot.app"
+# todo get this app not from appstore
+# https://github.com/TermiT/Flycut/issues/56
+openifnot "Flycut" "/Applications/Flycut.app"
+
 # Kill affected applications
 fuckosx
 for app in "Address Book" "Calendar" "Contacts" "Messages"

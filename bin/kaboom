@@ -9,10 +9,6 @@ then
 	source appstore
 fi
 
-# todo get this app not from appstore
-# https://github.com/TermiT/Flycut/issues/56
-openifnot "Flycut" "/Applications/Flycut.app"
-
 # required first
 setup brew
 

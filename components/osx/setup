@@ -61,6 +61,16 @@ then
 	sudo pmset -a acwake 0
 fi
 
+###
+# Enable access for assistive devices
+###
+if ls /private/var/db/.AccessibilityAPIEnabled &> /dev/null
+then
+	# /usr/bin/osascript -e 'tell application "System Events" to set UI elements enabled to true'
+	echo -n 'a' | sudo tee /private/var/db/.AccessibilityAPIEnabled > /dev/null 2>&1
+	sudo chmod 444 /private/var/db/.AccessibilityAPIEnabled
+fi
+
 # Never require password after sleep or screen saver begins
 defaults write com.apple.screensaver askForPassword -int 0
 

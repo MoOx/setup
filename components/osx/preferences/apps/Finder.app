@@ -1,5 +1,8 @@
 #!/bin/zsh
 
+# vertical list view
+defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
+
 # can figure how to use `defaults write` to handle this prefs
 # getting error `Cannot nest composite types (arrays and dictionaries)`
 # defaults write com.apple.finder "NSToolbar Configuration Browser" -dict-add "TB Item Identifiers" - array ...

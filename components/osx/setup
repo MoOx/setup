@@ -23,9 +23,35 @@ sudo scutil --set HostName $COMPUTER_NAME
 sudo scutil --set LocalHostName $COMPUTER_NAME
 sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string $COMPUTER_NAME
 
+###
+# pmset -a: for all (-b battery, -c charger)
+###
 
-# Never go into computer sleep mode
-systemsetup -setcomputersleep Off > /dev/null
+if type pmset  &> /dev/null
+then
+	# Computer sleep: Never
+	sudo pmset -a sleep 0
+
+	# Display sleep: 10 min
+	sudo pmset -a displaysleep 10
+
+	# Wake for network access
+	sudo pmset -a womp 1
+
+	# Automatically reduce brightness before display goes to sleep
+	sudo pmset -a halfdim 0
+
+	# Start up automatically after a power failure
+	sudo pmset -a autorestart 1
+
+	# Restart automatically if the computer freezes
+	sudo pmset -a panicrestart 15
+
+	# Never wake the machine if lib open or when power source changes
+	sudo pmset -a lidwake 0
+	sudo pmset -a acwake 0
+fi
+
 # Startup sound chime effect (disable: %00)
 sudo nvram SystemAudioVolume=%10﻿
 

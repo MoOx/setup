@@ -105,10 +105,10 @@ defaults write com.apple.DiskUtility DUDebugMenuEnabled -bool true
 # Disable the “Are you sure you want to open this application?” dialog
 defaults write com.apple.LaunchServices LSQuarantine -bool false
 
-# Use scroll gesture with the Ctrl (^) key to zoom
+# Zoom: Options… > Use scroll wheel with modifier keys to zoom: ^ [control]
 defaults write com.apple.universalaccess HIDScrollZoomModifierMask 262144
 
-# disable zoom with cmd+scroll
+# Zoom: Options… > Disable zoom with cmd+scroll
 defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool false
 
 # Enable AirDrop over Ethernet and on unsupported Macs:

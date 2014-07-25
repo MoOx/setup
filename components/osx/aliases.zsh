@@ -12,11 +12,13 @@ alias changedns="sudo networksetup -setdnsservers \"$(networksetup -listnetworks
 alias ss="/System/Library/Frameworks/ScreenSaver.framework/Resources/ScreenSaverEngine.app/Contents/MacOS/ScreenSaverEngine -background &"
 
 alias killa="killall '${app}' > /dev/null 2>&1"
-# Fuck crash
+
+# FUCK YOU OSX (ps: I love you )
+alias fuckosxprefs="killall -u $USER cfprefsd"
 alias fuckosxfinder="killa Finder; if [ -e /Applications/XtraFinder.app ]; then; open /Applications/XtraFinder.app; fi"
 alias fuckosxdock="killa Dock"
 alias fuckosxmenubar="killa SystemUIServer NotificationCenter"
-alias fuckosx="fuckosxfinder && fuckosxdock && fuckosxmenubar"
+alias fuckosx="fuckosxprefs && fuckosxfinder && fuckosxdock && fuckosxmenubar"
 
 # Show/hide hidden files in Finder
 alias show="defaults write com.apple.Finder AppleShowAllFiles -bool true && fuckosxfinder"

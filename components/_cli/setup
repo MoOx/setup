@@ -3,7 +3,7 @@
 brewinstall zsh-completions
 
 brewcaskinstall "iTerm" "iterm2" $HOME/Applications
-dockutil --no-restart --add "~/Applications/iTerm.app" --before "Console"
+dockutil --no-restart --add "$HOME/Applications/iTerm.app" --before "Console"
 
 source $DOTFILES/components/_cli/preferences/Terminal
 source $DOTFILES/components/_cli/preferences/iTerm2

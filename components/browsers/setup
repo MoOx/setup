@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 brewcaskinstall "FirefoxNightly" "firefox-nightly" "$HOME/Applications"
-dockutil --no-restart --add "~/Applications/FirefoxNightly.app" --before "Safari"
+dockutil --no-restart --add "$HOME/Applications/FirefoxNightly.app" --before "Safari"
 openifnot "FirefoxNightly" "$HOME/Applications/FirefoxNightly.app"
 
 brewcaskinstall "FirefoxAurora" "firefox-aurora" "$HOME/Applications"
@@ -21,4 +21,5 @@ brewcaskinstall "/Library/Internet Plug-Ins/googletalkbrowserplugin.plugin" "goo
 # brewinstall android-sdk
 brewcaskinstall genymotion
 
+fuckosxprefs
 fuckosxdock

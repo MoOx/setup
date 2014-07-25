@@ -19,6 +19,9 @@ then
 fi
 
 brewcaskinstall "GitHub" $HOME/Applications
-dockutil --no-restart --add "~/Applications/GitHub.app" --before "Atom"
+dockutil --no-restart --add "$HOME/Applications/GitHub.app" --after "iTerm"
 
 brewcaskinstall "SourceTree" $HOME/Applications
+
+fuckosxprefs
+fuckosxdock

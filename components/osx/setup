@@ -24,6 +24,15 @@ sudo scutil --set LocalHostName $COMPUTER_NAME
 sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string $COMPUTER_NAME
 
 ###
+# SecAssessment system policy security
+###
+if type spctl  &> /dev/null
+then
+	# Allow apps downloaded from "Anywhere"
+	sudo spctl --master-disable
+fi
+
+###
 # pmset -a: for all (-b battery, -c charger)
 ###
 

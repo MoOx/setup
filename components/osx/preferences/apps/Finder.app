@@ -1,5 +1,22 @@
 #!/bin/zsh
 
+# can figure how to use `defaults write` to handle this prefs
+# getting error `Cannot nest composite types (arrays and dictionaries)`
+# defaults write com.apple.finder "NSToolbar Configuration Browser" -dict-add "TB Item Identifiers" - array ...
+plistbuddy com.apple.finder "Delete :NSToolbar\ Configuration\ Browser:TB\ Item\ Identifiers"
+plistbuddy com.apple.finder "Add :NSToolbar\ Configuration\ Browser:TB\ Item\ Identifiers array" && i=1
+plistbuddy com.apple.finder "Add :NSToolbar\ Configuration\ Browser:TB\ Item\ Identifiers:$i string com.apple.finder.BACK" && ((i++))
+plistbuddy com.apple.finder "Add :NSToolbar\ Configuration\ Browser:TB\ Item\ Identifiers:$i string com.apple.finder.PATH" && ((i++))
+plistbuddy com.apple.finder "Add :NSToolbar\ Configuration\ Browser:TB\ Item\ Identifiers:$i string NSToolbarFlexibleSpaceItem" && ((i++))
+plistbuddy com.apple.finder "Add :NSToolbar\ Configuration\ Browser:TB\ Item\ Identifiers:$i string com.apple.finder.SWCH" && ((i++))
+plistbuddy com.apple.finder "Add :NSToolbar\ Configuration\ Browser:TB\ Item\ Identifiers:$i string NSToolbarSpaceItem" && ((i++))
+plistbuddy com.apple.finder "Add :NSToolbar\ Configuration\ Browser:TB\ Item\ Identifiers:$i string com.apple.finder.NFLD" && ((i++))
+plistbuddy com.apple.finder "Add :NSToolbar\ Configuration\ Browser:TB\ Item\ Identifiers:$i string NSToolbarSpaceItem" && ((i++))
+plistbuddy com.apple.finder "Add :NSToolbar\ Configuration\ Browser:TB\ Item\ Identifiers:$i string com.apple.finder.SHAR" && ((i++))
+plistbuddy com.apple.finder "Add :NSToolbar\ Configuration\ Browser:TB\ Item\ Identifiers:$i string NSToolbarFlexibleSpaceItem" && ((i++))
+plistbuddy com.apple.finder "Add :NSToolbar\ Configuration\ Browser:TB\ Item\ Identifiers:$i string com.apple.finder.SRCH" && ((i++))
+unset i
+
 defaults write com.apple.finder ShowTabView -bool true
 defaults write com.apple.finder ShowPathbar -bool true
 defaults write com.apple.finder ShowStatusBar -bool true

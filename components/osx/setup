@@ -61,6 +61,9 @@ then
 	sudo pmset -a acwake 0
 fi
 
+# Never require password after sleep or screen saver begins
+defaults write com.apple.screensaver askForPassword -int 0
+
 # Startup sound chime effect (disable: %00)
 sudo nvram SystemAudioVolume=%10﻿
 

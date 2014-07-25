@@ -23,11 +23,11 @@ sudo scutil --set HostName $COMPUTER_NAME
 sudo scutil --set LocalHostName $COMPUTER_NAME
 sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string $COMPUTER_NAME
 
-# Disable the sound effects on boot
-sudo nvram SystemAudioVolume=" "
 
 # Never go into computer sleep mode
 systemsetup -setcomputersleep Off > /dev/null
+# Startup sound chime effect (disable: %00)
+sudo nvram SystemAudioVolume=%10﻿
 
 # Enable subpixel font rendering on non-Apple LCDs
 defaults write NSGlobalDomain AppleFontSmoothing -int 2

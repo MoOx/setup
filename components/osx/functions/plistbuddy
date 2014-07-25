@@ -1,0 +1,5 @@
+#!/bin/zsh
+
+function plistbuddy() {
+	/usr/libexec/PlistBuddy -c $2 "$HOME/Library/Preferences/$1.plist"
+}

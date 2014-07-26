@@ -53,9 +53,6 @@ then
 	# Start up automatically after a power failure
 	sudo pmset -a autorestart 1
 
-	# Restart automatically if the computer freezes
-	sudo pmset -a panicrestart 15
-
 	# Never wake the machine if lib open or when power source changes
 	sudo pmset -a lidwake 0
 	sudo pmset -a acwake 0

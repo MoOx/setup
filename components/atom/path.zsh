@@ -1,3 +1,3 @@
 #!/bin/zsh
 
-export ATOM_PATH="$HOME/.atom"
+export ATOM_PREFS_PATH="$HOME/.atom"

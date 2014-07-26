@@ -167,6 +167,7 @@ source $DOTFILES/components/osx/preferences/Spotlight
 source $DOTFILES/components/osx/preferences/apps/Finder.app
 source $DOTFILES/components/osx/preferences/apps/Mail.app
 source $DOTFILES/components/osx/preferences/apps/Safari.app
+source $DOTFILES/components/osx/preferences/apps/Calendar.app
 
 openifnot "Tweetbot" "/Applications/Tweetbot.app"
 # todo get this app not from appstore

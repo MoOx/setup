@@ -1,8 +1,7 @@
 #!/bin/zsh
 
-TERM_PROFILE='FreshCut';
-CURRENT_PROFILE="$(defaults read com.apple.terminal 'Default Window Settings')";
-if [ "$CURRENT_PROFILE" != "$TERM_PROFILE" ]
+TERM_PROFILE='FreshCut'
+if [ "$(defaults read com.apple.terminal 'Default Window Settings')" != "$TERM_PROFILE" ]
 then
   echo_title "Setup Terminal.app profile"
   open "$DOTFILES/components/_cli/$TERM_PROFILE.terminal"
@@ -11,4 +10,5 @@ then
 
   defaults write com.apple.terminal 'Default Window Settings' -string "$TERM_PROFILE"
   defaults write com.apple.terminal 'Startup Window Settings' -string "$TERM_PROFILE"
+  fuckosxprefs
 fi

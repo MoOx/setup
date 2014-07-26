@@ -169,7 +169,12 @@ source $DOTFILES/components/osx/preferences/apps/Mail.app
 source $DOTFILES/components/osx/preferences/apps/Safari.app
 source $DOTFILES/components/osx/preferences/apps/Calendar.app
 
+# from AppStore
+#dockutil --no-restart --add "/Applications/Wunderlist.app" --after "Calendar"
+
+dockutil --no-restart --add "/Applications/Tweetbot.app" --before "Messages"
 openifnot "Tweetbot" "/Applications/Tweetbot.app"
+
 # todo get this app not from appstore
 # https://github.com/TermiT/Flycut/issues/56
 openifnot "Flycut" "/Applications/Flycut.app"

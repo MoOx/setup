@@ -48,7 +48,7 @@ export OS_ICONS_DIR=/System/Library/CoreServices/CoreTypes.bundle/Contents/Resou
 # also load aliases from projets
 if [[ -d $DIR_DEV ]]
 then
-  for source in `find $DIR_DEV -maxdepth 4 -name \*.aliases.zsh`
+  for source in `find $DIR_DEV -d -maxdepth 4 -name \*.aliases.zsh  | perl -lne 'print tr:/::, " $_"' | sort -n | cut -d' ' -f2`
   do
     source $source
   done

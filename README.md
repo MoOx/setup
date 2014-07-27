@@ -107,6 +107,11 @@ Here is what is automatically handled by this awesome [index.zsh](index.zsh) (in
 
 ---
 
+## I'm not familiar with bash/zsh, is there any interesting tutorial you can share ?
+
+[linuxconfig.org/bash-scripting-tutorial](http://linuxconfig.org/bash-scripting-tutorial) is a nice one.
+
+
 ## Find more `defaults write`
 
 http://superuser.com/questions/455755/how-to-explore-more-defaults-write-tweaks-on-os-x

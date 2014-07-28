@@ -1,5 +1,18 @@
 #!/bin/zsh
 
+# from AppStore
+#dockutil --no-restart --add "/Applications/Wunderlist.app" --after "Calendar"
+
+# from AppStore
+dockutil --no-restart --add "/Applications/Tweetbot.app" --before "Messages"
+openifnot "Tweetbot" "/Applications/Tweetbot.app"
+
+# from AppStore
+# todo get this app not from appstore
+# https://github.com/TermiT/Flycut/issues/56
+openifnot "Flycut" "/Applications/Flycut.app"
+
+
 brewcaskinstall "Prefs Editor" "prefs-editor"
 
 # enhance OS X with some small utilities

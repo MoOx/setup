@@ -11,6 +11,12 @@ openifnot "Tweetbot" "/Applications/Tweetbot.app"
 # todo get this app not from appstore
 # https://github.com/TermiT/Flycut/issues/56
 openifnot "Flycut" "/Applications/Flycut.app"
+plistbuddy "Application Support/Flycut/com.generalarcade.flycut" "Set stickyBezel 1"
+plistbuddy "Application Support/Flycut/com.generalarcade.flycut" "Set displayNum 40"
+plistbuddy "Application Support/Flycut/com.generalarcade.flycut" "Set rememberNum 99"
+plistbuddy "Application Support/Flycut/com.generalarcade.flycut" "Set menuIcon 1"
+plistbuddy "Application Support/Flycut/com.generalarcade.flycut" "Set loadOnStartup 1"
+plistbuddy "Application Support/Flycut/com.generalarcade.flycut" "Set removeDuplicates 1"
 
 
 brewcaskinstall "Prefs Editor" "prefs-editor"

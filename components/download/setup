@@ -1,0 +1,25 @@
+#!/bin/zsh
+
+###
+# Transmission.app
+###
+brewcaskinstall "Transmission"
+
+defaults write org.m0k.transmission UseIncompleteDownloadFolder -bool true
+defaults write org.m0k.transmission IncompleteDownloadFolder -string "${HOME}/Downloads/Torrents"
+defaults write org.m0k.transmission DownloadAsk -bool false
+defaults write org.m0k.transmission DeleteOriginalTorrent -bool true
+defaults write org.m0k.transmission WarningDuplicate -bool false
+defaults write org.m0k.transmission WarningDonate -bool false
+defaults write org.m0k.transmission WarningLegal -bool false
+# rules below are because of my shitty 2Mb connection
+defaults write org.m0k.transmission QueueDownloadNumber 2
+defaults write org.m0k.transmission DownloadLimit 150
+defaults write org.m0k.transmission SpeedLimitDownloadLimit 50
+defaults write org.m0k.transmission SpeedLimitUploadLimit 5
+defaults write org.m0k.transmission UploadLimit 5
+
+##
+# Misc
+##
+brewcaskinstall "Cyberduck"

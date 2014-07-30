@@ -32,7 +32,7 @@ setup ssh
 
 setup atom
 
-setup download-and-sync
+setup sync
 
 setup logitech
 setup browsers
@@ -47,6 +47,7 @@ setup amp
 setup chat
 setup multimedia
 
+setup download
 setup misc
 
 # stuff that require human interaction at the end

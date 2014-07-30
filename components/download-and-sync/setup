@@ -48,12 +48,6 @@ fi
 # setfileicon $OS_ICONS_DIR/MusicFolderIcon.icns $HOME/Music
 
 ###
-# Cloud.app
-###
-brewcaskinstall "Cloud" $HOME/Applications
-openifnot "Cloud" "$HOME/Applications/Cloud.app"
-
-###
 # Transmission.app
 ###
 brewcaskinstall "Transmission"

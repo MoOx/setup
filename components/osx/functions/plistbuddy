@@ -1,5 +1,16 @@
 #!/bin/zsh
 
 function plistbuddy() {
-	/usr/libexec/PlistBuddy -c $2 "$HOME/Library/Preferences/$1.plist"
+	if ls "$HOME/Library/Preferences/$1.plist" &> /dev/null
+	then
+		/usr/libexec/PlistBuddy -c $2 "$HOME/Library/Preferences/$1.plist"
+	
+	elif ls "$HOME/Library/$1.plist" &> /dev/null
+	then
+		/usr/libexec/PlistBuddy -c $2 "$HOME/Library/$1.plist"
+
+	elif ls "$1.plist" &> /dev/null
+	then
+		/usr/libexec/PlistBuddy -c $2 "$1.plist"
+	fi
 }

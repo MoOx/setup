@@ -37,34 +37,9 @@ This will ask you to install Command Line Tools. This can take some minutes, not
 
 See README.md, _First run_
 
-## Retrieves your files
-
-Cloud or local synced files & backup.
-
-Start Dropbox, BTSync or similar
-
-### Dropbox
-
-	open /Applications/Dropbox.app
-
-Dropbox Preferences
+## Dropbox Preferences
 
 * [x] Use black and white menu bar icons
-
-### BTSync
-
-	open /Applications/BitTorrent\ Sync.app
-
-Setup main secret key.
-Eventually add more keys in `/Users/Shared` or in `/Volumes/Shared HD`.
-
-_I advise you to open _Notifications Center_, scroll up & disable notifications for today :)_
-
-### Backup
-
-Restore your previous saved files.
-
-**It's eventually time to take a nap now.**
 
 
 ## BOOTCAMP (I mean dual boot with Windows)

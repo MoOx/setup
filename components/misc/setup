@@ -1,12 +1,12 @@
 #!/bin/zsh
 
-brewcaskinstall "/Library/Java/JavaVirtualMachines" "java" 
+brewcaskinstall "/Library/Java/JavaVirtualMachines" "java"
 
 brewcaskinstall "KeePassX" "keepassx"
 brewcaskinstall "LibreOffice"
 
 brewcaskinstall "Steam"
-dockutil --add "/Applications/Steam.app" --after "Console"
+dockutil --add "/Applications/Steam.app"
 
 #toadd
 #openemu

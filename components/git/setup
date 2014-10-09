@@ -19,6 +19,6 @@ then
 fi
 
 brewcaskinstall "GitHub" $HOME/Applications
-dockutil --no-restart --add "$HOME/Applications/GitHub.app" --after "iTerm"
+dockutil --no-restart --add "$HOME/Applications/GitHub.app" --after "Terminal"
 
 brewcaskinstall "SourceTree" $HOME/Applications

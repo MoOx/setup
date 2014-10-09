@@ -7,7 +7,7 @@ fi
 
 atomicon
 
-dockutil --add "/Applications/Atom.app" --before "Console"
+dockutil --no-restart --add "/Applications/Atom.app" --after "Terminal"
 
 if type "apm" > /dev/null
 then

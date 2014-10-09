@@ -18,6 +18,3 @@ brewcaskinstall "GrandPerspective" $HOME/Applications
 
 brewcaskinstall "VirtualBox" $HOME/Applications
 brewcaskinstall "VMWare Fusion" $HOME/Applications
-
-fuckosxprefs
-fuckosxdock

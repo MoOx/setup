@@ -14,11 +14,10 @@ alias ss="/System/Library/Frameworks/ScreenSaver.framework/Resources/ScreenSaver
 alias killa="killall '${app}' > /dev/null 2>&1"
 
 # FUCK YOU OSX (ps: I love you )
-alias fuckosxprefs="killall -u $USER cfprefsd"
+alias fuckosxprefs="killall -u $USER cfprefsd && sleep 1" # wait for restart
 alias fuckosxfinder="killa Finder; if [ -e /Applications/XtraFinder.app ]; then; open /Applications/XtraFinder.app; fi"
 alias fuckosxdock="killa Dock"
-alias fuckosxmenubar="killa SystemUIServer NotificationCenter"
-alias fuckosx="fuckosxprefs && fuckosxfinder && fuckosxdock && fuckosxmenubar"
+alias fuckosx="fuckosxprefs && killa Dock Finder SystemUIServer NotificationCenter"
 
 # Show/hide hidden files in Finder
 alias show="defaults write com.apple.Finder AppleShowAllFiles -bool true && fuckosxfinder"

@@ -66,7 +66,7 @@ Open the AppStore (at least on OS X).
 
 ### `$ fuckosx`
 
-Reload OSX Finder, Dock & Menubar. Alias for `fuckosxfinder`, `fuckosxdock` & `fuckosxmenubar`.
+Reload OSX Finder, Dock, Menubar & Notification Center. There is also `fuckosxprefs`, `fuckosxfinder` && `fuckosxdock`.
 
 ### `$ list`
 

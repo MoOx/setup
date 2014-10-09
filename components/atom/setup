@@ -9,9 +9,6 @@ atomicon
 
 dockutil --add "/Applications/Atom.app" --before "Console"
 
-fuckosxprefs
-fuckosxdock
-
 if type "apm" > /dev/null
 then
   apminstall auto-update-packages

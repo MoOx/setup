@@ -23,7 +23,6 @@ brewcaskinstall "Prefs Editor" "prefs-editor"
 
 # enhance OS X with some small utilities
 brewcaskinstall "XtraFinder" "xtrafinder"
-fuckosxfinder
 
 brewcaskinstall "AppCleaner" "appcleaner"
 

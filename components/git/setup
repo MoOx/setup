@@ -22,6 +22,3 @@ brewcaskinstall "GitHub" $HOME/Applications
 dockutil --no-restart --add "$HOME/Applications/GitHub.app" --after "iTerm"
 
 brewcaskinstall "SourceTree" $HOME/Applications
-
-fuckosxprefs
-fuckosxdock

@@ -19,9 +19,13 @@ npmig trash
 brewinstall tree
 brewinstall ssh-copy-id
 
-# to create favicons
+# misc
+npmig travis-encrypt
 brewinstall icoutils
 
 #sudo pip install --upgrade asciinema
 #asciinema auth
 #asciinema rec
+
+brewinstall gpg
+npmig keybase # keybase.io

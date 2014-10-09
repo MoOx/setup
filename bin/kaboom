@@ -11,6 +11,7 @@ fi
 
 # required first
 setup brew
+setup fonts
 
 if type "say" > /dev/null
 then

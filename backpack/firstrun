@@ -11,7 +11,7 @@ if [[ "$(uname -s)" == "Darwin" ]]
 then
   # todo add an alternative to grab xcode from another computer accessible by local network
 
-  echo "** Before running myself, please be sure you have `git` command working **".
+  echo "** Before running myself, please be sure you have 'git' command working **".
   echo ""
   echo "to skip 'Agreeing to the Xcode/iOS license requires admin privileges, please re-run as root via sudo.'"
   echo "  sudo xcodebuild -license"
@@ -26,7 +26,7 @@ then
   echo "  xcode-select --install"
   echo ""
   echo ""
-  echo "Press return when `git` command is available"
+  echo "Press return when 'git' command is available"
   read -k
 fi
 

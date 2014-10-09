@@ -12,23 +12,31 @@
   'softTabs': false
   'fontSize': 12
   'fontFamily': 'Menlo'
+  'invisibles': {}
 'core':
   'projectHome': '/Users/MoOx/Sync/Development'
   'disabledPackages': [
     'sublime-tabs'
     'autosave'
+    'eslint'
+    'linter-jsxhint'
+    'atom-lint'
+    'csslint'
+    'linter-csslint'
+    'linter-eslint'
+    'atom-color-highlight'
+    'color-picker'
   ]
   'themes': [
     'yosemite-unity-ui'
     'atom-light-syntax'
   ]
   'useReactEditor': true
-'autosave': {}
+  'excludeVcsIgnoredPaths': false
 'autocomplete-plus':
   'includeCompletionsFromAllBuffers': true
 'Rdio':
   'showEqualizer (WindowResizePerformanceIssue )': false
-'whitespace': {}
 'sublime-tabs':
   'showOnRightSide': true
 'tree-view':
@@ -38,6 +46,9 @@
 'autocomplete':
   'includeCompletionsFromAllBuffers': true
 'break':
-  'microBreakIntervalInSeconds': 600
-  'macroBreakIntervalInMicroAmount': 6
-'atom-color-highlight': {}
+  'macroBreakIntervalInMicroAmount': 0
+  'macroBreakLengthInSeconds': 30
+  'microBreakLengthInSeconds': 30
+  'microBreakIntervalInSeconds': 1200
+'linter':
+  'showStatusBarWhenCursorIsInErrorRange': true

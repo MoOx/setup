@@ -19,7 +19,6 @@ then
 
   # editor enhancements
   apminstall recent-projects
-  apminstall show-in-folder
   apminstall zen
   apminstall open-in-github-app
   apminstall gist-it
@@ -65,6 +64,7 @@ then
   apminstall linter-jsonlint
   apminstall language-jade
   apminstall mocha-test-runner
+  apminstall coffeescript-be-gone
 
     # nodejs
     apminstall npm-install

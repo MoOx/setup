@@ -1,0 +1,5 @@
+#!/bin/zsh
+
+function jshint() {
+  /usr/local/bin/jshint --reporter $NODE_PATH/jshint-stylish/stylish.js $@
+}

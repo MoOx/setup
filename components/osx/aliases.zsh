@@ -51,3 +51,6 @@ alias ios="open /Applications/Xcode.app/Contents/Applications/iPhone\ Simulator.
 
 alias startinternetsharing="sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.InternetSharing.plist"
 alias stopinternetsharing="sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.InternetSharing.plist"
+
+# get resolution of the diplay(s)
+alias osx-resolutions="system_profiler SPDisplaysDataType | grep Resolution | tr -d ' '"

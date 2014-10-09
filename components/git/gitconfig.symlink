@@ -61,5 +61,6 @@
 
 # todo git-pr https://gist.github.com/naholyr/4132423
 [filter "media"]
-	clean = git-media-clean %f
-	smudge = git-media-smudge %f
+	required = true
+	clean = git media clean %f
+	smudge = git media smudge %f

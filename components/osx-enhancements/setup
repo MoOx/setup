@@ -23,6 +23,7 @@ brewcaskinstall "Prefs Editor" "prefs-editor"
 
 # enhance OS X with some small utilities
 brewcaskinstall "XtraFinder" "xtrafinder"
+openifnot "XtraFinder" "/Applications/XtraFinder.app"
 
 brewcaskinstall "AppCleaner" "appcleaner"
 

@@ -36,7 +36,7 @@ then
   silent-rm $PURE_SETUP_PATH
   ln -s "$DOTFILES/submodules/pure/pure.zsh" $PURE_SETUP_PATH
 fi
-fpath=( "/usr/local/share/zsh/site-functions" $fpath )
+fpath=("/usr/local/share/zsh/site-functions" $fpath)
 autoload -U promptinit && promptinit
 #PURE_CMD_MAX_EXEC_TIME=2
 prompt pure

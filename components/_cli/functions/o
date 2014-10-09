@@ -1,0 +1,6 @@
+#!/bin/zsh
+
+# Open the given location current, or the current directory.
+function o() {
+	open ${@:-.}
+}

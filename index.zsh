@@ -72,12 +72,19 @@ done
 unset config_files
 
 ##
-# Load all functions files
+# Edit function path & autoload all functions
 ##
 typeset -U config_files
+function_path=($DOTFILES/*/*/functions)
+for fdir in $function_path
+do
+  fpath=($fdir $fpath)
+done
+unset function_path
 function_files=($DOTFILES/*/*/functions/*)
 for file in $function_files
 do
-  [ -r "$file" ] && [ -f "$file" ] && source "$file"
+  # [ -r "$file" ] && [ -f "$file" ] && source "$file"
+  autoload `basename $file`
 done
 unset function_files

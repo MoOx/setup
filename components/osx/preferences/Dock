@@ -2,7 +2,7 @@
 
 dockutil --no-restart --remove all
 dockutil --no-restart --add "/Applications/Safari.app"
-dockutil --no-restart --add "/Applications/Xcode.app/Contents/Applications/iPhone Simulator.app"
+dockutil --no-restart --add "/Applications/Xcode.app/Contents/Developer/Applications/iOS Simulator.app"
 dockutil --no-restart --add "/Applications/Mail.app"
 dockutil --no-restart --add "/Applications/Calendar.app"
 dockutil --no-restart --add "/Applications/Messages.app"

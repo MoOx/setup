@@ -15,6 +15,11 @@ fi
 # release tool
 npmig mversion
 
+# package helpers
+npmig npm-check
+npmig pkg-name
+npmig bower
+
 # build tools
 npmig component
 npmig gulp
@@ -22,24 +27,16 @@ npmig grunt-cli
 
 # browserify all the things
 npmig browserify
+npmig tape
 npmig testling
 npmig coverify
-npmig tape
 
 # code quality tools
 npmig htmlhint
 npmig csslint
 npmig jshint
+npmig jshint-stylish
 npmig jscs
-
-# css tools
-npmig autoprefixer
 
 # happyplan launcher
 npmig happyplan-cli
-
-npmig travis-encrypt
-
-# package helpers
-npmig pkg-name
-npmig bower

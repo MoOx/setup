@@ -19,13 +19,13 @@ plistbuddy "Application Support/Flycut/com.generalarcade.flycut" "Set loadOnStar
 plistbuddy "Application Support/Flycut/com.generalarcade.flycut" "Set removeDuplicates 1"
 
 
-brewcaskinstall "Prefs Editor" "prefs-editor"
+brewcaskinstall "Prefs Editor"
 
 # enhance OS X with some small utilities
-brewcaskinstall "XtraFinder" "xtrafinder"
+brewcaskinstall "XtraFinder"
 openifnot "XtraFinder" "/Applications/XtraFinder.app"
 
-brewcaskinstall "AppCleaner" "appcleaner"
+brewcaskinstall "AppCleaner"
 
 brewcaskinstall "Day-O" "day-o"
 openifnot "Day-O" "/Applications/Day-O.app"

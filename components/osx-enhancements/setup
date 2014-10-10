@@ -27,7 +27,7 @@ openifnot "XtraFinder" "/Applications/XtraFinder.app"
 
 brewcaskinstall "AppCleaner"
 
-brewcaskinstall "Day-O" "day-o"
+brewcaskinstall "Day-O"
 openifnot "Day-O" "/Applications/Day-O.app"
 
 brewcaskinstall "Flux"

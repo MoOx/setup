@@ -15,7 +15,7 @@ function brewcaskinstall() {
 
     if [ -e "$2" ]
     then
-      dest="$cliName"
+      dest="$2"
       cliName=""
     else
       cliName=$2

@@ -26,12 +26,6 @@ So forget that, & loose all your Windows data. Or just save what you need by han
 ## OS Install
 
 Make your OS clean install. Eventually use _Disk Utility_ to format for make a clean installation.
-After that, you can open App Store & make OS update. And eventyally download Xcode and/or run
-
-	xcode-select --install
-
-This will ask you to install Command Line Tools. This can take some minutes, not an hour like with XCode.app.
-
 
 ## Dotfiles
 

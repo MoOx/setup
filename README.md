@@ -2,7 +2,7 @@
 
 > When dotfiles go crazy.
 
-<img alt="" align="right" src="https://raw.github.com/MoOx/dotfiles/master/backpack/i/kabooya.gif" />
+<img alt="" align="right" src="https://rawgit.com/MoOx/dotfiles/master/.kaboom.gif" />
 
 Just run `fireinthehole`. It should setup the computer.
 
@@ -16,14 +16,12 @@ Just run `fireinthehole`. It should setup the computer.
 ## First run
 
 ```
-$ curl -fsSL https://raw.github.com/MoOx/dotfiles/master/backpack/firstrun | zsh
+$ curl -fsSL https://raw.github.com/MoOx/dotfiles/master/firstrun | zsh
 ```
 
 ## Commands & aliases
 
-<img alt="preview" align="right" src="https://raw.github.com/MoOx/dotfiles/master/backpack/i/fireinthehole.png" />
-
-### `$ fireinthehole` (╯°□°）╯ ︵ 💥
+### `$ fireinthehole`
 
 This command should update this repository, then trigger `kaboom` (which is the heart of this _dotfiles_).
 _Note: you will sometimes need to enter you password or some informations related to current installation_.
@@ -31,6 +29,31 @@ _Note: you will sometimes need to enter you password or some informations relate
 This command launch like everything you define. If you have nothing special, it should take around 30s (mainly because of brew/npm/gem updates).
 
 _This is done that way to ensure you are fully up to date with what you define here. Very concenient when I reopen my laptop (which occurs once or twice in a month) to sync everythings, includings new apps, alias, preferences, packages...._
+
+Here is an example of the output
+
+```bash
+~  
+❯ fireinthehole
+
+(╯°□°）╯ ︵ 💥
+
+Password:
+❯ Updating from remote ...
+From https://github.com/MoOx/dotfiles
+ * branch            master     -> FETCH_HEAD
+Already up-to-date.
+❯ Installing/Updating dotfiles ...
+❯ Updating Homebrew (brew) ...
+Already up-to-date.
+❯ Defining OS X options
+❯ Installing/Updating NPM global packages ...
+❯ Updating LimeChat theme ...
+Already up-to-date.
+❯ Installing/Updating Gems ...
+
+✔ BOOYA 💥 💥 💥 💥 💥
+```
 
 ### `$ .f`
 

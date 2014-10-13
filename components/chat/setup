@@ -18,5 +18,11 @@ fi
 brewcaskinstall "Skype"
 dockutil --no-restart --add "/Applications/Skype.app" --after "LimeChat"
 
-brewcaskinstall "Slack"
-dockutil --no-restart --add "/Applications/Slack.app" --after "LimeChat"
+# the simple 2 lines above was enough for Slask
+# until they name the .app with the version in the dmg
+# like "Slack 0.44.2.app"...
+#brewcaskinstall Slack
+#dockutil --no-restart --add "/Applications/Slack.app" --after LimeChat
+# so here is the way to fix it + fix for dockutil 
+brewcaskinstall "/opt/homebrew-cask/Caskroom/slack/" slack
+dockutil --no-restart --add "/Applications/`ls /Applications | grep Slack`" --after LimeChat

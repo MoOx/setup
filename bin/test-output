@@ -1,14 +1,12 @@
 #!/bin/zsh
+source $DOTFILES/index.zsh
 
-test_msg () {
-  echo_info 'Info'
-  echo_user 'User'
-  echo_success 'Success'
-  echo_title 'Msg'
-  echo_title_install 'Blah'
-  echo_title_update 'Blah'
-  echo_title_installupdate 'Blah'
-  echo_fail 'Fail'
-}
-
-test_msg
+notify "Hi there"
+echo_info "Info"
+echo_user "User"
+echo_success "Success"
+echo_title "Msg"
+echo_title_install "Blah"
+echo_title_update "Blah"
+echo_title_installupdate "Blah"
+echo_fail "Fail"

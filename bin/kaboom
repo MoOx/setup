@@ -6,21 +6,20 @@ source $DIR_BIN/.symlinks
 
 if [ "$FULLFIRE" = "true" ]
 then
-	source appstore
+  source appstore
 fi
 
 # required first
 setup brew
 setup fonts
 
-if type "say" > /dev/null
+notify "Password might be required"
+if [ "$FULLFIRE" = "true" ]
 then
-	say "Password might be required"
-	if [ "$FULLFIRE" = "true" ]
-	then
-		say "And be careful, since it's you first run, it will probably be asked more than once. Check often until process is complete."
-	fi
+  sleep 5
+  notify "Since it's a full run, it might be asked more than once. Check often until process is complete."
 fi
+
 # Ask for the administrator password upfront
 sudo -v
 
@@ -67,4 +66,4 @@ fuckosx
 # todo add cron setup
 
 echo ""
-echo_success "BOOYA $CHAR_BOOM $CHAR_BOOM $CHAR_BOOM $CHAR_BOOM $CHAR_BOOM"
+notify "Setup complete ☑️"

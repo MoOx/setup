@@ -15,14 +15,31 @@ export CHAR_OK=✔
 export CHAR_ERROR=✗
 export CHAR_BOOM=💥
 export CHAR_STARTER=❯
+
 function echo_info () { echo "${COLOR_BLUE}i${COLOR_RESET} $1" }
 function echo_user () { echo "${COLOR_YELLOW}?${COLOR_RESET} $1" }
 function echo_success () { echo "${COLOR_GREEN}${CHAR_OK}${COLOR_RESET} $1" }
-function echo_fail () { echo "${COLOR_RED}${CHAR_ERROR}${COLOR_RESET} $1|n"; exit }
+function echo_fail () { echo "${COLOR_RED}${CHAR_ERROR}${COLOR_RESET} $1\n"; exit }
 function echo_title () { echo "${COLOR_CYAN}${CHAR_STARTER} $@${COLOR_RESET}" }
 function echo_title_install () { echo_title "Installing" $1 "..." }
 function echo_title_update () { echo_title "Updating" $1 "..." }
 function echo_title_installupdate () { echo_title "Installing/Updating" $1 "..." }
+
+function notify () {
+  # https://github.com/alloy/terminal-notifier#readme
+  if type terminal-notifier > /dev/null
+  then
+    terminal-notifier -activate com.apple.Terminal -title "$USER/dotfiles" -sound Pop -message $1 &> /dev/null
+  # fallback
+  else
+    if type say > /dev/null
+    then
+      say $1
+    fi
+    echo $1
+  fi
+}
+
 function setup () {
   COMPONENT_SETUP="$DOTFILES/components/$1/setup"
   if [[ -f "$COMPONENT_SETUP" ]]

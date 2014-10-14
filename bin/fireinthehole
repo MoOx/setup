@@ -23,8 +23,3 @@ then
 fi
 
 source $DOTFILES/bin/kaboom
-
-if type "say" > /dev/null
-then
-  say "Dude, dotfiles update is done"
-fi

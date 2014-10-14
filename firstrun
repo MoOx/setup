@@ -60,10 +60,5 @@ else
 
   # todo add login items
 
-  if ! type "say" > /dev/null
-  then
-    say "YO BITCH, setup is done \!"
-    sleep 5
-    say "HEY BITCH ! Did you heard what I just said \?"
-  fi
+  notify "setup is done"
 fi

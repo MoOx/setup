@@ -17,6 +17,7 @@ npmig mversion
 
 # package helpers
 npmig npm-check
+npmig updatehammer
 npmig pkg-name
 npmig bower
 

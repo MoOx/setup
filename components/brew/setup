@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-if ! type "brew" > /dev/null
+if ! type brew > /dev/null
 then
   echo_title_install "Homebrew (brew)"
   ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go/install)"

@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-if ! type "apm" > /dev/null
+if ! type apm > /dev/null
 then
   brewcaskinstall atom
 fi
@@ -9,7 +9,7 @@ atomicon
 
 dockutil --no-restart --add "/Applications/Atom.app" --after "Terminal"
 
-if type "apm" > /dev/null
+if type apm > /dev/null
 then
   apminstall auto-update-packages
 

@@ -23,7 +23,7 @@ then
 fi
 
 # MySQL
-if ! type "mysql" > /dev/null
+if ! type mysql > /dev/null
 then
   echo_title_install "MySQL"
   brewinstall mysql

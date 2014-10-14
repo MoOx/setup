@@ -6,13 +6,13 @@ then
   brewinstall git
 fi
 
-if ! type "hub" > /dev/null
+if ! type hub > /dev/null
 then
   echo_title_install "GitHub cli tools"
   brewinstall hub
 fi
 
-if ! type "ghi" > /dev/null
+if ! type ghi > /dev/null
 then
   echo_title_install "GitHub issues cli tools"
   brewinstall ghi

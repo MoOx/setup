@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-if ! type "node" > /dev/null
+if ! type node > /dev/null
 then
   echo_title_install "Node.js"
   brewinstall node

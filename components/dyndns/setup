@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-if ! type "ddclient" > /dev/null
+if ! type ddclient > /dev/null
 then
   echo_title "Installing a Dynamic DNS client"
   brewinstall ddclient

@@ -15,7 +15,7 @@ Just run `fireinthehole`. It should setup the computer.
 
 ## First run
 
-```
+```bash
 $ curl -fsSL https://raw.github.com/MoOx/dotfiles/master/firstrun | zsh
 ```
 
@@ -32,7 +32,7 @@ _This is done that way to ensure you are fully up to date with what you define h
 
 Here is an example of the output
 
-```bash
+```
 ~  
 ❯ fireinthehole
 

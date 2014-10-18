@@ -33,7 +33,7 @@ function brewcaskinstall() {
       cliName="`echo $1 | tr '[:upper:]' '[:lower:]' | sed 's/ /-/g'`"
     fi
 
-    #echo "$cuteName $cliName $dest"
+    # echo "$cuteName $cliName $dest"
     # install if not present already (skip "already installed" error)
     if ! $(ls "$cuteName" &> /dev/null) && ! $(ls "/Applications/$cuteName.app" &> /dev/null) && ! $(ls "$HOME/Applications/$cuteName.app" &> /dev/null)
     then

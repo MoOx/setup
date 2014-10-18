@@ -2,7 +2,7 @@
 
 if ! type ddclient > /dev/null
 then
-  echo_title "Installing a Dynamic DNS client"
+  echo_title_install "a Dynamic DNS client"
   brewinstall ddclient
 fi
 

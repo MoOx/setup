@@ -29,7 +29,7 @@ function notify () {
   # https://github.com/alloy/terminal-notifier#readme
   if type terminal-notifier > /dev/null
   then
-    terminal-notifier -activate com.apple.Terminal -title "$USER/dotfiles" -sound Pop -message $1 &> /dev/null
+    terminal-notifier -activate com.apple.Terminal -sound Pop -title "$USER/dotfiles" -message $1 &> /dev/null
   # fallback
   else
     if type say > /dev/null

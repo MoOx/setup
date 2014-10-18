@@ -51,8 +51,10 @@ Already up-to-date.
 ❯ Updating LimeChat theme ...
 Already up-to-date.
 ❯ Installing/Updating Gems ...
+❯ Updating Dock ...
 
-✔ BOOYA 💥 💥 💥 💥 💥
+~  
+❯
 ```
 
 ### `$ .f`

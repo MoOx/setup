@@ -3,9 +3,6 @@
 brewinstall zsh-completions
 brewinstall terminal-notifier
 
-#dockutil --no-restart --add "$HOME/Applications/Utilities/Terminal.app" --before "Console"
-#brewcaskinstall "iTerm" "iterm2" $HOME/Applications
-#dockutil --no-restart --add "$HOME/Applications/iTerm.app" --before "Console"
 
 source $DOTFILES/components/_cli/preferences/Terminal
 source $DOTFILES/components/_cli/preferences/iTerm2

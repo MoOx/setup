@@ -58,7 +58,5 @@ else
 
   . $HOME/dotfiles/bin/fireinthehole --full
 
-  # todo add login items
-
   notify "setup is done"
 fi

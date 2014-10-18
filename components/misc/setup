@@ -6,7 +6,6 @@ brewcaskinstall "KeePassX"
 brewcaskinstall "LibreOffice"
 
 brewcaskinstall "Steam"
-dockutil --add "/Applications/Steam.app"
 
 #toadd
 #openemu

@@ -1,0 +1,28 @@
+#!/bin/zsh
+
+# this component only define Dock order
+# for dock preferences, please checkout
+# components/osx/preferences/Dock
+
+echo_title_update "Dock"
+
+dockutil --no-restart --remove all
+dockutil --no-restart --add "/Applications/Mail.app"
+dockutil --no-restart --add "/Applications/Calendar.app"
+dockutil --no-restart --add "/Applications/Wunderlist.app"
+dockutil --no-restart --add "/Applications/iTunes.app"
+dockutil --no-restart --add "/Applications/Messages.app"
+dockutil --no-restart --add "/Applications/Tweetbot.app"
+dockutil --no-restart --add "$HOME/Applications/FirefoxNightly.app"
+#dockutil --no-restart --add "/Applications/Firefox.app"
+dockutil --no-restart --add "/Applications/Safari.app"
+dockutil --no-restart --add "/Applications/Google Chrome.app"
+dockutil --no-restart --add "/Applications/Xcode.app/Contents/Developer/Applications/iOS Simulator.app"
+dockutil --no-restart --add "/Applications/Utilities/Terminal.app"
+#dockutil --no-restart --add "$HOME/Applications/iTerm.app"
+dockutil --no-restart --add "$HOME/Applications/GitHub.app"
+dockutil --no-restart --add "/Applications/Atom.app"
+dockutil --no-restart --add "$HOME/Applications/LimeChat.app"
+dockutil --no-restart --add "/Applications/`ls /Applications | grep Slack`"
+dockutil --no-restart  --add "/Applications/Steam.app"
+dockutil --no-restart --add "/Applications" --view grid --display folder --sort name

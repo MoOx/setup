@@ -1,10 +1,6 @@
 #!/bin/zsh
 
 # from AppStore
-#dockutil --no-restart --add "/Applications/Wunderlist.app" --after "Calendar"
-
-# from AppStore
-dockutil --no-restart --add "/Applications/Tweetbot.app" --before "Messages"
 openifnot "Tweetbot" "/Applications/Tweetbot.app"
 
 # from AppStore

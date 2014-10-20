@@ -16,10 +16,10 @@ git pull origin master
 git submodule init
 git submodule update
 
-export FULLFIRE=false
-if [ "$1" = "--full" ]
+export FIRSTRUN=false
+if [ "$1" = "--firstrun" ]
 then
-	FULLFIRE=true
+  export FIRSTRUN=true
 fi
 
 source $DOTFILES/bin/kaboom

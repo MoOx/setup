@@ -7,10 +7,7 @@ then
 fi
 
 echo_title_installupdate "NPM global packages"
-if [ "$FULLFIRE" = "true" ]
-then
-  npmug
-fi
+npmug
 
 # release tool
 npmig mversion

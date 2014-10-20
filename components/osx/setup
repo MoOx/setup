@@ -172,6 +172,8 @@ do
   killa "${app}"
 done
 
+if [ "$FIRSTRUN" = "true" ]; then fuckosx; fi;
+
 
 # Enable local FTP Server
 # used for some stuff (local wordpress) & wii ftp access

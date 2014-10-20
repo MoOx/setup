@@ -4,7 +4,7 @@ source $DOTFILES/index.zsh
 DIR_BIN="$( cd "$( dirname "${0}" )" && pwd )"
 source $DIR_BIN/.symlinks
 
-if [ "$FULLFIRE" = "true" ]
+if [ "$FIRSTRUN" = "true" ]
 then
   source appstore
 fi
@@ -13,7 +13,7 @@ fi
 setup brew
 
 notify "Password might be required"
-if [ "$FULLFIRE" = "true" ]
+if [ "$FIRSTRUN" = "true" ]
 then
   sleep 5
   notify "Since it's a full run, it might be asked more than once. Check often until process is complete."
@@ -42,6 +42,7 @@ setup logitech
 
 setup osx-enhancements
 
+if [ "$FIRSTRUN" = "true" ]; then fuckosx; fi;
 
 setup chat
 setup multimedia

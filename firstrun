@@ -56,7 +56,7 @@ else
     mkdir $HOME/Applications
   fi
 
-  . $HOME/dotfiles/bin/fireinthehole --full
+  . $HOME/dotfiles/bin/fireinthehole --firstrun
 
   notify "setup is done"
 fi

@@ -7,7 +7,7 @@ overwrite_all=false
 backup_all=false
 skip_all=false
 
-if [ "$FULLFIRE" = "true" ]
+if [ "$FIRSTRUN" = "true" ]
 then
 	overwrite_all=true
 fi

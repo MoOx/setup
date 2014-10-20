@@ -12,3 +12,5 @@ then
 	read -k
 	open "https://github.com/settings/ssh"
 fi
+
+brewinstall ssh-copy-id

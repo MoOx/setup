@@ -1,5 +1,11 @@
 #!/bin/zsh
 
+brewcaskinstall "Flux"
+openifnot "Flux" "/Applications/Flux.app"
+
+# Trim enable for non Apple SSD
+brewcaskinstall "Trim Enabler"
+
 # from AppStore
 openifnot "Tweetbot" "/Applications/Tweetbot.app"
 
@@ -14,7 +20,6 @@ plistbuddy "Application Support/Flycut/com.generalarcade.flycut" "Set menuIcon 1
 plistbuddy "Application Support/Flycut/com.generalarcade.flycut" "Set loadOnStartup 1"
 plistbuddy "Application Support/Flycut/com.generalarcade.flycut" "Set removeDuplicates 1"
 
-
 brewcaskinstall "Prefs Editor"
 
 # enhance OS X with some small utilities
@@ -25,11 +30,6 @@ brewcaskinstall "AppCleaner"
 
 brewcaskinstall "Day-O"
 openifnot "Day-O" "/Applications/Day-O.app"
-
-brewcaskinstall "Flux"
-openifnot "Flux" "/Applications/Flux.app"
-# Trim enable for non Apple SSD
-brewcaskinstall "Trim Enabler"
 
 brewcaskinstall "/opt/homebrew-cask/Caskroom/menumeters" "menumeters"
 # append menumeter & do not touch other menu extras

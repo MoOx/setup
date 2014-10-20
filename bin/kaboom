@@ -40,8 +40,6 @@ setup logitech
 
 setup osx-enhancements
 
-#setup dnsmasq
-setup amp
 
 setup chat
 setup multimedia
@@ -49,7 +47,12 @@ setup multimedia
 setup sharing
 setup download
 
-# stuff that require human interaction at the end
+# not needed by default anymore
+#setup dnsmasq
+#setup apache
+#setup php
+#setup mysql
+
 setup dyndns
 setup prey
 

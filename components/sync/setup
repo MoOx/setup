@@ -3,7 +3,6 @@
 ##
 # Synced folders
 ##
-# Customize some icon (setfileicon is a custom command from my Dev*/bin)
 if ! ls $DIR_SYNC &> /dev/null
 then
   mkdir $DIR_SYNC

@@ -1,12 +1,17 @@
 #!/bin/zsh
 
+brewcaskinstall "Cloudup" $HOME/Applications
+defaults write com.cloudup.Cloudup autoupload 1
+defaults write com.cloudup.Cloudup moveToApplicationsFolderAlertSuppress 1
+openifnot "Cloudup" "$HOME/Applications/Cloudup.app"
+
 ###
 # Cloud.app
 ###
 brewcaskinstall "Cloud" $HOME/Applications
 defaults write com.linebreak.CloudAppMacOSX copyLinkType 1 # direct link
-defaults write com.linebreak.CloudAppMacOSX autouploadScreenshots 1
-defaults write com.linebreak.CloudAppMacOSX launchAtLogin 1
+defaults write com.linebreak.CloudAppMacOSX autouploadScreenshots 0
+defaults write com.linebreak.CloudAppMacOSX launchAtLogin 0
 defaults write com.linebreak.CloudAppMacOSX SUEnableAutomaticChecks 1
 defaults write com.linebreak.CloudAppMacOSX uploadSoundName -string "Submarine"
-openifnot "Cloud" "$HOME/Applications/Cloud.app"
+#openifnot "Cloud" "$HOME/Applications/Cloud.app"

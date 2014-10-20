@@ -52,7 +52,7 @@ then
   apminstall linter-htmlhint
 
   # css
-  apminstall linter-csslint
+  #apminstall linter-csslint
   apminstall atom-color-highlight
   apminstall color-picker
   apminstall bezier-curve-editor

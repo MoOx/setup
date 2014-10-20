@@ -19,5 +19,3 @@ then
 fi
 
 brewcaskinstall "GitHub" $HOME/Applications
-
-brewcaskinstall "SourceTree" $HOME/Applications

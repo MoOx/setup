@@ -61,10 +61,9 @@ setup prey
 # gems are slow & require password (because I don't use bundler blah blah...)
 setup ruby
 
-setup lazydev
 setup dock
 
-# misc & big stuffs
+# lazyload misc & big stuff
 setup misc
 
 fuckosx

@@ -52,8 +52,3 @@ fi
 
 brewcaskinstall "Dropbox"
 openifnot "Dropbox" "/Applications/Dropbox.app"
-
-##
-# Misc
-##
-brewcaskinstall "SuperDuper!" "superduper"

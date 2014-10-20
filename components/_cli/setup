@@ -3,28 +3,10 @@
 brewinstall zsh-completions
 brewinstall terminal-notifier
 
-brewcaskinstall "iTerm" "iterm2" $HOME/Applications
+#brewcaskinstall "iTerm" "iterm2" $HOME/Applications
 
 source $DOTFILES/components/_cli/preferences/Terminal
-source $DOTFILES/components/_cli/preferences/iTerm2
-
-# better than man
-npmig tldr
+#source $DOTFILES/components/_cli/preferences/iTerm2
 
 # safer than rm
 npmig trash
-
-# essential missing commands to OSX
-brewinstall tree
-brewinstall ssh-copy-id
-
-# misc
-npmig travis-encrypt
-brewinstall icoutils
-
-#sudo pip install --upgrade asciinema
-#asciinema auth
-#asciinema rec
-
-brewinstall gpg
-npmig keybase # keybase.io

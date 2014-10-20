@@ -28,10 +28,6 @@ openifnot "Day-O" "/Applications/Day-O.app"
 
 brewcaskinstall "Flux"
 openifnot "Flux" "/Applications/Flux.app"
-
-# required by I don't know why
-brewcaskinstall "Utilities/XQuartz" "xquartz"
-
 # Trim enable for non Apple SSD
 brewcaskinstall "Trim Enabler"
 

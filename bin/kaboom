@@ -29,6 +29,8 @@ setup node
 setup _cli
 setup ssh
 
+setup synergy
+
 setup slate
 
 setup atom

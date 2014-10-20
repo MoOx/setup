@@ -41,19 +41,18 @@ defaults write com.apple.systemuiserver menuExtras -array-add \
   "/opt/homebrew-cask/Caskroom/menumeters/latest/MenuMeters Installer.app/Contents/Resources/MenuMeters.prefPane/Contents/Resources/MenuMeterMem.menu" \
   "/opt/homebrew-cask/Caskroom/menumeters/latest/MenuMeters Installer.app/Contents/Resources/MenuMeters.prefPane/Contents/Resources/MenuMeterCPU.menu" \
   "/opt/homebrew-cask/Caskroom/menumeters/latest/MenuMeters Installer.app/Contents/Resources/MenuMeters.prefPane/Contents/Resources/MenuCracker.menu"
-defaults write com.ragingmenace.MenuMeters CPUAverageMultiProcs 1
-defaults write com.ragingmenace.MenuMeters CPUDisplayMode 2
-defaults write com.ragingmenace.MenuMeters CPUGraphLength 20
-defaults write com.ragingmenace.MenuMeters CPUInterval 1
-defaults write com.ragingmenace.MenuMeters CPUSystemColor   -string "<040b7374 7265616d 74797065 6481e803 84014084 8484074e 53436f6c 6f720084 84084e53 4f626a65 63740085 84016301 84046666 66660000 000186>"
-defaults write com.ragingmenace.MenuMeters CPUUserColor     -string "<040b7374 7265616d 74797065 6481e803 84014084 8484074e 53436f6c 6f720084 84084e53 4f626a65 63740085 84016301 84046666 66668395 5edf3e83 9a1bed3e 8382d0fc 3e0186>"
-defaults write com.ragingmenace.MenuMeters MemDisplayMode 1
-defaults write com.ragingmenace.MenuMeters MemInterval 10
-defaults write com.ragingmenace.MenuMeters MemFreeColor     -string "<040b7374 7265616d 74797065 6481e803 84014084 8484074e 53436f6c 6f720084 84084e53 4f626a65 63740085 84016302 84046666 66660083 0000003f 000186>"
-defaults write com.ragingmenace.MenuMeters MemUsedColor     -string "<040b7374 7265616d 74797065 6481e803 84014084 8484074e 53436f6c 6f720084 84084e53 4f626a65 63740085 84016302 84046666 66668300 00003f00 000186>"
-defaults write com.ragingmenace.MenuMeters MemInactiveColor -string "<040b7374 7265616d 74797065 6481e803 84014084 8484074e 53436f6c 6f720084 84084e53 4f626a65 63740085 84016306 84034040 40848484 084e5353 7472696e 67019484 012b0653 79737465 6d868496 98096772 6964436f 6c6f7286 84939503 84026666 83000000 3f018686>"
-defaults write com.ragingmenace.MenuMeters MemWireColor     -string "<040b7374 7265616d 74797065 6481e803 84014084 8484074e 53436f6c 6f720084 84084e53 4f626a65 63740085 84016306 84034040 40848484 084e5353 7472696e 67019484 012b0653 79737465 6d868496 98186469 7361626c 6564436f 6e74726f 6c546578 74436f6c 6f728684 93950384 02666683 abaaaa3e 018686>"
-fuckosxmenubar
+defaults write com.ragingmenace.MenuMeters CPUAverageMultiProcs -int 1
+defaults write com.ragingmenace.MenuMeters CPUDisplayMode -int 2
+defaults write com.ragingmenace.MenuMeters CPUGraphLength -int 20
+defaults write com.ragingmenace.MenuMeters CPUInterval -int 1
+defaults write com.ragingmenace.MenuMeters CPUSystemColor   -data "<040b7374 7265616d 74797065 6481e803 84014084 8484074e 53436f6c 6f720084 84084e53 4f626a65 63740085 84016301 84046666 66668364 79783f83 1b677c3f 83bf8073 3f0186>"
+defaults write com.ragingmenace.MenuMeters CPUUserColor     -data "<040b7374 7265616d 74797065 6481e803 84014084 8484074e 53436f6c 6f720084 84084e53 4f626a65 63740085 84016301 84046666 66668348 22d63e83 10c6ce3e 83da09d9 3e0186>"
+defaults write com.ragingmenace.MenuMeters MemDisplayMode -int 1
+defaults write com.ragingmenace.MenuMeters MemInterval -int 10
+defaults write com.ragingmenace.MenuMeters MemFreeColor     -data "<040b7374 7265616d 74797065 6481e803 84014084 8484074e 53436f6c 6f720084 84084e53 4f626a65 63740085 84016302 84046666 66660083 0000003f 000186>"
+defaults write com.ragingmenace.MenuMeters MemUsedColor     -data "<040b7374 7265616d 74797065 6481e803 84014084 8484074e 53436f6c 6f720084 84084e53 4f626a65 63740085 84016302 84046666 66668300 00003f00 000186>"
+defaults write com.ragingmenace.MenuMeters MemInactiveColor -data "<040b7374 7265616d 74797065 6481e803 84014084 8484074e 53436f6c 6f720084 84084e53 4f626a65 63740085 84016301 84046666 666683f8 e06d3e83 f8e06d3e 83f8e06d 3e0186>"
+defaults write com.ragingmenace.MenuMeters MemWireColor     -data "<040b7374 7265616d 74797065 6481e803 84014084 8484074e 53436f6c 6f720084 84084e53 4f626a65 63740085 84016301 84046666 66668365 70e63e83 1761e03e 83ee0cea 3e0186>"
 
 # QuickLook plugins from https://github.com/sindresorhus/quick-look-plugins
 brewcaskinstall "/opt/homebrew-cask/Caskroom/qlcolorcode" "qlcolorcode"

@@ -24,7 +24,9 @@
       'atom-light-syntax'
     ]
     'useReactEditor': true
-    'excludeVcsIgnoredPaths': false
+    'ignoredNames': [
+      'node_modules'
+    ]
   'autocomplete-plus':
     'includeCompletionsFromAllBuffers': true
   'tree-view':

@@ -10,7 +10,7 @@ fi
 if [ ! -e /Library/LaunchDaemons/homebrew.mxcl.ddclient.plist ]
 then
   sudo cp $DOTFILES/components/dyndns/ddclient.conf /usr/local/etc/ddclient
-  $EDITOR_SYNC /usr/local/etc/ddclient/ddclient.conf
+  e -w /usr/local/etc/ddclient/ddclient.conf
 
   sudo cp -fv /usr/local/opt/ddclient/*.plist /Library/LaunchDaemons
   sudo launchctl load /Library/LaunchDaemons/homebrew.mxcl.ddclient.plist

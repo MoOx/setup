@@ -34,8 +34,6 @@ brewcaskinstall "GrandPerspective" $HOME/Applications
 # HD backup
 brewcaskinstall "SuperDuper!" "superduper"
 
-# required by I don't know why
-#brewcaskinstall "Utilities/XQuartz" "xquartz"
 brewcaskinstall "Steam"
 
 brewcaskinstall "/Library/Java/JavaVirtualMachines" "java"

@@ -15,26 +15,3 @@ npmig mversion
 # package helpers
 npmig npm-check
 npmig updatehammer
-npmig pkg-name
-npmig bower
-
-# build tools
-npmig component
-npmig gulp
-npmig grunt-cli
-
-# browserify all the things
-npmig browserify
-npmig tape
-npmig testling
-npmig coverify
-
-# code quality tools
-npmig htmlhint
-npmig csslint
-npmig jshint
-npmig jshint-stylish
-npmig jscs
-
-# happyplan launcher
-npmig happyplan-cli

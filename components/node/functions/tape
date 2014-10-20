@@ -1,5 +1,0 @@
-#!/bin/zsh
-
-function tape() {
-  zsh -c "set -o pipefail; /usr/local/bin/tape $@ | tap-colorize"
-}

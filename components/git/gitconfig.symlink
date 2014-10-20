@@ -13,7 +13,6 @@
 
 [core]
 	quotepath = false
-	editor = atom -w
 	excludesfile = ~/.gitignore_global
 
 [push]
@@ -50,7 +49,6 @@
 	unstage = reset HEAD --
 	last = log -1 HEAD
 	rmdf = "!git rm $(git ls-files --deleted)"
-	sublimediff = "!git diff $@ | subl"
 	export = "!git clone --depth 1 $1 && rm -rf \"$(basename $1 .git)/.git\" -"
 	# Remove branches that have already been merged with master
 	dm = "!git checkout master && git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"

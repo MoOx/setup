@@ -1,8 +1,0 @@
-#!/bin/zsh
-
-function gemig() {
-  if ! ls $RUBYGEMS | grep -e "^$1-" &> /dev/null
-  then
-    sudo gem install $1
-  fi
-}

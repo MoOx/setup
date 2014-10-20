@@ -58,9 +58,6 @@ setup download
 setup dyndns
 setup prey
 
-# gems are slow & require password (because I don't use bundler blah blah...)
-setup ruby
-
 setup dock
 
 # lazyload misc & big stuff

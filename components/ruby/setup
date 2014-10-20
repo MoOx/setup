@@ -1,7 +1,0 @@
-#!/bin/zsh
-
-echo_title_installupdate "Gems"
-
-gemig sass
-gemig compass
-#gemig scss-lint

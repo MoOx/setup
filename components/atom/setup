@@ -20,35 +20,36 @@ then
   apminstall zen
   apminstall open-in-github-app
   apminstall gist-it
-  apminstall tabs-to-spaces
   apminstall autocomplete-plus
-  #apminstall sublime-tabs
 
   # git
-  apminstall merge-conflicts
+  apminstall git-tab-status
   apminstall git-blame
+  apminstall git-log
+  apminstall git-history
+  apminstall merge-conflicts
+  apminstall line-archive
 
   # code quality
   apminstall editorconfig
   apminstall linter # for linter-*
   apminstall docblockr
-  apminstall travis-ci-status
 
   # health
-  apminstall break
+  #apminstall break
 
   # editor ui
-  apminstall swap-panes
-  apminstall move-panes
-  apminstall resize-panes
-  apminstall maximize-panes
+  # apminstall swap-panes
+  # apminstall move-panes
+  # apminstall resize-panes
+  # apminstall maximize-panes
 
   # html/css/js
   apminstall atom-beautify
 
   # html
   apminstall close-tags
-  apminstall htmlhint
+  apminstall linter-htmlhint
 
   # css
   apminstall linter-csslint
@@ -57,11 +58,11 @@ then
   apminstall bezier-curve-editor
 
   # js
+  apminstall atom-semicolons
   apminstall linter-jscs
   apminstall linter-jshint
   apminstall linter-jsonlint
   apminstall language-jade
-  apminstall mocha-test-runner
   apminstall coffeescript-be-gone
 
     # nodejs

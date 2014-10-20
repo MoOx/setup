@@ -1,55 +1,43 @@
-'exception-reporting':
-  'userId': '3ba70428-f782-5321-e73a-7b678f36511c'
-'release-notes':
-  'viewedVersion': '0.95.0'
-'welcome':
-  'showOnStartup': false
-'metrics':
-  'userId': '9e20623847c7c22109bc7b34e71c459485f8781a'
-'editor':
-  'showInvisibles': true
-  'showIndentGuide': true
-  'softTabs': false
-  'fontSize': 12
-  'fontFamily': 'Menlo'
-  'invisibles': {}
-'core':
-  'projectHome': '/Users/MoOx/Sync/Development'
-  'disabledPackages': [
-    'sublime-tabs'
-    'autosave'
-    'eslint'
-    'linter-jsxhint'
-    'atom-lint'
-    'csslint'
-    'linter-csslint'
-    'linter-eslint'
-    'atom-color-highlight'
-    'color-picker'
-    'break'
-  ]
-  'themes': [
-    'yosemite-unity-ui'
-    'atom-light-syntax'
-  ]
-  'useReactEditor': true
-  'excludeVcsIgnoredPaths': false
-'autocomplete-plus':
-  'includeCompletionsFromAllBuffers': true
-'Rdio':
-  'showEqualizer (WindowResizePerformanceIssue )': false
-'sublime-tabs':
-  'showOnRightSide': true
-'tree-view':
-  'showOnRightSide': true
-'color':
-  'fillColorAsBackground': false
-'autocomplete':
-  'includeCompletionsFromAllBuffers': true
-'break':
-  'macroBreakIntervalInMicroAmount': 0
-  'macroBreakLengthInSeconds': 30
-  'microBreakLengthInSeconds': 30
-  'microBreakIntervalInSeconds': 1200
-'linter':
-  'showStatusBarWhenCursorIsInErrorRange': true
+'global':
+  'exception-reporting':
+    'userId': '3ba70428-f782-5321-e73a-7b678f36511c'
+  'release-notes':
+    'viewedVersion': '0.95.0'
+  'welcome':
+    'showOnStartup': false
+  'metrics':
+    'userId': '9e20623847c7c22109bc7b34e71c459485f8781a'
+  'editor':
+    'showInvisibles': true
+    'showIndentGuide': true
+    'softTabs': false
+    'fontSize': 12
+    'fontFamily': 'Menlo'
+    'invisibles': {}
+  'core':
+    'projectHome': '/Users/MoOx/Sync/Development'
+    'disabledPackages': [
+      'autosave'
+    ]
+    'themes': [
+      'yosemite-unity-ui'
+      'atom-light-syntax'
+    ]
+    'useReactEditor': true
+    'excludeVcsIgnoredPaths': false
+  'autocomplete-plus':
+    'includeCompletionsFromAllBuffers': true
+  'tree-view':
+    'showOnRightSide': true
+  'color':
+    'fillColorAsBackground': false
+  'autocomplete':
+    'includeCompletionsFromAllBuffers': true
+  'break':
+    'macroBreakIntervalInMicroAmount': 0
+    'macroBreakLengthInSeconds': 30
+    'microBreakLengthInSeconds': 30
+    'microBreakIntervalInSeconds': 1200
+  'linter':
+    'showStatusBarWhenCursorIsInErrorRange': true
+  'github-issues': {}

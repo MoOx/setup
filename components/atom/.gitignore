@@ -2,4 +2,9 @@ atom.symlink/.node-gyp
 atom.symlink/compile-cache
 atom.symlink/packages
 atom.symlink/storage
+
+# for https://atom.io/packages/recent-projects
 atom.symlink/recent-projects.json
+
+# for https://atom.io/packages/gist-it
+atom.symlink/gist-it.token

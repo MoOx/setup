@@ -3,6 +3,6 @@
 function npmig() {
   if ! ls $NODE_PATH | grep -e "^$1" &> /dev/null
   then
-    npm i -g $1 --loglevel warn
+    npm i -g $1
   fi
 }

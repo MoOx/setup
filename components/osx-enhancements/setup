@@ -29,6 +29,10 @@ openifnot "XtraFinder" "/Applications/XtraFinder.app"
 brewcaskinstall "AppCleaner"
 
 brewcaskinstall "Day-O"
+defaults write com.shauninman.Day-O autoLaunch 1
+defaults write com.shauninman.Day-O showIcon 1
+defaults write com.shauninman.Day-O firstRun 0
+defaults write com.shauninman.Day-O format ""
 openifnot "Day-O" "/Applications/Day-O.app"
 
 brewcaskinstall "/opt/homebrew-cask/Caskroom/menumeters" "menumeters"

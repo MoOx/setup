@@ -10,22 +10,3 @@ defaults write com.linebreak.CloudAppMacOSX launchAtLogin 1
 defaults write com.linebreak.CloudAppMacOSX SUEnableAutomaticChecks 1
 defaults write com.linebreak.CloudAppMacOSX uploadSoundName -string "Submarine"
 openifnot "Cloud" "$HOME/Applications/Cloud.app"
-
-# Cloud.app cli tool
-gemig cloudapp_api
-CLOUDAPP_CREDS=$HOME/.cloudapp
-if [ ! -e $CLOUDAPP_CREDS ]
-then
-  echo "Enter Cloud.app login"
-  read CLOUDAPP_LOGIN
-  echo "Enter Cloud.app password"
-  read CLOUDAPP_PWD
-
-  echo $CLOUDAPP_LOGIN >> $CLOUDAPP_CREDS
-  echo $CLOUDAPP_PWD >> $CLOUDAPP_CREDS
-fi
-
-gemig gifme
-
-brewinstall imagemagick
-brewinstall ffmpeg

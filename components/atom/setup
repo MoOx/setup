@@ -26,7 +26,8 @@ then
   apminstall git-log
   apminstall git-history
   apminstall merge-conflicts
-  apminstall line-archive
+  apminstall live-archive
+  apminstall yuno-commit
 
   # code quality
   apminstall editorconfig

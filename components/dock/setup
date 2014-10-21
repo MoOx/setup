@@ -9,7 +9,7 @@ echo_title_update "Dock"
 dockutil --no-restart --remove all
 dockutil --no-restart --add "/Applications/Mail.app"
 dockutil --no-restart --add "/Applications/Calendar.app"
-dockutil --no-restart --add "/Applications/Wunderlist.app"
+#dockutil --no-restart --add "/Applications/Wunderlist.app"
 dockutil --no-restart --add "/Applications/iTunes.app"
 dockutil --no-restart --add "/Applications/Messages.app"
 dockutil --no-restart --add "/Applications/Tweetbot.app"
@@ -26,3 +26,10 @@ dockutil --no-restart --add "$HOME/Applications/LimeChat.app"
 dockutil --no-restart --add "/Applications/`ls /Applications | grep Slack`"
 dockutil --no-restart  --add "/Applications/Steam.app"
 dockutil --no-restart --add "/Applications" --view grid --display folder --sort name
+
+# Atom Yosemite Icon https://dribbble.com/shots/1590423-Atom-Yosemite-Icon
+setfileicon "$DOTFILES/components/dock/icons/Atom.icns" "/Applications/Atom.app"
+# Slack icon from Muir Yosemite Icons Set 2 https://dribbble.com/shots/1773636-Muir-Yosemite-Icons-Set-2
+setfileicon "$DOTFILES/components/dock/icons/Slack.icns" "/Applications/`ls /Applications | grep Slack`"
+# Steam icon from Muir Yosemite Icons Set 2 https://dribbble.com/shots/1773636-Muir-Yosemite-Icons-Set-2
+setfileicon "$DOTFILES/components/dock/icons/Steam.icns" "/Applications/Steam.app"

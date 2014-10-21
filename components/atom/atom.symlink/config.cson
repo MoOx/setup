@@ -11,9 +11,8 @@
     'showInvisibles': true
     'showIndentGuide': true
     'softTabs': false
-    'fontSize': 12
     'fontFamily': 'Menlo'
-    'invisibles': {}
+    'fontSize': 12
   'core':
     'projectHome': '/Users/MoOx/Sync/Development'
     'disabledPackages': [

@@ -5,8 +5,6 @@ then
   brewcaskinstall atom
 fi
 
-atomicon
-
 if type apm > /dev/null
 then
   apminstall auto-update-packages

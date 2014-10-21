@@ -46,15 +46,15 @@ Already up-to-date.
 ❯ Installing/Updating dotfiles ...
 ❯ Updating Homebrew (brew) ...
 Already up-to-date.
+==> Removing dead symlinks
+Nothing to do
+==> Removing cached downloads
+Nothing to do
 ❯ Defining OS X options
-❯ Installing/Updating NPM global packages ...
 ❯ Updating LimeChat theme ...
 Already up-to-date.
-❯ Installing/Updating Gems ...
 ❯ Updating Dock ...
 
-~  
-❯
 ```
 
 ### `$ .f`

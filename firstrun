@@ -3,7 +3,8 @@
 # define zsh as default shell
 chsh -s /bin/zsh $USER
 
-echo "Visit https://appleseed.apple.com/sp/betaprogram to get OS X beta update if you want to enroll your Mac. Press enter to continue."
+echo "Visit https://appleseed.apple.com/sp/betaprogram to get OS X beta update if you want to enroll your Mac."
+echo "Press enter to continue."
 open "https://appleseed.apple.com/sp/betaprogram"
 read -k
 

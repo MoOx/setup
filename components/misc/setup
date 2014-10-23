@@ -21,12 +21,7 @@ brewinstall icoutils
 # keybase.io
 npmig keybase
 
-# sometimes my git knowledge is not enough (so GitHub.app)
-brewcaskinstall "SourceTree" $HOME/Applications
-
 # more utilities
-brewcaskinstall "Mou" $HOME/Applications
-
 brewcaskinstall "NameChanger" $HOME/Applications
 
 brewcaskinstall "GrandPerspective" $HOME/Applications
@@ -38,9 +33,7 @@ brewcaskinstall "Steam"
 
 brewcaskinstall "/Library/Java/JavaVirtualMachines" "java"
 
-
 brewcaskinstall "VirtualBox" $HOME/Applications
-brewcaskinstall "VMWare Fusion" $HOME/Applications
 
 brewcaskinstall "LibreOffice"
 

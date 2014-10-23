@@ -3,7 +3,7 @@
 # define zsh as default shell
 chsh -s /bin/zsh $USER
 
-echo "Visit https://appleseed.apple.com/sp/betaprogram to get OS X beta update"
+echo "Visit https://appleseed.apple.com/sp/betaprogram to get OS X beta update if you want to enroll your Mac. Press enter to continue."
 open "https://appleseed.apple.com/sp/betaprogram"
 read -k
 
@@ -30,24 +30,33 @@ then
   read -k
 fi
 
-if [[ ! -d $HOME/dotfiles ]]
-then
-  git clone http://github.com/MoOx/dotfiles.git $HOME/dotfiles
-  git submodule init
-else
-  cd $HOME/dotfiles
-  git pull
-fi
-git submodule update
-
 if [[ ! -d $HOME/dotfiles/.git ]]
 then
-  echo "dotfiles have not been downloaded correctly"
-  echo ""
-  echo "Aborting"
+  git clone http://github.com/MoOx/dotfiles.git $HOME/dotfiles
+  if [[ ! -d $HOME/dotfiles/.git ]]
+  then
+    echo "dotfiles have not been downloaded correctly"
+    echo ""
+    echo "Aborting"
+  else
+    cd $HOME/dotfiles
 
+    # register submodules
+    git submodule init
+  fi
 else
-  echo "dotfiles have been downloaded"
+  cd $HOME/dotfiles
+  # assume last first run wasn't ok, so update
+  git pull
+fi
+
+# check it's ok this time
+if [[ ! -d $HOME/dotfiles/.git ]]
+
+  # install submodule
+  git submodule update
+
+  echo "dotfiles have been downloaded correctly"
   echo ""
   echo "Running installation"
 

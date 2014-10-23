@@ -3,7 +3,9 @@
 if ! type brew > /dev/null
 then
   echo_title_install "Homebrew (brew)"
-  ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go/install)"
+  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  echo "Press enter to continue if Homebrew setup has been sucessfully executed."
+  read -k
   brew doctor
 else
   echo_title_update "Homebrew (brew)"

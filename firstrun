@@ -13,20 +13,20 @@ then
 
   echo "** Before running myself, please be sure you have 'git' command working **".
   echo ""
-  echo "to skip 'Agreeing to the Xcode/iOS license requires admin privileges, please re-run as root via sudo.'"
+  echo "To skip 'Agreeing to the Xcode/iOS license requires admin privileges, please re-run as root via sudo.'"
   echo "  sudo xcodebuild -license"
   echo "or just open Xcode and agree the license..."
   echo ""
-  echo "You may need Xcode Command line tools"
+  echo "You may need Xcode Command line tools if you don't have Xcode setup"
   echo "You can try the following if you are on a stable OS X version (with stable Xcode)"
   echo "  xcode-select --install"
   echo ""
-  echo "If you are on an Developer Preview/Beta try (replace {VERSION})"
-  echo "  sudo xcode-select --switch /Applications/Xcode{VERSION}-Beta.app/Contents/Developer/"
-  echo "  xcode-select --install"
+  echo "  /!\ If you are on an Developer Preview/Beta try (replace {VERSION})"
+  echo "    sudo xcode-select --switch /Applications/Xcode{VERSION}-Beta.app/Contents/Developer/"
+  echo "    xcode-select --install"
   echo ""
   echo ""
-  echo "Press return when 'git' command is available"
+  echo "Press return when you are sure that 'git' command is available"
   read -k
 fi
 

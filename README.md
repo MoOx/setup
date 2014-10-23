@@ -16,7 +16,7 @@ Just run `fireinthehole`. It should setup the computer.
 ## First run
 
 ```bash
-$ curl -fsSL https://raw.github.com/MoOx/dotfiles/master/firstrun | zsh
+$ curl -fsSL https://raw.githubusercontent.com/MoOx/dotfiles/master/firstrun | zsh
 ```
 
 ## Commands & aliases

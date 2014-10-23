@@ -52,7 +52,7 @@ else
 fi
 
 # check it's ok this time
-if [[ ! -d $HOME/dotfiles/.git ]]
+if [[ -d $HOME/dotfiles/.git ]]
 then
   # install submodule
   git submodule update

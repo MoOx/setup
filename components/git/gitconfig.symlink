@@ -19,6 +19,18 @@
 	# https://help.github.com/articles/dealing-with-line-endings/
 	autocrlf = input
 
+	# don't quit cli
+	editor = vim
+
+	# Treat spaces before tabs and all kinds of trailing whitespace as an error
+	# [default] trailing-space: looks for spaces at the end of a line
+	# [default] space-before-tab: looks for spaces before tabs at the beginning of a line
+	whitespace = space-before-tab,-indent-with-non-tab,trailing-space
+
+	# Make `git rebase` safer on OS X
+	# More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
+	trustctime = false
+
 [push]
 	default = simple
 
@@ -32,37 +44,64 @@
 	untracked = cyan
 
 [alias]
-	ch = checkout
-	br = branch
-	ci = commit
-	co = commit
-	com = commit -m
-	coma = commit -am
-	coa = commit -a
-	st = stash -u
+	# View abbreviated SHA, description, and history graph of the latest 20 commits
+	l = log --pretty=oneline -n 20 --graph --abbrev-commit
+
+	# View the current working tree status using the short format
+	s = status -s
+
+	# stash, pull, stash pop
 	sync = "!git stash -u && git pull && git stash pop"
-	df = diff
-	dc = diff --cached
-	lg = log -p
-	oops = commit --amend
-	lol = log --graph --decorate --pretty=oneline --abbrev-commit
-	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
-	ls = ls-files
-	ign = ls-files -o -i --exclude-standard
-	lgb = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-	unstage = reset HEAD --
-	last = log -1 HEAD
-	rmdf = "!git rm $(git ls-files --deleted)"
-	export = "!git clone --depth 1 $1 && rm -rf \"$(basename $1 .git)/.git\" -"
+
+	# Amend the currently staged files to the latest commit
+	amend = commit --amend --reuse-message=HEAD
+
 	# Remove branches that have already been merged with master
-	dm = "!git checkout master && git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
+	delete-merged = "!git checkout master && git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
+
+	# Merge GitHub pull request on top of the `master` branch
+	mergepr = "!f() { \
+		if [ $(printf \"%s\" \"$1\" | grep '^[0-9]\\+$' > /dev/null; printf $?) -eq 0 ]; then \
+			git fetch origin refs/pull/$1/head:pr/$1 && \
+			git rebase master pr/$1 && \
+			git checkout master && \
+			git merge pr/$1 && \
+			git branch -D pr/$1 && \
+			git commit --amend -m \"$(git log -1 --pretty=%B)\n\nCloses #$1.\"; \
+		fi \
+	}; f"
+
+	# List contributors with number of commits
+	contributors = shortlog --summary --numbered
 
 [merge]
-	tool = opendiff
-	conflictStyle = diff3
 
-# todo git-pr https://gist.github.com/naholyr/4132423
+	# Include summaries of merged commits in newly created merge commit messages
+	log = true
+
+[apply]
+	# Detect whitespace errors when applying a patch
+	whitespace = fix
+
 [filter "media"]
 	required = true
 	clean = git media clean %f
 	smudge = git media smudge %f
+
+# URL shorthands
+
+[url "git@github.com:"]
+	insteadOf = "gh:"
+	pushInsteadOf = "github:"
+	pushInsteadOf = "git://github.com/"
+
+[url "git://github.com/"]
+	insteadOf = "github:"
+
+[url "git@gist.github.com:"]
+	insteadOf = "gst:"
+	pushInsteadOf = "gist:"
+	pushInsteadOf = "git://gist.github.com/"
+
+[url "git://gist.github.com/"]
+	insteadOf = "gist:"

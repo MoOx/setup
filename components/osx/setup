@@ -141,6 +141,8 @@ defaults write com.apple.dock mru-spaces -bool false
 # Reset Launchpad
 find ~/Library/Application\ Support/Dock -name "*.db" -maxdepth 1 -delete
 
+# Dark mode
+defaults write NSGlobalDomain AppleInterfaceStyle Dark
 
 ###
 # Time Machine

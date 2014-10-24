@@ -8,3 +8,6 @@ atom.symlink/recent-projects.json
 
 # for https://atom.io/packages/gist-it
 atom.symlink/gist-it.token
+
+# for https://atom.io/packages/git-history
+atom.symlink/.git-history

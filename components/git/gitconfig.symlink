@@ -15,6 +15,10 @@
 	quotepath = false
 	excludesfile = ~/.gitignore_global
 
+	# properly handle line endings
+	# https://help.github.com/articles/dealing-with-line-endings/
+	autocrlf = input
+
 [push]
 	default = simple
 

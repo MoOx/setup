@@ -15,7 +15,7 @@ alias killa="killall '${app}' > /dev/null 2>&1"
 
 # FUCK YOU OSX (ps: I love you )
 alias fuckosxprefs="killall -u $USER cfprefsd && sleep 1" # wait for restart
-alias fuckosxfinder="killa Finder; if [ -e /Applications/XtraFinder.app ]; then; open /Applications/XtraFinder.app; fi"
+alias fuckosxfinder="killa Finder"
 alias fuckosxdock="killa Dock"
 alias fuckosx="fuckosxprefs && killa Dock Finder SystemUIServer NotificationCenter"
 

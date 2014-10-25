@@ -23,9 +23,6 @@ plistbuddy "Application Support/Flycut/com.generalarcade.flycut" "Set removeDupl
 brewcaskinstall "Prefs Editor"
 
 # enhance OS X with some small utilities
-brewcaskinstall "XtraFinder"
-openifnot "XtraFinder" "/Applications/XtraFinder.app"
-
 brewcaskinstall "AppCleaner"
 
 brewcaskinstall "Day-O"

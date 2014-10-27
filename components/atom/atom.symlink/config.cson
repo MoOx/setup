@@ -42,4 +42,3 @@
     'microBreakIntervalInSeconds': 1200
   'linter':
     'showStatusBarWhenCursorIsInErrorRange': true
-  'yuno-commit': {}

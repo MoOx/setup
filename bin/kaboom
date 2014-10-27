@@ -36,6 +36,8 @@ setup slate
 setup atom
 
 setup sync
+#setup cloud
+#setup cloudup
 
 setup browsers
 setup logitech
@@ -47,7 +49,6 @@ if [ "$FIRSTRUN" = "true" ]; then fuckosx; fi;
 setup chat
 setup multimedia
 
-setup sharing
 setup download
 
 # not needed by default anymore

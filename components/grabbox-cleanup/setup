@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+if [ ! -e $HOME/Library/LaunchAgents/org.dotfiles.grabbox-cleanup.plist ]
+then
+  ln -s $DOTFILES/components/grabbox-cleanup/launchd/org.dotfiles.grabbox-cleanup.plist $HOME/Library/LaunchAgents
+  launchctl load $HOME/Library/LaunchAgents/org.dotfiles.grabbox-cleanup.plist
+fi

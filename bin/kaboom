@@ -38,8 +38,11 @@ setup atom
 setup sync
 #setup cloud
 #setup cloudup
+setup grabbox
+setup grabbox-cleanup
 
 setup browsers
+
 setup logitech
 
 setup osx-enhancements

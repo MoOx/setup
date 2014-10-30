@@ -38,7 +38,7 @@ then
   ln -s $DIR_SYNC/Music $HOME/Music
   setfileicon $OS_ICONS_DIR/MusicFolderIcon.icns $HOME/Music
 
-	sudo rm -rf $HOME/iTunes
+  sudo rm -rf $HOME/iTunes
   ln -s $HOME/Music $HOME/iTunes
 fi
 

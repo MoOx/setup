@@ -1,107 +1,107 @@
 [user]
-	name = Maxime Thirouin
-	email = m@moox.io
+  name = Maxime Thirouin
+  email = m@moox.io
 
 [github]
-	user = MoOx
+  user = MoOx
 
 [hub]
-	protocol = https
+  protocol = https
 
 [credential]
-	helper = osxkeychain
+  helper = osxkeychain
 
 [core]
-	quotepath = false
-	excludesfile = ~/.gitignore_global
+  quotepath = false
+  excludesfile = ~/.gitignore_global
 
-	# properly handle line endings
-	# https://help.github.com/articles/dealing-with-line-endings/
-	autocrlf = input
+  # properly handle line endings
+  # https://help.github.com/articles/dealing-with-line-endings/
+  autocrlf = input
 
-	# don't quit cli
-	editor = vim
+  # don't quit cli
+  editor = vim
 
-	# Treat spaces before tabs and all kinds of trailing whitespace as an error
-	# [default] trailing-space: looks for spaces at the end of a line
-	# [default] space-before-tab: looks for spaces before tabs at the beginning of a line
-	whitespace = space-before-tab,-indent-with-non-tab,trailing-space
+  # Treat spaces before tabs and all kinds of trailing whitespace as an error
+  # [default] trailing-space: looks for spaces at the end of a line
+  # [default] space-before-tab: looks for spaces before tabs at the beginning of a line
+  whitespace = space-before-tab,-indent-with-non-tab,trailing-space
 
-	# Make `git rebase` safer on OS X
-	# More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
-	trustctime = false
+  # Make `git rebase` safer on OS X
+  # More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
+  trustctime = false
 
 [push]
-	default = simple
+  default = simple
 
 [branch]
-	autosetuprebase = always
+  autosetuprebase = always
 
 [color]
-	ui = auto
+  ui = auto
 
 [color "status"]
-	untracked = cyan
+  untracked = cyan
 
 [alias]
-	# View abbreviated SHA, description, and history graph of the latest 20 commits
-	l = log --pretty=oneline -n 20 --graph --abbrev-commit
+  # View abbreviated SHA, description, and history graph of the latest 20 commits
+  l = log --pretty=oneline -n 20 --graph --abbrev-commit
 
-	# View the current working tree status using the short format
-	s = status -s
+  # View the current working tree status using the short format
+  s = status -s
 
-	# stash, pull, stash pop
-	sync = "!git stash -u && git pull && git stash pop"
+  # stash, pull, stash pop
+  sync = "!git stash -u && git pull && git stash pop"
 
-	# Amend the currently staged files to the latest commit
-	amend = commit --amend --reuse-message=HEAD
+  # Amend the currently staged files to the latest commit
+  amend = commit --amend --reuse-message=HEAD
 
-	# Remove branches that have already been merged with master
-	delete-merged = "!git checkout master && git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
+  # Remove branches that have already been merged with master
+  delete-merged = "!git checkout master && git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
 
-	# Merge GitHub pull request on top of the `master` branch
-	mergepr = "!f() { \
-		if [ $(printf \"%s\" \"$1\" | grep '^[0-9]\\+$' > /dev/null; printf $?) -eq 0 ]; then \
-			git fetch origin refs/pull/$1/head:pr/$1 && \
-			git rebase master pr/$1 && \
-			git checkout master && \
-			git merge pr/$1 && \
-			git branch -D pr/$1 && \
-			git commit --amend -m \"$(git log -1 --pretty=%B)\n\nCloses #$1.\"; \
-		fi \
-	}; f"
+  # Merge GitHub pull request on top of the `master` branch
+  mergepr = "!f() { \
+    if [ $(printf \"%s\" \"$1\" | grep '^[0-9]\\+$' > /dev/null; printf $?) -eq 0 ]; then \
+      git fetch origin refs/pull/$1/head:pr/$1 && \
+      git rebase master pr/$1 && \
+      git checkout master && \
+      git merge pr/$1 && \
+      git branch -D pr/$1 && \
+      git commit --amend -m \"$(git log -1 --pretty=%B)\n\nCloses #$1.\"; \
+    fi \
+  }; f"
 
-	# List contributors with number of commits
-	contributors = shortlog --summary --numbered
+  # List contributors with number of commits
+  contributors = shortlog --summary --numbered
 
 [merge]
 
-	# Include summaries of merged commits in newly created merge commit messages
-	log = true
+  # Include summaries of merged commits in newly created merge commit messages
+  log = true
 
 [apply]
-	# Detect whitespace errors when applying a patch
-	whitespace = fix
+  # Detect whitespace errors when applying a patch
+  whitespace = fix
 
 [filter "media"]
-	required = true
-	clean = git media clean %f
-	smudge = git media smudge %f
+  required = true
+  clean = git media clean %f
+  smudge = git media smudge %f
 
 # URL shorthands
 
 [url "git@github.com:"]
-	insteadOf = "gh:"
-	pushInsteadOf = "github:"
-	pushInsteadOf = "git://github.com/"
+  insteadOf = "gh:"
+  pushInsteadOf = "github:"
+  pushInsteadOf = "git://github.com/"
 
 [url "git://github.com/"]
-	insteadOf = "github:"
+  insteadOf = "github:"
 
 [url "git@gist.github.com:"]
-	insteadOf = "gst:"
-	pushInsteadOf = "gist:"
-	pushInsteadOf = "git://gist.github.com/"
+  insteadOf = "gst:"
+  pushInsteadOf = "gist:"
+  pushInsteadOf = "git://gist.github.com/"
 
 [url "git://gist.github.com/"]
-	insteadOf = "gist:"
+  insteadOf = "gist:"

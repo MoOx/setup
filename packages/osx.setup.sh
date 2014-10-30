@@ -8,10 +8,10 @@ COMPUTER_NAME="$USER"
 COMPUTER_MODEL=`sysctl -n hw.model`
 if [[ $COMPUTER_MODEL == "iMac"* ]]
 then
-	COMPUTER_NAME="i$COMPUTER_NAME"
+  COMPUTER_NAME="i$COMPUTER_NAME"
 elif [[ $COMPUTER_MODEL == "MacBook"* ]]
 then
-	COMPUTER_NAME="Mac$COMPUTER_NAME"
+  COMPUTER_NAME="Mac$COMPUTER_NAME"
 fi
 # notifying computer name update only if name will be changed
 if [[ $COMPUTER_NAME != $(sudo scutil --get ComputerName) ]]
@@ -28,8 +28,8 @@ sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.serve
 ###
 if type spctl  &> /dev/null
 then
-	# Allow apps downloaded from "Anywhere"
-	sudo spctl --master-disable
+  # Allow apps downloaded from "Anywhere"
+  sudo spctl --master-disable
 fi
 
 ###
@@ -38,24 +38,24 @@ fi
 
 if type pmset  &> /dev/null
 then
-	# Computer sleep: Never
-	sudo pmset -a sleep 0
+  # Computer sleep: Never
+  sudo pmset -a sleep 0
 
-	# Display sleep: 10 min
-	sudo pmset -a displaysleep 10
+  # Display sleep: 10 min
+  sudo pmset -a displaysleep 10
 
-	# Wake for network access
-	sudo pmset -a womp 1
+  # Wake for network access
+  sudo pmset -a womp 1
 
-	# Automatically reduce brightness before display goes to sleep
-	sudo pmset -a halfdim 0
+  # Automatically reduce brightness before display goes to sleep
+  sudo pmset -a halfdim 0
 
-	# Start up automatically after a power failure
-	sudo pmset -a autorestart 1
+  # Start up automatically after a power failure
+  sudo pmset -a autorestart 1
 
-	# Never wake the machine if lib open or when power source changes
-	sudo pmset -a lidwake 0
-	sudo pmset -a acwake 0
+  # Never wake the machine if lib open or when power source changes
+  sudo pmset -a lidwake 0
+  sudo pmset -a acwake 0
 fi
 
 ###
@@ -63,9 +63,9 @@ fi
 ###
 if ls /private/var/db/.AccessibilityAPIEnabled &> /dev/null
 then
-	# /usr/bin/osascript -e 'tell application "System Events" to set UI elements enabled to true'
-	echo -n 'a' | sudo tee /private/var/db/.AccessibilityAPIEnabled > /dev/null 2>&1
-	sudo chmod 444 /private/var/db/.AccessibilityAPIEnabled
+  # /usr/bin/osascript -e 'tell application "System Events" to set UI elements enabled to true'
+  echo -n 'a' | sudo tee /private/var/db/.AccessibilityAPIEnabled > /dev/null 2>&1
+  sudo chmod 444 /private/var/db/.AccessibilityAPIEnabled
 fi
 
 # Never require password after sleep or screen saver begins

@@ -1,0 +1,10 @@
+#!/bin/zsh
+
+# tabs to spaces
+#
+# - sed is not the best solution possible
+# http://stackoverflow.com/questions/11094383/how-can-i-convert-tabs-to-spaces-in-every-file-of-a-directory#answer-11094620
+# - the grep thing is to execute expand command only on text file
+function tabstospaces() {
+  find ${@:-.} -name '*' -follow -type f -exec grep -Il . {} \; | while read file; do expand -t 2 "$file" > /tmp/e && mv /tmp/e "$file"; done
+}

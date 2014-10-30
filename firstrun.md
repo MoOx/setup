@@ -31,10 +31,6 @@ Make your OS clean install. Eventually use _Disk Utility_ to format for make a c
 
 See README.md, _First run_
 
-## Dropbox Preferences
-
-* [x] Use black and white menu bar icons
-
 
 ## BOOTCAMP (I mean dual boot with Windows)
 

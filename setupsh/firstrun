@@ -1,0 +1,72 @@
+#!/bin/zsh
+
+# define zsh as default shell
+chsh -s /bin/zsh $USER
+
+echo "Visit https://appleseed.apple.com/sp/betaprogram to get OS X beta update if you want to enroll your Mac."
+echo "Press enter to continue."
+open "https://appleseed.apple.com/sp/betaprogram"
+read -k
+
+if [[ "$(uname -s)" == "Darwin" ]]
+then
+  # todo add an alternative to grab xcode from another computer accessible by local network
+
+  echo "** Before running myself, please be sure you have 'git' command working **".
+  echo ""
+  echo "To skip 'Agreeing to the Xcode/iOS license requires admin privileges, please re-run as root via sudo.'"
+  echo "  sudo xcodebuild -license"
+  echo "or just open Xcode and agree the license..."
+  echo ""
+  echo "You may need Xcode Command line tools if you don't have Xcode setup"
+  echo "You can try the following if you are on a stable OS X version (with stable Xcode)"
+  echo "  xcode-select --install"
+  echo ""
+  echo "  /!\ If you are on an Developer Preview/Beta try (replace {VERSION})"
+  echo "    sudo xcode-select --switch /Applications/Xcode{VERSION}-Beta.app/Contents/Developer/"
+  echo "    xcode-select --install"
+  echo ""
+  echo ""
+  echo "Press return when you are sure that 'git' command is available"
+  read -k
+fi
+
+if [[ ! -d $HOME/dotfiles/.git ]]
+then
+  git clone http://github.com/MoOx/dotfiles.git $HOME/dotfiles
+  if [[ ! -d $HOME/dotfiles/.git ]]
+  then
+    echo "dotfiles have not been downloaded correctly"
+    echo ""
+    echo "Aborting"
+  else
+    cd $HOME/dotfiles
+
+    # register submodules
+    git submodule init
+  fi
+else
+  cd $HOME/dotfiles
+  # assume last first run wasn't ok, so update
+  git pull
+fi
+
+# check it's ok this time
+if [[ -d $HOME/dotfiles/.git ]]
+then
+  # install submodule
+  git submodule update
+
+  echo "dotfiles have been downloaded correctly"
+  echo ""
+  echo "Running installation"
+
+  if [[ ! -d $HOME/Applications ]]
+  then
+    mkdir $HOME/Applications
+  fi
+
+  . $HOME/dotfiles/setupsh/bin/fireinthehole --firstrun
+
+  notify "setup is done"
+fi

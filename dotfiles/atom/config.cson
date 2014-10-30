@@ -1,0 +1,44 @@
+'global':
+  'exception-reporting':
+    'userId': '3ba70428-f782-5321-e73a-7b678f36511c'
+  'release-notes':
+    'viewedVersion': '0.95.0'
+  'welcome':
+    'showOnStartup': false
+  'metrics':
+    'userId': '9e20623847c7c22109bc7b34e71c459485f8781a'
+  'editor':
+    'showInvisibles': true
+    'showIndentGuide': true
+    'softTabs': false
+    'fontFamily': 'Menlo'
+    'fontSize': 12
+  'core':
+    'projectHome': '/Users/MoOx/Sync/Development'
+    'disabledPackages': [
+      'autosave'
+    ]
+    'themes': [
+      'yosemite-unity-ui'
+      'atom-light-syntax'
+    ]
+    'useReactEditor': true
+    'ignoredNames': [
+      'node_modules'
+    ]
+  'autocomplete-plus':
+    'includeCompletionsFromAllBuffers': true
+  'tree-view':
+    'showOnRightSide': true
+    'hideVcsIgnoredFiles': true
+  'color':
+    'fillColorAsBackground': false
+  'autocomplete':
+    'includeCompletionsFromAllBuffers': true
+  'break':
+    'macroBreakIntervalInMicroAmount': 0
+    'macroBreakLengthInSeconds': 30
+    'microBreakLengthInSeconds': 30
+    'microBreakIntervalInSeconds': 1200
+  'linter':
+    'showStatusBarWhenCursorIsInErrorRange': true

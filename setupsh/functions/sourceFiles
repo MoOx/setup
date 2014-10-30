@@ -1,0 +1,9 @@
+#!/bin/zsh
+
+function sourceFiles() {
+  for file in $@
+  do
+    # echo "Sourcing $file"
+    source $file
+  done
+}

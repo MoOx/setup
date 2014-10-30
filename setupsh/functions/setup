@@ -1,0 +1,11 @@
+#!/bin/zsh
+
+function setup () {
+  PACKAGE_SETUP="$DOTFILES/packages/$1.setup.sh"
+  if [[ -f "$PACKAGE_SETUP" ]]
+  then
+    source "$PACKAGE_SETUP"
+  else
+    echo "Fail to setup $1: no setup file in '$PACKAGE_SETUP'"
+  fi
+}

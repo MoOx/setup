@@ -1,0 +1,17 @@
+#!/bin/zsh
+
+function notify () {
+  # https://github.com/alloy/terminal-notifier#readme
+  # @todo linux fallback:  notify-send --icon * "$USER/dotfiles" "$@"
+  if type terminal-notifier > /dev/null
+  then
+    terminal-notifier -activate com.apple.Terminal -sound Pop -title "$USER/dotfiles" -message $1 &> /dev/null
+  # fallback
+  else
+    if type say > /dev/null
+    then
+      say $1
+    fi
+    echo $1
+  fi
+}

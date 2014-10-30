@@ -1,0 +1,44 @@
+#!/bin/zsh
+source $DOTFILES/setupsh/index.zsh
+
+DIR_BIN="$( cd "$( dirname "${0}" )" && pwd )"
+
+echo_title_installupdate ".dotfiles"
+dotfiles()
+
+if [ "$FIRSTRUN" = "true" ]
+then
+  echo_title "Opening AppStore\nInstall your apps ;)"
+  appstore()
+  echo_user "Hit enter when you are ready"
+  read -e stuff
+fi
+
+# required first
+setup brew
+
+notify "Password might be required"
+if [ "$FIRSTRUN" = "true" ]
+then
+  sleep 5
+  notify "Since it's a full run, it might be asked more than once. Check often until process is complete."
+fi
+
+# Ask for the administrator password upfront
+sudo -v
+
+source $DOTFILES/index.zsh
+
+echo_title_update "preferences"
+sourceFiles $DOTFILES/preferences/*.sh
+
+# fix some menu bar icons for yosemite
+#brew install imagemagick --with-libtiff
+#ruby $DOTFILES/submodules/yosemite-menu-inverter/invert.rb
+
+fuckosx
+
+# todo add cron setup
+
+echo ""
+notify "Setup complete ☑️"

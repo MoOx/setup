@@ -1,0 +1,5 @@
+#!/bin/zsh
+
+function appstore() {
+  open /Applications/"App Store.app"
+}

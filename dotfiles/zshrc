@@ -1,0 +1,90 @@
+#!/bin/zsh
+
+#$DOTFILES doesn't exist yet
+source $HOME/dotfiles/setupsh/index.zsh
+# find $DOTFILES if not defined using symlink real dirname
+#__FILENAME__=${0} # only for sourced file, .zshrc is not sourced
+__FILENAME__=${ZDOTDIR-~}/.zshrc
+if [[ -z "$DOTFILES" ]] then
+  export DOTFILES=$(cd $(dirname $(readlink $__FILENAME__))/../../ && pwd)
+fi
+
+
+HISTFILE=~/.history
+HISTSIZE=SAVEHIST=99999
+setopt APPEND_HISTORY
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_FCNTL_LOCK
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_NO_STORE
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_VERIFY
+setopt INC_APPEND_HISTORY
+#setopt PRINT_EXIT_VALUE
+
+export LC_CTYPE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LANGUAGE=en_US.UTF-8
+
+#export CC=llvm-gcc-4.2
+
+ZSH_SITE_FUNCTION=/usr/local/share/zsh/site-functions/
+PURE_SETUP_PATH=$ZSH_SITE_FUNCTION/prompt_pure_setup
+if [ ! -e  $PURE_SETUP_PATH ]
+then
+  mkdir -p $ZSH_SITE_FUNCTION
+  silent-rm $PURE_SETUP_PATH
+  ln -s "$DOTFILES/submodules/pure/pure.zsh" $PURE_SETUP_PATH
+fi
+fpath=("/usr/local/share/zsh/site-functions" $fpath)
+#PURE_CMD_MAX_EXEC_TIME=2
+autoload -U promptinit && promptinit
+prompt pure
+# add %F{red}%(?..[%?] )%f to include exit code [code]
+PROMPT='%(?.%F{green}.%F{red}❯%F{green})❯%f '
+
+export OS_ICONS_DIR=/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources
+
+# also load aliases from projets
+if [[ -d $DIR_DEV ]]
+then
+  for source in `find $DIR_DEV -d -maxdepth 4 -name \*.aliases.zsh  | perl -lne 'print tr:/::, " $_"' | sort -n | cut -d' ' -f2`
+  do
+    source $source
+  done
+fi
+
+# disable ._ file
+export COPYFILE_DISABLE=true
+
+# Man pages colors
+export LESS_TERMCAP_mb=$(tput bold; tput setaf 2)
+export LESS_TERMCAP_md=$(tput bold)
+export LESS_TERMCAP_me=$(tput sgr0)
+export LESS_TERMCAP_so=$(tput bold; tput rev)
+export LESS_TERMCAP_se=$(tput rmso; tput sgr0)
+export LESS_TERMCAP_us=$(tput setaf 4; tput bold)
+export LESS_TERMCAP_ue=$(tput sgr0)
+export LESS_TERMCAP_mr=$(tput rev)
+export LESS_TERMCAP_mh=$(tput dim)
+export LESS_TERMCAP_ZN=$(tput ssubm)
+export LESS_TERMCAP_ZV=$(tput rsubm)
+export LESS_TERMCAP_ZO=$(tput ssupm)
+export LESS_TERMCAP_ZW=$(tput rsupm)
+
+
+alias list-aliases="alias | sed 's/=.*//'"
+alias list-functions="declare -f | grep '^[a-z].* () {' | sed 's/{$//'" # show non _prefixed functions
+alias list="cat <(list-aliases) <(list-functions) | sort"
+alias search="list | grep"
+
+source $DOTFILES/submodules/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+export EDITOR="atom"
+
+# use .zshrc.local for SUPER SECRET CRAP that you don't
+# want in your public, versioned repo.
+if [[ -f ~/.zshrc.local ]]; then; source ~/.zshrc.local; fi

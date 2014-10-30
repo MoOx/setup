@@ -1,107 +1,49 @@
-export DOTFILES=$HOME/dotfiles
-export PATH=$DOTFILES/bin:$PATH
+#!/bin/zsh
 
-# load colors
-autoload colors && colors
-for COLOR in RED GREEN YELLOW BLUE MAGENTA CYAN BLACK WHITE; do
-    # todo wrap colours between %{ %} to avoid weird gaps in autocomplete
-    eval COLOR_$COLOR='$fg_no_bold[${(L)COLOR}]'
-    eval COLOR_$COLOR_BOLD='$fg_bold[${(L)COLOR}]'
-done
-eval COLOR_RESET='$reset_color'
+setup osx
+setup git
 
-# add some helpers for display
-export CHAR_OK=✔
-export CHAR_ERROR=✗
-export CHAR_BOOM=💥
-export CHAR_STARTER=❯
+setup node
+setup _cli
+setup ssh
 
-function echo_info () { echo "${COLOR_BLUE}i${COLOR_RESET} $1" }
-function echo_user () { echo "${COLOR_YELLOW}?${COLOR_RESET} $1" }
-function echo_success () { echo "${COLOR_GREEN}${CHAR_OK}${COLOR_RESET} $1" }
-function echo_fail () { echo "${COLOR_RED}${CHAR_ERROR}${COLOR_RESET} $1\n"; exit }
-function echo_title () { echo "${COLOR_CYAN}${CHAR_STARTER} $@${COLOR_RESET}" }
-function echo_title_install () { echo_title "Installing" $1 "..." }
-function echo_title_update () { echo_title "Updating" $1 "..." }
-function echo_title_installupdate () { echo_title "Installing/Updating" $1 "..." }
+setup synergy
 
-function notify () {
-  # https://github.com/alloy/terminal-notifier#readme
-  if type terminal-notifier > /dev/null
-  then
-    terminal-notifier -activate com.apple.Terminal -sound Pop -title "$USER/dotfiles" -message $1 &> /dev/null
-  # fallback
-  else
-    if type say > /dev/null
-    then
-      say $1
-    fi
-    echo $1
-  fi
-}
+setup slate
 
-function setup () {
-  COMPONENT_SETUP="$DOTFILES/components/$1/setup"
-  if [[ -f "$COMPONENT_SETUP" ]]
-  then
-    source "$COMPONENT_SETUP"
-  else
-    echo "Fail to setup $1: no setup file in '$COMPONENT_SETUP'"
-  fi
-}
+setup atom
 
-# stupid var to avoid Darwin test all the time
-# not sure it's better
-export OS=unix
-if [[ $(uname) = "Darwin" ]]; then; export OS=osx; fi
-#if [[ $OS == "osx" ]]; then; echo "yeahyyyy"; fi
+setup sync
+#setup cloud
+#setup cloudup
+setup grabbox
+setup grabbox-cleanup
 
-# use .localrc for SUPER SECRET CRAP that you don't
-# want in your public, versioned repo.
-if [[ -f ~/.localrc ]]; then; source ~/.localrc; fi
+setup browsers
 
-##
-# Source topic files
-##
-typeset -U config_files
-config_files=($DOTFILES/components/*/*.zsh)
+setup logitech
 
-# load the path files
-for file in ${(M)config_files:#*/path.zsh}
-do
-  source $file
-done
+setup osx-enhancements
 
-# load everything but the path and completion files
-for file in ${${config_files:#*/path.zsh}:#*/completion.zsh}
-do
-  source $file
-done
+if [ "$FIRSTRUN" = "true" ]; then fuckosx; fi;
 
-# initialize autocomplete here, otherwise functions won't be loaded
-autoload -U compinit
-compinit
-# load every completion after autocomplete loads
-for file in ${(M)config_files:#*/completion.zsh}
-do
-  source $file
-done
-unset config_files
+setup chat
+setup multimedia
 
-##
-# Edit function path & autoload all functions
-##
-typeset -U config_files
-function_path=($DOTFILES/*/*/functions)
-for fdir in $function_path
-do
-  fpath=($fdir $fpath)
-done
-unset function_path
-function_files=($DOTFILES/*/*/functions/*)
-for file in $function_files
-do
-  # [ -r "$file" ] && [ -f "$file" ] && source "$file"
-  autoload `basename $file`
-done
-unset function_files
+setup download
+
+# not needed by default anymore
+#setup dnsmasq
+#setup apache
+#setup php
+#setup mysql
+
+setup dyndns
+setup prey
+
+setup dock
+
+if [ "$FIRSTRUN" = "true" ]; then fuckosx; fi;
+
+# lazyload misc & big stuff
+setup misc

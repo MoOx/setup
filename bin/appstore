@@ -1,8 +1,0 @@
-#!/bin/zsh
-#source $DOTFILES/index.zsh
-
-echo_title "Opening AppStore\nInstall your apps ;)"
-open /Applications/"App Store.app"
-
-# user "Hit enter when you are ready"
-# read -e stuff

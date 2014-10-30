@@ -1,0 +1,13 @@
+#!/bin/zsh
+
+TERM_PROFILE='FreshCut'
+if [ "$(defaults read com.apple.terminal 'Default Window Settings')" != "$TERM_PROFILE" ]
+then
+  echo_title "Setup Terminal.app profile"
+  open "$DOTFILES/packages/_cli/$TERM_PROFILE.terminal"
+  # Wait a bit to make sure the theme is loaded
+  sleep 1
+
+  defaults write com.apple.terminal 'Default Window Settings' -string "$TERM_PROFILE"
+  defaults write com.apple.terminal 'Startup Window Settings' -string "$TERM_PROFILE"
+fi

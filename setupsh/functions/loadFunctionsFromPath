@@ -1,0 +1,18 @@
+#!/bin/zsh
+
+function loadFunctionsFromPath() {
+  typeset -U config_files
+  function_path=($@)
+  for fdir in $function_path
+  do
+    fpath=($fdir $fpath)
+    function_files=($fdir/*)
+    for file in $function_files
+    do
+      # echo "Autoload function $file"
+      autoload `basename $file`
+    done
+    unset function_files
+  done
+  unset function_path
+}

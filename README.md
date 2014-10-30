@@ -57,19 +57,23 @@ Already up-to-date.
 
 ```
 
-### `$ .f`
+### `$ cd.`
+
+`cd` into your dotfiles.
+
+### `$ o.`
 
 Open your dotfiles using `open` command (eg: on OS X, Finder.app).
 
 ### `$ e [file]`
 
-Open a file/directory in your [configured editor](components/editor/editor.zsh).
+Open a file/directory in your [configured editor](packages/editor/editor.zsh).
 If you don't provide an argument, this will open the current folder.
 
 
-### `$ .fe`
+### `$ e.`
 
-Open your dotfiles in [your configured editor](components/editor/editor.zsh).
+Open your dotfiles in [your configured editor](packages/editor/editor.zsh).
 
 ### `$ .symlinks`
 
@@ -107,18 +111,18 @@ List all aliases & functions (except _*) that will match the query (it's a `list
 
 ## How it works ?
 
-Additionally to `fireinthehole` and `kaboom`, there is a lot of others commands available in each components.
+Additionally to `fireinthehole` and `kaboom`, there is a lot of others commands available in each packages.
 This dotfiles, like [holman](https://github.com/holman/dotfiles#topical) ones, are built around topic areas.
-Take a look to [components](components) to see available components.
-_Note: some components may require other(s) (eg: `brew` component is used a lot :) )_
+Take a look to [packages](packages) to see available packages.
+_Note: some packages may require other(s) (eg: `brew` component is used a lot :) )_
 
-Most of the time, components contains a `setup` file that you can use in `kaboom`.
+Most of the time, packages contains a `setup` file that you can use in `kaboom`.
 
-**[`kaboom`](bin/kaboom) mainly just run components `setup` in the predefined order.**
+**[`kaboom`](bin/kaboom) mainly just run packages `setup` in the predefined order.**
 
 ## Component definition
 
-Here is what is automatically handled by this awesome [index.zsh](index.zsh) (inspired by [@holman](https://github.com/holman) work).
+Here is what is automatically handled by this awesome [index.zsh](setupsh/index.zsh) (inspired by [@holman](https://github.com/holman) work).
 
 - `component/*.zsh`: Any files ending in .zsh get loaded into your environment.
 - `component/path.zsh`: Any file named `path.zsh` is _loaded first_ and is expected to setup $PATH or similar.
@@ -126,7 +130,7 @@ Here is what is automatically handled by this awesome [index.zsh](index.zsh) (in
 - `component/functions/`: component functions should be defined here.
 - `component/setup`: component setup is done in this file.
 - `component/*.symlink`: Any files ending in `*.symlink` get symlinked into your $HOME (_prefixed by `.`_). This is so you can keep all of those versioned in your dotfiles but still keep those autoloaded files in your home directory. These get symlinked in when you run `$ .symlinks`.
-- `component/README.md`: Please provide doc for each components.
+- `component/README.md`: Please provide doc for each packages.
 
 **Note: to setup one component only, just run `$ setup {component_name}`**
 

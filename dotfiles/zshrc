@@ -31,12 +31,12 @@ export LANGUAGE=en_US.UTF-8
 
 #export CC=llvm-gcc-4.2
 
-ZSH_SITE_FUNCTION=/usr/local/share/zsh/site-functions/
+ZSH_SITE_FUNCTION=/usr/local/share/zsh/site-functions
 PURE_SETUP_PATH=$ZSH_SITE_FUNCTION/prompt_pure_setup
 if [ ! -e  $PURE_SETUP_PATH ]
 then
   mkdir -p $ZSH_SITE_FUNCTION
-  silent-rm $PURE_SETUP_PATH
+  rm $PURE_SETUP_PATH
   ln -s "$SETUP_PATH/submodules/pure/pure.zsh" $PURE_SETUP_PATH
 fi
 fpath=("/usr/local/share/zsh/site-functions" $fpath)

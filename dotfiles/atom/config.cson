@@ -13,6 +13,7 @@
     'softTabs': false
     'fontFamily': 'Menlo'
     'fontSize': 12
+    'invisibles': {}
   'core':
     'projectHome': '/Users/MoOx/Sync/Development'
     'disabledPackages': [
@@ -25,12 +26,12 @@
     'useReactEditor': true
     'ignoredNames': [
       'node_modules'
+      'dist'
     ]
   'autocomplete-plus':
     'includeCompletionsFromAllBuffers': true
   'tree-view':
     'showOnRightSide': true
-    'hideVcsIgnoredFiles': true
   'color':
     'fillColorAsBackground': false
   'autocomplete':

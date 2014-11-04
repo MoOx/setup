@@ -1,5 +1,5 @@
 #!/bin/zsh
 
 function setupsh-submodules-add() {
-  git -C $DOTFILES submodule add $2 submodules/$1
+  git -C $SETUP_PATH submodule add $2 submodules/$1
 }

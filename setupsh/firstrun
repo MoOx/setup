@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-export DOTFILES=$HOME/dotfiles
+export SETUP_PATH=$HOME/setup
 
 # define zsh as default shell
 chsh -s /bin/zsh $USER
@@ -33,28 +33,28 @@ then
   read -k
 fi
 
-if [[ ! -d $DOTFILES/.git ]]
+if [[ ! -d $SETUP_PATH/.git ]]
 then
-  git clone http://github.com/MoOx/dotfiles.git $DOTFILES
-  if [[ ! -d $DOTFILES/.git ]]
+  git clone http://github.com/MoOx/setup.git $SETUP_PATH
+  if [[ ! -d $SETUP_PATH/.git ]]
   then
     echo "dotfiles have not been downloaded correctly"
     echo ""
     echo "Aborting"
   else
     # register submodules
-    git -C $DOTFILES submodule init
+    git -C $SETUP_PATH submodule init
   fi
 else
   # assume last first run wasn't ok, so update
-  git -C $DOTFILES pull
+  git -C $SETUP_PATH pull
 fi
 
 # check it's ok this time
-if [[ -d $DOTFILES/.git ]]
+if [[ -d $SETUP_PATH/.git ]]
 then
   # install submodule
-  git -C $DOTFILES submodule update
+  git -C $SETUP_PATH submodule update
 
   echo "dotfiles have been downloaded correctly"
   echo ""
@@ -65,8 +65,8 @@ then
     mkdir $HOME/Applications
   fi
 
-  source $DOTFILES/setupsh/index.sh
-  source $DOTFILES/setupsh/functions/full-setupsh
+  source $SETUP_PATH/setupsh/index.sh
+  source $SETUP_PATH/setupsh/functions/full-setupsh
   full-setupsh --firstrun
 
   notify "Setupsh is done"

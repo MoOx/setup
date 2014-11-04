@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 function .submodules-update() {
-  git -C $DOTFILES submodule foreach git pull origin master
-  git -C $DOTFILES add -A submodules
-  git -C $DOTFILES commit -m "Update submodules"
+  git -C $SETUP_PATH submodule foreach git pull origin master
+  git -C $SETUP_PATH add -A submodules
+  git -C $SETUP_PATH commit -m "Update submodules"
 }

@@ -2,6 +2,6 @@
 
 if [ ! -e $HOME/Library/LaunchAgents/org.setupsh.grabbox-cleanup.plist ]
 then
-  ln -s $DOTFILES/recipes/grabbox-cleanup.plist $HOME/Library/LaunchAgents/org.setupsh.grabbox-cleanup.plist
+  ln -s $SETUP_PATH/recipes/grabbox-cleanup.plist $HOME/Library/LaunchAgents/org.setupsh.grabbox-cleanup.plist
   launchctl load $HOME/Library/LaunchAgents/org.setupsh.grabbox-cleanup.plist
 fi

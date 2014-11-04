@@ -1,8 +1,8 @@
-# MoOx `setupsh`
+# MoOx `setup`
 
 > One command to setup your computer
 
-<img alt="" align="right" src="https://rawgit.com/MoOx/dotfiles/master/.kaboom.gif" />
+<img alt="" align="right" src="https://rawgit.com/MoOx/setup/master/.kaboom.gif" />
 
 - convenient commands & aliases for CLI
 - recipes & apps
@@ -11,7 +11,7 @@
 ## First run
 
 ```console
-$ curl -fsSL https://raw.githubusercontent.com/MoOx/dotfiles/master/firstrun | zsh
+$ curl -fsSL https://raw.githubusercontent.com/MoOx/setup/master/firstrun | zsh
 ```
 
 ## Periodic run

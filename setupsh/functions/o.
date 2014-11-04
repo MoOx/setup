@@ -1,5 +1,5 @@
 #!/bin/zsh
 
 function o.() {
-  o $DOTFILES
+  o $SETUP_PATH
 }

@@ -25,14 +25,14 @@ function setupsh() {
   # Ask for the administrator password upfront
   sudo -v
 
-  source $DOTFILES/index
+  source $SETUP_PATH/index
 
   echo_title_update "preferences"
-  sourceFiles $DOTFILES/preferences/*.prefs
+  sourceFiles $SETUP_PATH/preferences/*.prefs
 
   # fix some menu bar icons for yosemite
   #brew install imagemagick --with-libtiff
-  #ruby $DOTFILES/submodules/yosemite-menu-inverter/invert.rb
+  #ruby $SETUP_PATH/submodules/yosemite-menu-inverter/invert.rb
 
   osx-refresh
 

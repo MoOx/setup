@@ -1,8 +1,8 @@
 #!/usr/bin/env zsh
 
-export DOTFILES=$HOME/dotfiles
-export PATH=$DOTFILES/setupsh/bin:$PATH
-export PATH=$DOTFILES/recipes:$PATH
+export SETUP_PATH=$HOME/setup
+export PATH=$SETUP_PATH/setupsh/bin:$PATH
+export PATH=$SETUP_PATH/recipes:$PATH
 
 # load colors
 autoload colors && colors
@@ -35,7 +35,7 @@ if [[ $(uname) = "Darwin" ]]; then; export OS=osx; fi
 #if [[ $OS == "osx" ]]; then; echo "yeahyyyy"; fi
 
 # load setupsh core functions
-for file in $DOTFILES/setupsh/functions/*
+for file in $SETUP_PATH/setupsh/functions/*
 do
   # echo "Sourcing $file"
   source $file
@@ -47,17 +47,17 @@ done
 typeset -U config_files
 
 # load the path files
-sourceFiles $DOTFILES/recipes/*.path
+sourceFiles $SETUP_PATH/recipes/*.path
 
 # load everything but the path and completion files
-sourceFiles $DOTFILES/recipes/*.source
-sourceFiles $DOTFILES/recipes/*.aliases
+sourceFiles $SETUP_PATH/recipes/*.source
+sourceFiles $SETUP_PATH/recipes/*.aliases
 
 # initialize autocomplete here, otherwise functions won't be loaded
 autoload -U compinit
 compinit
 # load every completion after autocomplete loads
-sourceFiles $DOTFILES/recipes/*.completion
+sourceFiles $SETUP_PATH/recipes/*.completion
 
-loadFunctionsFromPath $DOTFILES/setupsh/functions
-loadFunctionsFromPath $DOTFILES/functions
+loadFunctionsFromPath $SETUP_PATH/setupsh/functions
+loadFunctionsFromPath $SETUP_PATH/functions

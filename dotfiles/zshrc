@@ -1,12 +1,12 @@
 #!/bin/zsh
 
-#$DOTFILES doesn't exist yet
-source $HOME/dotfiles/setupsh/index
-# find $DOTFILES if not defined using symlink real dirname
+#$SETUP_PATH doesn't exist yet
+source $HOME/setup/setupsh/index
+# find $SETUP_PATH if not defined using symlink real dirname
 #__FILENAME__=${0} # only for sourced file, .zshrc is not sourced
 __FILENAME__=${ZDOTDIR-~}/.zshrc
-if [[ -z "$DOTFILES" ]] then
-  export DOTFILES=$(cd $(dirname $(readlink $__FILENAME__))/../../ && pwd)
+if [[ -z "$SETUP_PATH" ]] then
+  export SETUP_PATH=$(cd $(dirname $(readlink $__FILENAME__))/../../ && pwd)
 fi
 
 
@@ -37,7 +37,7 @@ if [ ! -e  $PURE_SETUP_PATH ]
 then
   mkdir -p $ZSH_SITE_FUNCTION
   silent-rm $PURE_SETUP_PATH
-  ln -s "$DOTFILES/submodules/pure/pure.zsh" $PURE_SETUP_PATH
+  ln -s "$SETUP_PATH/submodules/pure/pure.zsh" $PURE_SETUP_PATH
 fi
 fpath=("/usr/local/share/zsh/site-functions" $fpath)
 #PURE_CMD_MAX_EXEC_TIME=2
@@ -81,7 +81,7 @@ alias list-functions="declare -f | grep '^[a-z].* () {' | sed 's/{$//'" # show n
 alias list="cat <(list-aliases) <(list-functions) | sort"
 alias search="list | grep"
 
-source $DOTFILES/submodules/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $SETUP_PATH/submodules/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 export EDITOR="atom"
 

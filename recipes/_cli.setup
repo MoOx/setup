@@ -5,8 +5,8 @@ brewinstall terminal-notifier
 
 #brewcaskinstall "iTerm" "iterm2" $HOME/Applications
 
-#source $DOTFILES/preferences/Terminal.prefs
-#source $DOTFILES/preferences/iTerm2.prefs
+#source $SETUP_PATH/preferences/Terminal.prefs
+#source $SETUP_PATH/preferences/iTerm2.prefs
 
 # safer than rm
 npmig trash

@@ -10,7 +10,7 @@ function dotfiles() {
     overwrite_all=true
   fi
 
-  for source in `find $DOTFILES/dotfiles/* -maxdepth 0`
+  for source in `find $SETUP_PATH/dotfiles/* -maxdepth 0`
   do
     dest="$HOME/.`basename $source`"
 

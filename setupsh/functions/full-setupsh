@@ -9,9 +9,9 @@ function full-setupsh() {
   # update from remote
   echo_title_update "from remote"
 
-  git -C $DOTFILES pull origin master
-  git -C $DOTFILES submodule init
-  git -C $DOTFILES submodule update
+  git -C $SETUP_PATH pull origin master
+  git -C $SETUP_PATH submodule init
+  git -C $SETUP_PATH submodule update
 
   export FIRSTRUN=false
   if [ "$1" = "--firstrun" ]

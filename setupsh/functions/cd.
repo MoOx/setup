@@ -1,5 +1,5 @@
 #!/bin/zsh
 
 function cd.() {
-  cd $DOTFILES
+  cd $SETUP_PATH
 }

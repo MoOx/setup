@@ -54,10 +54,10 @@ dockutil --no-restart --add "/Applications" --view grid --display folder --sort 
 
 # sudo is for appstore apps
 # Tweetbot yosemite icon http://ziggy19.deviantart.com/art/OS-X-Yosemite-Tweetbot-482529436
-sudo setfileicon "$DOTFILES/preferences/icns/Tweetbot.icns" "/Applications/Tweetbot.app"
+sudo setfileicon "$SETUP_PATH/preferences/icns/Tweetbot.icns" "/Applications/Tweetbot.app"
 # Atom Yosemite Icon https://dribbble.com/shots/1590423-Atom-Yosemite-Icon
-setfileicon "$DOTFILES/preferences/icns/Atom.icns" "/Applications/Atom.app"
+setfileicon "$SETUP_PATH/preferences/icns/Atom.icns" "/Applications/Atom.app"
 # Slack icon from Muir Yosemite Icons Set 2 https://dribbble.com/shots/1773636-Muir-Yosemite-Icons-Set-2
-setfileicon "$DOTFILES/preferences/icns/Slack.icns" "/Applications/`ls /Applications | grep Slack`"
+setfileicon "$SETUP_PATH/preferences/icns/Slack.icns" "/Applications/`ls /Applications | grep Slack`"
 # Steam icon from Muir Yosemite Icons Set 2 https://dribbble.com/shots/1773636-Muir-Yosemite-Icons-Set-2
-setfileicon "$DOTFILES/preferences/icns/Steam.icns" "/Applications/Steam.app"
+setfileicon "$SETUP_PATH/preferences/icns/Steam.icns" "/Applications/Steam.app"

@@ -45,13 +45,6 @@
 /* hide quote of the "break" plugin */
 .break-quote { visibility: hidden !important; }
 
-.yuno-commit {
-  pointer-events: none; /* allow click below */
-
-  /* https://github.com/suda/yuno-commit/issues/2 */
-  /* my sidebar is on the right */
-  right: auto;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-  transform: translateX(-50%);
+.yuno-commit:after {
+  -webkit-filter: drop-shadow(0 0 .4rem rgba(0,0,0, .2));
 }

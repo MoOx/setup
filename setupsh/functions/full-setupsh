@@ -1,0 +1,23 @@
+#!/bin/zsh
+
+function full-setupsh() {
+  echo "\n(╯°□°）╯ ︵ $CHAR_BOOM\n"
+
+  # Ask for the administrator password upfront
+  sudo -v
+
+  # update from remote
+  echo_title_update "from remote"
+
+  git -C $DOTFILES pull origin master
+  git -C $DOTFILES submodule init
+  git -C $DOTFILES submodule update
+
+  export FIRSTRUN=false
+  if [ "$1" = "--firstrun" ]
+  then
+    export FIRSTRUN=true
+  fi
+
+  setupsh
+}

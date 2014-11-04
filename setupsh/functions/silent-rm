@@ -1,0 +1,12 @@
+#!/bin/zsh
+
+function silent-rm() {
+  for file in "$@"
+  do
+    if [ -e $file ]
+    then
+      rm $file
+    fi
+  done
+
+}

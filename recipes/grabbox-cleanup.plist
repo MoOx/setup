@@ -13,7 +13,7 @@
     <array>
       <string>zsh</string>
       <string>-c</string>
-      <string>~/dotfiles/packages/grabbox-cleanup</string>
+      <string>~/dotfiles/recipes/grabbox-cleanup</string>
     </array>
 
     <!-- Keep running... -->

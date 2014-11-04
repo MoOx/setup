@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+export DOTFILES=$HOME/dotfiles
+
 # define zsh as default shell
 chsh -s /bin/zsh $USER
 
@@ -31,31 +33,28 @@ then
   read -k
 fi
 
-if [[ ! -d $HOME/dotfiles/.git ]]
+if [[ ! -d $DOTFILES/.git ]]
 then
-  git clone http://github.com/MoOx/dotfiles.git $HOME/dotfiles
-  if [[ ! -d $HOME/dotfiles/.git ]]
+  git clone http://github.com/MoOx/dotfiles.git $DOTFILES
+  if [[ ! -d $DOTFILES/.git ]]
   then
     echo "dotfiles have not been downloaded correctly"
     echo ""
     echo "Aborting"
   else
-    cd $HOME/dotfiles
-
     # register submodules
-    git submodule init
+    git -C $DOTFILES submodule init
   fi
 else
-  cd $HOME/dotfiles
   # assume last first run wasn't ok, so update
-  git pull
+  git -C $DOTFILES pull
 fi
 
 # check it's ok this time
-if [[ -d $HOME/dotfiles/.git ]]
+if [[ -d $DOTFILES/.git ]]
 then
   # install submodule
-  git submodule update
+  git -C $DOTFILES submodule update
 
   echo "dotfiles have been downloaded correctly"
   echo ""
@@ -66,7 +65,9 @@ then
     mkdir $HOME/Applications
   fi
 
-  . $HOME/dotfiles/setupsh/bin/fireinthehole --firstrun
+  source $DOTFILES/setupsh/index.sh
+  source $DOTFILES/setupsh/functions/full-setupsh
+  full-setupsh --firstrun
 
-  notify "setup is done"
+  notify "Setupsh is done"
 fi

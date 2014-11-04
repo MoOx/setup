@@ -1,3 +1,0 @@
-#!/bin/zsh
-
-git -C $DOTFILES submodule add $2 submodules/$1

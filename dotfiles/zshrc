@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 #$DOTFILES doesn't exist yet
-source $HOME/dotfiles/setupsh/index.zsh
+source $HOME/dotfiles/setupsh/index
 # find $DOTFILES if not defined using symlink real dirname
 #__FILENAME__=${0} # only for sourced file, .zshrc is not sourced
 __FILENAME__=${ZDOTDIR-~}/.zshrc
@@ -51,7 +51,7 @@ export OS_ICONS_DIR=/System/Library/CoreServices/CoreTypes.bundle/Contents/Resou
 # also load aliases from projets
 if [[ -d $DIR_DEV ]]
 then
-  for source in `find $DIR_DEV -d -maxdepth 4 -name \*.aliases.zsh  | perl -lne 'print tr:/::, " $_"' | sort -n | cut -d' ' -f2`
+  for source in `find $DIR_DEV -d -maxdepth 4 -name \*.aliases  | perl -lne 'print tr:/::, " $_"' | sort -n | cut -d' ' -f2`
   do
     source $source
   done

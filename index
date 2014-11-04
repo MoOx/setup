@@ -1,0 +1,47 @@
+#!/bin/zsh
+
+setupsh-recipe osx
+setupsh-recipe git
+
+setupsh-recipe node
+setupsh-recipe _cli
+setupsh-recipe ssh
+
+setupsh-recipe synergy
+
+setupsh-recipe slate
+
+setupsh-recipe atom
+
+setupsh-recipe sync
+#setupsh-recipe cloud
+#setupsh-recipe cloudup
+setupsh-recipe grabbox
+setupsh-recipe grabbox-cleanup
+
+setupsh-recipe browsers
+
+setupsh-recipe logitech
+
+setupsh-recipe osx-enhancements
+
+if [ "$FIRSTRUN" = "true" ]; then osx-refresh; fi;
+
+setupsh-recipe chat
+setupsh-recipe multimedia
+
+setupsh-recipe download
+
+# not needed by default anymore
+#setupsh-recipe dnsmasq
+#setupsh-recipe apache
+#setupsh-recipe php
+#setupsh-recipe mysql
+
+setupsh-recipe ddclient
+setupsh-recipe prey
+
+if [ "$FIRSTRUN" = "true" ]; then osx-refresh; fi;
+
+# lazyload misc & big stuff
+setupsh-recipe misc

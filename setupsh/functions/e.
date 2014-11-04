@@ -1,0 +1,5 @@
+#!/bin/zsh
+
+function e.() {
+  e $DOTFILES
+}

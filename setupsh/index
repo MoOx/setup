@@ -1,5 +1,8 @@
+#!/usr/bin/env zsh
+
 export DOTFILES=$HOME/dotfiles
 export PATH=$DOTFILES/setupsh/bin:$PATH
+export PATH=$DOTFILES/recipes:$PATH
 
 # load colors
 autoload colors && colors
@@ -39,23 +42,22 @@ do
 done
 
 ##
-# Source packages
+# Source recipes
 ##
 typeset -U config_files
-config_files=($DOTFILES/packages/*.zsh)
 
 # load the path files
-sourceFiles ${(M)config_files:#*.path.zsh}
+sourceFiles $DOTFILES/recipes/*.path
 
 # load everything but the path and completion files
-sourceFiles ${${config_files:#*.path.zsh}:#*.completion.zsh}
+sourceFiles $DOTFILES/recipes/*.source
+sourceFiles $DOTFILES/recipes/*.aliases
 
 # initialize autocomplete here, otherwise functions won't be loaded
 autoload -U compinit
 compinit
 # load every completion after autocomplete loads
-sourceFiles ${(M)config_files:#*.completion.zsh}
-unset config_files
+sourceFiles $DOTFILES/recipes/*.completion
 
 loadFunctionsFromPath $DOTFILES/setupsh/functions
 loadFunctionsFromPath $DOTFILES/functions

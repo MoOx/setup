@@ -154,19 +154,6 @@ defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 # Disable local Time Machine backups
 hash tmutil &> /dev/null && sudo tmutil disablelocal
 
-source $DOTFILES/packages/osx/preferences/ActivityMonitor
-source $DOTFILES/packages/osx/preferences/Dock
-source $DOTFILES/packages/osx/preferences/HotCorner
-source $DOTFILES/packages/osx/preferences/Keyboard
-source $DOTFILES/packages/osx/preferences/MenuBar
-source $DOTFILES/packages/osx/preferences/Mouse
-source $DOTFILES/packages/osx/preferences/Screencapture
-source $DOTFILES/packages/osx/preferences/Spotlight
-
-source $DOTFILES/packages/osx/preferences/apps/Finder.app
-source $DOTFILES/packages/osx/preferences/apps/Mail.app
-source $DOTFILES/packages/osx/preferences/apps/Safari.app
-source $DOTFILES/packages/osx/preferences/apps/Calendar.app
 
 # Kill affected applications
 for app in "Address Book" "Calendar" "Contacts" "Messages"
@@ -174,7 +161,7 @@ do
   killa "${app}"
 done
 
-if [ "$FIRSTRUN" = "true" ]; then fuckosx; fi;
+if [ "$FIRSTRUN" = "true" ]; then osx-refresh; fi;
 
 
 # Enable local FTP Server

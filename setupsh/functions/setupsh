@@ -2,9 +2,8 @@
 
 function setupsh() {
   echo_title_installupdate ".dotfiles"
-  dotfiles()
+  dotfiles
 
-  # required first
   setupsh-recipe brew
   brewinstall terminal-notifier
 
@@ -14,7 +13,7 @@ function setupsh() {
   if [ "$FIRSTRUN" = "true" ]
   then
     echo_title "Opening AppStore\nInstall your apps ;)"
-    appstore()
+    appstore
     echo_user "Hit enter when you are ready"
     read -e stuff
   fi

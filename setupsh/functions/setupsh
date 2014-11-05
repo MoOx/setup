@@ -4,6 +4,13 @@ function setupsh() {
   echo_title_installupdate ".dotfiles"
   dotfiles()
 
+  # required first
+  setupsh-recipe brew
+  brewinstall terminal-notifier
+
+  echo_title_update "preferences"
+  sourceFiles $SETUP_PATH/preferences/*.prefs
+
   if [ "$FIRSTRUN" = "true" ]
   then
     echo_title "Opening AppStore\nInstall your apps ;)"
@@ -11,9 +18,6 @@ function setupsh() {
     echo_user "Hit enter when you are ready"
     read -e stuff
   fi
-
-  # required first
-  setupsh-recipe brew
 
   notify "Password might be required"
   if [ "$FIRSTRUN" = "true" ]
@@ -27,16 +31,7 @@ function setupsh() {
 
   source $SETUP_PATH/index
 
-  echo_title_update "preferences"
-  sourceFiles $SETUP_PATH/preferences/*.prefs
-
-  # fix some menu bar icons for yosemite
-  #brew install imagemagick --with-libtiff
-  #ruby $SETUP_PATH/submodules/yosemite-menu-inverter/invert.rb
-
   osx-refresh
-
-  # todo add cron setup
 
   echo ""
   notify "Setup complete ☑️"

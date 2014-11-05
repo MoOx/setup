@@ -1,0 +1,8 @@
+#!/usr/bin/env zsh
+
+plistbuddy "Application Support/Flycut/com.generalarcade.flycut" "Set stickyBezel 1"
+plistbuddy "Application Support/Flycut/com.generalarcade.flycut" "Set displayNum 40"
+plistbuddy "Application Support/Flycut/com.generalarcade.flycut" "Set rememberNum 99"
+plistbuddy "Application Support/Flycut/com.generalarcade.flycut" "Set menuIcon 1"
+plistbuddy "Application Support/Flycut/com.generalarcade.flycut" "Set loadOnStartup 1"
+plistbuddy "Application Support/Flycut/com.generalarcade.flycut" "Set removeDuplicates 1"

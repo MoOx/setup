@@ -1,4 +1,0 @@
-#!/usr/bin/env zsh
-
-brewcaskinstall "/Library/PreferencePanes/Logitech Control Center.prefPane" "logitech-control-center"
-brewcaskinstall "Utilities/Logitech Unifying Software" "logitech-unifying"

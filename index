@@ -4,7 +4,18 @@ setupsh-recipe osx
 setupsh-recipe git
 
 setupsh-recipe node
-setupsh-recipe _cli
+
+brewinstall zsh-completions
+brewinstall terminal-notifier
+
+#brewcaskinstall "iTerm" "iterm2" $HOME/Applications
+
+#source $SETUP_PATH/preferences/Terminal.prefs
+#source $SETUP_PATH/preferences/iTerm2.prefs
+
+# safer than rm
+npmig trash
+
 setupsh-recipe ssh
 
 setupsh-recipe synergy
@@ -13,24 +24,150 @@ setupsh-recipe slate
 
 setupsh-recipe atom
 
-setupsh-recipe sync
+if ! ls $DIR_SYNC &> /dev/null
+then
+  mkdir $DIR_SYNC
+  setfileicon $OS_ICONS_DIR/GroupFolder.icns $DIR_SYNC
+fi
+
+brewcaskinstall "BitTorrent Sync"
+openifnot "BitTorrent Sync" "/Applications/BitTorrent Sync.app"
+
+if ls $DIR_SYNC/BTSync &> /dev/null
+then
+  setfileicon $OS_ICONS_DIR/UsersFolderIcon.icns $DIR_SYNC/BTSync
+
+  if ls $DIR_SYNC/BTSync/Fonts &> /dev/null
+  then
+    sudo rm -rf $HOME/Library/Fonts
+    ln -s $DIR_SYNC/BTSync/Fonts $HOME/Library/Fonts
+  fi
+fi
+
+if ls $DIR_SYNC/Development &> /dev/null
+then
+  setfileicon $OS_ICONS_DIR/DeveloperFolderIcon.icns $DIR_SYNC/Development
+fi
+
+if ls $DIR_SYNC/Music &> /dev/null
+then
+  sudo rm -rf $HOME/Music
+  ln -s $DIR_SYNC/Music $HOME/Music
+  setfileicon $OS_ICONS_DIR/MusicFolderIcon.icns $HOME/Music
+
+  sudo rm -rf $HOME/iTunes
+  ln -s $HOME/Music $HOME/iTunes
+fi
+
+if ls $DIR_SYNC/Pictures &> /dev/null
+then
+  sudo rm -rf $HOME/Pictures
+  ln -s $DIR_SYNC/Pictures $HOME/Pictures
+  setfileicon $OS_ICONS_DIR/PicturesFolderIcon.icns $DIR_SYNC/Pictures
+fi
+
+brewcaskinstall "Dropbox"
+openifnot "Dropbox" "/Applications/Dropbox.app"
+
 #setupsh-recipe cloud
 #setupsh-recipe cloudup
 setupsh-recipe grabbox
 setupsh-recipe grabbox-cleanup
 
-setupsh-recipe browsers
+brewcaskinstall "FirefoxNightly" "firefox-nightly" "$HOME/Applications"
+openifnot "FirefoxNightly" "$HOME/Applications/FirefoxNightly.app"
+FIREFOX_PROFILES=($HOME/Library/Application\ Support/Firefox/Profiles/*)
+for fxProfile in $FIREFOX_PROFILES
+do
+	fxuserjs="$fxProfile/user.js"
+	if [ ! -e $fxuserjs ]
+	then
+		silent-rm $fxuserjs
+		ln -s $SETUP_PATH/dotfiles/firefox.user.js $fxuserjs
+	fi
+done
 
-setupsh-recipe logitech
+brewcaskinstall "FirefoxAurora" "firefox-aurora" "$HOME/Applications"
 
-setupsh-recipe osx-enhancements
+brewcaskinstall "Firefox"
+
+brewcaskinstall "Google Chrome"
+
+brewcaskinstall "Opera"
+
+brewcaskinstall "Utilities/Adobe Flash Player Install Manager" "flash"
+brewcaskinstall "/Library/Internet Plug-Ins/googletalkbrowserplugin.plugin" "google-hangouts"
+
+brewcaskinstall "/Library/PreferencePanes/Logitech Control Center.prefPane" "logitech-control-center"
+brewcaskinstall "Utilities/Logitech Unifying Software" "logitech-unifying"
+
+brewcaskinstall "Flux"
+openifnot "Flux" "/Applications/Flux.app"
+
+# Trim enable for non Apple SSD
+brewcaskinstall "Trim Enabler"
+
+# from AppStore
+openifnot "Tweetbot" "/Applications/Tweetbot.app"
+
+# from AppStore
+# todo get this app not from appstore
+# https://github.com/TermiT/Flycut/issues/56
+openifnot "Flycut" "/Applications/Flycut.app"
+
+brewcaskinstall "Prefs Editor"
+
+# enhance OS X with some small utilities
+brewcaskinstall "AppCleaner"
+
+brewcaskinstall "Day-O"
+openifnot "Day-O" "/Applications/Day-O.app"
+
+brewcaskinstall "/opt/homebrew-cask/Caskroom/menumeters" "menumeters"
+
+# QuickLook plugins from https://github.com/sindresorhus/quick-look-plugins
+brewcaskinstall "/opt/homebrew-cask/Caskroom/qlcolorcode" "qlcolorcode"
+brewcaskinstall "/opt/homebrew-cask/Caskroom/qlstephen" "qlstephen"
+brewcaskinstall "/opt/homebrew-cask/Caskroom/qlmarkdown" "qlmarkdown"
+brewcaskinstall "/opt/homebrew-cask/Caskroom/quicklook-json" "quicklook-json"
+brewcaskinstall "/opt/homebrew-cask/Caskroom/qlprettypatch" "qlprettypatch"
+brewcaskinstall "/opt/homebrew-cask/Caskroom/quicklook-csv" "quicklook-csv"
+brewcaskinstall "/opt/homebrew-cask/Caskroom/betterzipql" "betterzipql"
+brewcaskinstall "/opt/homebrew-cask/Caskroom/webp-quicklook" "webp-quicklook"
+brewcaskinstall "/opt/homebrew-cask/Caskroom/suspicious-package" "suspicious-package"
+
+# reset QuickLook plugins
+qlmanage -r &> /dev/null
 
 if [ "$FIRSTRUN" = "true" ]; then osx-refresh; fi;
 
-setupsh-recipe chat
-setupsh-recipe multimedia
+setupsh-recipe limechat
 
-setupsh-recipe download
+brewcaskinstall Skype
+
+# the simple 2 lines above was enough for Slask
+# until they name the .app with the version in the dmg
+# like "Slack 0.44.2.app"...
+#brewcaskinstall Slack
+# so here is the way to fix it
+brewcaskinstall "/opt/homebrew-cask/Caskroom/slack/" slack
+
+
+brewcaskinstall "VLC"
+brewcaskinstall "MPlayerX"
+
+#brewcaskinstall "Rdio"
+
+brewcaskinstall "All2MP3"
+
+brewcaskinstall "Subtitles"
+brewcaskinstall "Jubler" $HOME/Applications
+
+brewcaskinstall "Last.fm" "lastfm" $HOME/Applications
+openifnot "Last.fm" "$HOME/Applications/Last.fm.app"
+
+brewcaskinstall "Transmission"
+brewcaskinstall "Cyberduck"
 
 # not needed by default anymore
 #setupsh-recipe dnsmasq
@@ -43,5 +180,48 @@ setupsh-recipe prey
 
 if [ "$FIRSTRUN" = "true" ]; then osx-refresh; fi;
 
-# lazyload misc & big stuff
-setupsh-recipe misc
+brewtap caskroom/fonts
+#brewcaskinstall "$HOME/Library/Fonts/Ubuntu-R.ttf" font-ubuntu
+#brewcaskinstall "$HOME/Library/Fonts/Ubuntu Mono derivative Powerline.ttf" font-ubuntu-mono-powerline
+
+
+brewcaskinstall "KeePassX"
+
+# missing commands to OSX
+brewinstall tree
+brewinstall gpg
+
+# better than man
+npmig tldr
+
+npmig travis-encrypt
+
+# favicon
+brewinstall icoutils
+
+#sudo pip install --upgrade asciinema
+#asciinema auth
+#asciinema rec
+
+# keybase.io
+npmig keybase
+
+# more utilities
+brewcaskinstall "NameChanger" $HOME/Applications
+
+brewcaskinstall "GrandPerspective" $HOME/Applications
+
+# HD backup
+brewcaskinstall "SuperDuper!" "superduper"
+
+brewcaskinstall "Steam"
+
+brewcaskinstall "/Library/Java/JavaVirtualMachines" "java"
+
+brewcaskinstall "VirtualBox" $HOME/Applications
+
+brewcaskinstall "LibreOffice"
+
+# might be required http://software.intel.com/en-us/android/articles/intel-hardware-accelerated-execution-manager
+# brewinstall android-sdk
+#brewcaskinstall genymotion

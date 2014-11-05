@@ -8,6 +8,7 @@ do
   fxuserjs="$fxProfile/user.js"
   if [ ! -e $fxuserjs ]
   then
+    silent-rm $fxuserjs
     ln -s $SETUP_PATH/dotfiles/firefox.user.js $fxuserjs
   fi
 done

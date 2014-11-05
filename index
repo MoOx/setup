@@ -14,16 +14,8 @@ setupsh-recipe atom
 
 brewcaskinstall "FirefoxNightly" "firefox-nightly" "$HOME/Applications"
 openifnot "FirefoxNightly" "$HOME/Applications/FirefoxNightly.app"
-FIREFOX_PROFILES=($HOME/Library/Application\ Support/Firefox/Profiles/*)
-for fxProfile in $FIREFOX_PROFILES
-do
-  fxuserjs="$fxProfile/user.js"
-  if [ ! -e $fxuserjs ]
-  then
-    silent-rm $fxuserjs
-    ln -s $SETUP_PATH/dotfiles/firefox.user.js $fxuserjs
-  fi
-done
+setupsh-recipe firefox-user.js
+
 # :(
 brewcaskinstall "Utilities/Adobe Flash Player Install Manager" "flash"
 

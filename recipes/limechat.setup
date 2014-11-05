@@ -13,12 +13,3 @@ else
   echo_title_update "LimeChat theme"
   git -C $LIMECHAT_THEME pull
 fi
-
-brewcaskinstall Skype
-
-# the simple 2 lines above was enough for Slask
-# until they name the .app with the version in the dmg
-# like "Slack 0.44.2.app"...
-#brewcaskinstall Slack
-# so here is the way to fix it
-brewcaskinstall "/opt/homebrew-cask/Caskroom/slack/" slack

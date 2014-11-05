@@ -1,29 +1,35 @@
 #!/usr/bin/env zsh
 
-setupsh-recipe osx
-setupsh-recipe git
-
-setupsh-recipe node
-
-brewinstall zsh-completions
-brewinstall terminal-notifier
-
-#brewcaskinstall "iTerm" "iterm2" $HOME/Applications
-
-#source $SETUP_PATH/preferences/Terminal.prefs
-#source $SETUP_PATH/preferences/iTerm2.prefs
-
-# safer than rm
-npmig trash
-
-setupsh-recipe ssh
-
+# one keyboard/mouse for multiples machines
 setupsh-recipe synergy
 
+# Devlopment first
+#brewcaskinstall "iTerm" "iterm2" $HOME/Applications
+setupsh-recipe git
+setupsh-recipe node
+setupsh-recipe ssh
+brewinstall zsh-completions
 setupsh-recipe slate
-
 setupsh-recipe atom
 
+brewcaskinstall "FirefoxNightly" "firefox-nightly" "$HOME/Applications"
+openifnot "FirefoxNightly" "$HOME/Applications/FirefoxNightly.app"
+FIREFOX_PROFILES=($HOME/Library/Application\ Support/Firefox/Profiles/*)
+for fxProfile in $FIREFOX_PROFILES
+do
+  fxuserjs="$fxProfile/user.js"
+  if [ ! -e $fxuserjs ]
+  then
+    silent-rm $fxuserjs
+    ln -s $SETUP_PATH/dotfiles/firefox.user.js $fxuserjs
+  fi
+done
+# :(
+brewcaskinstall "Utilities/Adobe Flash Player Install Manager" "flash"
+
+##
+# Sync
+##
 if ! ls $DIR_SYNC &> /dev/null
 then
   mkdir $DIR_SYNC
@@ -69,34 +75,24 @@ fi
 brewcaskinstall "Dropbox"
 openifnot "Dropbox" "/Applications/Dropbox.app"
 
+# MAXIMUM SECURITY
+brewcaskinstall "KeePassX"
+
+# Some app from AppStore
+openifnot "Tweetbot" "/Applications/Tweetbot.app"
+# todo get this app not from appstore
+# https://github.com/TermiT/Flycut/issues/56
+openifnot "Flycut" "/Applications/Flycut.app"
+
+
+##
+# Sharing
+##
+setupsh-recipe limechat
 #setupsh-recipe cloud
 #setupsh-recipe cloudup
 setupsh-recipe grabbox
 setupsh-recipe grabbox-cleanup
-
-brewcaskinstall "FirefoxNightly" "firefox-nightly" "$HOME/Applications"
-openifnot "FirefoxNightly" "$HOME/Applications/FirefoxNightly.app"
-FIREFOX_PROFILES=($HOME/Library/Application\ Support/Firefox/Profiles/*)
-for fxProfile in $FIREFOX_PROFILES
-do
-	fxuserjs="$fxProfile/user.js"
-	if [ ! -e $fxuserjs ]
-	then
-		silent-rm $fxuserjs
-		ln -s $SETUP_PATH/dotfiles/firefox.user.js $fxuserjs
-	fi
-done
-
-brewcaskinstall "FirefoxAurora" "firefox-aurora" "$HOME/Applications"
-
-brewcaskinstall "Firefox"
-
-brewcaskinstall "Google Chrome"
-
-brewcaskinstall "Opera"
-
-brewcaskinstall "Utilities/Adobe Flash Player Install Manager" "flash"
-brewcaskinstall "/Library/Internet Plug-Ins/googletalkbrowserplugin.plugin" "google-hangouts"
 
 brewcaskinstall "/Library/PreferencePanes/Logitech Control Center.prefPane" "logitech-control-center"
 brewcaskinstall "Utilities/Logitech Unifying Software" "logitech-unifying"
@@ -107,23 +103,14 @@ openifnot "Flux" "/Applications/Flux.app"
 # Trim enable for non Apple SSD
 brewcaskinstall "Trim Enabler"
 
-# from AppStore
-openifnot "Tweetbot" "/Applications/Tweetbot.app"
-
-# from AppStore
-# todo get this app not from appstore
-# https://github.com/TermiT/Flycut/issues/56
-openifnot "Flycut" "/Applications/Flycut.app"
-
-brewcaskinstall "Prefs Editor"
-
-# enhance OS X with some small utilities
-brewcaskinstall "AppCleaner"
 
 brewcaskinstall "Day-O"
 openifnot "Day-O" "/Applications/Day-O.app"
-
 brewcaskinstall "/opt/homebrew-cask/Caskroom/menumeters" "menumeters"
+
+brewcaskinstall "Prefs Editor"
+
+brewcaskinstall "AppCleaner"
 
 # QuickLook plugins from https://github.com/sindresorhus/quick-look-plugins
 brewcaskinstall "/opt/homebrew-cask/Caskroom/qlcolorcode" "qlcolorcode"
@@ -141,9 +128,13 @@ qlmanage -r &> /dev/null
 
 if [ "$FIRSTRUN" = "true" ]; then osx-refresh; fi;
 
-setupsh-recipe limechat
 
-brewcaskinstall Skype
+##
+# Less important stuff
+##
+
+brewcaskinstall "Transmission"
+
 
 # the simple 2 lines above was enough for Slask
 # until they name the .app with the version in the dmg
@@ -151,23 +142,13 @@ brewcaskinstall Skype
 #brewcaskinstall Slack
 # so here is the way to fix it
 brewcaskinstall "/opt/homebrew-cask/Caskroom/slack/" slack
-
+brewcaskinstall Skype
 
 brewcaskinstall "VLC"
 brewcaskinstall "MPlayerX"
 
-#brewcaskinstall "Rdio"
-
-brewcaskinstall "All2MP3"
-
-brewcaskinstall "Subtitles"
-brewcaskinstall "Jubler" $HOME/Applications
-
 brewcaskinstall "Last.fm" "lastfm" $HOME/Applications
 openifnot "Last.fm" "$HOME/Applications/Last.fm.app"
-
-brewcaskinstall "Transmission"
-brewcaskinstall "Cyberduck"
 
 # not needed by default anymore
 #setupsh-recipe dnsmasq
@@ -184,8 +165,8 @@ brewtap caskroom/fonts
 #brewcaskinstall "$HOME/Library/Fonts/Ubuntu-R.ttf" font-ubuntu
 #brewcaskinstall "$HOME/Library/Fonts/Ubuntu Mono derivative Powerline.ttf" font-ubuntu-mono-powerline
 
-
-brewcaskinstall "KeePassX"
+# safer than rm
+npmig trash
 
 # missing commands to OSX
 brewinstall tree
@@ -206,7 +187,16 @@ brewinstall icoutils
 # keybase.io
 npmig keybase
 
-# more utilities
+#brewcaskinstall "Rdio"
+
+brewcaskinstall "All2MP3"
+
+brewcaskinstall "Subtitles"
+
+brewcaskinstall "Jubler" $HOME/Applications
+
+brewcaskinstall "Cyberduck"
+
 brewcaskinstall "NameChanger" $HOME/Applications
 
 brewcaskinstall "GrandPerspective" $HOME/Applications
@@ -215,6 +205,13 @@ brewcaskinstall "GrandPerspective" $HOME/Applications
 brewcaskinstall "SuperDuper!" "superduper"
 
 brewcaskinstall "Steam"
+
+# more browsers
+brewcaskinstall "FirefoxAurora" "firefox-aurora" "$HOME/Applications"
+brewcaskinstall "Firefox"
+brewcaskinstall "Google Chrome"
+brewcaskinstall "Opera"
+#brewcaskinstall "/Library/Internet Plug-Ins/googletalkbrowserplugin.plugin" "google-hangouts"
 
 brewcaskinstall "/Library/Java/JavaVirtualMachines" "java"
 
@@ -225,3 +222,7 @@ brewcaskinstall "LibreOffice"
 # might be required http://software.intel.com/en-us/android/articles/intel-hardware-accelerated-execution-manager
 # brewinstall android-sdk
 #brewcaskinstall genymotion
+
+# fix some menu bar icons for yosemite
+#brew install imagemagick --with-libtiff
+#ruby $SETUP_PATH/submodules/yosemite-menu-inverter/invert.rb

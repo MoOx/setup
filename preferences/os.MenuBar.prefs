@@ -1,5 +1,7 @@
 #!/usr/bin/env zsh
 
+OSX_MENU_EXTRAS="/System/Library/CoreServices/Menu\ Extras"
+
 # hide the useless icons
 if ls $HOME/Library/Preferences/ByHost/ | grep com.apple.systemuiserver &> /dev/null
 then
@@ -21,7 +23,11 @@ defaults write com.apple.systemuiserver menuExtras -array \
   "$OSX_MENU_EXTRAS/AirPort.menu" \
   "$OSX_MENU_EXTRAS/Battery.menu"
 
-defaults write com.apple.systemuiserver menuExtras -array-add \
-  "/opt/homebrew-cask/Caskroom/menumeters/latest/MenuMeters Installer.app/Contents/Resources/MenuMeters.prefPane/Contents/Resources/MenuMeterMem.menu" \
-  "/opt/homebrew-cask/Caskroom/menumeters/latest/MenuMeters Installer.app/Contents/Resources/MenuMeters.prefPane/Contents/Resources/MenuMeterCPU.menu" \
-  "/opt/homebrew-cask/Caskroom/menumeters/latest/MenuMeters Installer.app/Contents/Resources/MenuMeters.prefPane/Contents/Resources/MenuCracker.menu"
+MENUMETERS_PATH="/opt/homebrew-cask/Caskroom/menumeters"
+if ls $MENUMETERS_PATH &> /dev/null
+then
+  defaults write com.apple.systemuiserver menuExtras -array-add \
+    "$MENUMETERS_PATH/latest/MenuMeters Installer.app/Contents/Resources/MenuMeters.prefPane/Contents/Resources/MenuMeterMem.menu" \
+    "$MENUMETERS_PATH/latest/MenuMeters Installer.app/Contents/Resources/MenuMeters.prefPane/Contents/Resources/MenuMeterCPU.menu" \
+    "$MENUMETERS_PATH/latest/MenuMeters Installer.app/Contents/Resources/MenuMeters.prefPane/Contents/Resources/MenuCracker.menu"
+fi

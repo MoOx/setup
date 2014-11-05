@@ -1,10 +1,10 @@
 #!/usr/bin/env zsh
 
 function npmstart() {
-	if [ $# -gt 0 ]
-	then
-		cd $1
-		e
-	fi
-	npm start
+  if [ $# -gt 0 ]
+  then
+    cd $1
+    e
+  fi
+  npm start
 }

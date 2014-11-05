@@ -1,8 +1,8 @@
 #!/usr/bin/env zsh
 
 function apminstall() {
-	if ! ls "$ATOM_PREFS_PATH/packages" | grep -ie "^$1" &> /dev/null
-	then
-		apm install $1 --loglevel
-	fi
+  if ! ls "$ATOM_PREFS_PATH/packages" | grep -ie "^$1" &> /dev/null
+  then
+    apm install $1 --loglevel
+  fi
 }

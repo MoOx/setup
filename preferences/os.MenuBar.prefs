@@ -20,3 +20,8 @@ defaults write com.apple.systemuiserver menuExtras -array \
   "$OSX_MENU_EXTRAS/Volume.menu" \
   "$OSX_MENU_EXTRAS/AirPort.menu" \
   "$OSX_MENU_EXTRAS/Battery.menu"
+
+defaults write com.apple.systemuiserver menuExtras -array-add \
+  "/opt/homebrew-cask/Caskroom/menumeters/latest/MenuMeters Installer.app/Contents/Resources/MenuMeters.prefPane/Contents/Resources/MenuMeterMem.menu" \
+  "/opt/homebrew-cask/Caskroom/menumeters/latest/MenuMeters Installer.app/Contents/Resources/MenuMeters.prefPane/Contents/Resources/MenuMeterCPU.menu" \
+  "/opt/homebrew-cask/Caskroom/menumeters/latest/MenuMeters Installer.app/Contents/Resources/MenuMeters.prefPane/Contents/Resources/MenuCracker.menu"

@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 # big & autohidden dock
 defaults write com.apple.dock tilesize -int 128

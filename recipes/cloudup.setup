@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 brewcaskinstall "Cloudup" $HOME/Applications
 defaults write com.cloudup.Cloudup moveToApplicationsFolderAlertSuppress 1

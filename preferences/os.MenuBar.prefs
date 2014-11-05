@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 # hide the useless icons
 if ls $HOME/Library/Preferences/ByHost/ | grep com.apple.systemuiserver &> /dev/null

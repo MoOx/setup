@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 # MySQL (from brew)
 alias mysqlstart="mysql.server start"

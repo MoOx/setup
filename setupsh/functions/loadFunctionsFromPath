@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 function loadFunctionsFromPath() {
   typeset -U config_files

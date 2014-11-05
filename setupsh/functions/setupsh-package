@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 function setupsh-recipe () {
   SETUPSH_RECIPE_SETUP="$SETUP_PATH/recipes/$1.setup"

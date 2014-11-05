@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 # use dnsmasq, then Open DNS
 # echo_title "Setup DNS with DNSMasq & Open DNS"

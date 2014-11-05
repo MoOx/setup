@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 # `npmpublish` with an optional argument `patch`/`minor`/`major`/`<version>`
 # defaults to `patch`

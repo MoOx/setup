@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 function plistbuddy() {
 	if ls "$HOME/Library/Preferences/$1.plist" &> /dev/null

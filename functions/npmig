@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 function npmig() {
   if ! ls $NODE_PATH | grep -e "^$1" &> /dev/null

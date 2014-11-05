@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 # Detect which `ls` flavor is in use
 if ls --color &> /dev/null

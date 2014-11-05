@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 # ssh-copy-id
 # usage: sshcopy user@server [-p {port}]

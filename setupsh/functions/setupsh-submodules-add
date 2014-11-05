@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 function setupsh-submodules-add() {
   git -C $SETUP_PATH submodule add $2 submodules/$1

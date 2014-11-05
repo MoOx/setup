@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 export APACHE_CONF="/etc/apache2/httpd.conf"
 export APACHE_CONF_DEV_PATH="$DIR_DEV/_.conf/apache"

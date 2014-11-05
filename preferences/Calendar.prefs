@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 # day start 9:00, end at 18:00
 defaults write com.apple.iCal "first minute of work hours" $((9 * 60))

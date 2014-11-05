@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 brewcaskinstall "Flux"
 openifnot "Flux" "/Applications/Flux.app"

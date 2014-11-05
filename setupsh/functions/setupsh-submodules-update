@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 function .submodules-update() {
   git -C $SETUP_PATH submodule foreach git pull origin master

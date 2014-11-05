@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 echo_title "Defining OS X options"
 
 # Set wallpaper

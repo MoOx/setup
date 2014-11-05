@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 alias g=git
 alias sourcetree=$HOME/Applications/SourceTree.app/Contents/MacOS/SourceTree

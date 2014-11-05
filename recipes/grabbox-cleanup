@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 find $GRABBOX_PATH -mtime +$GRABBOX_CLEANUP_LIFETIME -type f -name "*.png" -delete
 

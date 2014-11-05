@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 # Enable full keyboard access for all controls
 # (e.g. enable Tab in modal dialogs)

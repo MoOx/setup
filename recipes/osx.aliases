@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 alias dockutil="$SETUP_PATH/submodules/dockutil/scripts/dockutil"
 

@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 # https://help.github.com/articles/generating-ssh-keys)
 if [[ ! -f $HOME/.ssh/id_rsa ]]

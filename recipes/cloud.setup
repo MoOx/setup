@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 brewcaskinstall "Cloud" $HOME/Applications
 defaults write com.linebreak.CloudAppMacOSX SUEnableAutomaticChecks 1

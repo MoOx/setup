@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 function full-setupsh() {
   echo "\n(╯°□°）╯ ︵ $CHAR_BOOM\n"

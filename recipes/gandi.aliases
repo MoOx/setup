@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 export GPAAS_HOST="dc0.gpaas.net"
 export GPAAS_SFTP_HOST="sftp.$GPAAS_HOST"

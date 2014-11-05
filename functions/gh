@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 function gh() {
   $HOME/Applications/Github.app/Contents/MacOS/github_cli ${@:-.}

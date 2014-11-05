@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 defaults write com.googlecode.iterm2 AdjustWindowForFontSizeChange 0;
 defaults write com.googlecode.iterm2 AppleAntiAliasingThreshold 1

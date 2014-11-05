@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 # Cross-platform Darwin open(1)
 # Simply add this function definition above any OSX script that uses the “open” command

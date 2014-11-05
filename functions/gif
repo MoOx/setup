@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 function gif() {
   convert -loop 0 -delay 25 ${@}

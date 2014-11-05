@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 export DIR_SYNC_BTSYNC=$DIR_SYNC/BTSync
 export DIR_SYNC_DROPBOX=$DIR_SYNC/Dropbox

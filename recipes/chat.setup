@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 brewcaskinstall LimeChat $HOME/Applications
 openifnot LimeChat "$HOME/Applications/LimeChat.app"

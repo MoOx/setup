@@ -11,7 +11,7 @@
 ## First run
 
 ```console
-$ curl -fsSL https://raw.githubusercontent.com/MoOx/setup/master/firstrun | zsh
+$ curl -fsSL https://raw.githubusercontent.com/MoOx/setup/master/setupsh/firstrun | zsh
 ```
 
 ## Periodic run

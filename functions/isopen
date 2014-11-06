@@ -1,0 +1,5 @@
+#!/usr/bin/env zsh
+
+function isopen() {
+  [ "$(ps -A | grep -i "$1" | grep -v grep)" != "" ]
+}

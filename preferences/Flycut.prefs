@@ -3,9 +3,13 @@
 # todo get this app not from appstore
 # https://github.com/TermiT/Flycut/issues/56
 
-# be sure plist file exist by opening the app
-openifnot Flycut
-sleep 1
+if ! ls "$HOME/Library/Application Support/Flycut/com.generalarcade.flycut.plist" &> /dev/null
+then
+  echo_info "Flycut.app don't have a preferences file yet. Please change a setting a quit the app to create one. Then press a key"
+  open -a Flycut
+  read -k
+  sleep 1
+fi
 
 # kill so the app don't keep runtime values
 killall Flycut

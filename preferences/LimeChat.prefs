@@ -1,8 +1,6 @@
 #!/usr/bin/env zsh
 
-brewcaskinstall LimeChat $HOME/Applications
-openifnot LimeChat "$HOME/Applications/LimeChat.app"
-
+LIMECHAT_THEMES="$HOME/Library/Application Support/LimeChat/Themes"
 LIMECHAT_THEME="$LIMECHAT_THEMES/LimeChat-theme-Monokai-Soda"
 if [ ! -e "$LIMECHAT_THEME.css" ]
 then

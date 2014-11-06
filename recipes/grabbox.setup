@@ -1,4 +1,0 @@
-#!/usr/bin/env zsh
-
-brewcaskinstall grabbox
-openifnot "GrabBox" "$HOME/Applications/GrabBox.app"

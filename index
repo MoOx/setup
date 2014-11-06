@@ -4,7 +4,7 @@
 setupsh-recipe synergy
 
 # Devlopment first
-#brewcaskinstall "iTerm" "iterm2" $HOME/Applications
+#brewcaskinstall "iTerm" "iterm2"
 setupsh-recipe git
 setupsh-recipe node
 setupsh-recipe ssh
@@ -12,8 +12,8 @@ brewinstall zsh-completions
 setupsh-recipe slate
 setupsh-recipe atom
 
-brewcaskinstall "FirefoxNightly" "firefox-nightly" "$HOME/Applications"
-openifnot "FirefoxNightly" "$HOME/Applications/FirefoxNightly.app"
+brewcaskinstall "FirefoxNightly" "firefox-nightly"
+openifnot "FirefoxNightly"
 setupsh-recipe firefox-user.js
 
 # :(
@@ -29,7 +29,7 @@ then
 fi
 
 brewcaskinstall "BitTorrent Sync"
-openifnot "BitTorrent Sync" "/Applications/BitTorrent Sync.app"
+openifnot "BitTorrent Sync"
 
 if ls $DIR_SYNC/BTSync &> /dev/null
 then
@@ -65,39 +65,38 @@ then
 fi
 
 brewcaskinstall "Dropbox"
-openifnot "Dropbox" "/Applications/Dropbox.app"
+openifnot "Dropbox"
 
 # MAXIMUM SECURITY
 brewcaskinstall "KeePassX"
 
 # Some app from AppStore
-openifnot "Tweetbot" "/Applications/Tweetbot.app"
-# todo get this app not from appstore
-# https://github.com/TermiT/Flycut/issues/56
-openifnot "Flycut" "/Applications/Flycut.app"
-
+openifnot "Tweetbot"
 
 ##
 # Sharing
 ##
-setupsh-recipe limechat
-#setupsh-recipe cloud
-#setupsh-recipe cloudup
-setupsh-recipe grabbox
+brewcaskinstall LimeChat
+openifnot LimeChat
+
+#brewcaskinstall "Cloud"
+#brewcaskinstall "Cloudup"
+brewcaskinstall GrabBox
+openifnot "GrabBox"
 setupsh-recipe grabbox-cleanup
 
 brewcaskinstall "/Library/PreferencePanes/Logitech Control Center.prefPane" "logitech-control-center"
 brewcaskinstall "Utilities/Logitech Unifying Software" "logitech-unifying"
 
 brewcaskinstall "Flux"
-openifnot "Flux" "/Applications/Flux.app"
+openifnot "Flux"
 
 # Trim enable for non Apple SSD
 brewcaskinstall "Trim Enabler"
 
 
 brewcaskinstall "Day-O"
-openifnot "Day-O" "/Applications/Day-O.app"
+openifnot "Day-O"
 brewcaskinstall "/opt/homebrew-cask/Caskroom/menumeters" "menumeters"
 
 brewcaskinstall "Prefs Editor"
@@ -139,8 +138,8 @@ brewcaskinstall Skype
 brewcaskinstall "VLC"
 brewcaskinstall "MPlayerX"
 
-brewcaskinstall "Last.fm" "lastfm" $HOME/Applications
-openifnot "Last.fm" "$HOME/Applications/Last.fm.app"
+brewcaskinstall "Last.fm" "lastfm"
+openifnot "Last.fm"
 
 # not needed by default anymore
 #setupsh-recipe dnsmasq
@@ -185,13 +184,13 @@ brewcaskinstall "All2MP3"
 
 brewcaskinstall "Subtitles"
 
-brewcaskinstall "Jubler" $HOME/Applications
+brewcaskinstall "Jubler"
 
 brewcaskinstall "Cyberduck"
 
-brewcaskinstall "NameChanger" $HOME/Applications
+brewcaskinstall "NameChanger"
 
-brewcaskinstall "GrandPerspective" $HOME/Applications
+brewcaskinstall "GrandPerspective"
 
 # HD backup
 brewcaskinstall "SuperDuper!" "superduper"
@@ -199,7 +198,7 @@ brewcaskinstall "SuperDuper!" "superduper"
 brewcaskinstall "Steam"
 
 # more browsers
-brewcaskinstall "FirefoxAurora" "firefox-aurora" "$HOME/Applications"
+brewcaskinstall "FirefoxAurora" "firefox-aurora"
 brewcaskinstall "Firefox"
 brewcaskinstall "Google Chrome"
 brewcaskinstall "Opera"
@@ -207,7 +206,7 @@ brewcaskinstall "Opera"
 
 brewcaskinstall "/Library/Java/JavaVirtualMachines" "java"
 
-brewcaskinstall "VirtualBox" $HOME/Applications
+brewcaskinstall "VirtualBox"
 
 brewcaskinstall "LibreOffice"
 

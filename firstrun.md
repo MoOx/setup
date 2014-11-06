@@ -27,10 +27,9 @@ So forget that, & loose all your Windows data. Or just save what you need by han
 
 Make your OS clean install. Eventually use _Disk Utility_ to format for make a clean installation.
 
-## Dotfiles
+## Setup
 
 See README.md, _First run_
-
 
 ## BOOTCAMP (I mean dual boot with Windows)
 

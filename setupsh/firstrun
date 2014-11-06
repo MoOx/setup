@@ -56,14 +56,9 @@ then
   # install submodule
   git -C $SETUP_PATH submodule update
 
-  echo "dotfiles have been downloaded correctly"
+  echo "setup have been downloaded correctly"
   echo ""
   echo "Running installation"
-
-  if [[ ! -d $HOME/Applications ]]
-  then
-    mkdir $HOME/Applications
-  fi
 
   source $SETUP_PATH/setupsh/index
   source $SETUP_PATH/setupsh/functions/full-setupsh

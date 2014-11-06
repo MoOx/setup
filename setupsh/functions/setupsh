@@ -4,6 +4,9 @@ function setupsh() {
   echo_title_installupdate ".dotfiles"
   dotfiles
 
+  # reload zshrc
+  . $HOME/.zshrc
+
   setupsh-recipe brew
   brewinstall terminal-notifier
 

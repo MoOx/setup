@@ -19,5 +19,8 @@ function full-setupsh() {
     export FIRSTRUN=true
   fi
 
+  # reload zshrc
+  . $HOME/.zshrc
+
   setupsh
 }

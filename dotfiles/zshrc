@@ -2,12 +2,21 @@
 
 #$SETUP_PATH doesn't exist yet
 source $HOME/setup/setupsh/index
+
 # find $SETUP_PATH if not defined using symlink real dirname
 #__FILENAME__=${0} # only for sourced file, .zshrc is not sourced
 __FILENAME__=${ZDOTDIR-~}/.zshrc
 if [[ -z "$SETUP_PATH" ]] then
   export SETUP_PATH=$(cd $(dirname $(readlink $__FILENAME__))/../../ && pwd)
 fi
+
+export DIR_SYNC=$HOME/Sync
+export DIR_DEV=$DIR_SYNC/Development
+
+export PATH=/usr/local/sbin:$PATH
+export PATH=/usr/local/bin:$PATH
+export PATH=$DIR_DEV/bin:$PATH
+export PATH=./bin:$PATH
 
 export EDITOR="atom"
 source $SETUP_PATH/submodules/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

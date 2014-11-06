@@ -132,9 +132,6 @@ defaults write com.apple.dashboard mcx-disabled -bool true
 # Reset Launchpad, but keep the desktop wallpaper intact
 find "$HOME/Library/Application Support/Dock" -name "*-*.db" -maxdepth 1 -delete
 
-# Only use UTF-8 in Terminal.app
-defaults write com.apple.terminal StringEncodings -array 4
-
 # Don’t automatically rearrange Spaces based on most recent use
 defaults write com.apple.dock mru-spaces -bool false
 
@@ -154,16 +151,4 @@ defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 # Disable local Time Machine backups
 hash tmutil &> /dev/null && sudo tmutil disablelocal
 
-
-# Kill affected applications
-for app in "Address Book" "Calendar" "Contacts" "Messages"
-do
-  killifopen "${app}"
-done
-
 if [ "$FIRSTRUN" = "true" ]; then osx-refresh; fi;
-
-
-# Enable local FTP Server
-# used for some stuff (local wordpress) & wii ftp access
-sudo launchctl load -w /System/Library/LaunchDaemons/ftp.plist > /dev/null 2>&1

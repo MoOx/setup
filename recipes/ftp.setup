@@ -1,0 +1,5 @@
+#!/usr/bin/env zsh
+
+# Enable local FTP Server
+# used for some stuff (local wordpress) & wii ftp access
+sudo launchctl load -w /System/Library/LaunchDaemons/ftp.plist > /dev/null 2>&1

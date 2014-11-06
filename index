@@ -1,22 +1,40 @@
 #!/usr/bin/env zsh
 
 # one keyboard/mouse for multiples machines
-setupsh-recipe synergy
+brewcaskinstall "Synergy"
 
-# Devlopment first
+##
+# Development first
+##
+
 #brewcaskinstall "iTerm" "iterm2"
 setupsh-recipe git
+brewcaskinstall "GitHub"
+
+### Node
 setupsh-recipe node
+# release tool
+npmig mversion
+# package helpers
+npmig npm-check
+npmig updatehammer
+
 setupsh-recipe ssh
 brewinstall zsh-completions
-setupsh-recipe slate
-setupsh-recipe atom
 
+# window manager
+brewcaskinstall Slate
+openifnot "Slate"
+
+# editor
+brewcaskinstall atom
+
+# browser
 brewcaskinstall "FirefoxNightly" "firefox-nightly"
 openifnot "FirefoxNightly"
 setupsh-recipe firefox-user.js
 
-# :(
+# flash :(
 brewcaskinstall "Utilities/Adobe Flash Player Install Manager" "flash"
 
 ##

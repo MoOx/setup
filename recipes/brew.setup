@@ -9,8 +9,8 @@ then
   brew doctor
 else
   echo_title_update "Homebrew (brew)"
-  brewu
-  brew cleanup
+  brew update
+  brew upgrade
 fi
 
 brewtap homebrew/dupes

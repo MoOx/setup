@@ -1,7 +1,0 @@
-#!/usr/bin/env zsh
-
-# easy brew services start function
-# don't show "already installed"
-function brewservicesstart() {
-  brew services start "${@}" 2>&1 | grep -v "already started"
-}

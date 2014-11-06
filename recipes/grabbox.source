@@ -1,3 +1,0 @@
-#!/usr/bin/env zsh
-
-export GRABBOX_PATH=$DIR_SYNC_DROPBOX/Apps/GrabBox

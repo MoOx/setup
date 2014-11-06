@@ -83,30 +83,92 @@ alias list-functions="declare -f | grep '^[a-z].* () {' | sed 's/{$//'" # show n
 alias list="cat <(list-aliases) <(list-functions) | sort"
 alias search="list | grep"
 
+# Aliases
 
-# Detect which `ls` flavor is in use
+## ls: Detect which `ls` flavor is in use
 if ls --color &> /dev/null
-# GNU `ls`
-then
+then # GNU `ls`
   colorflag="--color"
-# OS X `ls`
-else
+else # OS X `ls`
   colorflag="-G"
 fi
-
-# List all files colorized in long format
-alias l="ls -l ${colorflag}"
-
-# List all files colorized in long format, including dot files
-alias la="ls -la ${colorflag}"
-
-# List only directories
-alias lsd='ls -l ${colorflag} | grep "^d"'
-
-# Always use color output for `ls`
-alias ls="command ls ${colorflag}"
+alias l="ls -l ${colorflag}" # List all files colorized in long format
+alias la="ls -la ${colorflag}" # List all files colorized in long format, including dot files
+alias lsd='ls -l ${colorflag} | grep "^d"' # List only directories
+alias ls="command ls ${colorflag}" # Always use color output for `ls`
 export LS_COLORS='no=00:fi=00:di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.gz=01;31:*.bz2=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.avi=01;35:*.fli=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.ogg=01;35:*.mp3=01;35:*.wav=01;35:'
 
-# use .zshrc.local for SUPER SECRET CRAP that you don't
-# want in your public, versioned repo.
+## OS X
+alias fuckosxprefs="killall -u $USER cfprefsd && sleep 1" # wait for restart
+alias fuckosx="fuckosxprefs && killa Dock Finder SystemUIServer NotificationCenter"
+alias osx-hidden-show="defaults write com.apple.finder AppleShowAllFiles -bool true && fuckosx"
+alias osx-hidden-hide="defaults write com.apple.finder AppleShowAllFiles -bool false && fuckosx"
+alias osx-desktop-show="defaults write com.apple.finder CreateDesktop -bool true && fuckosx"
+alias osx-desktop-hide="defaults write com.apple.finder CreateDesktop -bool false && fuckosx"
+alias osx-internetsharing-start="sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.InternetSharing.plist"
+alias osx-internetsharing-stop="sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.InternetSharing.plist"
+alias osx-resolutions="system_profiler SPDisplaysDataType | grep Resolution | tr -d ' '"
+alias osx-flushdns="dscacheutil -flushcache"
+export OSX_INSTALL_APP="/Applications/Install OS X Mavericks.app"
+alias osx-bootableusb="sudo \"$OSX_INSTALL_APP/Contents/Resources/createinstallmedia\" --volume /Volumes/Untitled --applicationpath \"$OSX_INSTALL_APP\" --nointeraction"
+alias osx-dsstore-delete="find . -type f -name '*.DS_Store' -ls -delete"
+
+alias ios="open /Applications/Xcode.app/Contents/Applications/iPhone\ Simulator.app"
+
+## NPM
+export NODE_PATH=/usr/local/lib/node_modules
+export PATH=./node_modules/.bin:$PATH
+# npme: faster npm for europeans
+command -v npm > /dev/null && alias npme="npm --registry http://registry.npmjs.eu"
+alias npmi="npm install"
+alias npms="npmstart" # npmstart function
+
+## Apache
+alias apacheconf="e $APACHE_CONF"
+alias apachedevconf="e $APACHE_CONF_DEV_PATH"
+alias apacheconfigtest="apachectl configtest"
+alias apachestart="sudo apachectl start"
+alias apacherestart="flushdns && sudo apachectl restart"
+alias apacheaddconf="e $APACHE_CONF_DEV_PATH/local.conf /etc/hosts"
+
+## MySQL (from brew)
+alias mysqlstart="mysql.server start"
+alias mysqlstop="mysql.server stop"
+
+## Brew cask
+command -v brew > /dev/null && alias caskroom="cd $(brew --prefix)/Library/Taps/caskroom"
+
+## Gandi.net
+export GPAAS_HOST="dc0.gpaas.net"
+export GPAAS_SFTP_HOST="sftp.$GPAAS_HOST"
+export GPAAS_SSH_HOST="console.$GPAAS_HOST"
+export GPAAS_GIT_HOST="git.$GPAAS_HOST"
+export GPAAS_GIT_URL="git+ssh://$MY_GPAAS_USER@$MY_GPAAS_GIT/"
+#GPAAS_SFTP="$GPAAS_SFTP_HOST"
+alias gpaas_ssh="ssh $1@$GPAAS_SSH_HOST"
+
+## Git
+alias sourcetree=/Applications/SourceTree.app/Contents/MacOS/SourceTree
+
+## Network
+alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias localip="ipconfig getifaddr en1"
+alias ips="ifconfig -a | grep -o 'inet6\? \(\([0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+\)\|[a-fA-F0-9:]\+\)' | sed -e 's/inet6* //'"
+alias whois="whois -h whois-servers.net" # Enhanced WHOIS lookups
+
+## Synergy.app
+alias synergy="/Applications/Synergy.app/Contents/MacOS/synergy"
+alias synergys="/Applications/Synergy.app/Contents/MacOS/synergys"
+alias synergyc="/Applications/Synergy.app/Contents/MacOS/synergyc"
+alias synergyshome="synergys -n iMoOx"
+alias synergychome="synergyc -n MacMoOx iMoOx.local"
+
+# ssh-copy-id
+# usage: sshcopy user@server [-p {port}]
+alias sshcopy="ssh-copy-id -i ~/.ssh/id_rsa.pub"
+
+# php
+alias phpini="e /usr/local/etc/php/5.5/php.ini"
+
+## LOCAL CRAP
 if [[ -f ~/.zshrc.local ]]; then; source ~/.zshrc.local; fi

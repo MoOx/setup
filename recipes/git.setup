@@ -17,5 +17,3 @@ then
   echo_title_install "GitHub issues cli tools"
   brewinstall ghi
 fi
-
-brewcaskinstall "GitHub" $HOME/Applications

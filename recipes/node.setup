@@ -9,10 +9,3 @@ fi
 # https://github.com/npm/npm/issues/6521
 #echo_title_installupdate "NPM global packages"
 #npmug
-
-# release tool
-npmig mversion
-
-# package helpers
-npmig npm-check
-npmig updatehammer

@@ -1,10 +1,5 @@
 #!/usr/bin/env zsh
 
-if ! type apm > /dev/null
-then
-  brewcaskinstall atom
-fi
-
 if type apm > /dev/null
 then
   apminstall auto-update-packages

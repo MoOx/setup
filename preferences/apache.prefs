@@ -1,5 +1,8 @@
 #!/usr/bin/env zsh
 
+APACHE_CONF="/etc/apache2/httpd.conf"
+APACHE_CONF_DEV_PATH="$DIR_DEV/_.conf/apache"
+
 # Apache configuration
 if ! cat $APACHE_CONF | grep $APACHE_CONF_DEV_PATH > /dev/null
 then
@@ -7,7 +10,8 @@ then
   then
     echo_title "Configuring OS X Apache"
     echo "\nInclude $APACHE_CONF_DEV_PATH/*.conf" | sudo tee -a $APACHE_CONF
-    apacheconfigtest
-    apacherestart
+    apachectl configtest
+    flushdns
+    dscacheutil -flushcache
   fi
 fi

@@ -1,3 +1,0 @@
-#!/usr/bin/env zsh
-
-brewcaskinstall "Synergy" $HOME/Applications

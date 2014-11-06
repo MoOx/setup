@@ -7,6 +7,3 @@
 [submodule "submodules/zsh-syntax-highlighting"]
 	path = submodules/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
-[submodule "submodules/yosemite-menu-inverter"]
-	path = submodules/yosemite-menu-inverter
-	url = https://github.com/mxcl/yosemite-menu-inverter.git

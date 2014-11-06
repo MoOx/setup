@@ -4,50 +4,20 @@
 brewcaskinstall "Synergy"
 
 ##
-# Development first
+# Sync first
 ##
 
-#brewcaskinstall "iTerm" "iterm2"
-setupsh-recipe git
-brewcaskinstall "GitHub"
+brewcaskinstall "BitTorrent Sync"
+openifnot "BitTorrent Sync"
 
-### Node
-setupsh-recipe node
-# release tool
-npmig mversion
-# package helpers
-npmig npm-check
-npmig updatehammer
+brewcaskinstall "Dropbox"
+openifnot "Dropbox"
 
-setupsh-recipe ssh
-brewinstall zsh-completions
-
-# window manager
-brewcaskinstall Slate
-openifnot "Slate"
-
-# editor
-brewcaskinstall atom
-
-# browser
-brewcaskinstall "FirefoxNightly" "firefox-nightly"
-openifnot "FirefoxNightly"
-setupsh-recipe firefox-user.js
-
-# flash :(
-brewcaskinstall "Utilities/Adobe Flash Player Install Manager" "flash"
-
-##
-# Sync
-##
 if ! ls $DIR_SYNC &> /dev/null
 then
   mkdir $DIR_SYNC
   setfileicon $OS_ICONS_DIR/GroupFolder.icns $DIR_SYNC
 fi
-
-brewcaskinstall "BitTorrent Sync"
-openifnot "BitTorrent Sync"
 
 if ls $DIR_SYNC/BTSync &> /dev/null
 then
@@ -82,8 +52,39 @@ then
   setfileicon $OS_ICONS_DIR/PicturesFolderIcon.icns $DIR_SYNC/Pictures
 fi
 
-brewcaskinstall "Dropbox"
-openifnot "Dropbox"
+##
+# Development
+##
+
+#brewcaskinstall "iTerm" "iterm2"
+setupsh-recipe git
+brewcaskinstall "GitHub"
+
+### Node
+setupsh-recipe node
+# release tool
+npmig mversion
+# package helpers
+npmig npm-check
+npmig updatehammer
+
+setupsh-recipe ssh
+brewinstall zsh-completions
+
+# window manager
+brewcaskinstall Slate
+openifnot "Slate"
+
+# editor
+brewcaskinstall atom
+
+# browser
+brewcaskinstall "FirefoxNightly" "firefox-nightly"
+openifnot "FirefoxNightly"
+setupsh-recipe firefox-user.js
+
+# flash :(
+brewcaskinstall "Utilities/Adobe Flash Player Install Manager" "flash"
 
 # MAXIMUM SECURITY
 brewcaskinstall "KeePassX"
@@ -106,12 +107,10 @@ setupsh-recipe grabbox-cleanup
 brewcaskinstall "/Library/PreferencePanes/Logitech Control Center.prefPane" "logitech-control-center"
 brewcaskinstall "Utilities/Logitech Unifying Software" "logitech-unifying"
 
+## Some utilities
+
 brewcaskinstall "Flux"
 openifnot "Flux"
-
-# Trim enable for non Apple SSD
-brewcaskinstall "Trim Enabler"
-
 
 brewcaskinstall "Day-O"
 openifnot "Day-O"
@@ -137,13 +136,11 @@ qlmanage -r &> /dev/null
 
 if [ "$FIRSTRUN" = "true" ]; then osx-refresh; fi;
 
-
 ##
 # Less important stuff
 ##
 
 brewcaskinstall "Transmission"
-
 
 # the simple 2 lines above was enough for Slask
 # until they name the .app with the version in the dmg
@@ -235,3 +232,7 @@ brewcaskinstall "LibreOffice"
 # fix some menu bar icons for yosemite
 #brew install imagemagick --with-libtiff
 #ruby $SETUP_PATH/submodules/yosemite-menu-inverter/invert.rb
+
+# Better perf for non Apple SSD
+# at the end because need reboot
+brewcaskinstall "Trim Enabler"

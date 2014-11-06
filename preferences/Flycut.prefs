@@ -1,8 +1,20 @@
 #!/usr/bin/env zsh
 
+# todo get this app not from appstore
+# https://github.com/TermiT/Flycut/issues/56
+
+# be sure plist file exist by opening the app
+openifnot Flycut
+sleep 1
+
+# kill so the app don't keep runtime values
+killall Flycut
+
 plistbuddy "Application Support/Flycut/com.generalarcade.flycut" "Set stickyBezel 1"
 plistbuddy "Application Support/Flycut/com.generalarcade.flycut" "Set displayNum 40"
 plistbuddy "Application Support/Flycut/com.generalarcade.flycut" "Set rememberNum 99"
 plistbuddy "Application Support/Flycut/com.generalarcade.flycut" "Set menuIcon 1"
 plistbuddy "Application Support/Flycut/com.generalarcade.flycut" "Set loadOnStartup 1"
 plistbuddy "Application Support/Flycut/com.generalarcade.flycut" "Set removeDuplicates 1"
+
+open -a Flycut

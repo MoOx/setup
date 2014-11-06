@@ -2,7 +2,7 @@
 
 export SETUP_PATH=$HOME/setup
 export PATH=$SETUP_PATH/setupsh/bin:$PATH
-export PATH=$SETUP_PATH/recipes:$PATH
+export PATH=$SETUP_PATH/setupsh/recipes:$PATH
 
 # load colors
 autoload colors && colors
@@ -47,17 +47,16 @@ done
 typeset -U config_files
 
 # load the path files
-sourceFiles $SETUP_PATH/recipes/*.path
+sourceFiles $SETUP_PATH/setupsh/recipes/*.path
 
 # load everything but the path and completion files
-sourceFiles $SETUP_PATH/recipes/*.source
-sourceFiles $SETUP_PATH/recipes/*.aliases
+sourceFiles $SETUP_PATH/setupsh/recipes/*.source
 
 # initialize autocomplete here, otherwise functions won't be loaded
 autoload -U compinit
 compinit
 # load every completion after autocomplete loads
-sourceFiles $SETUP_PATH/recipes/*.completion
+sourceFiles $SETUP_PATH/setupsh/recipes/*.completion
 
 loadFunctionsFromPath $SETUP_PATH/setupsh/functions
 loadFunctionsFromPath $SETUP_PATH/functions

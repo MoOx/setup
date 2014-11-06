@@ -4,13 +4,13 @@ function plistbuddy() {
   if ls "$HOME/Library/Preferences/$1.plist" &> /dev/null
   then
     /usr/libexec/PlistBuddy -c $2 "$HOME/Library/Preferences/$1.plist"
-  
   elif ls "$HOME/Library/$1.plist" &> /dev/null
   then
     /usr/libexec/PlistBuddy -c $2 "$HOME/Library/$1.plist"
-
   elif ls "$1.plist" &> /dev/null
   then
     /usr/libexec/PlistBuddy -c $2 "$1.plist"
+  else
+    echo_fail "Unable to find $1.plist file"
   fi
 }

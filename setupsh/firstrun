@@ -38,7 +38,7 @@ then
   git clone http://github.com/MoOx/setup.git $SETUP_PATH
   if [[ ! -d $SETUP_PATH/.git ]]
   then
-    echo "dotfiles have not been downloaded correctly"
+    echo "setup have not been downloaded correctly"
     echo ""
     echo "Aborting"
   else
@@ -65,9 +65,9 @@ then
     mkdir $HOME/Applications
   fi
 
-  source $SETUP_PATH/setupsh/index.sh
+  source $SETUP_PATH/setupsh/index
   source $SETUP_PATH/setupsh/functions/full-setupsh
   full-setupsh --firstrun
 
-  notify "Setupsh is done"
+  notify "Setup is done"
 fi

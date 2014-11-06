@@ -6,10 +6,8 @@ brewcaskinstall "Synergy"
 ##
 # Sync first
 ##
-
 brewcaskinstall "BitTorrent Sync"
 openifnot "BitTorrent Sync"
-
 brewcaskinstall "Dropbox"
 openifnot "Dropbox"
 
@@ -83,9 +81,6 @@ brewcaskinstall "FirefoxNightly" "firefox-nightly"
 openifnot "FirefoxNightly"
 setupsh-recipe firefox-user.js
 
-# flash :(
-brewcaskinstall "Utilities/Adobe Flash Player Install Manager" "flash"
-
 # MAXIMUM SECURITY
 brewcaskinstall "KeePassX"
 
@@ -97,27 +92,19 @@ openifnot "Tweetbot"
 ##
 brewcaskinstall LimeChat
 openifnot LimeChat
-
 #brewcaskinstall "Cloud"
 #brewcaskinstall "Cloudup"
 brewcaskinstall GrabBox
 openifnot "GrabBox"
 setupsh-recipe grabbox-cleanup
 
-brewcaskinstall "/Library/PreferencePanes/Logitech Control Center.prefPane" "logitech-control-center"
-brewcaskinstall "Utilities/Logitech Unifying Software" "logitech-unifying"
-
 ## Some utilities
-
 brewcaskinstall "Flux"
 openifnot "Flux"
-
 brewcaskinstall "Day-O"
 openifnot "Day-O"
 brewcaskinstall "/opt/homebrew-cask/Caskroom/menumeters" "menumeters"
-
 brewcaskinstall "Prefs Editor"
-
 brewcaskinstall "AppCleaner"
 
 # QuickLook plugins from https://github.com/sindresorhus/quick-look-plugins
@@ -139,37 +126,6 @@ if [ "$FIRSTRUN" = "true" ]; then osx-refresh; fi;
 ##
 # Less important stuff
 ##
-
-brewcaskinstall "Transmission"
-
-# the simple 2 lines above was enough for Slask
-# until they name the .app with the version in the dmg
-# like "Slack 0.44.2.app"...
-#brewcaskinstall Slack
-# so here is the way to fix it
-brewcaskinstall "/opt/homebrew-cask/Caskroom/slack/" slack
-brewcaskinstall Skype
-
-brewcaskinstall "VLC"
-brewcaskinstall "MPlayerX"
-
-brewcaskinstall "Last.fm" "lastfm"
-openifnot "Last.fm"
-
-# not needed by default anymore
-#setupsh-recipe dnsmasq
-#setupsh-recipe apache
-#setupsh-recipe php
-#setupsh-recipe mysql
-
-setupsh-recipe ddclient
-setupsh-recipe prey
-
-if [ "$FIRSTRUN" = "true" ]; then osx-refresh; fi;
-
-brewtap caskroom/fonts
-#brewcaskinstall "$HOME/Library/Fonts/Ubuntu-R.ttf" font-ubuntu
-#brewcaskinstall "$HOME/Library/Fonts/Ubuntu Mono derivative Powerline.ttf" font-ubuntu-mono-powerline
 
 # safer than rm
 npmig trash
@@ -193,37 +149,75 @@ brewinstall icoutils
 # keybase.io
 npmig keybase
 
+brewcaskinstall "Transmission"
+
+# the simple 2 lines above was enough for Slask
+# until they name the .app with the version in the dmg
+# like "Slack 0.44.2.app"...
+#brewcaskinstall Slack
+# so here is the way to fix it
+brewcaskinstall "/opt/homebrew-cask/Caskroom/slack/" slack
+brewcaskinstall Skype
+
+# multimedia
+brewcaskinstall "VLC"
+brewcaskinstall "MPlayerX"
+brewcaskinstall "Last.fm" "lastfm"
+openifnot "Last.fm"
 #brewcaskinstall "Rdio"
-
 brewcaskinstall "All2MP3"
-
 brewcaskinstall "Subtitles"
-
 brewcaskinstall "Jubler"
-
 brewcaskinstall "Cyberduck"
-
 brewcaskinstall "NameChanger"
-
 brewcaskinstall "GrandPerspective"
 
 # HD backup
 brewcaskinstall "SuperDuper!" "superduper"
 
+# VIDEO GAMES \o/
 brewcaskinstall "Steam"
 
-# more browsers
+# MORE BROWSER
 brewcaskinstall "FirefoxAurora" "firefox-aurora"
 brewcaskinstall "Firefox"
 brewcaskinstall "Google Chrome"
 brewcaskinstall "Opera"
-#brewcaskinstall "/Library/Internet Plug-Ins/googletalkbrowserplugin.plugin" "google-hangouts"
+brewcaskinstall "/Library/Internet Plug-Ins/googletalkbrowserplugin.plugin" "google-hangouts"
 
+##
+# Stuff that are slow to download
+# or that require human interaction
+##
+# dyndns
+setupsh-recipe ddclient
+
+# anti-thef
+setupsh-recipe prey
+
+# flash :(
+brewcaskinstall "Utilities/Adobe Flash Player Install Manager" "flash"
+
+# for my mouse
+brewcaskinstall "/Library/PreferencePanes/Logitech Control Center.prefPane" "logitech-control-center"
+brewcaskinstall "Utilities/Logitech Unifying Software" "logitech-unifying"
+
+# YEAH I USE THAT
 brewcaskinstall "/Library/Java/JavaVirtualMachines" "java"
+brewcaskinstall "LibreOffice"
 
+# no comment
 brewcaskinstall "VirtualBox"
 
-brewcaskinstall "LibreOffice"
+# not needed by default anymore
+#setupsh-recipe dnsmasq
+#setupsh-recipe apache
+#setupsh-recipe php
+#setupsh-recipe mysql
+
+#brewtap caskroom/fonts
+#brewcaskinstall "$HOME/Library/Fonts/Ubuntu-R.ttf" font-ubuntu
+#brewcaskinstall "$HOME/Library/Fonts/Ubuntu Mono derivative Powerline.ttf" font-ubuntu-mono-powerline
 
 # might be required http://software.intel.com/en-us/android/articles/intel-hardware-accelerated-execution-manager
 # brewinstall android-sdk
@@ -236,3 +230,4 @@ brewcaskinstall "LibreOffice"
 # Better perf for non Apple SSD
 # at the end because need reboot
 brewcaskinstall "Trim Enabler"
+openifnot "Trim Enabler"

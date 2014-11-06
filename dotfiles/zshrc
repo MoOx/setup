@@ -109,7 +109,7 @@ export LS_COLORS='no=00:fi=00:di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40
 
 ## OS X
 alias fuckosxprefs="killall -u $USER cfprefsd && sleep 1" # wait for restart
-alias fuckosx="fuckosxprefs && killa Dock Finder SystemUIServer NotificationCenter"
+alias fuckosx="fuckosxprefs && killall Dock Finder SystemUIServer NotificationCenter"
 alias osx-hidden-show="defaults write com.apple.finder AppleShowAllFiles -bool true && fuckosx"
 alias osx-hidden-hide="defaults write com.apple.finder AppleShowAllFiles -bool false && fuckosx"
 alias osx-desktop-show="defaults write com.apple.finder CreateDesktop -bool true && fuckosx"

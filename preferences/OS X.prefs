@@ -158,7 +158,7 @@ hash tmutil &> /dev/null && sudo tmutil disablelocal
 # Kill affected applications
 for app in "Address Book" "Calendar" "Contacts" "Messages"
 do
-  killa "${app}"
+  killifopen "${app}"
 done
 
 if [ "$FIRSTRUN" = "true" ]; then osx-refresh; fi;

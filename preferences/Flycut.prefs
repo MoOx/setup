@@ -14,11 +14,11 @@ fi
 # kill so the app don't keep runtime values
 killall Flycut
 
-plistbuddy "Application Support/Flycut/com.generalarcade.flycut" "Set stickyBezel 1"
-plistbuddy "Application Support/Flycut/com.generalarcade.flycut" "Set displayNum 40"
-plistbuddy "Application Support/Flycut/com.generalarcade.flycut" "Set rememberNum 99"
-plistbuddy "Application Support/Flycut/com.generalarcade.flycut" "Set menuIcon 1"
-plistbuddy "Application Support/Flycut/com.generalarcade.flycut" "Set loadOnStartup 1"
-plistbuddy "Application Support/Flycut/com.generalarcade.flycut" "Set removeDuplicates 1"
+plistbuddy "Flycut/com.generalarcade.flycut" "Set stickyBezel 1"
+plistbuddy "Flycut/com.generalarcade.flycut" "Set displayNum 40"
+plistbuddy "Flycut/com.generalarcade.flycut" "Set rememberNum 99"
+plistbuddy "Flycut/com.generalarcade.flycut" "Set menuIcon 1"
+plistbuddy "Flycut/com.generalarcade.flycut" "Set loadOnStartup 1"
+plistbuddy "Flycut/com.generalarcade.flycut" "Set removeDuplicates 1"
 
 open -a Flycut

@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 function apminstall() {
-  if ! ls "$HOME/.atom/packages" | grep -ie "^$1" &> /dev/null
+  if ! ls "$HOME/.atom/packages" 2> /dev/null | grep -ie "^$1" &> /dev/null
   then
     apm install $1 --loglevel
   fi

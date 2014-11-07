@@ -1,11 +1,19 @@
 #!/usr/bin/env zsh
 
 function setupsh-recipe () {
+  # generic recipes
   SETUPSH_RECIPE_SETUP="$SETUP_PATH/setupsh/recipes/$1.setup"
   if [[ -f "$SETUPSH_RECIPE_SETUP" ]]
   then
     source "$SETUPSH_RECIPE_SETUP"
   else
-    echo "Fail to setup $1: no setup file in '$SETUPSH_RECIPE_SETUP'"
+    # user recipes
+    SETUPSH_RECIPE_SETUP="$SETUP_PATH/recipes/$1.setup"
+    if [[ -f "$SETUPSH_RECIPE_SETUP" ]]
+    then
+      source "$SETUPSH_RECIPE_SETUP"
+    else
+      echo "Fail to setup $1: no setup file in '$SETUPSH_RECIPE_SETUP'"
+    fi
   fi
 }

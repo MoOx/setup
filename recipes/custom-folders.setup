@@ -1,4 +1,4 @@
-#!/usr/env/bin zsh
+#!/usr/bin/env zsh
 
 if ! ls $DIR_SYNC &> /dev/null
 then

@@ -1,5 +1,5 @@
 #!/usr/bin/env zsh
 
-function e.() {
+function setupsh-edit() {
   e $SETUP_PATH
 }

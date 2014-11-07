@@ -2,16 +2,22 @@
 
 export SETUP_PATH=$HOME/setup
 
+
+REPOSITORY=$1
+#@todo test that $1 is "nick/repo"
+REPOSITORY="http://github.com/$REPOSITORY.git"
+
+
 # define zsh as default shell
 chsh -s /bin/zsh $USER
 
-echo "Visit https://appleseed.apple.com/sp/betaprogram to get OS X beta update if you want to enroll your Mac."
-echo "Press enter to continue."
-open "https://appleseed.apple.com/sp/betaprogram"
-read -k
-
 if [[ "$(uname -s)" == "Darwin" ]]
 then
+  echo "Visit https://appleseed.apple.com/sp/betaprogram to get OS X beta update if you want to enroll your Mac."
+  echo "Press enter to continue."
+  open "https://appleseed.apple.com/sp/betaprogram"
+  read -k
+
   # todo add an alternative to grab xcode from another computer accessible by local network
 
   echo "** Before running myself, please be sure you have 'git' command working **".
@@ -35,7 +41,7 @@ fi
 
 if [[ ! -d $SETUP_PATH/.git ]]
 then
-  git clone http://github.com/MoOx/setup.git $SETUP_PATH
+  git clone $REPOSITORY $SETUP_PATH
   if [[ ! -d $SETUP_PATH/.git ]]
   then
     echo "setup have not been downloaded correctly"
@@ -61,8 +67,10 @@ then
   echo "Running installation"
 
   source $SETUP_PATH/setupsh/index
-  source $SETUP_PATH/setupsh/functions/full-setupsh
-  full-setupsh --firstrun
+  source $SETUP_PATH/setupsh/functions/setupsh-update
+
+  export FIRSTRUN=true
+  setupsh-run
 
   notify "Setup is done"
 fi

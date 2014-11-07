@@ -1,0 +1,12 @@
+#!/usr/bin/env zsh
+
+function setupsh-update() {
+  echo_title_update "your setup"
+
+  git -C $SETUP_PATH pull origin master
+  git -C $SETUP_PATH submodule init
+  git -C $SETUP_PATH submodule update
+
+  # reload zshrc
+  . $HOME/.zshrc
+}

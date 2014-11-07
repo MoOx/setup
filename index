@@ -151,11 +151,7 @@ npmig keybase
 
 brewcaskinstall "Transmission"
 
-# the simple 2 lines above was enough for Slask
-# until they name the .app with the version in the dmg
-# like "Slack 0.44.2.app"...
-#brewcaskinstall Slack
-# so here is the way to fix it
+#brewcaskinstall Slack # don't work because -> "Slack 0.44.2.app"
 brewcaskinstall "/opt/homebrew-cask/Caskroom/slack/" slack
 brewcaskinstall Skype
 

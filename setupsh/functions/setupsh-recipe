@@ -1,14 +1,14 @@
 #!/usr/bin/env zsh
 
 function setupsh-recipe () {
-  # generic recipes
-  SETUPSH_RECIPE_SETUP="$SETUP_PATH/setupsh/recipes/$1.setup"
+  # user recipes (first in case of override)
+  SETUPSH_RECIPE_SETUP="$SETUP_PATH/recipes/$1.setup"
   if [[ -f "$SETUPSH_RECIPE_SETUP" ]]
   then
     source "$SETUPSH_RECIPE_SETUP"
   else
-    # user recipes
-    SETUPSH_RECIPE_SETUP="$SETUP_PATH/recipes/$1.setup"
+    # generic recipes
+    SETUPSH_RECIPE_SETUP="$SETUP_PATH/setupsh/recipes/$1.setup"
     if [[ -f "$SETUPSH_RECIPE_SETUP" ]]
     then
       source "$SETUPSH_RECIPE_SETUP"

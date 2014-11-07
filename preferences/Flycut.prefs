@@ -12,7 +12,7 @@ then
 fi
 
 # kill so the app don't keep runtime values
-killall Flycut
+killall Flycut &> /dev/null
 
 plistbuddy "Flycut/com.generalarcade.flycut" "Set stickyBezel 1"
 plistbuddy "Flycut/com.generalarcade.flycut" "Set displayNum 40"

@@ -11,3 +11,7 @@ else
   echo_title_update "LimeChat theme"
   git -C $LIMECHAT_THEME pull
 fi
+
+defaults write net.limechat.LimeChat Preferences.Theme.name -string "user:LimeChat-theme-Monokai-Soda"
+
+#@todo add channels

@@ -1,0 +1,6 @@
+#!/usr/bin/env zsh
+
+# see dotfiles/slate.js for config
+
+defaults write com.slate.Slate SUEnableAutomaticChecks 1
+defaults write com.slate.Slate SUHasLaunchedBefore 1

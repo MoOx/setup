@@ -1,5 +1,7 @@
 #!/usr/bin/env zsh
 
+defaults write com.github.atom moveToApplicationsFolderAlertSuppress -bool true
+
 if type apm > /dev/null
 then
   apminstall auto-update-packages

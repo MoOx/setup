@@ -1,0 +1,4 @@
+#!/usr/bin/env zsh
+
+defaults write com.github.GitHub moveToApplicationsFolderAlertSuppress -bool true
+defaults write com.github.GitHub GHSuppressDiscardChangesWarning -int 1

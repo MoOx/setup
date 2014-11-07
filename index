@@ -159,7 +159,7 @@ brewcaskinstall Skype
 brewcaskinstall "VLC"
 brewcaskinstall "MPlayerX"
 brewcaskinstall "Last.fm" "lastfm"
-openifnot "Last.fm"
+openifnot "Last.fm.app"
 #brewcaskinstall "Rdio"
 brewcaskinstall "All2MP3"
 brewcaskinstall "Subtitles"

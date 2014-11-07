@@ -1,0 +1,14 @@
+#!/usr/bin/env zsh
+
+# don't index HD on iMoOx, since I use an external SSD as primary drive
+# HD is my backup
+if [[ $COMPUTER_NAME != "iMoOx" ]]
+then
+  SPOTLIGHT_IGNORE_BACKUP_HD="/Volumes/Macintosh HD"
+	if ! ls "$SPOTLIGHT_IGNORE_BACKUP_HD/.metadata_never_index" &> /dev/null
+  then
+    echo_title "Ingore Backup HD for Spotlight (on iMoOx)"
+    sudo touch $SPOTLIGHT_IGNORE_BACKUP_HD/.metadata_never_index
+    sudo mdutil -i off $SPOTLIGHT_IGNORE_BACKUP_HD
+  fi
+fi

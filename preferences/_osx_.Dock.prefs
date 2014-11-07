@@ -50,14 +50,17 @@ dockutil --no-restart --add "/Applications/`ls /Applications | grep Slack`"
 dockutil --no-restart  --add "/Applications/Steam.app"
 dockutil --no-restart --add "/Applications" --view grid --display folder --sort name
 
+##
 # Icons
-
+# 
 # sudo is for appstore apps
+##
+
 # Tweetbot yosemite icon http://ziggy19.deviantart.com/art/OS-X-Yosemite-Tweetbot-482529436
-sudo setfileicon "$SETUP_PATH/preferences/icns/Tweetbot.icns" "/Applications/Tweetbot.app"
+if ls "/Applications/Tweetbot.app" &> /dev/null; then sudo setfileicon "$SETUP_PATH/preferences/icns/Tweetbot.icns" "/Applications/Tweetbot.app"; fi
 # Atom Yosemite Icon https://dribbble.com/shots/1590423-Atom-Yosemite-Icon
-setfileicon "$SETUP_PATH/preferences/icns/Atom.icns" "/Applications/Atom.app"
+if ls "/Applications/Atom.app" &> /dev/null; then setfileicon "$SETUP_PATH/preferences/icns/Atom.icns" "/Applications/Atom.app"; fi
 # Slack icon from Muir Yosemite Icons Set 2 https://dribbble.com/shots/1773636-Muir-Yosemite-Icons-Set-2
-setfileicon "$SETUP_PATH/preferences/icns/Slack.icns" "/Applications/`ls /Applications | grep Slack`"
+if [[ $(ls /Applications | grep Slack) != "" ]]; then setfileicon "$SETUP_PATH/preferences/icns/Slack.icns" "/Applications/`ls /Applications | grep Slack`"; fi
 # Steam icon from Muir Yosemite Icons Set 2 https://dribbble.com/shots/1773636-Muir-Yosemite-Icons-Set-2
-setfileicon "$SETUP_PATH/preferences/icns/Steam.icns" "/Applications/Steam.app"
+if ls "/Applications/Steam.app" &> /dev/null; then setfileicon "$SETUP_PATH/preferences/icns/Steam.icns" "/Applications/Steam.app"; fi

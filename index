@@ -55,11 +55,11 @@ openifnot "Tweetbot"
 ##
 brewcaskinstall LimeChat
 openifnot LimeChat
-#brewcaskinstall "Cloud"
-#brewcaskinstall "Cloudup"
 brewcaskinstall GrabBox
 openifnot "GrabBox"
 setupsh-recipe grabbox-cleanup
+brewcaskinstall "Cloud"
+#brewcaskinstall "Cloudup"
 
 ## Some utilities
 brewcaskinstall "Flux"

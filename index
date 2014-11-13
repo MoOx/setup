@@ -58,7 +58,7 @@ openifnot LimeChat
 brewcaskinstall GrabBox
 openifnot "GrabBox"
 setupsh-recipe grabbox-cleanup
-brewcaskinstall "Cloud"
+brewcaskinstall "CloudApp" cloud
 #brewcaskinstall "Cloudup"
 
 ## Some utilities

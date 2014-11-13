@@ -1,6 +1,0 @@
-#!/usr/bin/env zsh
-
-function fireinthehole() {
-  setupsh-update
-  setupsh-run
-}

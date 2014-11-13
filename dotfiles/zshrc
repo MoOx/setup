@@ -181,3 +181,8 @@ alias phpini="e /usr/local/etc/php/5.5/php.ini"
 
 ## LOCAL CRAP
 if [[ -f ~/.zshrc.local ]]; then; source ~/.zshrc.local; fi
+
+# setupsh aliases
+alias fireinthehole="setupsh-update && setupsh-run"
+alias .e="setupsh-edit"
+alias .o="setupsh-open"

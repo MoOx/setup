@@ -136,7 +136,7 @@ layouts.XL = slate.layout("layout:XL", {
   Wunderlist: hashes.main.right__half,
 
   Firefox: hashes.main.full,
-  Aurora: hashes.main.full, // Firefox
+  FirefoxDevEdition: hashes.main.full, // Firefox
   Nightly: hashes.main.full, // Firefox
   GoogleChrome: hashes.main.full,
   Safari: hashes.main.full,
@@ -171,7 +171,7 @@ Array({key: "L", hashKey: "main"}, {key: "L_alt", hashKey: "secondary"}).forEach
     Wunderlist: h.right__half,
 
     Firefox: h.left__3of4,
-    Aurora: h.left__3of4, // Firefox
+    FirefoxDevEdition: h.left__3of4, // Firefox
     Nightly: h.left__3of4, // Firefox
     GoogleChrome: h.left__3of4,
     Safari: h.left__3of4,
@@ -211,7 +211,7 @@ Array({key: "M", hashKey: "main"}, {key: "M_alt", hashKey: "secondary"}).forEach
     Wunderlist: h.right__half,
 
     Firefox: h.left__2of3,
-    Aurora: h.left__2of3, // Firefox
+    FirefoxDevEdition: h.left__2of3, // Firefox
     Nightly: h.left__2of3, // Firefox
     GoogleChrome: h.left__2of3,
     Safari: h.left__2of3,

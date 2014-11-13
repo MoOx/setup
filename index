@@ -40,8 +40,8 @@ openifnot "Slate"
 brewcaskinstall atom
 
 # browser
-brewcaskinstall "FirefoxNightly" "firefox-nightly"
-openifnot "FirefoxNightly"
+brewcaskinstall "FirefoxDeveloperEdition" "firefoxdeveloperedition"
+openifnot "FirefoxDeveloperEdition"
 setupsh-recipe firefox-user.js
 
 # MAXIMUM SECURITY
@@ -138,7 +138,7 @@ brewcaskinstall "SuperDuper!" "superduper"
 brewcaskinstall "Steam"
 
 # MORE BROWSER
-brewcaskinstall "FirefoxAurora" "firefox-aurora"
+brewcaskinstall "FirefoxNightly" "firefox-nightly"
 brewcaskinstall "Firefox"
 brewcaskinstall "Google Chrome"
 brewcaskinstall "Opera"

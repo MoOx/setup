@@ -17,6 +17,8 @@ export PATH=/usr/local/sbin:$PATH
 export PATH=/usr/local/bin:$PATH
 export PATH=$DIR_DEV/bin:$PATH
 export PATH=./bin:$PATH
+# to avoid npm install -g
+export PATH=./node_modules/.bin/:$PATH
 
 export EDITOR="atom"
 source $SETUP_PATH/submodules/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

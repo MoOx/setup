@@ -13,7 +13,6 @@
     'softTabs': false
     'fontFamily': 'Menlo'
     'fontSize': 12
-    'invisibles': {}
   'core':
     'projectHome': '/Users/MoOx/Sync/Development'
     'disabledPackages': [

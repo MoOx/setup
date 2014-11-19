@@ -13,6 +13,7 @@
     'softTabs': false
     'fontFamily': 'Menlo'
     'fontSize': 12
+    'invisibles': {}
   'core':
     'projectHome': '/Users/MoOx/Sync/Development'
     'disabledPackages': [
@@ -42,3 +43,5 @@
     'microBreakIntervalInSeconds': 1200
   'linter':
     'showStatusBarWhenCursorIsInErrorRange': true
+  'atom-beautify':
+    '_analyticsUserId': 'bcb0826f-cb01-4339-bb49-4f4de6116860'

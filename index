@@ -188,5 +188,8 @@ brewcaskinstall "VirtualBox"
 
 # Better perf for non Apple SSD
 # at the end because need reboot
-brewcaskinstall "Trim Enabler"
-openifnot "Trim Enabler"
+if [[ $COMPUTER_MODEL == "MacBook"* ]]
+then
+  brewcaskinstall "Trim Enabler"
+  openifnot "Trim Enabler"
+fi

@@ -13,5 +13,6 @@ else
 fi
 
 defaults write net.limechat.LimeChat Preferences.Theme.name -string "user:LimeChat-theme-Monokai-Soda"
+defaults write net.limechat.LimeChat Preferences.General.max_log_lines -int 2000
 
 #@todo add channels

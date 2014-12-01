@@ -40,8 +40,8 @@ openifnot "Slate"
 brewcaskinstall atom
 
 # browser
-brewcaskinstall "FirefoxDeveloperEdition" "firefoxdeveloperedition"
-openifnot "FirefoxDeveloperEdition"
+brewcaskinstall "FirefoxNightly" "firefox-nightly"
+openifnot "FirefoxNightly"
 setupsh-recipe firefox-user.js
 
 # MAXIMUM SECURITY

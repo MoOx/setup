@@ -5,7 +5,7 @@
 
 if ! ls "$HOME/Library/Application Support/Flycut/com.generalarcade.flycut.plist" &> /dev/null
 then
-  echo_info "Flycut.app don't have a preferences file yet. Please change a setting a quit the app to create one. Then press a key"
+  echo_info "Flycut.app don't have a preferences file yet. Please change a setting, then quit the app (this will create a file).\nWhen it's done, press a key to continue."
   open -a Flycut
   read -k
   sleep 1

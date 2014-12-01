@@ -105,7 +105,6 @@
     "binary",
     "string"
   ],
-  "requireCamelCaseOrUpperCaseIdentifiers": "ignoreProperties",
   "disallowKeywords": [
     "with"
   ],

@@ -41,6 +41,6 @@
     'microBreakLengthInSeconds': 30
     'microBreakIntervalInSeconds': 1200
   'linter':
-    'showStatusBarWhenCursorIsInErrorRange': true
+    'statusBar': 'Show error if the cursor is in range'
   'atom-beautify':
     '_analyticsUserId': 'bcb0826f-cb01-4339-bb49-4f4de6116860'

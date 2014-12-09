@@ -131,9 +131,9 @@ export NODE_PATH=/usr/local/lib/node_modules
 export PATH=./node_modules/.bin:$PATH
 # npme: faster npm for europeans
 command -v npm > /dev/null && alias npme="npm --registry http://registry.npmjs.eu"
-alias npmi="npm install"
-alias npmt="npm test"
-alias npms="npmstart" # npmstart function
+alias npmi="npm i"
+alias npmt="npm i && npm test"
+alias npms="npm i && npmstart" # npmstart function
 
 ## Apache
 alias apacheconf="e $APACHE_CONF"

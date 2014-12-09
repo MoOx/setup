@@ -56,7 +56,7 @@ then
   # js
   apminstall atom-semicolons
   apminstall linter-jscs
-  apminstall linter-jshint
+  apminstall linter-eslint
   apminstall linter-jsonlint
   apminstall language-jade
   apminstall coffeescript-be-gone
@@ -67,7 +67,6 @@ then
 
     # jsx
     apminstall language-jsx
-    apminstall linter-jsxhint
 
   # NO COMMENT
   apminstall language-apache

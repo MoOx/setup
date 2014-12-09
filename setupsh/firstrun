@@ -11,6 +11,9 @@ REPOSITORY="http://github.com/$REPOSITORY.git"
 # define zsh as default shell
 chsh -s /bin/zsh $USER
 
+# allow to write into /usr/local 
+sudo chown -R `whoami` /usr/local
+
 if [[ "$(uname -s)" == "Darwin" ]]
 then
   echo "Visit https://appleseed.apple.com/sp/betaprogram to get OS X beta update if you want to enroll your Mac."

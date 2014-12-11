@@ -117,6 +117,7 @@ brewcaskinstall "Transmission"
 #brewcaskinstall Slack # don't work because -> "Slack 0.44.2.app"
 brewcaskinstall "/opt/homebrew-cask/Caskroom/slack/" slack
 brewcaskinstall Skype
+brewcaskinstall Gitter
 
 # multimedia
 brewcaskinstall "VLC"

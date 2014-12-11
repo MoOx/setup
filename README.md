@@ -13,7 +13,7 @@ The first run can easily take half of a day, with some human interactions to con
 ### Update & run
 
 ```console
-$ fireinthehole
+$ fliptable
 ```
 
 ![kaboom](https://raw.githubusercontent.com/MoOx/setup/master/.kaboom.gif)

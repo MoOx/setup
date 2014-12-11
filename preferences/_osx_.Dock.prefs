@@ -64,3 +64,5 @@ if ls "/Applications/Atom.app" &> /dev/null; then setfileicon "$SETUP_PATH/prefe
 if [[ $(ls /Applications | grep Slack) != "" ]]; then setfileicon "$SETUP_PATH/preferences/icns/Slack.icns" "/Applications/`ls /Applications | grep Slack`"; fi
 # Steam icon from Muir Yosemite Icons Set 2 https://dribbble.com/shots/1773636-Muir-Yosemite-Icons-Set-2
 if ls "/Applications/Steam.app" &> /dev/null; then setfileicon "$SETUP_PATH/preferences/icns/Steam.icns" "/Applications/Steam.app"; fi
+
+osx-refresh

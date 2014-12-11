@@ -1,40 +1,33 @@
 #!/usr/bin/env zsh
 
+# ~/Sync/ folder + icon
 if ! ls $DIR_SYNC &> /dev/null
-then
+  then
   mkdir $DIR_SYNC
   setfileicon $OS_ICONS_DIR/GroupFolder.icns $DIR_SYNC
 fi
 
-if ls $DIR_SYNC/BTSync &> /dev/null
+# Library/Fonts link
+if ls $DIR_DEV/Fonts &> /dev/null
 then
-  setfileicon $OS_ICONS_DIR/UsersFolderIcon.icns $DIR_SYNC/BTSync
-
-  if ls $DIR_SYNC/BTSync/Fonts &> /dev/null
-  then
-    sudo rm -rf $HOME/Library/Fonts
-    ln -s $DIR_SYNC/BTSync/Fonts $HOME/Library/Fonts
-  fi
+  sudo rm -rf $HOME/Library/Fonts
+  ln -s $DIR_DEV/Fonts $HOME/Library/Fonts
 fi
 
-if ls $DIR_SYNC/Development &> /dev/null
-then
-  setfileicon $OS_ICONS_DIR/DeveloperFolderIcon.icns $DIR_SYNC/Development
-fi
-
+# iTunes
+# @todo mv Music iTunes
 if ls $DIR_SYNC/Music &> /dev/null
 then
   sudo rm -rf $HOME/Music
   ln -s $DIR_SYNC/Music $HOME/Music
-  setfileicon $OS_ICONS_DIR/MusicFolderIcon.icns $HOME/Music
 
   sudo rm -rf $HOME/iTunes
   ln -s $HOME/Music $HOME/iTunes
 fi
 
+# Pictures
 if ls $DIR_SYNC/Pictures &> /dev/null
 then
   sudo rm -rf $HOME/Pictures
   ln -s $DIR_SYNC/Pictures $HOME/Pictures
-  setfileicon $OS_ICONS_DIR/PicturesFolderIcon.icns $DIR_SYNC/Pictures
 fi

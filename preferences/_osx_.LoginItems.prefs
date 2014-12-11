@@ -1,0 +1,21 @@
+#!/usr/bin/env zsh
+
+osascript -e 'tell application "System Events" to delete every login items'
+
+osascript -e 'tell application "System Events" to make login item at end with properties {hidden:false, path:"/Applications/Mail.app", name:"Mail" }' > /dev/null
+osascript -e 'tell application "System Events" to make login item at end with properties {hidden:false, path:"/Applications/BitTorrent Sync.app", name:"BitTorrent Sync" }' > /dev/null
+osascript -e 'tell application "System Events" to make login item at end with properties {hidden:false, path:"/Applications/Dropbox.app", name:"Dropbox" }' > /dev/null
+osascript -e 'tell application "System Events" to make login item at end with properties {hidden:false, path:"/Applications/Flux.app", name:"Flux" }' > /dev/null
+osascript -e 'tell application "System Events" to make login item at end with properties {hidden:false, path:"/Applications/Slate.app", name:"Slate" }' > /dev/null
+osascript -e 'tell application "System Events" to make login item at end with properties {hidden:false, path:"/Applications/Day-O.app", name:"Day-O" }' > /dev/null
+osascript -e 'tell application "System Events" to make login item at end with properties {hidden:false, path:"/Applications/Flycut.app", name:"Flycut" }' > /dev/null
+osascript -e 'tell application "System Events" to make login item at end with properties {hidden:false, path:"/Applications/GrabBox.app", name:"GrabBox" }' > /dev/null
+osascript -e 'tell application "System Events" to make login item at end with properties {hidden:false, path:"/Applications/Tweetbot.app", name:"Tweetbot" }' > /dev/null
+osascript -e 'tell application "System Events" to make login item at end with properties {hidden:false, path:"/Applications/LimeChat.app", name:"LimeChat" }' > /dev/null
+osascript -e 'tell application "System Events" to make login item at end with properties {hidden:false, path:"/Applications/Slack 0.44.2.app", name:"Slack" }' > /dev/null
+osascript -e 'tell application "System Events" to make login item at end with properties {hidden:false, path:"/Applications/Gitter.app", name:"Gitter" }' > /dev/null
+osascript -e 'tell application "System Events" to make login item at end with properties {hidden:false, path:"/Applications/iTunesHelper.app", name:"iTunesHelper" }' > /dev/null
+osascript -e 'tell application "System Events" to make login item at end with properties {hidden:false, path:"/Applications/TrimCheck.app", name:"TrimCheck" }' > /dev/null
+
+# debug with
+# osascript -e 'tell application "System Events" to get the name of every login item'

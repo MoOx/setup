@@ -5,7 +5,7 @@
 ### First run
 
 ```console
-$ curl -fsSL https://raw.githubusercontent.com/MoOx/setupsh/master/firstrun | zsh -s MoOx/setup
+$ curl -fsSL https://raw.githubusercontent.com/MoOx/setup/master/setupsh/firstrun | zsh -s MoOx/setup
 ```
 
 The first run can easily take half of a day, with some human interactions to configure some part.

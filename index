@@ -139,7 +139,7 @@ brewcaskinstall "SuperDuper!" "superduper"
 brewcaskinstall "Steam"
 
 # MORE BROWSER
-brewcaskinstall "FirefoxNightly" "firefox-nightly"
+brewcaskinstall "phantomjs"
 brewcaskinstall "Firefox"
 brewcaskinstall "Google Chrome"
 brewcaskinstall "Opera"

@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh
+
+if ! type phantomjs > /dev/null
+then
+  echo_title_install "PhantomJS"
+  brewinstall phantomjs
+fi

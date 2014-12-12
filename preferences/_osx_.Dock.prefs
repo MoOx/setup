@@ -29,7 +29,7 @@ defaults write com.apple.dock show-process-indicators -bool true
 defaults write com.apple.dock dashboard-in-overlay -bool true
 
 # Dock order
-dockutil --remove all
+dockutil --no-restart --remove all
 dockutil --no-restart --add "/Applications/Mail.app"
 dockutil --no-restart --add "/Applications/Wunderlist.app"
 dockutil --no-restart --add "/Applications/Calendar.app"

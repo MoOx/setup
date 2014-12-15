@@ -2,6 +2,7 @@
 
 # `npmpublish` with an optional argument `patch`/`minor`/`major`/`<version>`
 # defaults to `patch`
+# require `npm i -g mversion`
 function npmpublish() {
   git pull --rebase && \
   rm -rf node_modules && \

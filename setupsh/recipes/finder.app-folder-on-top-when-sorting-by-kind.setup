@@ -1,0 +1,11 @@
+#!/usr/bin/env zsh
+
+OSX_FINDER_INFOPLIST=/System/Library/CoreServices/Finder.app/Contents/Resources/English.lproj/InfoPlist.strings
+OSX_FINDER_INFOPLIST_TMP=/tmp/Finder.app-InfoPlist
+plutil -convert xml1 -o $OSX_FINDER_INFOPLIST_TMP $OSX_FINDER_INFOPLIST
+if ! cat $OSX_FINDER_INFOPLIST_TMP | grep '<string> Folder</string>' > /dev/null
+then
+  echo_title "Patch Finder.app to get folder on top when sorting by Kind"
+  sudo plutil -replace Folder -string " Folder" -- $OSX_FINDER_INFOPLIST
+	killall Finder
+fi

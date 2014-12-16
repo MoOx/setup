@@ -7,5 +7,5 @@ if ! cat $OSX_FINDER_INFOPLIST_TMP | grep '<string> Folder</string>' > /dev/null
 then
   echo_title "Patch Finder.app to get folder on top when sorting by Kind"
   sudo plutil -replace Folder -string " Folder" -- $OSX_FINDER_INFOPLIST
-	killall Finder
+  killall Finder
 fi

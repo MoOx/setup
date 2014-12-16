@@ -1,0 +1,3 @@
+#!/usr/bin/env zsh
+
+function echo_success () { echo "${COLOR_GREEN}${CHAR_OK}${COLOR_RESET} $1" }

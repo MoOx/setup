@@ -17,8 +17,6 @@ export PATH=/usr/local/sbin:$PATH
 export PATH=/usr/local/bin:$PATH
 export PATH=$DIR_DEV/bin:$PATH
 export PATH=./bin:$PATH
-# to avoid npm install -g
-export PATH=./node_modules/.bin:$PATH
 
 export EDITOR="atom"
 source $SETUP_PATH/submodules/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -126,6 +124,7 @@ alias ios="open /Applications/Xcode.app/Contents/Applications/iPhone\ Simulator.
 
 ## NPM
 export NODE_PATH=/usr/local/lib/node_modules
+# to avoid npm install -g
 export PATH=./node_modules/.bin:$PATH
 # npme: faster npm for europeans
 command -v npm > /dev/null && alias npme="npm --registry http://registry.npmjs.eu"

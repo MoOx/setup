@@ -26,8 +26,8 @@ then
 fi
 
 # Pictures
-if ls $DIR_SYNC/Pictures &> /dev/null
+if ls $DIR_SYNC/Documents/Pictures &> /dev/null
 then
   sudo rm -rf $HOME/Pictures
-  ln -s $DIR_SYNC/Pictures $HOME/Pictures
+  ln -s $DIR_SYNC/Documents/Pictures $HOME/Pictures
 fi

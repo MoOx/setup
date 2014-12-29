@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 # big & autohidden dock
-defaults write com.apple.dock tilesize -int 128
+defaults write com.apple.dock tilesize -int 64
 defaults write com.apple.dock autohide -bool true
 
 # no boucing icons

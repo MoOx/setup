@@ -1,6 +1,11 @@
 /* globals user_pref */
 
-user_pref("browser.newtab.url", "http://putaindecode.io/tab/");
+user_pref("browser.newtab.url", "http://localhost/tab/");
+// enable file:// link on my homepage
+user_pref("capability.policy.policynames", "localfilelinks");
+user_pref("capability.policy.localfilelinks.sites", "http://localhost/");
+user_pref("capability.policy.localfilelinks.checkloaduri.enabled", "allAccess");
+
 
 // remove warning when accessing about:config
 user_pref("general.warnOnAboutConfig", false);

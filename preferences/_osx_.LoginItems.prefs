@@ -2,20 +2,34 @@
 
 osascript -e 'tell application "System Events" to delete every login items'
 
+# OS X must have
 osascript -e 'tell application "System Events" to make login item at end with properties {hidden:false, path:"/Applications/Mail.app", name:"Mail" }' > /dev/null
+osascript -e 'tell application "System Events" to make login item at end with properties {hidden:false, path:"/Applications/iTunesHelper.app", name:"iTunesHelper" }' > /dev/null
+
+# Sync
 osascript -e 'tell application "System Events" to make login item at end with properties {hidden:false, path:"/Applications/BitTorrent Sync.app", name:"BitTorrent Sync" }' > /dev/null
 osascript -e 'tell application "System Events" to make login item at end with properties {hidden:false, path:"/Applications/Dropbox.app", name:"Dropbox" }' > /dev/null
+
+# OS X enhancements
 osascript -e 'tell application "System Events" to make login item at end with properties {hidden:false, path:"/Applications/Flux.app", name:"Flux" }' > /dev/null
 osascript -e 'tell application "System Events" to make login item at end with properties {hidden:false, path:"/Applications/Slate.app", name:"Slate" }' > /dev/null
 osascript -e 'tell application "System Events" to make login item at end with properties {hidden:false, path:"/Applications/Day-O.app", name:"Day-O" }' > /dev/null
 osascript -e 'tell application "System Events" to make login item at end with properties {hidden:false, path:"/Applications/Flycut.app", name:"Flycut" }' > /dev/null
 osascript -e 'tell application "System Events" to make login item at end with properties {hidden:false, path:"/Applications/GrabBox.app", name:"GrabBox" }' > /dev/null
+
+# Messages
+osascript -e 'tell application "System Events" to make login item at end with properties {hidden:false, path:"/Applications/Messages.app", name:"Messages" }' > /dev/null
 osascript -e 'tell application "System Events" to make login item at end with properties {hidden:false, path:"/Applications/Tweetbot.app", name:"Tweetbot" }' > /dev/null
 osascript -e 'tell application "System Events" to make login item at end with properties {hidden:false, path:"/Applications/LimeChat.app", name:"LimeChat" }' > /dev/null
+osascript -e 'tell application "System Events" to make login item at end with properties {hidden:false, path:"/Applications/Skype.app", name:"Skype" }' > /dev/null
 osascript -e 'tell application "System Events" to make login item at end with properties {hidden:false, path:"/Applications/Slack 0.44.2.app", name:"Slack" }' > /dev/null
 osascript -e 'tell application "System Events" to make login item at end with properties {hidden:false, path:"/Applications/Gitter.app", name:"Gitter" }' > /dev/null
-osascript -e 'tell application "System Events" to make login item at end with properties {hidden:false, path:"/Applications/iTunesHelper.app", name:"iTunesHelper" }' > /dev/null
-osascript -e 'tell application "System Events" to make login item at end with properties {hidden:false, path:"/Applications/TrimCheck.app", name:"TrimCheck" }' > /dev/null
+
+# Trim Enabler
+if [[ $COMPUTER_NAME == "iMoOx" ]]
+then
+  osascript -e 'tell application "System Events" to make login item at end with properties {hidden:false, path:"/Applications/Trim Enabler/Contents/Helpers/TrimCheck.app", name:"TrimCheck" }' > /dev/null
+fi
 
 # debug with
 # osascript -e 'tell application "System Events" to get the name of every login item'

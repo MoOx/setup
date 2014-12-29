@@ -10,9 +10,9 @@
   'editor':
     'showInvisibles': true
     'showIndentGuide': true
-    'softTabs': false
     'fontFamily': 'Menlo'
     'fontSize': 12
+    'autoIndentOnPaste': false
   'core':
     'projectHome': '/Users/MoOx/Sync/Development'
     'disabledPackages': [
@@ -43,4 +43,5 @@
   'linter':
     'statusBar': 'Show error if the cursor is in range'
   'atom-beautify':
-    '_analyticsUserId': 'bcb0826f-cb01-4339-bb49-4f4de6116860'
+    'beautifyEntireFileOnSave': false
+    'analytics': false

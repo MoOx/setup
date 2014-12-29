@@ -8,8 +8,6 @@ brewcaskinstall "Synergy"
 ##
 brewcaskinstall "BitTorrent Sync"
 openifnot "BitTorrent Sync"
-brewcaskinstall "Dropbox"
-openifnot "Dropbox"
 
 setupsh-recipe custom-folders
 
@@ -55,9 +53,6 @@ openifnot "Tweetbot"
 ##
 brewcaskinstall LimeChat
 openifnot LimeChat
-brewcaskinstall GrabBox
-openifnot "GrabBox"
-setupsh-recipe grabbox-cleanup
 brewcaskinstall "CloudApp" cloud
 #brewcaskinstall "Cloudup"
 

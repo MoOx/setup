@@ -10,6 +10,13 @@ then
   then
     echo_title "Configuring OS X Apache"
     echo "\nInclude $APACHE_CONF_DEV_PATH/*.conf" | sudo tee -a $APACHE_CONF
+
+    if ls /Users/Shared/Photos &> /dev/null
+    then
+      echo "" | sudo tee -a $APACHE_CONF
+      echo "# putaindetab \"/Users/Shared/Photos\"" | sudo tee -a $APACHE_CONF
+      echo "Include \"/Users/Shared/Photos/index.apache.conf\"" | sudo tee -a $APACHE_CONF
+    fi
     apachectl configtest
     dscacheutil -flushcache
   fi

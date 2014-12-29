@@ -31,3 +31,16 @@ then
   sudo rm -rf $HOME/Pictures
   ln -s $DIR_SYNC/Documents/Pictures $HOME/Pictures
 fi
+
+# Shared Photos
+SHARED_PHOTOS="/Users/Shared/Photos"
+if ! ls $SHARED_PHOTOS &> /dev/null
+then
+  if ls $DIR_SYNC/Photos &> /dev/null
+  then
+    ln -s $DIR_SYNC/Photos $SHARED_PHOTOS
+  elif ls "/Volumes/Shared HD/Photos" &> /dev/null
+  then
+    ln -s "/Volumes/Shared HD/Photos" $SHARED_PHOTOS
+  fi
+fi

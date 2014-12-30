@@ -73,7 +73,7 @@ brewcaskinstall "/opt/homebrew-cask/Caskroom/quicklook-json" "quicklook-json"
 brewcaskinstall "/opt/homebrew-cask/Caskroom/qlprettypatch" "qlprettypatch"
 brewcaskinstall "/opt/homebrew-cask/Caskroom/quicklook-csv" "quicklook-csv"
 brewcaskinstall "/opt/homebrew-cask/Caskroom/betterzipql" "betterzipql"
-brewcaskinstall "/opt/homebrew-cask/Caskroom/webp-quicklook" "webp-quicklook"
+# brewcaskinstall "/opt/homebrew-cask/Caskroom/webpquicklook" "webpquicklook" # cause issue when you browser jpegs with ql (like up/down may show you empty jpg...)
 brewcaskinstall "/opt/homebrew-cask/Caskroom/suspicious-package" "suspicious-package"
 
 # reset QuickLook plugins

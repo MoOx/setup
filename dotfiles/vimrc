@@ -1,0 +1,54 @@
+set nocompatible " be iMproved
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'tpope/vim-sensible'
+Plug 'scrooloose/nerdtree'
+
+call plug#end()
+
+"" display
+set title
+set number
+set wrap
+set scrolloff=3
+
+"" search
+set ignorecase
+set smartcase
+set hlsearch
+
+"" no beep
+"set visualbell
+"set noerrorbells
+
+set hidden " hide other files when opening one
+
+" Spaces/Tabs
+set expandtab "Use spaces instead of tabs
+set shiftwidth=2
+set tabstop=2
+
+" highlight whitespace
+"highlight ExtraWhitespace ctermbg=red guibg=red
+"match ExtraWhitespace /\s\+$/
+"autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+"autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+"autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+"autocmd BufWinLeave * call clearmatches()
+
+" learn vim, the right way
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
+imap <up> <nop>
+imap <down> <nop>
+imap <left> <nop>
+imap <right> <nop>
+
+" Bye Esc => ;;
+:imap ;; <Esc>
+:map ;; <Esc>
+
+autocmd vimenter * NERDTree

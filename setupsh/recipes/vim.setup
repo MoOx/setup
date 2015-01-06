@@ -1,0 +1,8 @@
+#!/usr/bin/env zsh
+
+# vim plugins
+if [[ ! -f $HOME/.vim/autoload ]]
+then
+  mkdir -p ~/.vim/autoload
+  curl -fLo ~/.vim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+fi

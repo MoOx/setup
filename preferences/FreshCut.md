@@ -1,6 +1,7 @@
 # FreshCut
 
 Useful tool: [CSS Colors](http://leaverou.github.io/css-colors/)
+To get Apple RGB, use `Digital Color Meter.app`.
 
 ## Colors
 

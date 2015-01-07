@@ -35,6 +35,7 @@ brewcaskinstall Slate
 openifnot "Slate"
 
 # editor
+brewcaskinstall tmux
 setupsh-recipe vim
 brewcaskinstall atom
 

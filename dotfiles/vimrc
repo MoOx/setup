@@ -4,6 +4,14 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'tpope/vim-sensible'
 Plug 'scrooloose/nerdtree'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'kien/ctrlp.vim'
+Plug 'terryma/vim-multiple-cursors'
+
+Plug 'nono/vim-handlebars'
+Plug 'othree/html5-syntax.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'tpope/vim-markdown'
 
 call plug#end()
 
@@ -30,12 +38,12 @@ set shiftwidth=2
 set tabstop=2
 
 " highlight whitespace
-"highlight ExtraWhitespace ctermbg=red guibg=red
-"match ExtraWhitespace /\s\+$/
-"autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-"autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-"autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-"autocmd BufWinLeave * call clearmatches()
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
 
 " learn vim, the right way
 map <up> <nop>
@@ -51,4 +59,16 @@ imap <right> <nop>
 :imap ;; <Esc>
 :map ;; <Esc>
 
-autocmd vimenter * NERDTree
+" No backup/swap files
+set backupdir=
+set directory=
+set nowritebackup
+set noswapfile
+
+let mapleader = ","
+
+" CtrlP
+nmap <Leader>oo :CtrlP<cr>
+nmap <Leader>of :CtrlPMixed<cr>
+nmap <Leader>ob :CtrlPBuffer<cr>
+nmap <Leader>or :CtrlPMRU<cr>

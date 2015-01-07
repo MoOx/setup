@@ -137,7 +137,7 @@ brewcaskinstall "SuperDuper!" "superduper"
 brewcaskinstall "Steam"
 
 # MORE BROWSER
-brewcaskinstall "phantomjs"
+brewcaskinstall "/usr/local/bin/phantomjs" "phantomjs"
 brewcaskinstall "Firefox"
 brewcaskinstall "Google Chrome"
 brewcaskinstall "Opera"

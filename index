@@ -36,6 +36,7 @@ openifnot "Slate"
 
 # editor
 brewinstall tmux
+brewinstall ack
 setupsh-recipe vim
 brewcaskinstall atom
 
@@ -46,7 +47,6 @@ setupsh-recipe firefox-user.js
 
 # MAXIMUM SECURITY
 brewcaskinstall "KeePassX"
-
 # Some app from AppStore
 openifnot "Tweetbot"
 

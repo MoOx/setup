@@ -43,7 +43,6 @@ dockutil --no-restart --add "/Applications/Messages.app"
 dockutil --no-restart --add "/Applications/Skype.app"
 dockutil --no-restart --add "/Applications/LimeChat.app"
 if [[ $(ls /Applications | grep Slack) != "" ]]; then dockutil --no-restart --add "/Applications/`ls /Applications | grep Slack`"; fi
-dockutil --no-restart --add "/Applications/Gitter.app"
 dockutil --no-restart --add "/Applications/Wire.app"
 dockutil --no-restart --add "/Applications/Utilities/Terminal.app"
 #dockutil --no-restart --add "/Applications/iTerm.app"

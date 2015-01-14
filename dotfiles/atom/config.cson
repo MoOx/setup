@@ -1,4 +1,4 @@
-'global':
+'*':
   'exception-reporting':
     'userId': '3ba70428-f782-5321-e73a-7b678f36511c'
   'release-notes':
@@ -8,13 +8,18 @@
   'metrics':
     'userId': '9e20623847c7c22109bc7b34e71c459485f8781a'
   'editor':
-    'showInvisibles': true
-    'showIndentGuide': true
     'fontFamily': 'Menlo'
     'fontSize': 12
+    'showInvisibles': true
+    'showIndentGuide': true
     'autoIndentOnPaste': false
+    'invisibles': {}
   'core':
-    'projectHome': '/Users/MoOx/Sync/Development'
+    'ignoredNames': [
+      '.sync'
+      'node_modules'
+      'dist'
+    ]
     'disabledPackages': [
       'autosave'
     ]
@@ -22,11 +27,7 @@
       'yosemite-unity-ui'
       'atom-light-syntax'
     ]
-    'useReactEditor': true
-    'ignoredNames': [
-      'node_modules'
-      'dist'
-    ]
+    'projectHome': '/Users/MoOx/Sync/Development'
   'autocomplete-plus':
     'includeCompletionsFromAllBuffers': true
   'tree-view':
@@ -45,3 +46,5 @@
   'atom-beautify':
     'beautifyEntireFileOnSave': false
     'analytics': false
+  'linter-eslint':
+    'disableWhenNoEslintrcFileInPath': true

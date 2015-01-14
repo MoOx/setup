@@ -4,7 +4,6 @@
 " - http://amix.dk/vim/vimrc.html
 " - https://github.com/madx/propane/blob/master/vim/vimrc
 " - https://github.com/necolas/dotfiles/blob/master/vim/vimrc
-" - 
 
 set nocompatible " be iMproved (you want vim, not just vi)
 
@@ -16,13 +15,46 @@ set nocompatible " be iMproved (you want vim, not just vi)
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'tpope/vim-sensible' " generic config that everyone (should) use
-Plug 'scrooloose/nerdtree' " file tree
-Plug 'editorconfig/editorconfig-vim' " .editorconfig file support (see editorconfig.org)
-Plug 'kien/ctrlp.vim' " sublime text like ctrl+p (open file with fuzzy matching)
-Plug 'terryma/vim-multiple-cursors' " multiple cursor, select some text then ctrl+n)
-Plug 'nathanaelkane/vim-indent-guides' " indentation guides
-Plug 'scrooloose/syntastic' " syntax error/linter
+" generic config that everyone (should) use
+Plug 'tpope/vim-sensible'
+
+" file tree
+Plug 'scrooloose/nerdtree'
+
+" .editorconfig file support (see editorconfig.org)
+Plug 'editorconfig/editorconfig-vim'
+
+" sublime text like ctrl+p (open file with fuzzy matching)
+Plug 'kien/ctrlp.vim'
+
+" multiple cursor, select some text then ctrl+n)
+Plug 'terryma/vim-multiple-cursors'
+
+" indentation guides
+Plug 'nathanaelkane/vim-indent-guides'
+
+" syntax error/linter
+Plug 'scrooloose/syntastic'
+
+" code indexer, pretty cool to jump to classes/vars/function from the name  http://andrew.stwrt.ca/posts/vim-ctags
+Plug 'xolox/vim-easytags'
+"requirement for vim-easytags
+Plug 'xolox/vim-misc'
+
+" Open url with <Leader>u or :OpenURL " no need, just use 'gx' to open the url under the cursor
+"Plug 'henrik/vim-open-url'
+
+" handle surrounding stuff
+Plug 'tpope/vim-surround'
+
+" Search in project with ack
+Plug 'mileszs/ack.vim'
+
+" Vim session
+Plug 'tpope/vim-obsession'
+
+" play with comments
+Plug 'tomtom/tcomment_vim'
 
 " More Syntax
 
@@ -76,14 +108,20 @@ set clipboard=unnamed
 
 "" Spaces/Tabs
 
-set expandtab "Use spaces instead of tabs
+set expandtab " Use spaces instead of tabs
 set shiftwidth=2
 set tabstop=2
 
 "" Indentation guides
+
 set ts=2 sw=2
 let g:indent_guides_start_level=2
 let g:indent_guides_guide_size=1
+
+"" A buffer becomes hidden when it is abandoned
+
+set hidden
+" See buffers has tabs you find in other editors
 
 " ---
 
@@ -101,6 +139,16 @@ let g:indent_guides_guide_size=1
 "imap <right> <nop>
 " this is preventing mouse scroll to affect vim
 
+
+"" Easier map leader
+
+" With a map leader it's possible to do extra key combinations
+let mapleader = ","
+let g:mapleader = ","
+
+" Fast saving
+nmap <leader>w :w!<cr>
+
 "" Bye Esc => jk or kj
 
 map jk <Esc>
@@ -108,10 +156,33 @@ map kj <Esc>
 imap jk <Esc>
 imap kj <Esc>
 
+"" Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
+nmap <M-j> mz:m+<cr>`z
+nmap <M-k> mz:m-2<cr>`z
+vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
+vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
-"" Easier map leader
+if has("mac") || has("macunix")
+  nmap <D-j> <M-j>
+  nmap <D-k> <M-k>
+  vmap <D-j> <M-j>
+  vmap <D-k> <M-k>
+endif
 
-let mapleader = ","
+"" really delete a line (no cut)
+map <leader>d "_d
+
+"" open an url
+map <leader>u gx
+
+"" navigate between buffers
+map <leader>b :bnext<cr>
+
+"" OS X need this to share copy/paste between os/vim clipboard
+
+" `ctrl+c/ctrl+v to share clipboard with OSX
+vmap <C-c> y:call system("pbcopy", getreg("\""))<CR>
+nmap <C-v> :call setreg("\"",system("pbpaste"))<CR>p
 
 " ---
 
@@ -146,6 +217,10 @@ nmap <Leader>oo :CtrlP<cr>
 nmap <Leader>of :CtrlPMixed<cr>
 nmap <Leader>ob :CtrlPBuffer<cr>
 nmap <Leader>or :CtrlPMRU<cr>
+
+"" ctags + CtrlP
+
+nnoremap <leader>. :CtrlPTag<cr>
 
 "" Syntastic
 

@@ -15,7 +15,7 @@ setupsh-recipe custom-folders
 # Development
 ##
 
-#brewcaskinstall "iTerm" "iterm2"
+brewcaskinstall "iTerm" "iterm2"
 setupsh-recipe git
 brewcaskinstall "GitHub"
 
@@ -35,7 +35,7 @@ brewcaskinstall Slate
 openifnot "Slate"
 
 # editor
-brewcaskinstall tmux
+brewinstall tmux
 setupsh-recipe vim
 brewcaskinstall atom
 

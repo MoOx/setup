@@ -17,52 +17,30 @@ positions.full = slate.operation("move", {
   width: "screenSizeX",
   height: "screenSizeY"
 })
-positions.top__half = positions.full.dup({
-  height: "screenSizeY/2"
-})
+positions.top__half = positions.full.dup({height: "screenSizeY/2"})
 positions.left__half = positions.full.dup({
   height: "screenSizeY",
   width: "screenSizeX/2"
 })
-positions.left_top__half = positions.left__half.dup({
-  height: "screenSizeY/2"
-})
-positions.left_bottom__half = positions.left_top__half.dup({
-  y: "screenOriginY+screenSizeY/2"
-})
-positions.left__3of4 = positions.full.dup({
-  width: "screenSizeX/4*3"
-})
-positions.left__2of3 = positions.full.dup({
-  width: "screenSizeX/3*2"
-})
-
-positions.center_1of2 = positions.left__half.dup({
-  x: "screenOriginX+screenSizeX/4"
-})
-
+positions.left_top__half = positions.left__half.dup({height: "screenSizeY/2"})
+positions.left_bottom__half = positions.left_top__half.dup({y: "screenOriginY+screenSizeY/2"})
+positions.left__3of4 = positions.full.dup({width: "screenSizeX/4*3"})
+positions.left__2of3 = positions.full.dup({width: "screenSizeX/3*2"})
+positions.center_1of2 = positions.left__half.dup({x: "screenOriginX+screenSizeX/4"})
 positions.right__half = positions.full.dup({
   height: "screenSizeY",
   width: "screenSizeX/2",
   x: "screenOriginX+screenSizeX/2"
 })
-positions.right_top__half = positions.right__half.dup({
-  height: "screenSizeY/2"
-})
-positions.right_bottom__half = positions.right_top__half.dup({
-  y: "screenOriginY+screenSizeY/2"
-})
+positions.right_top__half = positions.right__half.dup({height: "screenSizeY/2"})
+positions.right_bottom__half = positions.right_top__half.dup({y: "screenOriginY+screenSizeY/2"})
 positions.right__1of3 = positions.full.dup({
   height: "screenSizeY",
   width: "screenSizeX/3",
   x: "screenOriginX+screenSizeX/3*2"
 })
-positions.right__1of3__top__half = positions.right__1of3.dup({
-  height: "screenSizeY/2"
-})
-positions.right__1of3__bottom__half = positions.right__1of3__top__half.dup({
-  y: "screenOriginY+screenSizeY/2"
-})
+positions.right__1of3__top__half = positions.right__1of3.dup({height: "screenSizeY/2"})
+positions.right__1of3__bottom__half = positions.right__1of3__top__half.dup({y: "screenOriginY+screenSizeY/2"})
 positions.right__2of3 = positions.full.dup({
   height: "screenSizeY",
   width: "2*screenSizeX/3",
@@ -72,15 +50,9 @@ positions.right__1of4 = positions.full.dup({
   width: "screenSizeX/4",
   x: "screenOriginX+screenSizeX-screenSizeX/4"
 })
-positions.right__1of4__top__1of3 = positions.right__1of4.dup({
-  height: "screenSizeY/3"
-})
-positions.right__1of4__top__2of3 = positions.right__1of4__top__1of3.dup({
-  y: "screenOriginY+screenSizeY/3"
-})
-positions.right__1of4__top__3of3 = positions.right__1of4__top__1of3.dup({
-  y: "screenOriginY+(screenSizeY/3*2)"
-})
+positions.right__1of4__top__1of3 = positions.right__1of4.dup({height: "screenSizeY/3"})
+positions.right__1of4__top__2of3 = positions.right__1of4__top__1of3.dup({y: "screenOriginY+screenSizeY/3"})
+positions.right__1of4__top__3of3 = positions.right__1of4__top__1of3.dup({y: "screenOriginY+(screenSizeY/3*2)"})
 
 var tweetbotWidth = 600;
 positions.tweetbot = slate.operation("move", {
@@ -98,12 +70,13 @@ Array({screen: 0, key: "main"}, {screen: 1, key: "secondary"}).forEach(function(
   hashes[hashOpts.key] = {
     full: {operations: [positions.full.dup({screen: hashOpts.screen})]},
     left__half: {operations: [positions.left__half.dup({screen: hashOpts.screen})]},
-    left__3of4: {operations: [positions.left__3of4.dup({screen: hashOpts.screen})]},
-    left__2of3: {operations: [positions.left__2of3.dup({screen: hashOpts.screen})]},
-    center_1of2: {operations: [positions.center_1of2.dup({screen: hashOpts.screen})]},
     right__half: {operations: [positions.right__half.dup({screen: hashOpts.screen})]},
     right_top__half: {operations: [positions.right_top__half.dup({screen: hashOpts.screen})]},
     right_bottom__half: {operations: [positions.right_bottom__half.dup({screen: hashOpts.screen})]},
+    // below looks unused
+    left__3of4: {operations: [positions.left__3of4.dup({screen: hashOpts.screen})]},
+    left__2of3: {operations: [positions.left__2of3.dup({screen: hashOpts.screen})]},
+    center_1of2: {operations: [positions.center_1of2.dup({screen: hashOpts.screen})]},
     right__1of4: {operations: [positions.right__1of4.dup({screen: hashOpts.screen})]},
     right__1of3: {operations: [positions.right__1of3.dup({screen: hashOpts.screen})]},
     right__1of3__top__half: {operations: [positions.right__1of3__top__half.dup({screen: hashOpts.screen})]},
@@ -132,115 +105,55 @@ slate.log("❯ Hashes defined", hashes)
 var layouts = {}
 
 layouts.XL = slate.layout("layout:XL", {
-  Calendar: hashes.main.left__half,
-  Wunderlist: hashes.main.right__half,
-
   Firefox: hashes.main.full,
   FirefoxDeveloperEdition: hashes.main.full, // Firefox
   Nightly: hashes.main.full, // Firefox
-  GoogleChrome: hashes.main.full,
   Safari: hashes.main.full,
+  GoogleChrome: hashes.main.full,
 
-  Atom: hashes.main.right__2of3,
-  SublimeText: hashes.main.right__2of3,
+  iTerm: hashes.main.full,
+  Terminal: hashes.main.full,
 
-  Tweetbot: {
-    operations: [positions.tweetbot],
-    ignorefail: true,
-    repeat: true
-  },
+  LimeChat: hashes.secondary.left__half,
+  Messages: hashes.secondary.left__half,
+  Skype: hashes.secondary.left__half,
+  Slack: hashes.secondary.left__half,
 
-  iTerm: hashes.secondary.left__half,
-  Terminal: hashes.secondary.left__half,
-
-  Messages: hashes.secondary.right_top__half,
-  Skype: hashes.secondary.right_top__half,
-  HipChat: hashes.secondary.right_top__half,
-  Slack: hashes.secondary.right_top__half,
-  Gitter: hashes.secondary.right_top__half,
-
-  LimeChat: hashes.secondary.right_bottom__half
+  Calendar: hashes.secondary.right__half,
+  Wunderlist: hashes.secondary.right__half,
+  Tweetbot: hashes.secondary.right__half
 })
 
 layouts.XM = layouts.XL
 
-Array({key: "L", hashKey: "main"}, {key: "L_alt", hashKey: "secondary"}).forEach(function(layoutOpts) {
+Array(
+  {key: "L", hashKey: "main"},
+  {key: "L_alt", hashKey: "secondary"},
+  {key: "M", hashKey: "main"},
+  {key: "M_alt", hashKey: "secondary"}
+).forEach(function(layoutOpts) {
   var h = hashes[layoutOpts.hashKey]
   layouts[layoutOpts.key] = slate.layout("layout:" + layoutOpts.key, {
-    Calendar: h.left__half,
+    Firefox: h.full,
+    FirefoxDeveloperEdition: h.full, // Firefox
+    Nightly: h.full, // Firefox
+    GoogleChrome: h.full,
+    Safari: h.full,
+
+    iTerm: h.full,
+    Terminal: h.full,
+
+    LimeChat: h.left__half,
+    Messages: h.left__half,
+    Skype: h.left__half,
+    Slack: h.left__half,
+
+    Calendar: h.right__half,
     Wunderlist: h.right__half,
-
-    Firefox: h.left__3of4,
-    FirefoxDeveloperEdition: h.left__3of4, // Firefox
-    Nightly: h.left__3of4, // Firefox
-    GoogleChrome: h.left__3of4,
-    Safari: h.left__3of4,
-
-    Atom: h.center_1of2,
-    SublimeText: h.center_1of2,
-
-    Tweetbot: {
-      operations: [positions.tweetbot.dup({
-        screen: layoutOpts.key === "main" ? 0 : 1,
-        x: "screenOriginX+screenSizeX-screenSizeX/4-" + tweetbotWidth,
-      })],
-      ignorefail: true,
-      repeat: true
-    },
-
-    iTerm: h.right__1of4__top__1of3,
-    Terminal: h.right__1of4__top__1of3,
-
-    LimeChat: h.right__1of4__top__2of3,
-
-    Messages: h.right__1of4__top__3of3,
-    Skype: h.right__1of4__top__3of3,
-    HipChat: h.right__1of4__top__3of3,
-    Slack: h.right__1of4__top__3of3,
-    Gitter: h.right__1of4__top__3of3,
+    Tweetbot: h.right__half,
 
     VLC: h.right__1of4__top__3of3,
     MPlayerX: h.right__1of4__top__3of3
-  })
-})
-
-Array({key: "M", hashKey: "main"}, {key: "M_alt", hashKey: "secondary"}).forEach(function(layoutOpts) {
-  var h = hashes[layoutOpts.hashKey]
-  layouts[layoutOpts.key] = slate.layout("layout:" + layoutOpts.key, {
-    Calendar: h.full,
-    Wunderlist: h.right__half,
-
-    Firefox: h.left__2of3,
-    FirefoxDeveloperEdition: h.left__2of3, // Firefox
-    Nightly: h.left__2of3, // Firefox
-    GoogleChrome: h.left__2of3,
-    Safari: h.left__2of3,
-
-    Atom: h.left__2of3,
-    SublimeText: h.left__2of3,
-
-    Tweetbot: {
-      operations: [positions.tweetbot.dup({
-        screen: layoutOpts.key === "main" ? 0 : 1,
-        x: "screenOriginX+screenSizeX-" + tweetbotWidth,
-      })],
-      ignorefail: true,
-      repeat: true
-    },
-
-    iTerm: h.right__1of3__top__half,
-    Terminal: h.right__1of3__top__half,
-
-    LimeChat: h.right__1of3__bottom__half,
-
-    Messages: h.right__1of3__bottom__half,
-    Skype: h.right__1of3__bottom__half,
-    HipChat: h.right__1of3__bottom__half,
-    Slack: h.right__1of3__bottom__half,
-    Gitter: h.right__1of3__bottom__half,
-
-    VLC: h.right__1of3__bottom__half,
-    MPlayerX: h.right__1of3__bottom__half
   })
 })
 
@@ -279,7 +192,10 @@ var adaptWhenVideoIsRunning = function() {
 
           // make terminals smaller
           slate.eachApp(function(app) {
-            if (app.name() === "iTerm" || app.name() === "Terminal") {
+            if (app.name() === "LimeChat" ||
+                app.name() === "Message" ||
+                app.name() === "Skype" ||
+                app.name() === "Slack" ) {
               app.eachWindow(function(window) {
                 if (window.isMain()) {
                   window.doOperation(positions.left_bottom__half)

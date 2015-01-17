@@ -56,6 +56,12 @@ Plug 'tpope/vim-obsession'
 " play with comments
 Plug 'tomtom/tcomment_vim'
 
+" Git integration
+Plug 'tpope/vim-fugitive'
+
+" Zoom into window
+Plug 'regedarek/ZoomWin'
+
 " More Syntax
 
 Plug 'nono/vim-handlebars'

@@ -37,6 +37,9 @@ openifnot "Slate"
 # editor
 brewinstall tmux
 brewinstall ack
+# fix OS X error -10810
+# see tmux.conf
+brewinstall reattach-to-user-namespace
 setupsh-recipe vim
 brewcaskinstall atom
 

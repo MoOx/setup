@@ -2,6 +2,7 @@
 
 # one keyboard/mouse for multiples machines
 brewcaskinstall "Synergy"
+setupsh-accessibility-privacy-apps --insert synergy
 
 ##
 # Sync first
@@ -33,6 +34,7 @@ brewinstall zsh-completions
 # window manager
 brewcaskinstall Slate
 openifnot "Slate"
+setupsh-accessibility-privacy-apps --insert com.slate.Slate
 
 # editor
 brewinstall tmux

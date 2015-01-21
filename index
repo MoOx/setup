@@ -28,7 +28,7 @@ npmig npm-check
 npmig updatehammer
 
 ### Release tools
-brewinstall github-release
+npmig grizzly
 npmig mversion
 
 ## Ssh

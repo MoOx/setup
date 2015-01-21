@@ -158,12 +158,10 @@ let g:mapleader = ","
 " Fast saving
 nmap <leader>w :w!<cr>
 
-"" Bye Esc => jk or kj
+"" Bye Esc => ;;
 
-map jk <Esc>
-map kj <Esc>
-imap jk <Esc>
-imap kj <Esc>
+map ;; <Esc>
+imap ;; <Esc>
 
 "" Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
 nmap <M-j> mz:m+<cr>`z

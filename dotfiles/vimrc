@@ -62,6 +62,9 @@ Plug 'tpope/vim-fugitive'
 " Zoom into window
 Plug 'regedarek/ZoomWin'
 
+" Close buffer without closing window
+Plug 'rbgrouleff/bclose.vim'
+
 " More Syntax
 
 Plug 'nono/vim-handlebars'

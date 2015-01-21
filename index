@@ -22,21 +22,27 @@ brewcaskinstall "GitHub"
 
 ### Node
 setupsh-recipe node
-# release tool
-npmig mversion
-# package helpers
+
+#### Package helpers
 npmig npm-check
 npmig updatehammer
 
+### Release tools
+brewinstall github-release
+npmig mversion
+
+## Ssh
 setupsh-recipe ssh
+
+## Zsh completion
 brewinstall zsh-completions
 
-# window manager
+# Window manager
 brewcaskinstall Slate
 openifnot "Slate"
 setupsh-accessibility-privacy-apps --insert com.slate.Slate
 
-# editor
+# Editor
 brewinstall tmux
 brewinstall the_silver_searcher
 # fix OS X error -10810

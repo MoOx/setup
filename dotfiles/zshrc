@@ -160,6 +160,11 @@ export GPAAS_GIT_URL="git+ssh://$MY_GPAAS_USER@$MY_GPAAS_GIT/"
 alias gpaas_ssh="ssh $1@$GPAAS_SSH_HOST"
 
 ## Git
+alias git=hub
+if [[ -f $HOME/.github_token ]]
+then
+  export GITHUB_TOKEN=$(cat $HOME/.github_token)
+fi
 alias sourcetree=/Applications/SourceTree.app/Contents/MacOS/SourceTree
 
 ## Network

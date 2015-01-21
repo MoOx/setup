@@ -1,6 +1,7 @@
 #!/usr/bin/env zsh
 
 export SETUP_PATH=$HOME/setup
+export PATH=$SETUP_PATH/bin:$PATH
 export PATH=$SETUP_PATH/setupsh/bin:$PATH
 export PATH=$SETUP_PATH/setupsh/recipes:$PATH
 

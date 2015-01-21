@@ -38,7 +38,7 @@ setupsh-accessibility-privacy-apps --insert com.slate.Slate
 
 # editor
 brewinstall tmux
-brewinstall ack
+brewinstall the_silver_searcher
 # fix OS X error -10810
 # see tmux.conf
 brewinstall reattach-to-user-namespace

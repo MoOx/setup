@@ -47,8 +47,8 @@ Plug 'xolox/vim-misc'
 " handle surrounding stuff
 Plug 'tpope/vim-surround'
 
-" Search in project with ack
-Plug 'mileszs/ack.vim'
+" Search in project with ag
+Plug 'rking/ag.vim'
 
 " Vim session
 Plug 'tpope/vim-obsession'

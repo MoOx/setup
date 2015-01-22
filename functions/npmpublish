@@ -14,7 +14,7 @@ function npmpublish() {
   npm publish && \
 
   git push origin master && \
-  git push origin master --tags
+  git push origin master --tags && \
 
   npmrelease
 }

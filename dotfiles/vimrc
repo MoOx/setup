@@ -72,6 +72,9 @@ Plug 'othree/html5-syntax.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'tpope/vim-markdown'
 
+" color scheme
+Plug 'altercation/vim-colors-solarized'
+
 call plug#end()
 
 "" No backup/swap files
@@ -195,7 +198,9 @@ nmap <C-v> :call setreg("\"",system("pbpaste"))<CR>p
 
 " Visual stuff
 
-set background=dark
+" enable color scheme
+set background=light
+colorscheme solarized
 
 "" highlight some specials chars
 

@@ -15,6 +15,10 @@ set nocompatible " be iMproved (you want vim, not just vi)
 
 call plug#begin('~/.vim/plugged')
 
+" Navigate between Vim windows & Tmux panes seamlessly
+" using C-h/j/k/l to move (or C-\ for previous window/pane)
+Plug 'christoomey/vim-tmux-navigator'
+
 " generic config that everyone (should) use
 Plug 'tpope/vim-sensible'
 

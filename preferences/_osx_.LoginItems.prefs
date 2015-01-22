@@ -21,7 +21,6 @@ osascript -e 'tell application "System Events" to make login item at end with pr
 osascript -e 'tell application "System Events" to make login item at end with properties {hidden:false, path:"/Applications/LimeChat.app", name:"LimeChat" }' > /dev/null
 osascript -e 'tell application "System Events" to make login item at end with properties {hidden:false, path:"/Applications/Skype.app", name:"Skype" }' > /dev/null
 osascript -e 'tell application "System Events" to make login item at end with properties {hidden:false, path:"/Applications/Slack 0.44.2.app", name:"Slack" }' > /dev/null
-osascript -e 'tell application "System Events" to make login item at end with properties {hidden:false, path:"/Applications/Gitter.app", name:"Gitter" }' > /dev/null
 
 # Trim Enabler
 if [[ $COMPUTER_NAME == "iMoOx" ]]

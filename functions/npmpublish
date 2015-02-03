@@ -1,15 +1,13 @@
 #!/usr/bin/env zsh
 
-# `npmpublish` with an optional argument `patch`/`minor`/`major`/`<version>`
-# defaults to `patch`
-# require `npm i -g mversion`
+# `npmpublish` to safely tag, publish & release current repo version & state
 function npmpublish() {
   git pull --rebase && \
   rm -rf node_modules && \
   npm install && \
   npm test && \
 
-  mversion ${1:=patch} -m -n && \
+  git tag $(node -e 'process.stdout.write(require("./package.json").version)') && \
 
   npm publish && \
 

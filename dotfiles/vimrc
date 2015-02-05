@@ -203,7 +203,7 @@ nmap <C-v> :call setreg("\"",system("pbpaste"))<CR>p
 " Visual stuff
 
 " enable color scheme
-set background=light
+set background=dark
 colorscheme solarized
 
 "" highlight some specials chars

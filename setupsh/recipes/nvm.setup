@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+
+if ! type nvm > /dev/null
+then
+  echo_title_install "NVM"
+  brewinstall nvm
+  mkdir $HOME/.nvm
+fi
+

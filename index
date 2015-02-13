@@ -20,8 +20,10 @@ brewcaskinstall "iTerm" "iterm2"
 setupsh-recipe git
 brewcaskinstall "GitHub"
 
-### Node
-setupsh-recipe node
+### NVM: Node / io.js
+setupsh-recipe nvm
+nvm install stable
+nvm alias default stable
 
 #### Package helpers
 npmig npm-check

@@ -101,6 +101,9 @@ highlight LineNr cterm=none ctermfg=DarkGrey ctermbg=none
 
 set nowrap
 
+"" Enable mouse scrolling
+set mouse=a
+
 "" Scolling will always some lines around cursor
 
 set scrolloff=3

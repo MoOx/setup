@@ -1,5 +1,7 @@
 #!/usr/bin/env zsh
 
+brewinstall vim
+
 # vim plugins
 if [[ ! -f $HOME/.vim/autoload ]]
 then

@@ -74,6 +74,7 @@ Plug 'rbgrouleff/bclose.vim'
 Plug 'nono/vim-handlebars'
 Plug 'othree/html5-syntax.vim'
 Plug 'pangloss/vim-javascript'
+Plug 'elzr/vim-json'
 Plug 'tpope/vim-markdown'
 
 " color scheme

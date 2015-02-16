@@ -45,11 +45,12 @@ openifnot "Slate"
 setupsh-accessibility-privacy-apps --insert com.slate.Slate
 
 # Editor
-brewinstall tmux
-brewinstall the_silver_searcher
 # fix OS X error -10810
 # see tmux.conf
 brewinstall reattach-to-user-namespace
+brewinstall tmux
+brewinstall ctags
+brewinstall the_silver_searcher
 setupsh-recipe vim
 brewcaskinstall atom
 

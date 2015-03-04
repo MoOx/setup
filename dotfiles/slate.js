@@ -2,7 +2,6 @@
 "use strict";
 
 // more examples here https://github.com/jigish/dotfiles/blob/master/slate.js
-//
 // App object: https://github.com/jigish/slate/wiki/Application-Object
 
 // Monitors
@@ -54,15 +53,6 @@ positions.right__1of4__top__1of3 = positions.right__1of4.dup({height: "screenSiz
 positions.right__1of4__top__2of3 = positions.right__1of4__top__1of3.dup({y: "screenOriginY+screenSizeY/3"})
 positions.right__1of4__top__3of3 = positions.right__1of4__top__1of3.dup({y: "screenOriginY+(screenSizeY/3*2)"})
 
-var tweetbotWidth = 600;
-positions.tweetbot = slate.operation("move", {
-  screen: 0,
-  x: "screenOriginX+screenSizeX-" + tweetbotWidth,
-  y: "screenOriginY",
-  width: tweetbotWidth,
-  height: "screenSizeY"
-})
-
 slate.log("❯ Positions defined")
 
 var hashes = {}
@@ -108,20 +98,17 @@ layouts.XL = slate.layout("layout:XL", {
   Firefox: hashes.main.full,
   FirefoxDeveloperEdition: hashes.main.full, // Firefox
   Nightly: hashes.main.full, // Firefox
-  Safari: hashes.main.full,
-  GoogleChrome: hashes.main.full,
-
   iTerm: hashes.main.full,
   Terminal: hashes.main.full,
 
-  LimeChat: hashes.secondary.left__half,
+  Calendar: hashes.secondary.full,
+
   Messages: hashes.secondary.left__half,
   Skype: hashes.secondary.left__half,
   Slack: hashes.secondary.left__half,
 
-  Calendar: hashes.secondary.right__half,
-  Wunderlist: hashes.secondary.right__half,
-  Tweetbot: hashes.secondary.right__half
+  LimeChat: hashes.secondary.right__half,
+  Wunderlist: hashes.secondary.right__half
 })
 
 layouts.XM = layouts.XL
@@ -137,20 +124,16 @@ Array(
     Firefox: h.full,
     FirefoxDeveloperEdition: h.full, // Firefox
     Nightly: h.full, // Firefox
-    GoogleChrome: h.full,
-    Safari: h.full,
-
+    Calendar: h.full,
     iTerm: h.full,
     Terminal: h.full,
 
-    LimeChat: h.left__half,
     Messages: h.left__half,
     Skype: h.left__half,
     Slack: h.left__half,
 
-    Calendar: h.right__half,
+    LimeChat: h.right__half,
     Wunderlist: h.right__half,
-    Tweetbot: h.right__half,
 
     VLC: h.right__1of4__top__3of3,
     MPlayerX: h.right__1of4__top__3of3
@@ -188,7 +171,7 @@ var adaptWhenVideoIsRunning = function() {
 
         // if two screens, move in the small screen on the top, using half of the height
         if (slate.screenCount() === 2) {
-          window.doOperation(positions.left_top__half)
+          window.doOperation(positions.top__half)
 
           // make terminals smaller
           slate.eachApp(function(app) {

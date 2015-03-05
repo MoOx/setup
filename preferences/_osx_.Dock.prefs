@@ -37,12 +37,12 @@ dockutil --no-restart --add "/Applications/iTunes.app"
 dockutil --no-restart --add "/Applications/Safari.app"
 dockutil --no-restart --add "/Applications/Xcode.app/Contents/Developer/Applications/iOS Simulator.app"
 dockutil --no-restart --add "/Applications/FirefoxNightly.app"
-dockutil --no-restart --add "/Applications/Tweetbot.app"
 dockutil --no-restart --add "/Applications/iTerm.app"
 dockutil --no-restart --add "/Applications/GitHub.app"
 if [[ $(ls /Applications | grep Slack) != "" ]]; then dockutil --no-restart --add "/Applications/`ls /Applications | grep Slack`"; fi
 dockutil --no-restart --add "/Applications/LimeChat.app"
 dockutil --no-restart --add "/Applications/Messages.app"
+dockutil --no-restart --add "/Applications/Tweetbot.app"
 dockutil --no-restart --add "/Applications" --view grid --display folder --sort name
 
 ##

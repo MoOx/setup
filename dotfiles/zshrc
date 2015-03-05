@@ -129,9 +129,14 @@ export NVM_DIR=$HOME/.nvm
 source $(brew --prefix nvm)/nvm.sh
 
 ## NPM
+### add web_modules as a node_modules like
+# export NODE_PATH=web_modules
 export NODE_PATH=/usr/local/lib/node_modules
-# to avoid npm install -g
+
+### to avoid npm install -g
 export PATH=$PATH:./node_modules/.bin
+
+### some nice aliases
 alias npmi="npm i"
 alias npmt="npm i && npm test"
 alias npms="npm i && npmstart" # npmstart function

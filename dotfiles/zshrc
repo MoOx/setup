@@ -201,4 +201,4 @@ if [[ -f ~/.zshrc.local ]]; then; source ~/.zshrc.local; fi
 alias .e="setupsh-edit"
 alias .o="setupsh-open"
 alias echofliptable="echo '\n(╯°□°）╯︵ ┻━┻\n'"
-alias fliptable="echofliptable && setupsh-update && setupsh-run"
+alias fliptable="echo \"$USER/setup\" && echofliptable && setupsh-update && setupsh-run"

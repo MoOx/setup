@@ -2,34 +2,30 @@
 
 # ~/Sync/ folder + icon
 if ! ls $DIR_SYNC &> /dev/null
-  then
+then
   mkdir $DIR_SYNC
   setfileicon $OS_ICONS_DIR/GroupFolder.icns $DIR_SYNC
 fi
 
 # Library/Fonts link
-if ls $DIR_DEV/Fonts &> /dev/null
+if ls $DIR_Sync/Fonts &> /dev/null
 then
   sudo rm -rf $HOME/Library/Fonts
-  ln -s $DIR_DEV/Fonts $HOME/Library/Fonts
+  ln -s $DIR_SYNC/Fonts $HOME/Library/Fonts
 fi
 
 # iTunes
-# @todo mv Music iTunes
-if ls $DIR_SYNC/Music &> /dev/null
+if ls $DIR_SYNC/iTunes &> /dev/null
 then
-  sudo rm -rf $HOME/Music
-  ln -s $DIR_SYNC/Music $HOME/Music
-
-  sudo rm -rf $HOME/iTunes
-  ln -s $HOME/Music $HOME/iTunes
+  rm -rf $HOME/Music/iTunes
+  ln -s $DIR_SYNC/iTunes $HOME/Music/iTunes
 fi
 
 # Pictures
-if ls $DIR_SYNC/Documents/Pictures &> /dev/null
+if ls $DIR_SYNC/Pictures &> /dev/null
 then
   sudo rm -rf $HOME/Pictures
-  ln -s $DIR_SYNC/Documents/Pictures $HOME/Pictures
+  ln -s $DIR_SYNC/Pictures $HOME/Pictures
 fi
 
 # Shared Photos

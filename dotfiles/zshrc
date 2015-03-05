@@ -202,3 +202,6 @@ alias .e="setupsh-edit"
 alias .o="setupsh-open"
 alias echofliptable="echo '\n(╯°□°）╯︵ ┻━┻\n'"
 alias fliptable="echo \"$USER/setup\" && echofliptable && setupsh-update && setupsh-run"
+
+# added by travis gem
+[ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh

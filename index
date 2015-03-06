@@ -61,14 +61,11 @@ setupsh-recipe firefox-user.js
 
 # MAXIMUM SECURITY
 brewcaskinstall "KeePassX"
-# Some app from AppStore
-openifnot "Tweetbot"
 
 ##
 # Sharing
 ##
 brewcaskinstall LimeChat
-openifnot LimeChat
 brewcaskinstall "CloudApp" cloud
 #brewcaskinstall "Cloudup"
 

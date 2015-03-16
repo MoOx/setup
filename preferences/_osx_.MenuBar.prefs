@@ -10,8 +10,7 @@ then
     defaults write "${domain}" dontAutoLoad -array \
       "$OSX_MENU_EXTRAS/Displays.menu" \
       "$OSX_MENU_EXTRAS/TimeMachine.menu" \
-      "$OSX_MENU_EXTRAS/User.menu" \
-      "$OSX_MENU_EXTRAS/Clock.menu"
+      "$OSX_MENU_EXTRAS/User.menu"
   done
 fi
 
@@ -31,3 +30,7 @@ then
     "$MENUMETERS_PATH/latest/MenuMeters Installer.app/Contents/Resources/MenuMeters.prefPane/Contents/Resources/MenuMeterCPU.menu" \
     "$MENUMETERS_PATH/latest/MenuMeters Installer.app/Contents/Resources/MenuMeters.prefPane/Contents/Resources/MenuCracker.menu"
 fi
+
+# add clock after everything
+defaults write com.apple.systemuiserver menuExtras -array-add \
+  "$OSX_MENU_EXTRAS/Clock.menu"

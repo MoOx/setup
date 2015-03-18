@@ -7,21 +7,17 @@ then
   setfileicon $OS_ICONS_DIR/GroupFolder.icns $DIR_SYNC
 fi
 
-# Library/Fonts link
-if ls $DIR_Sync/Fonts &> /dev/null
-then
-  sudo rm -rf $HOME/Library/Fonts
-  ln -s $DIR_SYNC/Fonts $HOME/Library/Fonts
-fi
+# Sync/Library/*
+setupsh-ls-subfolders $DIR_SYNC/Library $HOME/Library
 
-# iTunes
+# Sync/iTunes
 if ls $DIR_SYNC/iTunes &> /dev/null
 then
   rm -rf $HOME/Music/iTunes
   ln -s $DIR_SYNC/iTunes $HOME/Music/iTunes
 fi
 
-# Pictures
+# Sync/Pictures
 if ls $DIR_SYNC/Pictures &> /dev/null
 then
   sudo rm -rf $HOME/Pictures

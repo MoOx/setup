@@ -62,6 +62,9 @@
   # List contributors with number of commits
   contributors = shortlog --summary --numbered
 
+  # search in content
+  search = "!git rev-list --all | xargs git grep"
+
 [push]
   default = simple
 

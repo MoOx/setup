@@ -1,0 +1,13 @@
+#!/usr/bin/env zsh
+
+# link all subfolders of $1 as $2/*
+function setupsh-ls-subfolders() {
+  # first remove all corresponding subfolders
+  CWD=$(pwd)
+  cd $2
+  ls -1 $1 | sed 's/\ /\\\ /g' | xargs rm -rf
+  cd $CWD
+
+  # then ln children
+  ln -s $1/* $2
+}

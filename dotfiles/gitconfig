@@ -65,6 +65,9 @@
   # search in content
   search = "!git rev-list --all | xargs git grep"
 
+[pull]
+  rebase = true
+
 [push]
   default = simple
 

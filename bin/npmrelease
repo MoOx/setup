@@ -7,7 +7,7 @@
  *   $ GITHUB_TOKEN=aGitHubToken
  *   $ npmrelease
  *
- * we will use github-release (https://github.com/aktau/github-release)
+ * we will use `grizzly` (https://github.com/coderaiser/node-grizzly)
  * so we need
  * - owner (user from package.json repo field)
  * - repo (same as)owner

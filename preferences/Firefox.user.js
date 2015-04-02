@@ -13,8 +13,8 @@ user_pref("general.warnOnAboutConfig", false);
 // disable zoom on cmd + mousewheel
 user_pref("mousewheel.with_meta.action", 0);
 
-// Firefox Dev Edition skin
-user_pref("browser.devedition.theme.enabled", true);
+// Firefox Dev Edition theme
+user_pref("lightweightThemes.selectedThemeID", "firefox-devedition@mozilla.org");
 
 // light skin
 user_pref("devtools.theme", "light");

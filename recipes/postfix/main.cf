@@ -1,0 +1,19 @@
+# http://stevelorek.com/configure-postfix-relay-gmail-osx-lion.html
+# http://blog.anupamsg.me/2012/02/14/enabling-postfix-for-outbound-relay-via-gmail-on-os-x-lion-11/
+
+relayhost = [smtp.gmail.com]:587
+#smtp_generic_maps = hash:/etc/postfix/generic
+smtp_tls_loglevel=1
+smtp_tls_security_level=encrypt
+smtp_sasl_auth_enable=yes
+smtp_sasl_password_maps=hash:/etc/postfix/sasl_passwd
+smtp_sasl_security_options = noanonymous
+smtp_sasl_mechanism_filter = plain
+
+# osx adjustements
+mail_owner = _postfix
+setgid_group = _postdrop
+
+# map to reroute all email (to avoid dev failure when trying to test things)
+# http://stackoverflow.com/questions/18270439/postfix-2-9-6-1-forward-all-mail-to-an-external-mail-address
+virtual_maps = hash:/etc/postfix/virtual, regexp:/etc/postfix/virtual-regexp

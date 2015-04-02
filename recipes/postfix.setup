@@ -1,0 +1,43 @@
+#!/usr/bin/env zsh
+
+# this recipe configure postfix as a relay to another account
+# and forward all email to the mail given in virtual-regexp
+# see main.cf
+sudo ln -sf $SETUP_PATH/recipes/postfix/main.cf /etc/postfix/main.cf
+
+# create and secure mail credentials
+if [ ! -e /etc/postfix/sasl_passwd.db ]
+then
+  echo_title "Postfix: Please enter you credentials for postfix relay (press enter to start)"
+  read -k
+  echo_info "eg: [smtp.gmail.com]:587 USERNAME@DOMAIN:PASSWORD"
+  read SETUP_POSTFIX_CREDS
+  sudo echo "$SETUP_POSTFIX_CREDS" | sudo tee /etc/postfix/sasl_passwd > /dev/null
+  # create .db and delete raw credentials
+  sudo postmap /etc/postfix/sasl_passwd
+  sudo rm /etc/postfix/sasl_passwd
+fi
+
+# forward to
+if [ ! -e /etc/postfix/virtual-regexp.db ]
+then
+  echo_title "Postfix: please enter your email to forward all mails to (press enter to start)"
+  read -k
+  echo_info "eg: dev@yourdomain.com"
+  read SETUP_POSTFIX_FORWARD
+  sudo echo "/.+@.+/ $SETUP_POSTFIX_FORWARD" | sudo tee /etc/postfix/virtual-regexp > /dev/null
+  # create .db
+  sudo postmap /etc/postfix/virtual-regexp
+fi
+
+# not sure why it's needed but
+# http://stackoverflow.com/questions/18270439/postfix-2-9-6-1-forward-all-mail-to-an-external-mail-address#comment26937068_18273988
+if [ ! -e /etc/postfix/virtual.db ]
+then
+  sudo touch /etc/postfix/virtual
+  sudo postmap /etc/postfix/virtual
+fi
+
+# stop & restart
+sudo launchctl unload -w /System/Library/LaunchDaemons/org.postfix.master.plist
+sudo launchctl load -w /System/Library/LaunchDaemons/org.postfix.master.plist

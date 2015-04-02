@@ -206,6 +206,7 @@ nmap <C-v> :call setreg("\"",system("pbpaste"))<CR>p
 " ---
 
 " Visual stuff
+set colorcolumn=80
 
 " enable color scheme
 set background=dark

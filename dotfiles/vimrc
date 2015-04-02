@@ -76,6 +76,7 @@ Plug 'othree/html5-syntax.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'elzr/vim-json'
 Plug 'tpope/vim-markdown'
+Plug 'ap/vim-css-color'
 
 " color scheme
 Plug 'altercation/vim-colors-solarized'

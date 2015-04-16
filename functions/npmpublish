@@ -14,5 +14,6 @@ function npmpublish() {
   git push origin master && \
   git push origin master --tags && \
 
+  # https://github.com/MoOx/setup/blob/master/bin/npmrelease
   sleep 1 && npmrelease
 }

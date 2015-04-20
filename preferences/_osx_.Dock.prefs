@@ -37,25 +37,13 @@ dockutil --no-restart --add "/Applications/iTunes.app"
 dockutil --no-restart --add "/Applications/Safari.app"
 dockutil --no-restart --add "/Applications/Xcode.app/Contents/Developer/Applications/iOS Simulator.app"
 dockutil --no-restart --add "/Applications/FirefoxNightly.app"
-dockutil --no-restart --add "/Applications/iTerm.app"
+dockutil --no-restart --add "/Applications/Terminal.app"
+dockutil --no-restart --add "/Applications/Atom.app"
 dockutil --no-restart --add "/Applications/GitHub.app"
-if [[ $(ls /Applications | grep Slack) != "" ]]; then dockutil --no-restart --add "/Applications/`ls /Applications | grep Slack`"; fi
+dockutil --no-restart --add "/Applications/Slack.app"
 dockutil --no-restart --add "/Applications/LimeChat.app"
 dockutil --no-restart --add "/Applications/Messages.app"
 dockutil --no-restart --add "/Applications/Tweetbot.app"
 dockutil --no-restart --add "/Applications" --view grid --display folder --sort name
-
-##
-# Icons
-#
-# sudo is for appstore apps
-##
-
-# Tweetbot yosemite icon http://ziggy19.deviantart.com/art/OS-X-Yosemite-Tweetbot-482529436
-if ls "/Applications/Tweetbot.app" &> /dev/null; then sudo setfileicon "$SETUP_PATH/preferences/icns/Tweetbot.icns" "/Applications/Tweetbot.app"; fi
-# Slack icon from Muir Yosemite Icons Set 2 https://dribbble.com/shots/1773636-Muir-Yosemite-Icons-Set-2
-if [[ $(ls /Applications | grep Slack) != "" ]]; then setfileicon "$SETUP_PATH/preferences/icns/Slack.icns" "/Applications/`ls /Applications | grep Slack`"; fi
-# Steam icon from Muir Yosemite Icons Set 2 https://dribbble.com/shots/1773636-Muir-Yosemite-Icons-Set-2
-if ls "/Applications/Steam.app" &> /dev/null; then setfileicon "$SETUP_PATH/preferences/icns/Steam.icns" "/Applications/Steam.app"; fi
 
 osx-refresh

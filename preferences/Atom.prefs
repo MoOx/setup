@@ -12,7 +12,6 @@ then
 
   # editor enhancements
   apminstall projects-manager
-  apminstall recent-projects
   apminstall open-in-github-app
   apminstall gist-it
   apminstall term2
@@ -55,7 +54,6 @@ then
   apminstall atom-semicolons
   apminstall linter-eslint
   apminstall linter-jsonlint
-  apminstall coffeescript-be-gone
   apminstall react
 
     # nodejs

@@ -11,7 +11,7 @@ then
   apminstall file-type-icons
 
   # editor enhancements
-  apminstall projects-manager
+  apminstall project-manager
   apminstall open-in-github-app
   apminstall gist-it
   apminstall term2

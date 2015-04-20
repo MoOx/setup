@@ -170,8 +170,13 @@ brewcaskinstall "Utilities/Logitech Unifying Software" "logitech-unifying"
 brewcaskinstall "/Library/Java/JavaVirtualMachines" "java"
 brewcaskinstall "LibreOffice"
 
-# no comment
+# vm and shit
 brewcaskinstall "VirtualBox"
+brewinstall docker
+brewinstall docker-compose
+brewinstall boot2docker
+#boot2docker init
+#boot2docker start
 
 # not needed by default anymore
 #setupsh-recipe dnsmasq

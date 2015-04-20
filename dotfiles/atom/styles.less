@@ -8,43 +8,14 @@
  * http://www.lesscss.org
  */
 
-// force icons
-.tree-view .entry > .header > .name:before, .tree-view .entry > .name:before { display: inline-block !important; }
+.tree-view {
 
-
-.editor,
-.editor .gutter {
-  -webkit-font-smoothing: antialiased;
-  // font-weight: 300;
 }
 
-.editor .invisible-character {
-    opacity: 1;
-    text-shadow: none;
-    //color: rgba(0, 0, 0, .6);
+atom-text-editor {
+
 }
 
-  .editor .leading-whitespace {
-    color: rgba(0, 0, 0, .2);
-  }
+atom-text-editor .cursor {
 
-  .editor .indent-guide {
-    opacity: 1;
-    color: rgba(85, 85, 85, 0.2);
-    box-shadow: inset 1px 0 rgba(0, 0, 0, .1);
-  }
-
-.list-tree .status-ignored .name { opacity: .5 }
-
-// .tooltip {
-//   display: block;
-// }
-// .tooltip-inner { white-space: nowrap; }
-//
-
-/* hide quote of the "break" plugin */
-.break-quote { visibility: hidden !important; }
-
-.yuno-commit:after {
-  -webkit-filter: drop-shadow(0 0 .4rem rgba(0,0,0, .2));
 }

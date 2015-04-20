@@ -1,50 +1,61 @@
-'*':
-  'exception-reporting':
-    'userId': '3ba70428-f782-5321-e73a-7b678f36511c'
-  'release-notes':
-    'viewedVersion': '0.95.0'
-  'welcome':
-    'showOnStartup': false
-  'metrics':
-    'userId': '9e20623847c7c22109bc7b34e71c459485f8781a'
-  'editor':
-    'fontFamily': 'Menlo'
-    'fontSize': 12
-    'showInvisibles': true
-    'showIndentGuide': true
-    'autoIndentOnPaste': false
-    'invisibles': {}
-  'core':
-    'ignoredNames': [
-      '.sync'
-      'node_modules'
-      'dist'
+"*":
+  editor:
+    invisibles: {}
+    showInvisibles: true
+    showIndentGuide: true
+    fontSize: 13
+    lineHeight: 1.45
+    scrollPastEnd: true
+    fontFamily: "Menlo"
+  core:
+    projectHome: "/Users/MoOx/Sync/Development"
+    disabledPackages: [
+      "language-mustache"
+      "welcome"
+      "language-toml"
+      "language-sass"
+      "language-ruby-on-rails"
+      "language-ruby"
+      "language-python"
+      "language-php"
+      "language-perl"
+      "language-objective-c"
+      "language-less"
+      "language-java"
+      "language-hyperlink"
+      "language-go"
+      "language-csharp"
+      "language-coffee-script"
+      "language-clojure"
+      "language-jsx"
     ]
-    'disabledPackages': [
-      'autosave'
-    ]
-    'themes': [
-      'yosemite-unity-ui'
-      'atom-light-syntax'
-    ]
-    'projectHome': '/Users/MoOx/Sync/Development'
-  'autocomplete-plus':
-    'includeCompletionsFromAllBuffers': true
-  'tree-view':
-    'showOnRightSide': true
-  'color':
-    'fillColorAsBackground': false
-  'autocomplete':
-    'includeCompletionsFromAllBuffers': true
-  'break':
-    'macroBreakIntervalInMicroAmount': 0
-    'macroBreakLengthInSeconds': 30
-    'microBreakLengthInSeconds': 30
-    'microBreakIntervalInSeconds': 1200
-  'linter':
-    'statusBar': 'Show error if the cursor is in range'
-  'atom-beautify':
-    'beautifyEntireFileOnSave': false
-    'analytics': false
-  'linter-eslint':
-    'disableWhenNoEslintrcFileInPath': true
+  "exception-reporting":
+    userId: "acee8e04-1bbb-8674-25af-f5ccc0cd2d35"
+  welcome:
+    showOnStartup: false
+  autosave: {}
+  linter: {}
+  "travis-ci-status": {}
+  "merge-conflicts": {}
+  "terminal-panel": {}
+  term2:
+    colors: {}
+    openPanesInSameSplit: true
+  react: {}
+  "isotope-ui":
+    backgroundColor: "false"
+    customBackgroundColorPicker:
+      red: 255
+      green: 40
+      blue: 58
+      alpha: 1
+    lowContrastTooltip: true
+    fontWeight: "Regular"
+    spaciousMode: true
+    backgroundGradient: true
+  "git-projects":
+    rootPath: "/Users/MoOx/Sync/Development"
+  "web-browser":
+    useRightPane: true
+  whitespace:
+    ignoreWhitespaceOnCurrentLine: false

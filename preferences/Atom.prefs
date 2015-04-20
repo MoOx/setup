@@ -11,11 +11,12 @@ then
   apminstall file-type-icons
 
   # editor enhancements
+  apminstall projects-manager
   apminstall recent-projects
-  apminstall zen
   apminstall open-in-github-app
   apminstall gist-it
-  apminstall autocomplete-plus
+  apminstall term2
+  apminstall web-browser
 
   # git
   apminstall git-tab-status
@@ -35,10 +36,7 @@ then
   #apminstall break
 
   # editor ui
-  # apminstall swap-panes
-  # apminstall move-panes
-  # apminstall resize-panes
-  # apminstall maximize-panes
+  apminstall layout-manager
 
   # html/css/js
   apminstall atom-beautify
@@ -55,18 +53,14 @@ then
 
   # js
   apminstall atom-semicolons
-  apminstall linter-jscs
   apminstall linter-eslint
   apminstall linter-jsonlint
-  apminstall language-jade
   apminstall coffeescript-be-gone
+  apminstall react
 
     # nodejs
     apminstall npm-install
     apminstall npm-docs
-
-    # jsx
-    apminstall language-jsx
 
   # NO COMMENT
   apminstall language-apache

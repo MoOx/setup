@@ -16,6 +16,7 @@ setupsh-recipe custom-folders
 # Development
 ##
 
+brewcaskinstall atom
 brewcaskinstall "iTerm" "iterm2"
 setupsh-recipe git
 brewcaskinstall "GitHub"
@@ -44,15 +45,11 @@ brewcaskinstall Slate
 openifnot "Slate"
 setupsh-accessibility-privacy-apps --insert com.slate.Slate
 
-# Editor
 # fix OS X error -10810
 # see tmux.conf
 brewinstall reattach-to-user-namespace
 brewinstall tmux
-brewinstall ctags
-brewinstall the_silver_searcher
 setupsh-recipe vim
-brewcaskinstall atom
 
 # browser
 brewcaskinstall "FirefoxNightly" "firefox-nightly"

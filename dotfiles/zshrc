@@ -20,7 +20,7 @@ export PATH=/usr/local/bin:$PATH
 export PATH=$DIR_DEV/bin:$PATH
 
 alias tmoox="tmux attach -t tmoox || tmux new -s tmoox"
-export EDITOR="vim"
+export EDITOR="atom"
 source $SETUP_PATH/submodules/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 HISTFILE=~/.history

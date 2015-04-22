@@ -39,7 +39,24 @@
   "merge-conflicts": {}
   "terminal-panel": {}
   term2:
-    colors: {}
+    colors:
+      normalBlack: "#222"
+      normalRed: "#c75646"
+      normalGreen: "#8fbe00"
+      normalYellow: "#e9ee00"
+      normalBlue: "#00a8c6"
+      normalPurple: "#b656ff"
+      normalCyan: "#4ecdc4"
+      normalWhite: "#f8f8f2"
+      brightBlack: "#556270"
+      brightRed: "#d3796d"
+      brightGreen: "#c0e763"
+      brightYellow: "#fafd24"
+      brightBlue: "#00d4ff"
+      brightPurple: "#cc89ff"
+      brightCyan: "#74d6ce"
+      brightWhite: "#fdfdfb"
+      background: "#222"
     openPanesInSameSplit: true
   react: {}
   "isotope-ui":

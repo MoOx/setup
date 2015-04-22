@@ -3,7 +3,7 @@
     invisibles: {}
     showInvisibles: true
     showIndentGuide: true
-    fontSize: 13
+    fontSize: 12
     lineHeight: 1.45
     scrollPastEnd: true
     fontFamily: "Menlo"
@@ -58,6 +58,7 @@
       brightWhite: "#fdfdfb"
       background: "#222"
     openPanesInSameSplit: true
+    cursorBlink: false
   react: {}
   "isotope-ui":
     backgroundColor: "false"
@@ -76,3 +77,8 @@
     useRightPane: true
   whitespace:
     ignoreWhitespaceOnCurrentLine: false
+  "tree-view":
+    showOnRightSide: true
+  "find-and-replace":
+    openProjectFindResultsInRightPane: true
+    focusEditorAfterSearch: true

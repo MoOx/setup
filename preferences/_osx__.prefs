@@ -72,7 +72,7 @@ fi
 defaults write com.apple.screensaver askForPassword -int 0
 
 # Startup sound chime effect (disable: %00)
-sudo nvram SystemAudioVolume=%10﻿
+sudo nvram SystemAudioVolume=%00﻿
 
 # Play sound feedback when adjusting volume
 defaults write -g com.apple.sound.beep.feedback -boolean true

@@ -29,6 +29,11 @@
   trustctime = false
 
 [alias]
+  co = alias
+
+  ca = commit --all
+  cam = commit --all -m
+
   # View abbreviated SHA, description, and history graph of the latest 20 commits
   l = log --pretty=oneline -n 20 --graph --abbrev-commit
 
@@ -40,6 +45,10 @@
 
   # Amend the currently staged files to the latest commit
   amend = commit --amend --reuse-message=HEAD
+
+  amend-author = commit --amend --no-edit --author
+
+  hammer = "!git add -A . && git commit --amend --reuse-message=HEAD && git push -f"
 
   # Remove branches that have already been merged with master
   delete-merged = "!git checkout master && git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"

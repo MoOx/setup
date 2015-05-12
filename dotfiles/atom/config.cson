@@ -3,7 +3,7 @@
     invisibles: {}
     showInvisibles: true
     showIndentGuide: true
-    fontSize: 12
+    fontSize: 11
     lineHeight: 1.45
     scrollPastEnd: true
     fontFamily: "Menlo"
@@ -28,6 +28,7 @@
       "language-coffee-script"
       "language-clojure"
       "language-jsx"
+      "close-tags"
     ]
   "exception-reporting":
     userId: "acee8e04-1bbb-8674-25af-f5ccc0cd2d35"
@@ -59,6 +60,8 @@
       background: "#222"
     openPanesInSameSplit: true
     cursorBlink: false
+    scrollback: 20000
+    titleTemplate: "❯ {{bashName}}"
   react: {}
   "isotope-ui":
     backgroundColor: "false"
@@ -82,3 +85,8 @@
   "find-and-replace":
     openProjectFindResultsInRightPane: true
     focusEditorAfterSearch: true
+  "yuno-commit":
+    numberOfChangesToShowWarning: 100
+  "markdown-preview": {}
+  "linter-eslint":
+    disableWhenNoEslintrcFileInPath: true

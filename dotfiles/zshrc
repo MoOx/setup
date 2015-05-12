@@ -118,6 +118,7 @@ alias osx-internetsharing-start="sudo launchctl load -w /System/Library/LaunchDa
 alias osx-internetsharing-stop="sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.InternetSharing.plist"
 alias osx-resolutions="system_profiler SPDisplaysDataType | grep Resolution | tr -d ' '"
 alias osx-flushdns="dscacheutil -flushcache"
+alias osx-flushram="purge"
 export OSX_INSTALL_APP="/Applications/Install OS X Mavericks.app"
 alias osx-bootableusb="sudo \"$OSX_INSTALL_APP/Contents/Resources/createinstallmedia\" --volume /Volumes/Untitled --applicationpath \"$OSX_INSTALL_APP\" --nointeraction"
 alias osx-dsstore-delete="find . -type f -name '*.DS_Store' -ls -delete"

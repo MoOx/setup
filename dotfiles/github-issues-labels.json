@@ -1,0 +1,70 @@
+[
+  {
+    "name": "PR: needs documentation",
+    "color": "B25C20"
+  },
+  {
+    "name": "PR: needs revision",
+    "color": "B20C00"
+  },
+  {
+    "name": "PR: needs tests",
+    "color": "B21F1C"
+  },
+  {
+    "name": "PR: review accepted",
+    "color": "47B230"
+  },
+  {
+    "name": "PR: review needed",
+    "color": "FFE600"
+  },
+  {
+    "name": "resolution: duplicate",
+    "color": "cccccc"
+  },
+  {
+    "name": "resolution: invalid",
+    "color": "e6e6e6"
+  },
+  {
+    "name": "resolution: wontfix",
+    "color": "ffffff"
+  },
+  {
+    "name": "status: blocked",
+    "color": "111111"
+  },
+  {
+    "name": "status: discussion",
+    "color": "0023ee"
+  },
+  {
+    "name": "status: help wanted",
+    "color": "fbca04"
+  },
+  {
+    "name": "status: need investigation",
+    "color": "eb6420"
+  },
+  {
+    "name": "status: pr welcome",
+    "color": "009800"
+  },
+  {
+    "name": "status: wip",
+    "color": "bfe5bf"
+  },
+  {
+    "name": "type: bug",
+    "color": "fc2929"
+  },
+  {
+    "name": "type: documentation",
+    "color": "c7def8"
+  },
+  {
+    "name": "type: enhancement",
+    "color": "488CFF"
+  }
+]

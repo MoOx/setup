@@ -108,6 +108,8 @@ npmig tldr
 
 npmig travis-encrypt
 
+npmig github-labels
+
 # favicon
 brewinstall icoutils
 

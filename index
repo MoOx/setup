@@ -23,8 +23,8 @@ brewcaskinstall "GitHub"
 
 ### NVM: Node / io.js
 setupsh-recipe nvm
-nvm install stable
-nvm alias default stable
+nvm install iojs
+nvm alias default iojs
 
 #### Package helpers
 npmig npm-check

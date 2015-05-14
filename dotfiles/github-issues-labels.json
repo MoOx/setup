@@ -17,11 +17,19 @@
   },
   {
     "name": "PR: review needed",
-    "color": "FFE600"
+    "color": "fbca04"
   },
   {
     "name": "PR: rockstar automerge™",
     "color": "009800"
+  },
+  {
+    "name": "level: high-priority",
+    "color": "eb6420"
+  },
+  {
+    "name": "level: low-priority",
+    "color": "fad8c7"
   },
   {
     "name": "resolution: duplicate",
@@ -32,16 +40,20 @@
     "color": "e6e6e6"
   },
   {
+    "name": "resolution: oh fuck off",
+    "color": "bfdadc"
+  },
+  {
     "name": "resolution: wontfix",
     "color": "ffffff"
   },
   {
     "name": "status: blocked",
-    "color": "111111"
+    "color": "000000"
   },
   {
     "name": "status: discussion",
-    "color": "0023ee"
+    "color": "0052cc"
   },
   {
     "name": "status: help wanted",
@@ -57,18 +69,26 @@
   },
   {
     "name": "status: wip",
-    "color": "bfe5bf"
+    "color": "0052cc"
   },
   {
     "name": "type: bug",
     "color": "fc2929"
   },
   {
-    "name": "type: documentation",
-    "color": "c7def8"
+    "name": "type: doc",
+    "color": "fbca04"
   },
   {
     "name": "type: enhancement",
-    "color": "488CFF"
+    "color": "84b6eb"
+  },
+  {
+    "name": "type: feature request",
+    "color": "8D5BFF"
+  },
+  {
+    "name": "type: question",
+    "color": "cc317c"
   }
 ]

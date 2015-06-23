@@ -14,9 +14,7 @@ export DIR_SYNC=$HOME/Sync
 export DIR_DEV=$DIR_SYNC/Development
 
 # export PATH
-export PATH=./bin:$PATH
-export PATH=/usr/local/sbin:$PATH
-export PATH=/usr/local/bin:$PATH
+export PATH=$PATH:./bin
 export PATH=$DIR_DEV/bin:$PATH
 
 alias tmoox="tmux attach -t tmoox || tmux new -s tmoox"

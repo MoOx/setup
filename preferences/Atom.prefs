@@ -10,12 +10,13 @@ then
   apminstall yosemite-unity-ui
   apminstall file-type-icons
 
-  # editor enhancements
+  # various editor enhancements
   apminstall project-manager
   apminstall open-in-github-app
   apminstall gist-it
   apminstall term2
   apminstall web-browser
+  apminstall line-length-break
 
   # git
   apminstall git-tab-status

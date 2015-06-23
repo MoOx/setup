@@ -39,7 +39,7 @@ done
 typeset -U config_files
 
 # load the path files
-sourceFiles $SETUP_PATH/setupsh/recipes/*.path
+#sourceFiles $SETUP_PATH/setupsh/recipes/*.path
 
 # load everything but the path and completion files
 sourceFiles $SETUP_PATH/setupsh/recipes/*.source

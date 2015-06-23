@@ -140,6 +140,8 @@ source $(brew --prefix nvm)/nvm.sh
 ### add web_modules as a node_modules like
 # export NODE_PATH=web_modules
 export NODE_PATH=/usr/local/lib/node_modules
+# allow local self signed https server
+export NODE_TLS_REJECT_UNAUTHORIZED="0"
 
 ### to avoid npm install -g
 export PATH=$PATH:./node_modules/.bin

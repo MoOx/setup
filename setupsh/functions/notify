@@ -5,7 +5,7 @@ function notify () {
   # @todo linux fallback:  notify-send --icon * "setupsh" "$@"
   if type terminal-notifier > /dev/null
   then
-    terminal-notifier -activate com.apple.Terminal -sound Pop -title "setupsh" -message $1 &> /dev/null
+    terminal-notifier -sound Pop -title "setupsh" -message $1 &> /dev/null
   # fallback
   else
     if type say > /dev/null

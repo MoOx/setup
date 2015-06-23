@@ -111,7 +111,9 @@ npmig travis-encrypt
 
 npmig github-labels
 
-# favicon
+# images
+npmig svgo
+brewcaskinstall imageoptim
 brewinstall icoutils
 
 #sudo pip install --upgrade asciinema

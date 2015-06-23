@@ -1,4 +1,0 @@
-#!/usr/bin/env zsh
-
-export HOMEBREW_PREFIX=$(brew --prefix)
-export PATH="$HOMEBREW_PREFIX/bin:$PATH"

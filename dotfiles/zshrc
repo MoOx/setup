@@ -114,8 +114,9 @@ alias osx-hidden-show="defaults write com.apple.finder AppleShowAllFiles -bool t
 alias osx-hidden-hide="defaults write com.apple.finder AppleShowAllFiles -bool false && osx-refresh"
 alias osx-desktop-show="defaults write com.apple.finder CreateDesktop -bool true && osx-refresh"
 alias osx-desktop-hide="defaults write com.apple.finder CreateDesktop -bool false && osx-refresh"
-alias osx-internetsharing-start="sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.InternetSharing.plist"
-alias osx-internetsharing-stop="sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.InternetSharing.plist"
+# http://apple.stackexchange.com/a/181404/34887
+alias osx-internetsharing-on="sudo networksetup -setnetworkserviceenabled 'Ethernet sharing via Wifi' on"
+alias osx-internetsharing-off="sudo networksetup -setnetworkserviceenabled 'Ethernet sharing via Wifi' off"
 alias osx-resolutions="system_profiler SPDisplaysDataType | grep Resolution | tr -d ' '"
 alias osx-flushdns="dscacheutil -flushcache"
 alias osx-flushram="purge"

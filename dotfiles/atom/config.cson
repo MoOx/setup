@@ -3,7 +3,7 @@
     invisibles: {}
     showInvisibles: true
     showIndentGuide: true
-    fontSize: 11
+    fontSize: 12
     lineHeight: 1.45
     scrollPastEnd: true
     fontFamily: "Menlo"
@@ -41,23 +41,91 @@
   "terminal-panel": {}
   term2:
     colors:
-      normalBlack: "#222"
-      normalRed: "#c75646"
-      normalGreen: "#8fbe00"
-      normalYellow: "#e9ee00"
-      normalBlue: "#00a8c6"
-      normalPurple: "#b656ff"
-      normalCyan: "#4ecdc4"
-      normalWhite: "#f8f8f2"
-      brightBlack: "#556270"
-      brightRed: "#d3796d"
-      brightGreen: "#c0e763"
-      brightYellow: "#fafd24"
-      brightBlue: "#00d4ff"
-      brightPurple: "#cc89ff"
-      brightCyan: "#74d6ce"
-      brightWhite: "#fdfdfb"
-      background: "#222"
+      normalBlack:
+        red: 34
+        green: 34
+        blue: 34
+        alpha: 1
+      normalRed:
+        red: 199
+        green: 86
+        blue: 70
+        alpha: 1
+      normalGreen:
+        red: 143
+        green: 190
+        blue: 0
+        alpha: 1
+      normalYellow:
+        red: 233
+        green: 238
+        blue: 0
+        alpha: 1
+      normalBlue:
+        red: 0
+        green: 168
+        blue: 198
+        alpha: 1
+      normalPurple:
+        red: 182
+        green: 86
+        blue: 255
+        alpha: 1
+      normalCyan:
+        red: 78
+        green: 205
+        blue: 196
+        alpha: 1
+      normalWhite:
+        red: 248
+        green: 248
+        blue: 242
+        alpha: 1
+      brightBlack:
+        red: 85
+        green: 98
+        blue: 112
+        alpha: 1
+      brightRed:
+        red: 211
+        green: 121
+        blue: 109
+        alpha: 1
+      brightGreen:
+        red: 192
+        green: 231
+        blue: 99
+        alpha: 1
+      brightYellow:
+        red: 250
+        green: 253
+        blue: 36
+        alpha: 1
+      brightBlue:
+        red: 0
+        green: 212
+        blue: 255
+        alpha: 1
+      brightPurple:
+        red: 204
+        green: 137
+        blue: 255
+        alpha: 1
+      brightCyan:
+        red: 116
+        green: 214
+        blue: 206
+        alpha: 1
+      brightWhite:
+        red: 253
+        green: 253
+        blue: 251
+        alpha: 1
+      background:
+        red: 34
+        green: 34
+        blue: 34
+        alpha: 1
     openPanesInSameSplit: true
     cursorBlink: false
     scrollback: 20000
@@ -82,6 +150,7 @@
     ignoreWhitespaceOnCurrentLine: false
   "tree-view":
     showOnRightSide: true
+    hideIgnoredNames: true
   "find-and-replace":
     openProjectFindResultsInRightPane: true
     focusEditorAfterSearch: true

@@ -43,12 +43,17 @@ export LANGUAGE=en_US.UTF-8
 #export CC=llvm-gcc-4.2
 
 ZSH_SITE_FUNCTION=/usr/local/share/zsh/site-functions
-PURE_SETUP_PATH=$ZSH_SITE_FUNCTION/prompt_pure_setup
-if [ ! -e  $PURE_SETUP_PATH ]
+if [ ! -e  $ZSH_SITE_FUNCTION/prompt_pure_setup ]
 then
   mkdir -p $ZSH_SITE_FUNCTION
-  silent-rm $PURE_SETUP_PATH
-  ln -s "$SETUP_PATH/submodules/pure/pure.zsh" $PURE_SETUP_PATH
+  silent-rm $ZSH_SITE_FUNCTION/prompt_pure_setup
+  ln -s "$SETUP_PATH/submodules/pure/pure.zsh" $ZSH_SITE_FUNCTION/prompt_pure_setup
+fi
+if [ ! -e  $ZSH_SITE_FUNCTION/async ]
+then
+  mkdir -p $ZSH_SITE_FUNCTION
+  silent-rm $ZSH_SITE_FUNCTION/async
+  ln -s "$SETUP_PATH/submodules/pure/async.zsh" $ZSH_SITE_FUNCTION/async
 fi
 fpath=("/usr/local/share/zsh/site-functions" $fpath)
 #PURE_CMD_MAX_EXEC_TIME=2

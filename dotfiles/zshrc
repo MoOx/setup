@@ -99,6 +99,9 @@ alias search="list | grep"
 
 # Aliases
 
+alias fuck='eval $(thefuck $(fc -ln -1 | tail -n 1)); fc -R'
+alias fak='fuck'
+
 ## ls: Detect which `ls` flavor is in use
 if ls --color &> /dev/null
 then # GNU `ls`

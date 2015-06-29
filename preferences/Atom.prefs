@@ -47,7 +47,7 @@ then
 
   # css
   #apminstall linter-csslint
-  apminstall atom-color-highlight
+  apminstall pigments
   apminstall color-picker
   apminstall bezier-curve-editor
 

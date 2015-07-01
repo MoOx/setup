@@ -126,6 +126,7 @@ npmig keybase
 brewcaskinstall "Transmission"
 
 brewcaskinstall Slack
+brewcaskinstall Gitter
 brewcaskinstall Skype
 
 # multimedia

@@ -7,59 +7,39 @@ then
   apminstall auto-update-packages
 
   # theme
-  apminstall yosemite-unity-ui
-  apminstall file-type-icons
+  #apminstall file-type-icons
 
   # various editor enhancements
   apminstall project-manager
   apminstall open-in-github-app
-  apminstall gist-it
   apminstall term2
-  apminstall web-browser
   apminstall line-length-break
 
   # git
-  apminstall git-tab-status
   apminstall git-blame
   apminstall git-log
   apminstall git-history
   apminstall merge-conflicts
   apminstall live-archive
-  apminstall yuno-commit
 
   # code quality
   apminstall editorconfig
   apminstall linter # for linter-*
   apminstall docblockr
 
-  # health
-  #apminstall break
-
-  # editor ui
-  apminstall layout-manager
-
   # html/css/js
   apminstall atom-beautify
 
-  # html
-  apminstall close-tags
-  apminstall linter-htmlhint
-
   # css
-  #apminstall linter-csslint
   apminstall pigments
   apminstall color-picker
   apminstall bezier-curve-editor
 
   # js
-  apminstall atom-semicolons
+  # apminstall atom-semicolons
   apminstall linter-eslint
   apminstall linter-jsonlint
   apminstall react
-
-    # nodejs
-    apminstall npm-install
-    apminstall npm-docs
 
   # NO COMMENT
   apminstall language-apache

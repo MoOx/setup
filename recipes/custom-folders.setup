@@ -10,6 +10,9 @@ fi
 # Sync/Library/*
 setupsh-ls-subfolders $DIR_SYNC/Library $HOME/Library
 
+# Sync/Library/Application Support/*
+setupsh-ls-subfolders "$DIR_SYNC/Library_Application Support" "$HOME/Library/Application Support"
+
 # Sync/iTunes
 if ls $DIR_SYNC/iTunes &> /dev/null
 then
@@ -42,4 +45,3 @@ chflags -h hidden $HOME/Documents
 chflags -h hidden $HOME/Movies
 chflags -h hidden $HOME/Music
 chflags -h hidden $HOME/Pictures
-

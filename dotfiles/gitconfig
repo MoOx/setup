@@ -65,6 +65,14 @@
     fi \
   }; f"
 
+  # delete a tag on the remote and locally
+  delete-tag = "!f() { \
+    if [ \"$1\" != \"\" ]; then \
+      git push --delete origin $1 && \
+      git tag -d $1; \
+    fi \
+  }; f"
+
   # List contributors with number of commits
   contributors = shortlog --summary --numbered
 

@@ -209,9 +209,11 @@ alias phpini="e /usr/local/etc/php/5.5/php.ini"
 ## LOCAL CRAP
 if [[ -f ~/.zshrc.local ]]; then; source ~/.zshrc.local; fi
 
-# setupsh aliases
+# custom aliases
 alias .e="setupsh-edit"
 alias .o="setupsh-open"
+alias wifi=osx-internetsharing-on
+alias wifi-off=osx-internetsharing-off
 alias echofliptable="echo '\n(╯°□°）╯︵ ┻━┻\n'"
 alias fliptable="echo \"$USER/setup\"; echofliptable; setupsh-update; setupsh-run"
 

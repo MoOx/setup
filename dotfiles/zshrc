@@ -1,5 +1,14 @@
 #!/usr/bin/env zsh
 
+# export PATH
+# OS X 10.10+ doesn't execute /etc/launchd.conf
+# and GUI app doesn't get /etc/paths
+# in order to get the right PATH in Atom.app Terminal (atom-term2)
+# here is my PATH, hardcoded
+# https://github.com/webBoxio/atom-term2/issues/50
+# export PATH=$(cat /etc/paths | xargs | tr " " :)
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin
+
 #$SETUP_PATH doesn't exist yet
 source $HOME/setup/setupsh/index
 
@@ -13,7 +22,7 @@ fi
 export DIR_SYNC=$HOME/Sync
 export DIR_DEV=$DIR_SYNC/Development
 
-# export PATH
+# add personal bin in the path
 export PATH=$PATH:./bin
 export PATH=$DIR_DEV/bin:$PATH
 

@@ -1,6 +1,0 @@
-#!/usr/bin/env zsh
-
-defaults write com.shauninman.Day-O autoLaunch 1
-defaults write com.shauninman.Day-O showIcon 1
-defaults write com.shauninman.Day-O firstRun 0
-defaults write com.shauninman.Day-O format ""

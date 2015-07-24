@@ -31,6 +31,14 @@ then
     "$MENUMETERS_PATH/latest/MenuMeters Installer.app/Contents/Resources/MenuMeters.prefPane/Contents/Resources/MenuCracker.menu"
 fi
 
+ITSYCAL_PATH="/Applications/Itsycal.app"
+if ls $ITSYCAL_PATH &> /dev/null
+then
+  defaults write com.apple.systemuiserver menuExtras -array-add \
+    "$ITSYCAL_PATH/Contents/Resources/ItsycalExtra.menu" \
+    "$ITSYCAL_PATH/Contents/Resources/MenuCracker.menu"
+fi
+
 # add clock after everything
 defaults write com.apple.systemuiserver menuExtras -array-add \
   "$OSX_MENU_EXTRAS/Clock.menu"

@@ -16,7 +16,7 @@ osxLoginItem "/Applications/BitTorrent Sync.app" "BitTorrent Sync"
 # OS X enhancements
 osxLoginItem "/Applications/Flux.app" "Flux"
 osxLoginItem "/Applications/Slate.app" "Slate"
-osxLoginItem "/Applications/Day-O.app" "Day-O"
+osxLoginItem "/Applications/Itsy.app" "Itsy"
 osxLoginItem "/Applications/Flycut.app" "Flycut"
 
 # Trim Enabler

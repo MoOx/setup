@@ -1,0 +1,6 @@
+#!/usr/bin/env zsh
+
+defaults write com.mowglii.ItsycalApp ShowEventDays 7
+defaults write com.mowglii.ItsycalApp ShowWeeks 1
+defaults write com.mowglii.ItsycalApp SUHasLaunchedBefore 1
+defaults write com.mowglii.ItsycalApp WeekStartDOW 1

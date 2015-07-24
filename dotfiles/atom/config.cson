@@ -158,5 +158,4 @@
   "linter-eslint":
     disableWhenNoEslintrcFileInPath: true
   tabs:
-    usePreviewTabs: true
     showIcons: false

@@ -30,16 +30,15 @@ defaults write com.apple.dock dashboard-in-overlay -bool true
 
 # Dock order
 dockutil --no-restart --remove all
-dockutil --no-restart --add "/Applications/Mail.app"
 dockutil --no-restart --add "/Applications/Calendar.app"
 dockutil --no-restart --add "/Applications/Wunderlist.app"
 dockutil --no-restart --add "/Applications/iTunes.app"
+dockutil --no-restart --add "/Applications/Mail.app"
 dockutil --no-restart --add "/Applications/Safari.app"
 dockutil --no-restart --add "/Applications/Xcode.app/Contents/Developer/Applications/iOS Simulator.app"
 dockutil --no-restart --add "/Applications/FirefoxNightly.app"
 dockutil --no-restart --add "/Applications/Utilities/Terminal.app"
 dockutil --no-restart --add "/Applications/Atom.app"
-dockutil --no-restart --add "/Applications/GitHub.app"
 dockutil --no-restart --add "/Applications/Gitter.app"
 dockutil --no-restart --add "/Applications/Slack.app"
 dockutil --no-restart --add "/Applications/Tweetbot.app"

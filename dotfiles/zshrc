@@ -24,7 +24,8 @@ export DIR_DEV=$DIR_SYNC/Development
 
 # add personal bin in the path
 export PATH=$PATH:./bin
-export PATH=$DIR_DEV/bin:$PATH
+export PATH=$PATH:./.bin
+export PATH=$DIR_DEV/.bin:$PATH
 
 alias tmoox="tmux attach -t tmoox || tmux new -s tmoox"
 export EDITOR="vim"

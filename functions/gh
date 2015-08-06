@@ -1,5 +1,0 @@
-#!/usr/bin/env zsh
-
-function gh() {
-  /Applications/Github.app/Contents/MacOS/github_cli ${@:-.}
-}

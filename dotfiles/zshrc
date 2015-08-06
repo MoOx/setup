@@ -215,7 +215,8 @@ alias synergychome="synergyc -n MacMoOx iMoOx.local"
 alias sshcopy="ssh-copy-id -i ~/.ssh/id_rsa.pub"
 
 # php
-alias phpini="e /usr/local/etc/php/5.5/php.ini"
+export PHP_INI=/usr/local/etc/php/5.6/php.ini
+alias phpini="e $PHP_INI"
 
 ## LOCAL CRAP
 if [[ -f ~/.zshrc.local ]]; then; source ~/.zshrc.local; fi

@@ -1,0 +1,13 @@
+#!/usr/bin/env zsh
+
+# Setup php
+
+if [ $PHP_INI != "" ]
+then
+  echo_title "Configuring PHP"
+  sudo sed -i '' -e 's/display_errors = Off/display_errors = On/' $PHP_INI
+  sudo sed -i '' -e 's/display_startup_errors = Off/display_errors = On/' $PHP_INI
+  sudo sed -i '' -e 's/upload_max_filesize = 2M/upload_max_filesize = 20M/' $PHP_INI
+  sudo sed -i '' -e 's/post_max_size = 8M/post_max_size = 20M/' $PHP_INI
+  sudo sed -i '' -e 's/mysqli.default_socket =/mysqli.default_socket =\/tmp\/mysql.sock/' $PHP_INI
+fi

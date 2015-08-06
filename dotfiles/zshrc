@@ -162,6 +162,7 @@ export PATH=$PATH:./node_modules/.bin
 alias npmi="npm i"
 alias npmt="npm i && npm test"
 alias npms="npm i && npmstart" # npmstart function
+alias npmr="npm run"
 
 ## Apache
 APACHE_CONF_DEV_PATH=$DIR_DEV/_.conf/apache/

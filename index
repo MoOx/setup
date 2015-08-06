@@ -165,9 +165,6 @@ setupsh-recipe ddclient
 # anti-thef
 setupsh-recipe prey
 
-# flash :(
-brewcaskinstall "Utilities/Adobe Flash Player Install Manager" "flash"
-
 # for my mouse
 brewcaskinstall "/Library/PreferencePanes/Logitech Control Center.prefPane" "logitech-control-center"
 brewcaskinstall "Utilities/Logitech Unifying Software" "logitech-unifying"

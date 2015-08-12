@@ -22,15 +22,6 @@ defaults write com.apple.systemuiserver menuExtras -array \
   "$OSX_MENU_EXTRAS/Bluetooth.menu" \
   "$OSX_MENU_EXTRAS/Battery.menu"
 
-MENUMETERS_PATH="/opt/homebrew-cask/Caskroom/menumeters"
-if ls $MENUMETERS_PATH &> /dev/null
-then
-  defaults write com.apple.systemuiserver menuExtras -array-add \
-    "$MENUMETERS_PATH/latest/MenuMeters Installer.app/Contents/Resources/MenuMeters.prefPane/Contents/Resources/MenuMeterMem.menu" \
-    "$MENUMETERS_PATH/latest/MenuMeters Installer.app/Contents/Resources/MenuMeters.prefPane/Contents/Resources/MenuMeterCPU.menu" \
-    "$MENUMETERS_PATH/latest/MenuMeters Installer.app/Contents/Resources/MenuMeters.prefPane/Contents/Resources/MenuCracker.menu"
-fi
-
 # add clock after everything
 defaults write com.apple.systemuiserver menuExtras -array-add \
   "$OSX_MENU_EXTRAS/Clock.menu"

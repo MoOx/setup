@@ -70,7 +70,6 @@ brewcaskinstall "CloudApp" cloud
 ## Some utilities
 brewcaskinstall "Flux"
 openifnot "Flux"
-brewcaskinstall "/opt/homebrew-cask/Caskroom/menumeters" "menumeters"
 brewcaskinstall "Prefs Editor"
 brewcaskinstall "AppCleaner"
 

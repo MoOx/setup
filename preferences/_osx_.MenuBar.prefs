@@ -21,7 +21,3 @@ defaults write com.apple.systemuiserver menuExtras -array \
   "$OSX_MENU_EXTRAS/AirPort.menu" \
   "$OSX_MENU_EXTRAS/Bluetooth.menu" \
   "$OSX_MENU_EXTRAS/Battery.menu"
-
-# add clock after everything
-defaults write com.apple.systemuiserver menuExtras -array-add \
-  "$OSX_MENU_EXTRAS/Clock.menu"

@@ -70,6 +70,8 @@ brewcaskinstall "CloudApp" cloud
 ## Some utilities
 brewcaskinstall "Flux"
 openifnot "Flux"
+brewcaskinstall "iStat Menus"
+openifnot "iStat Menus"
 brewcaskinstall "Prefs Editor"
 brewcaskinstall "AppCleaner"
 

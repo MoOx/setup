@@ -242,6 +242,6 @@ alias fliptable="echo \"$USER/setup\"; echofliptable; setupsh-update; setupsh-ru
 # export DOCKER_CERT_PATH="$HOME/.boot2docker/certs/boot2docker-vm"
 # export DOCKER_TLS_VERIFY=1
 # export DOCKER_HOST="tcp://$(boot2docker ip):2376"
-alias boot2dockerinit="eval \"$(boot2docker shellinit)\""
+alias boot2dockerinit="eval \"\$(boot2docker shellinit)\""
 
 alias github-labels="labels -c $HOME/.github-issues-labels.json"

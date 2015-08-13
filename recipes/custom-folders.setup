@@ -19,7 +19,7 @@ setupsh-ls-subfolders "$DIR_SYNC/Library_Application Support" "$HOME/Library/App
 # Sync/iTunes
 if ls $DIR_SYNC/iTunes &> /dev/null
 then
-  rm -rf $HOME/Music/iTunes
+  rm -rf $HOME/Music/iTunes &> /dev/null
   ln -s $DIR_SYNC/iTunes $HOME/Music/iTunes
 fi
 

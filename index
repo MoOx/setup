@@ -111,7 +111,6 @@ npmig travis-encrypt
 npmig github-labels
 
 # images
-npmig svgo
 brewcaskinstall imageoptim
 brewinstall icoutils
 
@@ -132,7 +131,6 @@ brewcaskinstall Skype
 brewcaskinstall "VLC"
 brewcaskinstall "MPlayerX"
 brewcaskinstall "Last.fm" "lastfm"
-openifnot "Last.fm.app"
 #brewcaskinstall "Rdio"
 brewcaskinstall "All2MP3"
 brewcaskinstall "Subtitles"
@@ -151,7 +149,6 @@ brewcaskinstall "Steam"
 brewcaskinstall "/usr/local/bin/phantomjs" "phantomjs"
 brewcaskinstall "Firefox"
 brewcaskinstall "Google Chrome"
-brewcaskinstall "Opera"
 brewcaskinstall "/Library/Internet Plug-Ins/googletalkbrowserplugin.plugin" "google-hangouts"
 
 ##
@@ -193,10 +190,6 @@ brewinstall boot2docker
 # might be required http://software.intel.com/en-us/android/articles/intel-hardware-accelerated-execution-manager
 # brewinstall android-sdk
 #brewcaskinstall genymotion
-
-# fix some menu bar icons for yosemite
-#brew install imagemagick --with-libtiff
-#ruby $SETUP_PATH/submodules/yosemite-menu-inverter/invert.rb
 
 # Better perf for non Apple SSD
 # at the end because need reboot

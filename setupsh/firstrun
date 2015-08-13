@@ -11,7 +11,7 @@ REPOSITORY="http://github.com/$REPOSITORY.git"
 # define zsh as default shell
 chsh -s /bin/zsh $USER
 
-# allow to write into /usr/local 
+# allow to write into /usr/local
 sudo chown -R `whoami` /usr/local
 
 if [[ "$(uname -s)" == "Darwin" ]]

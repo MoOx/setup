@@ -215,8 +215,13 @@ alias synergychome="synergyc -n MacMoOx iMoOx.local"
 alias sshcopy="ssh-copy-id -i ~/.ssh/id_rsa.pub"
 
 # php
-export PHP_INI=/usr/local/etc/php/5.6/php.ini
-alias phpini="e $PHP_INI"
+export PHP_VERSION=56
+export PHP_VERSION_DOT=5.6
+if ls /usr/local/Cellar/$PHP_VERSION &> /dev/null
+then
+  export PHP_INI=/usr/local/etc/php/$PHP_VERSION_DOT/php.ini
+  alias phpini="e $PHP_INI"
+fi
 
 ## LOCAL CRAP
 if [[ -f ~/.zshrc.local ]]; then; source ~/.zshrc.local; fi

@@ -1,7 +1,5 @@
 #!/usr/bin/env zsh
 
-# Setup php
-
 if [ $PHP_INI != "" ]
 then
   echo_title "Configuring PHP"

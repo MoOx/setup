@@ -17,25 +17,30 @@ then
 fi
 
 # PHP
-PHP_LATEST_VERSION=$(ls -t /usr/local/Cellar/php56 | head -1)
-PHP_LATEST_LIB=/usr/local/Cellar/php56/$PHP_LATEST_VERSION/libexec/apache2/libphp5.so
-if ! cat $APACHE_CONF | grep $PHP_LATEST_LIB > /dev/null
+PHP_LATEST_PATH=/usr/local/Cellar/$PHP_VERSION
+if ls $PHP_LATEST_PATH &> /dev/null
 then
-  echo_title "Updating OS X Apache PHP version"
-  # disable previous version
-  sudo sed -i '' -e 's/LoadModule php5_module/#LoadModule php5_module/' $APACHE_CONF
-  # ahem... (avoid #####LoadModule with time)
-  sudo sed -i '' -e 's/##LoadModule php5_module/#LoadModule php5_module/' $APACHE_CONF
+  PHP_LATEST_VERSION=$(ls -t $PHP_LATEST_PATH | head -1)
+  PHP_LATEST_LIB=$PHP_LATEST_PATH/$PHP_LATEST_VERSION/libexec/apache2/libphp5.so
+  if ! cat $APACHE_CONF | grep $PHP_LATEST_LIB > /dev/null
+  then
+    echo_title "Updating OS X Apache PHP version"
+    # disable previous version
+    sudo sed -i '' -e 's/LoadModule php5_module/#LoadModule php5_module/' $APACHE_CONF
+    # ahem... (avoid #####LoadModule with time)
+    sudo sed -i '' -e 's/##LoadModule php5_module/#LoadModule php5_module/' $APACHE_CONF
 
-  PHP_NEW_MODULE="LoadModule php5_module $PHP_LATEST_LIB"
-  echo $PHP_NEW_MODULE
-  atom -w $APACHE_CONF
-  # fail to add a new line with sed
-  # sudo sed -i '' -e "#LoadModule php5_module libexec\/apache2\/libphp5.so#{N;N;s/$/\n$PHP_NEW_MODULE}" $APACHE_CONF
-  # if ! cat $APACHE_CONF | grep $PHP_LATEST_LIB > /dev/null
-  # then
-  #   echo_fail "Cannot include $PHP_LATEST_LIB in Apache conf (update failed)"
-  # fi
+    PHP_NEW_MODULE="LoadModule php5_module $PHP_LATEST_LIB"
+    echo "Please add this line into httpd.conf:"
+    echo $PHP_NEW_MODULE
+    atom -w $APACHE_CONF
+    # fail to add a new line with sed
+    # sudo sed -i '' -e "#LoadModule php5_module libexec\/apache2\/libphp5.so#{N;N;s/$/\n$PHP_NEW_MODULE}" $APACHE_CONF
+    # if ! cat $APACHE_CONF | grep $PHP_LATEST_LIB > /dev/null
+    # then
+    #   echo_fail "Cannot include $PHP_LATEST_LIB in Apache conf (update failed)"
+    # fi
+  fi
 fi
 
 PUTAINDETAB=/Users/Shared/Photos

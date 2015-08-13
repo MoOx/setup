@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-if [ $PHP_INI != "" ]
+if [ "$PHP_INI" != "" ]
 then
   echo_title "Configuring PHP"
   sudo sed -i '' -e 's/display_errors = Off/display_errors = On/' $PHP_INI

@@ -8,33 +8,33 @@ then
   apminstall break-time
 
   # theme
-  #apminstall file-type-icons
+  apminstall file-type-icons
 
   # various editor enhancements
+  apminstall term2
   apminstall project-manager
   apminstall open-in-github-app
-  apminstall term2
   apminstall line-length-break
 
   # git
   apminstall git-blame
-  apminstall git-log
-  apminstall git-history
-  apminstall merge-conflicts
-  apminstall live-archive
+  #apminstall git-log
+  #apminstall git-history
+  #apminstall merge-conflicts
+  #apminstall live-archive
 
   # code quality
   apminstall editorconfig
   apminstall linter # for linter-*
-  apminstall docblockr
+  #apminstall docblockr
 
   # html/css/js
   apminstall atom-beautify
 
   # css
   apminstall pigments
-  apminstall color-picker
-  apminstall bezier-curve-editor
+  #apminstall color-picker
+  #apminstall bezier-curve-editor
 
   # js
   # apminstall atom-semicolons

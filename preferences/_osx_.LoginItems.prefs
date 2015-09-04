@@ -17,11 +17,5 @@ osxLoginItem "/Applications/Flux.app" "Flux"
 osxLoginItem "/Applications/Slate.app" "Slate"
 osxLoginItem "/Applications/Flycut.app" "Flycut"
 
-# Trim Enabler
-if [[ $COMPUTER_NAME == "iMoOx" ]]
-then
-  osxLoginItem "/Applications/Trim Enabler/Contents/Helpers/TrimCheck.app" "TrimCheck"
-fi
-
 # debug with
 echo_info "OS X Login items: $(osascript -e 'tell application "System Events" to get the name of every login item')"

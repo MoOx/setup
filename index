@@ -195,6 +195,5 @@ brewinstall boot2docker
 # at the end because need reboot
 if [[ $COMPUTER_NAME == "iMoOx" ]]
 then
-  brewcaskinstall "Trim Enabler"
-  openifnot "Trim Enabler"
+  #sudo trimforce enable
 fi

@@ -16,11 +16,6 @@ sudo chown -R `whoami` /usr/local
 
 if [[ "$(uname -s)" == "Darwin" ]]
 then
-  echo "Visit https://appleseed.apple.com/sp/betaprogram to get OS X beta update if you want to enroll your Mac."
-  echo "Press enter to continue."
-  open "https://appleseed.apple.com/sp/betaprogram"
-  read -k
-
   # todo add an alternative to grab xcode from another computer accessible by local network
 
   echo "** Before running myself, please be sure you have 'git' command working **".

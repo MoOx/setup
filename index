@@ -15,7 +15,7 @@ setupsh-recipe custom-folders
 ##
 # Development
 ##
-brew install thefuck
+brewinstall thefuck
 
 brewcaskinstall atom
 brewcaskinstall "iTerm" "iterm2"

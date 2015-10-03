@@ -149,7 +149,10 @@ source $(brew --prefix nvm)/nvm.sh
 ## NPM
 ### add web_modules as a node_modules like
 # export NODE_PATH=web_modules
-export NODE_PATH=/usr/local/lib/node_modules
+if type npm &> /dev/null
+then
+  export NODE_PATH=$(npm root -g)
+fi
 # atom-term2 got this to prod, not sure why :/
 export NODE_ENV=development
 # allow local self signed https server

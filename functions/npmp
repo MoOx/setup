@@ -1,0 +1,6 @@
+#!/usr/bin/env zsh
+
+# https://github.com/MoOx/npmpublish + https://github.com/MoOx/github-release-from-changelog
+function npmp() {
+  npmpublish && github-release-from-changelog
+}

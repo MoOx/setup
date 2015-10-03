@@ -28,12 +28,10 @@ nvm install iojs
 nvm alias default iojs
 
 #### Package helpers
+npmig npmpub
+npmig github-release-from-changelog
 npmig npm-check
 npmig updatehammer
-
-### Release tools
-npmig grizzly
-npmig mversion
 
 ## Ssh
 setupsh-recipe ssh

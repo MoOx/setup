@@ -73,20 +73,22 @@ openifnot "iStat Menus"
 brewcaskinstall "Prefs Editor"
 brewcaskinstall "AppCleaner"
 
-# QuickLook plugins from https://github.com/sindresorhus/quick-look-plugins
-brewcaskinstall "/opt/homebrew-cask/Caskroom/qlcolorcode" "qlcolorcode"
-brewcaskinstall "/opt/homebrew-cask/Caskroom/qlstephen" "qlstephen"
-brewcaskinstall "/opt/homebrew-cask/Caskroom/qlmarkdown" "qlmarkdown"
-brewcaskinstall "/opt/homebrew-cask/Caskroom/quicklook-json" "quicklook-json"
-brewcaskinstall "/opt/homebrew-cask/Caskroom/qlprettypatch" "qlprettypatch"
-brewcaskinstall "/opt/homebrew-cask/Caskroom/quicklook-csv" "quicklook-csv"
-brewcaskinstall "/opt/homebrew-cask/Caskroom/betterzipql" "betterzipql"
-brewcaskinstall "/opt/homebrew-cask/Caskroom/qlimagesize" "qlimagesize"
-# brewcaskinstall "/opt/homebrew-cask/Caskroom/webpquicklook" "webpquicklook" # cause issue when you browser jpegs with ql (like up/down may show you empty jpg...)
-brewcaskinstall "/opt/homebrew-cask/Caskroom/suspicious-package" "suspicious-package"
+# I only use quicklook for photos, and since I added that, I have a lot of
+# issues when navigating between jpegs...
+# # QuickLook plugins from https://github.com/sindresorhus/quick-look-plugins
+# brewcaskinstall "/opt/homebrew-cask/Caskroom/qlcolorcode" "qlcolorcode"
+# brewcaskinstall "/opt/homebrew-cask/Caskroom/qlstephen" "qlstephen"
+# brewcaskinstall "/opt/homebrew-cask/Caskroom/qlmarkdown" "qlmarkdown"
+# brewcaskinstall "/opt/homebrew-cask/Caskroom/quicklook-json" "quicklook-json"
+# brewcaskinstall "/opt/homebrew-cask/Caskroom/qlprettypatch" "qlprettypatch"
+# brewcaskinstall "/opt/homebrew-cask/Caskroom/quicklook-csv" "quicklook-csv"
+# brewcaskinstall "/opt/homebrew-cask/Caskroom/betterzipql" "betterzipql"
+# brewcaskinstall "/opt/homebrew-cask/Caskroom/qlimagesize" "qlimagesize"
+# # brewcaskinstall "/opt/homebrew-cask/Caskroom/webpquicklook" "webpquicklook" # cause issue when you browser jpegs with ql (like up/down may show you empty jpg...)
+# brewcaskinstall "/opt/homebrew-cask/Caskroom/suspicious-package" "suspicious-package"
 
-# reset QuickLook plugins
-qlmanage -r &> /dev/null
+# # reset QuickLook plugins
+# qlmanage -r &> /dev/null
 
 if [ "$FIRSTRUN" = "true" ]; then osx-refresh; fi;
 

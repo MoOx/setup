@@ -3,7 +3,7 @@
 ###
 # Prey project
 ###
-if [ ! -e "/usr/share/prey/prey.sh" ]
+if [ ! -e "/usr/local/lib/prey" ]
 then
   echo_title "Installing Prey project tracker, we will need you Prey API_KEY"
   echo_title "Press a key to start the setup"

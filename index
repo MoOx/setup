@@ -103,9 +103,6 @@ npmig trash
 brewinstall tree
 brewinstall gpg
 
-# better than man
-npmig tldr
-
 npmig travis-encrypt
 
 npmig github-labels

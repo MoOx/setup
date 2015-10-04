@@ -10,6 +10,3 @@
 [submodule "submodules/tccutil"]
 	path = submodules/tccutil
 	url = https://github.com/jacobsalmela/tccutil.git
-[submodule "submodules/solarized"]
-	path = submodules/solarized
-	url = https://github.com/altercation/solarized.git

@@ -4,6 +4,3 @@
 # npm
 node_modules
 npm-debug.log
-
-# vim
-Session.vim

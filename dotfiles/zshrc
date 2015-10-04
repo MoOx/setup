@@ -230,7 +230,7 @@ fi
 if [[ -f ~/.zshrc.local ]]; then; source ~/.zshrc.local; fi
 
 # custom aliases
-alias gh="/opt/homebrew-cask/Caskroom/github/latest/GitHub\ Desktop.app/Contents/MacOS/github_cli"
+alias gh="/Applications/GitHub\ Desktop.app/Contents/MacOS/github_cli"
 alias .e="setupsh-edit"
 alias .o="setupsh-open"
 alias wifi=osx-internetsharing-on

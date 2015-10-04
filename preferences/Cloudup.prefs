@@ -1,4 +1,0 @@
-#!/usr/bin/env zsh
-
-defaults write com.cloudup.Cloudup moveToApplicationsFolderAlertSuppress -bool true
-defaults write com.cloudup.Cloudup autoupload 1

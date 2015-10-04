@@ -1,6 +1,0 @@
-#!/usr/bin/env zsh
-
-if ! type bpkg > /dev/null
-then
-  curl -Lo- http://get.bpkg.io | bash
-fi

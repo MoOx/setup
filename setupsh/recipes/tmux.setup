@@ -1,8 +1,0 @@
-#!/usr/bin/env zsh
-
-# vim plugins
-if [[ ! -f $HOME/.tmux/plugins ]]
-then
-  mkdir -p ~/.tmux/plugins
-  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-fi

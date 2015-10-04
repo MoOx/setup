@@ -11,7 +11,6 @@ then
   apminstall file-type-icons
 
   # various editor enhancements
-  apminstall term2
   apminstall project-manager
   apminstall open-in-github-app
   apminstall line-length-break

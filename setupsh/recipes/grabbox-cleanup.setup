@@ -1,8 +1,0 @@
-#!/usr/bin/env zsh
-
-if [ ! -e $HOME/Library/LaunchAgents/org.setupsh.grabbox-cleanup.plist ]
-then
-  silent-rm $HOME/Library/LaunchAgents/org.setupsh.grabbox-cleanup.plist
-  ln -s $SETUP_PATH/setupsh/recipes/grabbox-cleanup.plist $HOME/Library/LaunchAgents/org.setupsh.grabbox-cleanup.plist
-  launchctl load $HOME/Library/LaunchAgents/org.setupsh.grabbox-cleanup.plist
-fi

@@ -39,10 +39,10 @@ done
 typeset -U config_files
 
 # load the path files
-#sourceFiles $SETUP_PATH/setupsh/recipes/*.path
+# sourceFiles $SETUP_PATH/setupsh/recipes/*.path
 
 # load everything but the path and completion files
-sourceFiles $SETUP_PATH/setupsh/recipes/*.source
+# sourceFiles $SETUP_PATH/setupsh/recipes/*.source
 
 # initialize autocomplete here, otherwise functions won't be loaded
 autoload -U compinit

@@ -1,37 +1,9 @@
 #!/usr/bin/env zsh
 
-# one keyboard/mouse for multiples machines
-brewcaskinstall "Synergy"
-setupsh-accessibility-privacy-apps --insert synergy
-
-##
-# Sync first
-##
-brewcaskinstall "BitTorrent Sync"
-openifnot "BitTorrent Sync"
-
-setupsh-recipe custom-folders
-
-##
-# Development
-##
-brewinstall thefuck
-
-brewcaskinstall atom
-brewcaskinstall "iTerm" "iterm2"
-setupsh-recipe git
-brewcaskinstall "GitHub"
-
-### NVM: Node
-setupsh-recipe nvm
-nvm install node
-nvm alias default node
-
-#### Package helpers
-npmig npmpub
-npmig github-release-from-changelog
-npmig npm-check
-npmig updatehammer
+# browser
+brewcaskinstall "FirefoxNightly" "firefox-nightly"
+openifnot "FirefoxNightly"
+setupsh-recipe firefox-user.js
 
 ## Ssh
 setupsh-recipe ssh
@@ -39,104 +11,83 @@ setupsh-recipe ssh
 ## Zsh completion
 brewinstall zsh-completions
 
-# Window manager
-brewcaskinstall Slate
-openifnot "Slate"
-setupsh-accessibility-privacy-apps --insert com.slate.Slate
+# one keyboard/mouse for multiples machines
+brewcaskinstall "Synergy"
+setupsh-accessibility-privacy-apps --insert synergy
 
-# fix OS X error -10810
-# see tmux.conf
-brewinstall reattach-to-user-namespace
-brewinstall tmux
-setupsh-recipe vim
+## Sync
+brewcaskinstall "BitTorrent Sync"
+openifnot "BitTorrent Sync"
 
-# browser
-brewcaskinstall "FirefoxNightly" "firefox-nightly"
-openifnot "FirefoxNightly"
-setupsh-recipe firefox-user.js
+setupsh-recipe custom-folders
 
-# MAXIMUM SECURITY
-brewcaskinstall "KeePassX"
+# messaging
+brewcaskinstall Slack
+brewcaskinstall Gitter
+brewcaskinstall Skype
 
-##
-# Sharing
-##
-brewcaskinstall LimeChat
-brewcaskinstall "CloudApp" cloud
-#brewcaskinstall "Cloudup"
+## Development
+setupsh-recipe git
+brewcaskinstall atom
+brewcaskinstall "GitHub Desktop"
+
+### Node
+setupsh-recipe nvm
+nvm install node
+nvm alias default node
+
+# vm and shit
+brewcaskinstall "VirtualBox"
+brewinstall docker
+brewinstall docker-compose
+brewinstall docker-machine
 
 ## Some utilities
 brewcaskinstall "Flux"
 openifnot "Flux"
 brewcaskinstall "iStat Menus"
 openifnot "iStat Menus"
-brewcaskinstall "Prefs Editor"
-brewcaskinstall "AppCleaner"
 
-# I only use quicklook for photos, and since I added that, I have a lot of
-# issues when navigating between jpegs...
-# # QuickLook plugins from https://github.com/sindresorhus/quick-look-plugins
-# brewcaskinstall "/opt/homebrew-cask/Caskroom/qlcolorcode" "qlcolorcode"
-# brewcaskinstall "/opt/homebrew-cask/Caskroom/qlstephen" "qlstephen"
-# brewcaskinstall "/opt/homebrew-cask/Caskroom/qlmarkdown" "qlmarkdown"
-# brewcaskinstall "/opt/homebrew-cask/Caskroom/quicklook-json" "quicklook-json"
-# brewcaskinstall "/opt/homebrew-cask/Caskroom/qlprettypatch" "qlprettypatch"
-# brewcaskinstall "/opt/homebrew-cask/Caskroom/quicklook-csv" "quicklook-csv"
-# brewcaskinstall "/opt/homebrew-cask/Caskroom/betterzipql" "betterzipql"
-# brewcaskinstall "/opt/homebrew-cask/Caskroom/qlimagesize" "qlimagesize"
-# # brewcaskinstall "/opt/homebrew-cask/Caskroom/webpquicklook" "webpquicklook" # cause issue when you browser jpegs with ql (like up/down may show you empty jpg...)
-# brewcaskinstall "/opt/homebrew-cask/Caskroom/suspicious-package" "suspicious-package"
+# Package helpers
+npmig npmpub
+npmig github-release-from-changelog
+npmig npm-check
+npmig updatehammer
 
-# # reset QuickLook plugins
-# qlmanage -r &> /dev/null
+# MAXIMUM SECURITY
+brewcaskinstall "KeePassX"
 
 if [ "$FIRSTRUN" = "true" ]; then osx-refresh; fi;
 
 ##
 # Less important stuff
 ##
+npmig github-labels
 
 # safer than rm
 npmig trash
 
-# missing commands to OSX
-brewinstall tree
-brewinstall gpg
-
-npmig travis-encrypt
-
-npmig github-labels
-
-# images
+# image
 brewcaskinstall imageoptim
-brewinstall icoutils
 
-#sudo pip install --upgrade asciinema
-#asciinema auth
-#asciinema rec
+# apps
+brewcaskinstall "Prefs Editor"
+brewcaskinstall "AppCleaner"
 
-# keybase.io
-npmig keybase
-
+# up/download
+brewcaskinstall "CloudApp" cloud
 brewcaskinstall "Transmission"
-
-brewcaskinstall Slack
-brewcaskinstall Gitter
-brewcaskinstall Skype
+brewcaskinstall "Cyberduck"
 
 # multimedia
-brewcaskinstall "VLC"
 brewcaskinstall "MPlayerX"
+brewcaskinstall "VLC"
 brewcaskinstall "Last.fm" "lastfm"
-#brewcaskinstall "Rdio"
-brewcaskinstall "All2MP3"
-brewcaskinstall "Subtitles"
 brewcaskinstall "Jubler"
-brewcaskinstall "Cyberduck"
+
+# Data/Disk related
 brewcaskinstall "NameChanger"
 brewcaskinstall "GrandPerspective"
-
-# HD backup
 brewcaskinstall "SuperDuper!" "superduper"
 
 # VIDEO GAMES \o/
@@ -158,37 +109,21 @@ setupsh-recipe ddclient
 # anti-thef
 setupsh-recipe prey
 
-# for my mouse
-brewcaskinstall "/Library/PreferencePanes/Logitech Control Center.prefPane" "logitech-control-center"
-brewcaskinstall "Utilities/Logitech Unifying Software" "logitech-unifying"
-
 # YEAH I USE THAT
 brewcaskinstall "/Library/Java/JavaVirtualMachines" "java"
 brewcaskinstall "LibreOffice"
-
-# vm and shit
-brewcaskinstall "VirtualBox"
-brewinstall docker
-brewinstall docker-compose
-brewinstall docker-machine
-
-# not needed by default anymore
-#setupsh-recipe dnsmasq
-#setupsh-recipe apache
-#setupsh-recipe php
-#setupsh-recipe mysql
-
-#brewtap caskroom/fonts
-#brewcaskinstall "$HOME/Library/Fonts/Ubuntu-R.ttf" font-ubuntu
-#brewcaskinstall "$HOME/Library/Fonts/Ubuntu Mono derivative Powerline.ttf" font-ubuntu-mono-powerline
 
 # might be required http://software.intel.com/en-us/android/articles/intel-hardware-accelerated-execution-manager
 # brewinstall android-sdk
 #brewcaskinstall genymotion
 
-# Better perf for non Apple SSD
-# at the end because need reboot
 if [[ $COMPUTER_NAME == "iMoOx" ]]
 then
+  # for my mouse
+  brewcaskinstall "/Library/PreferencePanes/Logitech Control Center.prefPane" "logitech-control-center"
+  brewcaskinstall "Utilities/Logitech Unifying Software" "logitech-unifying"
+
+  # Better perf for non Apple SSD
+  # at the end because need reboot
   #sudo trimforce enable
 fi

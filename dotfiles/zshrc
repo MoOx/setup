@@ -27,8 +27,7 @@ export PATH=$PATH:./bin
 export PATH=$PATH:./.bin
 export PATH=$DIR_DEV/.bin:$PATH
 
-alias tmoox="tmux attach -t tmoox || tmux new -s tmoox"
-export EDITOR="vim"
+export EDITOR="atom"
 source $SETUP_PATH/submodules/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 HISTFILE=~/.history
@@ -190,7 +189,6 @@ if [[ -f $HOME/.github_token ]]
 then
   export GITHUB_TOKEN=$(cat $HOME/.github_token)
 fi
-alias sourcetree=/Applications/SourceTree.app/Contents/MacOS/SourceTree
 
 ## Network
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"

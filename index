@@ -33,7 +33,7 @@ brewcaskinstall "GitHub Desktop"
 
 ### Node
 setupsh-recipe nvm
-nvm install node
+nvm install node --reinstall-packages-from=node
 nvm alias default node
 
 # vm and shit

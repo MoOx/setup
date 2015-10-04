@@ -173,9 +173,7 @@ brewcaskinstall "LibreOffice"
 brewcaskinstall "VirtualBox"
 brewinstall docker
 brewinstall docker-compose
-brewinstall boot2docker
-#boot2docker init
-#boot2docker start
+brewinstall docker-machine
 
 # not needed by default anymore
 #setupsh-recipe dnsmasq

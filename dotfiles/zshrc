@@ -135,7 +135,7 @@ alias osx-internetsharing-off="sudo networksetup -setnetworkserviceenabled 'Ethe
 alias osx-resolutions="system_profiler SPDisplaysDataType | grep Resolution | tr -d ' '"
 alias osx-flushdns="dscacheutil -flushcache"
 alias osx-flushram="purge"
-export OSX_INSTALL_APP="/Applications/Install OS X Mavericks.app"
+export OSX_INSTALL_APP="/Applications/Install OS X El Capitan.app"
 alias osx-bootableusb="sudo \"$OSX_INSTALL_APP/Contents/Resources/createinstallmedia\" --volume /Volumes/Untitled --applicationpath \"$OSX_INSTALL_APP\" --nointeraction"
 alias osx-dsstore-delete="find . -type f -name '*.DS_Store' -ls -delete"
 

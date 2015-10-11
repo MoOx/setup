@@ -12,6 +12,7 @@
   helper = osxkeychain
 
 [core]
+  editor = atom -w
   quotepath = false
   excludesfile = ~/.gitignore_global
 

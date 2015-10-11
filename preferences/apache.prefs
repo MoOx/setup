@@ -17,7 +17,7 @@ then
 fi
 
 # PHP
-PHP_LATEST_PATH=/usr/local/Cellar/$PHP_VERSION
+PHP_LATEST_PATH=/usr/local/Cellar/php$PHP_VERSION
 if ls $PHP_LATEST_PATH &> /dev/null
 then
   PHP_LATEST_VERSION=$(ls -t $PHP_LATEST_PATH | head -1)

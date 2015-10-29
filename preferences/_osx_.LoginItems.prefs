@@ -6,9 +6,6 @@ function osxLoginItem {
 
 osascript -e 'tell application "System Events" to delete every login items'
 
-# OS X must have
-osxLoginItem "/Applications/Mail.app" "Mail"
-
 # Sync
 osxLoginItem "/Applications/BitTorrent Sync.app" "BitTorrent Sync"
 

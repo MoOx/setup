@@ -38,8 +38,6 @@ dockutil --no-restart --add "/Applications/Safari.app"
 dockutil --no-restart --add "/Applications/FirefoxNightly.app"
 dockutil --no-restart --add "/Applications/Utilities/Terminal.app"
 dockutil --no-restart --add "/Applications/Atom.app"
-dockutil --no-restart --add "/Applications/Gitter.app"
-dockutil --no-restart --add "/Applications/Slack.app"
 dockutil --no-restart --add "/Applications/Tweetbot.app"
 dockutil --no-restart --add "/Applications/Messages.app"
 dockutil --no-restart --add "/Applications" --view grid --display folder --sort name

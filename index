@@ -22,6 +22,7 @@ openifnot "BitTorrent Sync"
 setupsh-recipe custom-folders
 
 # messaging
+brewcaskinstall Discord
 brewcaskinstall Skype
 
 ## Development

@@ -3,10 +3,10 @@
     invisibles: {}
     showInvisibles: true
     showIndentGuide: true
-    fontSize: 12
     lineHeight: 1.45
     scrollPastEnd: true
     fontFamily: "Menlo"
+    fontSize: 15
   core:
     projectHome: "/Users/MoOx/Sync/Development"
     disabledPackages: [
@@ -123,6 +123,11 @@
         green: 255
         blue: 255
         alpha: 0
+      foreground:
+        red: 145
+        green: 145
+        blue: 146
+        alpha: 1
     openPanesInSameSplit: true
     cursorBlink: false
     scrollback: 20000
@@ -154,8 +159,7 @@
   "yuno-commit":
     numberOfChangesToShowWarning: 100
   "markdown-preview": {}
-  "linter-eslint":
-    disableWhenNoEslintrcFileInPath: true
+  "linter-eslint": {}
   tabs:
     showIcons: false
   "atom-beautify":

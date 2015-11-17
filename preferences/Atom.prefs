@@ -5,7 +5,7 @@ defaults write com.github.atom moveToApplicationsFolderAlertSuppress -bool true
 if type apm > /dev/null
 then
   apminstall auto-update-packages
-  apminstall break-time
+  #apminstall break-time
 
   # theme
   apminstall file-type-icons

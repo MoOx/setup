@@ -153,6 +153,7 @@
   "tree-view":
     showOnRightSide: true
     hideIgnoredNames: true
+    hideVcsIgnoredFiles: true
   "find-and-replace":
     openProjectFindResultsInRightPane: true
     focusEditorAfterSearch: true
@@ -168,3 +169,4 @@
     microinterval: 30
     intervalcount: 1
     break: 1
+  pigments: {}

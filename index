@@ -16,6 +16,8 @@ brewcaskinstall "Synergy"
 setupsh-accessibility-privacy-apps --insert synergy
 
 ## Sync
+brewinstall syncthing
+ln -sfv /usr/local/opt/syncthing/*.plist ~/Library/LaunchAgents
 brewcaskinstall "BitTorrent Sync"
 openifnot "BitTorrent Sync"
 

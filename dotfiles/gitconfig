@@ -30,7 +30,8 @@
   trustctime = false
 
 [alias]
-  co = alias
+  co = checkout
+  chp = cherry-pick
 
   ca = commit --all
   cam = commit --all -m
@@ -43,6 +44,11 @@
 
   # stash, pull, stash pop
   sync = "!git stash -u && git pull && git stash pop"
+
+  showstash= stash show -p stash@{0}
+
+  # undo last commit
+  undo = reset --soft HEAD~1
 
   # Amend the currently staged files to the latest commit
   amend = commit --amend --reuse-message=HEAD

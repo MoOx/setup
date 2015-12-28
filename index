@@ -1,5 +1,11 @@
 #!/usr/bin/env zsh
 
+# fonts
+brewtap caskroom/fonts
+brewcaskinstall font-fira-code
+# brewcaskinstall font-fira-mono
+# brewcaskinstall font-fira-sans
+
 # browser
 brewcaskinstall "FirefoxNightly" "firefox-nightly"
 openifnot "FirefoxNightly"

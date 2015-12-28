@@ -5,8 +5,8 @@
     showIndentGuide: true
     lineHeight: 1.45
     scrollPastEnd: true
-    fontFamily: "Menlo"
-    fontSize: 15
+    fontFamily: "Fira Code"
+    fontSize: 16
   core:
     projectHome: "/Users/MoOx/Sync/Development"
     disabledPackages: [

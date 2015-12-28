@@ -1,5 +1,6 @@
 .apm
 packages
+blob-store
 storage
 compile-cache
 dev

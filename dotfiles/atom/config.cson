@@ -152,8 +152,6 @@
     ignoreWhitespaceOnCurrentLine: false
   "tree-view":
     showOnRightSide: true
-    hideIgnoredNames: true
-    hideVcsIgnoredFiles: true
   "find-and-replace":
     openProjectFindResultsInRightPane: true
     focusEditorAfterSearch: true

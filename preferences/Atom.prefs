@@ -4,43 +4,27 @@ defaults write com.github.atom moveToApplicationsFolderAlertSuppress -bool true
 
 if type apm > /dev/null
 then
-  apminstall auto-update-packages
-  #apminstall break-time
-
-  # theme
-  apminstall file-type-icons
-
-  # various editor enhancements
-  apminstall project-manager
-  apminstall open-in-github-app
-  apminstall line-length-break
-
-  # git
-  apminstall git-blame
-  #apminstall git-log
-  #apminstall git-history
-  #apminstall merge-conflicts
-  #apminstall live-archive
-
-  # code quality
-  apminstall editorconfig
-  apminstall linter # for linter-*
-  #apminstall docblockr
-
-  # html/css/js
+  # apm list -ib
   apminstall atom-beautify
-
-  # css
-  apminstall pigments
-  #apminstall color-picker
-  #apminstall bezier-curve-editor
-
-  # js
-  # apminstall atom-semicolons
+  apminstall auto-update-packages
+  apminstall color-picker
+  apminstall docblockr
+  apminstall duotone-dark-sea-syntax
+  apminstall editorconfig
+  apminstall file-type-icons
+  apminstall git-blame
+  apminstall git-history
+  apminstall git-log
+  apminstall git-plus
+  apminstall language-apache
+  apminstall line-length-break
+  apminstall linter
   apminstall linter-eslint
   apminstall linter-jsonlint
+  apminstall merge-conflicts
+  apminstall open-in-github-app
+  apminstall pigments
+  apminstall project-manager
   apminstall react
-
-  # NO COMMENT
-  apminstall language-apache
+  apminstall resize-indent
 fi

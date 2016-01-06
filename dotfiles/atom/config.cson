@@ -24,130 +24,21 @@
       "language-go"
       "language-csharp"
       "language-clojure"
-      "language-jsx"
-      "close-tags"
+      "bookmarks"
+      "language-less"
+      "language-sql"
+      "styleguide"
+    ]
+    themes: [
+      "one-dark-ui"
+      "duotone-dark-sea-syntax"
     ]
   "exception-reporting":
     userId: "acee8e04-1bbb-8674-25af-f5ccc0cd2d35"
   welcome:
     showOnStartup: false
-  autosave: {}
-  linter: {}
-  "travis-ci-status": {}
-  "merge-conflicts": {}
-  "terminal-panel": {}
-  term2:
-    colors:
-      normalBlack:
-        red: 34
-        green: 34
-        blue: 34
-        alpha: 1
-      normalRed:
-        red: 199
-        green: 86
-        blue: 70
-        alpha: 1
-      normalGreen:
-        red: 143
-        green: 190
-        blue: 0
-        alpha: 1
-      normalYellow:
-        red: 233
-        green: 238
-        blue: 0
-        alpha: 1
-      normalBlue:
-        red: 0
-        green: 168
-        blue: 198
-        alpha: 1
-      normalPurple:
-        red: 182
-        green: 86
-        blue: 255
-        alpha: 1
-      normalCyan:
-        red: 78
-        green: 205
-        blue: 196
-        alpha: 1
-      normalWhite:
-        red: 248
-        green: 248
-        blue: 242
-        alpha: 1
-      brightBlack:
-        red: 85
-        green: 98
-        blue: 112
-        alpha: 1
-      brightRed:
-        red: 211
-        green: 121
-        blue: 109
-        alpha: 1
-      brightGreen:
-        red: 192
-        green: 231
-        blue: 99
-        alpha: 1
-      brightYellow:
-        red: 250
-        green: 253
-        blue: 36
-        alpha: 1
-      brightBlue:
-        red: 0
-        green: 212
-        blue: 255
-        alpha: 1
-      brightPurple:
-        red: 204
-        green: 137
-        blue: 255
-        alpha: 1
-      brightCyan:
-        red: 116
-        green: 214
-        blue: 206
-        alpha: 1
-      brightWhite:
-        red: 253
-        green: 253
-        blue: 251
-        alpha: 1
-      background:
-        red: 255
-        green: 255
-        blue: 255
-        alpha: 0
-      foreground:
-        red: 145
-        green: 145
-        blue: 146
-        alpha: 1
-    openPanesInSameSplit: true
-    cursorBlink: false
-    scrollback: 20000
-    titleTemplate: "❯ {{bashName}}"
-  react: {}
-  "isotope-ui":
-    backgroundColor: "false"
-    customBackgroundColorPicker:
-      red: 255
-      green: 40
-      blue: 58
-      alpha: 1
-    lowContrastTooltip: true
-    fontWeight: "Regular"
-    spaciousMode: true
-    backgroundGradient: true
   "git-projects":
     rootPath: "/Users/MoOx/Sync/Development"
-  "web-browser":
-    useRightPane: true
   whitespace:
     ignoreWhitespaceOnCurrentLine: false
   "tree-view":
@@ -155,16 +46,7 @@
   "find-and-replace":
     openProjectFindResultsInRightPane: true
     focusEditorAfterSearch: true
-  "yuno-commit":
-    numberOfChangesToShowWarning: 100
-  "markdown-preview": {}
-  "linter-eslint": {}
   tabs:
     showIcons: false
   "atom-beautify":
     _analyticsUserId: "c8ae3b6d-a781-4233-9780-a96292c2afa8"
-  "break-time":
-    microinterval: 30
-    intervalcount: 1
-    break: 1
-  pigments: {}

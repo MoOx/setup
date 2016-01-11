@@ -153,8 +153,10 @@ export PATH=$PATH:./node_modules/.bin
 
 ### some nice aliases
 alias npmi="npm i"
-alias npmt="npm i && npm test"
-alias npms="npm i && npmstart" # npmstart function
+alias npmis="npm i -S"
+alias npmid="npm i -D"
+alias npmt="npm test"
+alias npms="npmstart" # npmstart function
 alias npmr="npm run"
 
 ## Apache

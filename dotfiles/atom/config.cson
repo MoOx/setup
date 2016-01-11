@@ -13,7 +13,6 @@
       "language-mustache"
       "welcome"
       "language-toml"
-      "language-sass"
       "language-ruby-on-rails"
       "language-ruby"
       "language-python"
@@ -25,7 +24,6 @@
       "language-csharp"
       "language-clojure"
       "bookmarks"
-      "language-less"
       "language-sql"
       "styleguide"
     ]

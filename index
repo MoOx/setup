@@ -46,9 +46,9 @@ nvm alias default node
 
 # vm and shit
 brewcaskinstall "VirtualBox"
-brewinstall docker
-brewinstall docker-compose
-brewinstall docker-machine
+# brewinstall docker
+# brewinstall docker-compose
+# brewinstall docker-machine
 
 ## Some utilities
 brewcaskinstall "Flux"

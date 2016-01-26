@@ -188,6 +188,7 @@ alias gpaas_ssh="ssh $1@$GPAAS_SSH_HOST"
 if [[ -f $HOME/.github_token ]]
 then
   export GITHUB_TOKEN=$(cat $HOME/.github_token)
+  export HOMEBREW_GITHUB_API_TOKEN=$GITHUB_TOKEN
 fi
 
 ## Network

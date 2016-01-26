@@ -57,10 +57,6 @@ brewcaskinstall "iStat Menus"
 openifnot "iStat Menus"
 
 # Package helpers
-#npmig npmpub
-_cwd=$(pwd) && cd $DIR_DEV/npmpublish && npm link && cd $_cwd
-#npmig github-release-from-changelog
-_cwd=$(pwd) && cd $DIR_DEV/github-release-from-changelog && npm link && cd $_cwd
 npmig npm-check
 npmig updatehammer
 

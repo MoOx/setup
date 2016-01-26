@@ -22,8 +22,8 @@
     ]
     projectHome: "/Users/MoOx/Sync/Development"
     themes: [
-      "one-dark-ui"
-      "duotone-dark-sea-syntax"
+      "one-light-ui"
+      "duotone-bright-sea-syntax"
     ]
   editor:
     fontFamily: "Fira Code"
@@ -38,6 +38,9 @@
   "find-and-replace":
     focusEditorAfterSearch: true
     openProjectFindResultsInRightPane: true
+  flux:
+    daySyntaxTheme: "duotone-bright-sea-syntax"
+    nightSyntaxTheme: "duotone-dark-sea-syntax"
   "git-projects":
     rootPath: "/Users/MoOx/Sync/Development"
   tabs:

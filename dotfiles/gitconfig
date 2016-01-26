@@ -31,6 +31,7 @@
 
 [alias]
   co = checkout
+  cb = checkout -b
   chp = cherry-pick
 
   ca = commit --all
@@ -45,6 +46,7 @@
   # stash, pull, stash pop
   sync = "!git stash -u && git pull && git stash pop"
 
+  st= stash
   showstash= stash show -p stash@{0}
 
   # undo last commit
@@ -52,6 +54,7 @@
 
   # Amend the currently staged files to the latest commit
   amend = commit --amend --reuse-message=HEAD
+  aamend = commit --all --amend --reuse-message=HEAD
 
   amend-author = commit --amend --no-edit --author
 

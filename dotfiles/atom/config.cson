@@ -28,7 +28,8 @@
   editor:
     fontFamily: "Fira Code"
     fontSize: 16
-    invisibles: {}
+    invisibles:
+      space: "‧"
     lineHeight: 1.45
     scrollPastEnd: true
     showIndentGuide: true

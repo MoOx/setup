@@ -31,7 +31,6 @@
     invisibles:
       space: "‧"
     lineHeight: 1.45
-    scrollPastEnd: true
     showIndentGuide: true
     showInvisibles: true
   "exception-reporting":

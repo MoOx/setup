@@ -232,7 +232,11 @@ alias fliptable="echo \"$USER/setup\"; echofliptable; setupsh-update; setupsh-ru
 # added by travis gem
 [ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
 
+# Docker
 alias dockermachinedev="docker-machine start dev && eval \"\$(docker-machine env dev)\""
 
 # see https://github.com/popomore/github-labels + MoOx/setup/dotfiles/github-issues-labels.json
 alias github-labels="labels -c $HOME/.github-issues-labels.json"
+
+# Android development
+export ANDROID_HOME=/usr/local/opt/android-sdk

@@ -57,7 +57,6 @@ brewcaskinstall "VLC"
 # apps
 brewcaskinstall "Prefs Editor"
 brewcaskinstall "AppCleaner"
-brewcaskinstall "CloudApp" cloud
 openifnot "AppCleaner"
 
 ##

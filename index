@@ -18,8 +18,11 @@ setupsh-recipe ssh
 brewinstall zsh-completions
 
 # one keyboard/mouse for multiples machines
-brewcaskinstall "Synergy"
-setupsh-accessibility-privacy-apps --insert synergy
+if ls /Applications/Synergy.app &> /dev/null
+then
+  open "http://synergy-project.org/"
+  setupsh-accessibility-privacy-apps --insert synergy
+fi
 
 brewcaskinstall "Spectacle"
 

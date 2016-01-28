@@ -20,6 +20,7 @@
       "language-sql"
       "styleguide"
     ]
+    openEmptyEditorOnStart: false
     projectHome: "/Users/MoOx/Sync/Development"
     themes: [
       "one-light-ui"

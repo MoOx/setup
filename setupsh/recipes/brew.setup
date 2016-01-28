@@ -19,7 +19,6 @@ brewtap homebrew/versions
 # cask
 brewtap caskroom/cask
 brewtap caskroom/versions
-brewinstall "brew-cask"
 
 # required for app that use x11
 #brewcaskinstall "Utilities/XQuartz" "xquartz"

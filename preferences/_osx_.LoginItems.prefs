@@ -8,6 +8,7 @@ osascript -e 'tell application "System Events" to delete every login items'
 
 # Sync
 osxLoginItem "/Applications/BitTorrent Sync.app" "BitTorrent Sync"
+osxLoginItem "/Applications/QSyncthingTray.app" "QSyncthingTray"
 
 # OS X enhancements
 osxLoginItem "/Applications/Flux.app" "Flux"

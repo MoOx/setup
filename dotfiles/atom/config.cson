@@ -23,7 +23,7 @@
     projectHome: "/Users/MoOx/Sync/Development"
     themes: [
       "one-light-ui"
-      "duotone-bright-sea-syntax"
+      "duotone-light-sea-syntax"
     ]
   editor:
     fontFamily: "Fira Code"
@@ -39,8 +39,9 @@
     focusEditorAfterSearch: true
     openProjectFindResultsInRightPane: true
   flux:
-    daySyntaxTheme: "duotone-bright-sea-syntax"
+    daySyntaxTheme: "duotone-light-sea-syntax"
     nightSyntaxTheme: "duotone-dark-sea-syntax"
+    sunrise: 9
   "git-projects":
     rootPath: "/Users/MoOx/Sync/Development"
   tabs:

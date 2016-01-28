@@ -21,6 +21,8 @@ brewinstall zsh-completions
 brewcaskinstall "Synergy"
 setupsh-accessibility-privacy-apps --insert synergy
 
+brewcaskinstall "Spectacle"
+
 ## Sync
 brewcaskinstall "syncthing"
 brewcaskinstall "QSyncthingTray"

@@ -28,7 +28,6 @@
     ]
   editor:
     fontFamily: "Fira Code"
-    fontSize: 16
     invisibles:
       space: "‧"
     lineHeight: 1.45
@@ -45,6 +44,11 @@
     sunrise: 9
   "git-projects":
     rootPath: "/Users/MoOx/Sync/Development"
+  "jour-nuit":
+    daySyntaxTheme: "duotone-light-sea-syntax"
+    firstTime: true
+    nightSyntaxTheme: "duotone-dark-sea-syntax"
+    sunrise: 9
   tabs:
     showIcons: false
   "tree-view":

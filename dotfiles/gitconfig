@@ -146,3 +146,5 @@
 
 [url "git://gist.github.com/"]
   insteadOf = "gist:"
+[ghi]
+	token = !security find-internet-password -a MoOx -s github.com -l 'ghi token' -w

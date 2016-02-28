@@ -14,6 +14,7 @@ osxLoginItem "/Applications/QSyncthingTray.app" "QSyncthingTray"
 osxLoginItem "/Applications/Flux.app" "Flux"
 osxLoginItem "/Applications/Flycut.app" "Flycut"
 osxLoginItem "/Applications/Spectacle.app" "Spectacle"
+osxLoginItem "/Applications/Tunnelblick.app" "Tunnelblick"
 
 # debug with
 echo_info "OS X Login items: $(osascript -e 'tell application "System Events" to get the name of every login item')"

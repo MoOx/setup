@@ -96,16 +96,16 @@ then
   # brewinstall docker-machine
 
   # OSS / Package helpers
-  brew install vitorgalvao/tiny-scripts/fastmerge
-  brew install vitorgalvao/tiny-scripts/prfixbranch
-  brew install vitorgalvao/tiny-scripts/prfixmaster
+  brewinstall vitorgalvao/tiny-scripts/fastmerge
+  brewinstall vitorgalvao/tiny-scripts/prfixbranch
+  brewinstall vitorgalvao/tiny-scripts/prfixmaster
   npmig github-labels
   npmig npm-check
   npmig updatehammer
 
   # meta
   # https://github.com/caskroom/homebrew-cask/blob/master/CONTRIBUTING.md#updating-a-cask
-  brew install vitorgalvao/tiny-scripts/cask-repair
+  brewinstall vitorgalvao/tiny-scripts/cask-repair
 
   # Android development
   # might be required http://software.intel.com/en-us/android/articles/intel-hardware-accelerated-execution-manager

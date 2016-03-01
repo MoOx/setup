@@ -187,6 +187,10 @@ alias gpaas_ssh="ssh $1@$GPAAS_SSH_HOST"
 
 ## Git
 alias g="git"
+alias gg="git pull"
+alias gp="git push"
+alias gs="git sync" # alias
+
 if [[ -f $HOME/.github_token ]]
 then
   export GITHUB_TOKEN=$(cat $HOME/.github_token)

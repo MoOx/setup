@@ -1,5 +1,11 @@
 #!/usr/bin/env zsh
 
+# prevent permissions issues
+# https://wiki.apache.org/httpd/13PermissionDenied
+chmod o+x $HOME
+chmod o+x $DIR_SYNC
+chmod o+x $DIR_DEV
+
 APACHE_CONF="/etc/apache2/httpd.conf"
 
 # Apache dev configuration

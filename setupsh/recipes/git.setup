@@ -16,6 +16,7 @@ if ! type ghi > /dev/null
 then
   echo_title_install "GitHub issues cli tools"
   brewinstall ghi
+  ghi config --auth $USER
 fi
 
 if [ ! -e "$HOME/.github_token" ]

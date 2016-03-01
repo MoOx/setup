@@ -18,7 +18,7 @@
 
   # properly handle line endings
   # https://help.github.com/articles/dealing-with-line-endings/
-  autocrlf = input
+	autocrlf = input
 
   # Treat spaces before tabs and all kinds of trailing whitespace as an error
   # [default] trailing-space: looks for spaces at the end of a line
@@ -32,33 +32,41 @@
 [alias]
   co = checkout
   cb = checkout -b
+
   chp = cherry-pick
+
+  a = add -A .
 
   ca = commit --all
   cam = commit --all -m
 
-  # View abbreviated SHA, description, and history graph of the latest 20 commits
-  l = log --pretty=oneline -n 20 --graph --abbrev-commit
+  r = rebase
+  rc = rebase --continue
+  ra = rebase --abort
 
-  # View the current working tree status using the short format
+  pf = push -f
+
+  clear= clean -f -d
+
   s = status -s
 
-  # stash, pull, stash pop
-  sync = "!git stash -u && git pull && git stash pop"
-
   st= stash
-  showstash= stash show -p stash@{0}
+  stshow= stash show -p stash@{0}
 
-  # undo last commit
   undo = reset --soft HEAD~1
 
-  # Amend the currently staged files to the latest commit
-  amend = commit --amend --reuse-message=HEAD
-  aamend = commit --all --amend --reuse-message=HEAD
+  am = commit --amend --reuse-message=HEAD
+  aam = commit --amend --reuse-message=HEAD --all
 
   amend-author = commit --amend --no-edit --author
 
   hammer = "!git add -A . && git commit --amend --reuse-message=HEAD && git push -f"
+
+  # View abbreviated SHA, description, and history graph of the latest 20 commits
+  l = log --pretty=oneline -n 20 --graph --abbrev-commit
+
+  # stash, pull, stash pop
+  sync = "!git stash -u && git pull && git stash pop"
 
   # Remove branches that have already been merged with the current branch
   delete-merged = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"

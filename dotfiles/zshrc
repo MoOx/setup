@@ -145,19 +145,20 @@ source $(brew --prefix nvm)/nvm.sh
 
 ## NPM
 
-# allow local self signed https server
+alias n="npm"
+alias ni="npm i"
+alias nis="npm i -S"
+alias nid="npm i -D"
+alias ns="npm start"
+alias nt="npm test"
+alias nr="npm run"
+alias np="npm run release"
+
+### allow local self signed https server
 export NODE_TLS_REJECT_UNAUTHORIZED="0"
 
 ### to avoid npm install -g
 export PATH=$PATH:./node_modules/.bin
-
-### some nice aliases
-alias npmi="npm i"
-alias npmis="npm i -S"
-alias npmid="npm i -D"
-alias npmt="npm test"
-alias npms="npmstart" # npmstart function
-alias npmr="npm run"
 
 ## Apache
 APACHE_CONF_DEV_PATH=$DIR_DEV/_.conf/apache/
@@ -185,6 +186,7 @@ export GPAAS_GIT_URL="git+ssh://$MY_GPAAS_USER@$MY_GPAAS_GIT/"
 alias gpaas_ssh="ssh $1@$GPAAS_SSH_HOST"
 
 ## Git
+alias g="git"
 if [[ -f $HOME/.github_token ]]
 then
   export GITHUB_TOKEN=$(cat $HOME/.github_token)

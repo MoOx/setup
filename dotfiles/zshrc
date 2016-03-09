@@ -37,7 +37,7 @@ export EDITOR="atom"
 source $SETUP_PATH/submodules/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 HISTFILE=~/.history
-HISTSIZE=SAVEHIST=99999
+HISTSIZE=SAVEHIST=1000
 setopt APPEND_HISTORY
 setopt HIST_EXPIRE_DUPS_FIRST
 setopt HIST_FCNTL_LOCK

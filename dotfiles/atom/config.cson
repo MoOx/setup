@@ -28,6 +28,7 @@
     ]
   editor:
     fontFamily: "Fira Code"
+    fontSize: 15
     invisibles:
       space: "‧"
     lineHeight: 1.45

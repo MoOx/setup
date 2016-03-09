@@ -58,6 +58,7 @@ if [ "$FIRSTRUN" = "true" ]; then osx-refresh; fi;
 npmig trash-cli
 
 brewcaskinstall "VLC"
+npmig peerflix
 
 # apps
 brewcaskinstall "Prefs Editor"

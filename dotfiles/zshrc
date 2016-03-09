@@ -219,3 +219,7 @@ export ANDROID_HOME=/usr/local/opt/android-sdk
 # (see top of the file)
 # set +x
 # exec 2>&3 3>&-
+
+alias pbstream="peerflix \"$(pbpaste)\" --not-on-top --quiet"
+alias pbstream-vlc="pbstream --vlc"
+alias pbstream-clean="trash /tmp/torrent-stream"

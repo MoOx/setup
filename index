@@ -58,6 +58,7 @@ if [ "$FIRSTRUN" = "true" ]; then osx-refresh; fi;
 npmig trash-cli
 
 brewcaskinstall "VLC"
+brewcaskinstall "MPlayerX"
 npmig peerflix
 
 # apps
@@ -83,7 +84,8 @@ setupsh-recipe prey
 if [ "$FIRSTRUN" = "" ]
 then
   # messaging
-  brewcaskinstall Discord
+  brewcaskinstall "Discord"
+  brewcaskinstall "Gitter"
 
   # MORE BROWSER
   brewcaskinstall "Firefox"

@@ -1,5 +1,11 @@
 #!/usr/bin/env zsh
 
+# Profiling zshrc speed
+# http://www.rosipov.com/blog/profiling-slow-bashrc/
+# PS4='+ $(date "+%s.%N")\011 '
+# exec 3>&2 2>$HOME/Desktop/zshstart.$$.log
+# set -x
+
 # export PATH
 # OS X 10.10+ doesn't execute /etc/launchd.conf
 # and GUI app doesn't get /etc/paths
@@ -247,3 +253,8 @@ alias github-labels="labels -c $HOME/.github-issues-labels.json"
 
 # Android development
 export ANDROID_HOME=/usr/local/opt/android-sdk
+
+# Profiling zshrc speed
+# (see top of the file)
+# set +x
+# exec 2>&3 3>&-

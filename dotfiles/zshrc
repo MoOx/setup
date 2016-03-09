@@ -91,21 +91,6 @@ fi
 # disable ._ file
 export COPYFILE_DISABLE=true
 
-# Man pages colors
-export LESS_TERMCAP_mb=$(tput bold; tput setaf 2)
-export LESS_TERMCAP_md=$(tput bold)
-export LESS_TERMCAP_me=$(tput sgr0)
-export LESS_TERMCAP_so=$(tput bold; tput rev)
-export LESS_TERMCAP_se=$(tput rmso; tput sgr0)
-export LESS_TERMCAP_us=$(tput setaf 4; tput bold)
-export LESS_TERMCAP_ue=$(tput sgr0)
-export LESS_TERMCAP_mr=$(tput rev)
-export LESS_TERMCAP_mh=$(tput dim)
-export LESS_TERMCAP_ZN=$(tput ssubm)
-export LESS_TERMCAP_ZV=$(tput rsubm)
-export LESS_TERMCAP_ZO=$(tput ssupm)
-export LESS_TERMCAP_ZW=$(tput rsupm)
-
 
 alias list-aliases="alias | sed 's/=.*//'"
 alias list-functions="declare -f | grep '^[a-z].* () {' | sed 's/{$//'" # show non _prefixed functions
@@ -116,19 +101,6 @@ alias search="list | grep"
 
 alias fuck='eval $(thefuck $(fc -ln -1 | tail -n 1)); fc -R'
 alias fak='fuck'
-
-## ls: Detect which `ls` flavor is in use
-if ls --color &> /dev/null
-then # GNU `ls`
-  colorflag="--color"
-else # OS X `ls`
-  colorflag="-G"
-fi
-alias l="ls -l ${colorflag}" # List all files colorized in long format
-alias la="ls -la ${colorflag}" # List all files colorized in long format, including dot files
-alias lsd='ls -l ${colorflag} | grep "^d"' # List only directories
-alias ls="command ls ${colorflag}" # Always use color output for `ls`
-export LS_COLORS='no=00:fi=00:di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.gz=01;31:*.bz2=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.avi=01;35:*.fli=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.ogg=01;35:*.mp3=01;35:*.wav=01;35:'
 
 ## OS X
 alias osx-hidden-show="defaults write com.apple.finder AppleShowAllFiles -bool true && osx-refresh"
@@ -178,18 +150,6 @@ alias apacheaddconf="e $APACHE_CONF_DEV_PATH/local.conf /etc/hosts"
 ## MySQL (from brew)
 alias mysqlstart="mysql.server start"
 alias mysqlstop="mysql.server stop"
-
-## Brew cask
-command -v brew > /dev/null && alias caskroom="cd $(brew --prefix)/Library/Taps/caskroom"
-
-## Gandi.net
-export GPAAS_HOST="dc0.gpaas.net"
-export GPAAS_SFTP_HOST="sftp.$GPAAS_HOST"
-export GPAAS_SSH_HOST="console.$GPAAS_HOST"
-export GPAAS_GIT_HOST="git.$GPAAS_HOST"
-export GPAAS_GIT_URL="git+ssh://$MY_GPAAS_USER@$MY_GPAAS_GIT/"
-#GPAAS_SFTP="$GPAAS_SFTP_HOST"
-alias gpaas_ssh="ssh $1@$GPAAS_SSH_HOST"
 
 ## Git
 alias g="git"

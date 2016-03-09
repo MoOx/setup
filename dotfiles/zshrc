@@ -139,9 +139,9 @@ export OSX_INSTALL_APP="/Applications/Install OS X El Capitan.app"
 alias osx-bootableusb="sudo \"$OSX_INSTALL_APP/Contents/Resources/createinstallmedia\" --volume /Volumes/Untitled --applicationpath \"$OSX_INSTALL_APP\" --nointeraction"
 alias osx-dsstore-delete="find . -type f -name '*.DS_Store' -ls -delete"
 
-# NVM
+## NVM
 export NVM_DIR=$HOME/.nvm
-source $(brew --prefix nvm)/nvm.sh
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
 ## NPM
 

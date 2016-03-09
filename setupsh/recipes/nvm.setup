@@ -3,7 +3,11 @@
 if ! type nvm > /dev/null
 then
   echo_title_install "NVM"
-  brewinstall nvm
-  mkdir $HOME/.nvm
+  # https://github.com/creationix/nvm#manual-install
+  # per nvm doc, brew is not supported
+  git clone https://github.com/creationix/nvm.git ~/.nvm && cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`
+else
+  echo_title_update "NVM"
+  cd "$NVM_DIR" && git pull origin master && git checkout `git describe --abbrev=0 --tags`
+  . "$NVM_DIR/nvm.sh"
 fi
-

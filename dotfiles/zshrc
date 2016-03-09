@@ -152,10 +152,12 @@ alias mysqlstart="mysql.server start"
 alias mysqlstop="mysql.server stop"
 
 ## Git
-alias g="git"
-alias gg="git pull"
-alias gp="git push"
-alias gs="git sync" # alias
+alias g="hub"
+alias gg="g pull"
+alias gp="g push"
+alias gpf="g push --force"
+alias gs="g sync" # git alias
+alias gpr="g am -3"
 
 if [[ -f $HOME/.github_token ]]
 then

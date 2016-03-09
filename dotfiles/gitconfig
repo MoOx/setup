@@ -38,7 +38,8 @@
   a = add -A .
 
   ca = commit --all
-  cam = commit --all -m
+  cam = commit --amend
+  caam = commit --amend --all
 
   r = rebase
   rc = rebase --continue
@@ -54,9 +55,6 @@
   stshow= stash show -p stash@{0}
 
   undo = reset --soft HEAD~1
-
-  am = commit --amend --reuse-message=HEAD
-  aam = commit --amend --reuse-message=HEAD --all
 
   amend-author = commit --amend --no-edit --author
 

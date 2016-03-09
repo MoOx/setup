@@ -125,12 +125,16 @@ export NVM_DIR=$HOME/.nvm
 
 alias n="npm"
 alias ni="npm i"
+alias nig="npm i -g"
 alias nis="npm i -S"
 alias nid="npm i -D"
-alias ns="npm start"
-alias nt="npm test"
+alias ns="npm start --"
+alias nt="npm test --"
+alias nts="npm run tests --"
+alias ntc="npm run test-with-coverage --"
 alias nr="npm run"
-alias np="npm run release"
+alias np="npm run release --"
+alias npf="npm run release -- --skip-cleanup"
 
 ### allow local self signed https server
 export NODE_TLS_REJECT_UNAUTHORIZED="0"

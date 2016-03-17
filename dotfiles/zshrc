@@ -226,6 +226,25 @@ export ANDROID_HOME=/usr/local/opt/android-sdk
 # set +x
 # exec 2>&3 3>&-
 
-alias pbstream="peerflix \"$(pbpaste)\" --not-on-top --quiet"
-alias pbstream-vlc="pbstream --vlc"
-alias pbstream-clean="trash /tmp/torrent-stream"
+echo_and_run() {
+  echo "\$ $@"
+  "$@"
+}
+
+pbstream() {
+  uri=$(pbpaste)
+  if [[ $uri == magnet:* ]]
+  then
+    export PBSTREAM_LATEST_URI=$uri
+  else
+    echo "pb contains invalid magnet URI, using latest valid URI."
+  fi
+  peerflix $PBSTREAM_LATEST_URI $@
+}
+
+alias mplayer-localhost="open -a MPlayerX --args -url http://localhost:8888/"
+alias pbstream-vlc="pbstream --vlc --not-on-top --no-quit"
+alias pbstream-mplayer="(sleep 120 && mplayer-localhost) & pbstream"
+export pbstream_folder="/tmp/torrent-stream"
+alias pbstream-clean="sudo trash $pbstream_folder"
+alias pbstream-folder="o $pbstream_folder"

@@ -35,11 +35,14 @@
 
   chp = cherry-pick
 
-  a = add -A .
+  all = add -A .
 
-  ca = commit --all
-  cam = commit --amend
-  caam = commit --amend --all
+  c = commit
+  cm = commit -m
+  call = commit --all
+  cmall = commit --all -m
+  a = commit --amend --no-edit
+  ac = commit --amend --all --no-edit
 
   r = rebase
   rc = rebase --continue
@@ -49,10 +52,12 @@
 
   clear= clean -f -d
 
-  s = status -s
+  st = status
+  sts = status -s
 
-  st= stash
-  stshow= stash show -p stash@{0}
+  s = stash
+  su = stash
+  ss = stash show -p stash@{0}
 
   undo = reset --soft HEAD~1
 
@@ -98,7 +103,7 @@
   rebase = true
 
 [push]
-  default = simple
+	default = current
 
 [branch]
   autosetuprebase = always

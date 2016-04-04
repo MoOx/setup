@@ -1,5 +1,6 @@
 #!/usr/bin/env zsh
 
+previous_dir=$(pwd)
 if ! type nvm > /dev/null
 then
   echo_title_install "NVM"
@@ -11,3 +12,4 @@ else
   cd "$NVM_DIR" && git pull origin master && git checkout `git describe --abbrev=0 --tags`
   . "$NVM_DIR/nvm.sh"
 fi
+cd $previous_dir

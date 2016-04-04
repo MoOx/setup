@@ -106,9 +106,11 @@ then
   brewinstall vitorgalvao/tiny-scripts/fastmerge
   brewinstall vitorgalvao/tiny-scripts/prfixbranch
   brewinstall vitorgalvao/tiny-scripts/prfixmaster
+  npmig greenkeeper
   npmig github-labels
   npmig npm-check
   npmig updatehammer
+
 
   # meta
   # https://github.com/caskroom/homebrew-cask/blob/master/CONTRIBUTING.md#updating-a-cask

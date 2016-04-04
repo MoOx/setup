@@ -8,23 +8,26 @@ then
   apminstall atom-beautify
   apminstall auto-update-packages
   apminstall color-picker
-  apminstall docblockr
   apminstall duotone-dark-sea-syntax
   apminstall editorconfig
-  apminstall file-type-icons
   apminstall git-blame
   apminstall git-history
-  apminstall git-log
   apminstall git-plus
+  apminstall highlight-selected
   apminstall language-apache
+  apminstall language-babel
+  apminstall language-ini
   apminstall line-length-break
   apminstall linter
   apminstall linter-eslint
+  apminstall linter-flow
   apminstall linter-jsonlint
   apminstall merge-conflicts
+  apminstall nuclide
   apminstall open-in-github-app
   apminstall pigments
   apminstall project-manager
-  apminstall react
   apminstall resize-indent
+  apminstall smart-tab-name
+  apminstall sort-lines
 fi

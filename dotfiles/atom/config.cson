@@ -2,6 +2,17 @@
   "atom-beautify":
     _analyticsUserId: "c8ae3b6d-a781-4233-9780-a96292c2afa8"
   core:
+    customFileTypes:
+      "source.ini": [
+        ".buckconfig"
+        ".flowconfig"
+      ]
+      "source.json": [
+        ".arcconfig"
+      ]
+      "source.python": [
+        "BUCK"
+      ]
     disabledPackages: [
       "language-mustache"
       "welcome"
@@ -19,12 +30,18 @@
       "bookmarks"
       "language-sql"
       "styleguide"
+      "language-c"
+      "language-coffee-script"
+      "language-make"
+      "language-sass"
+      "metrics"
+      "nuclide"
     ]
     openEmptyEditorOnStart: false
     projectHome: "/Users/MoOx/Sync/Development"
     themes: [
-      "one-light-ui"
-      "duotone-light-sea-syntax"
+      "one-dark-ui"
+      "duotone-dark-sea-syntax"
     ]
   editor:
     fontFamily: "Fira Code"
@@ -36,24 +53,70 @@
     showInvisibles: true
   "exception-reporting":
     userId: "acee8e04-1bbb-8674-25af-f5ccc0cd2d35"
+  "file-watcher":
+    promptWhenFileHasChangedOnDisk: false
   "find-and-replace":
     focusEditorAfterSearch: true
-    openProjectFindResultsInRightPane: true
-  flux:
-    daySyntaxTheme: "duotone-light-sea-syntax"
-    nightSyntaxTheme: "duotone-dark-sea-syntax"
-    sunrise: 9
+  "git-log": {}
   "git-projects":
     rootPath: "/Users/MoOx/Sync/Development"
-  "jour-nuit":
-    daySyntaxTheme: "duotone-light-sea-syntax"
-    firstTime: true
-    nightSyntaxTheme: "duotone-dark-sea-syntax"
-    sunrise: 9
+  "linter-flow": {}
+  nuclide:
+    "nuclide-arcanist": {}
+    "nuclide-buck-files": {}
+    "nuclide-clang-atom": {}
+    "nuclide-datatip": {}
+    "nuclide-debugger-hhvm": {}
+    "nuclide-diff-view":
+      toolbarVisible: true
+    "nuclide-file-tree":
+      hideIgnoredNames: false
+      revealFileOnSwitch: true
+    "nuclide-flow":
+      diagnosticsOnFly: true
+      enableStructuredTypeHints: true
+    "nuclide-format-js": {}
+    "nuclide-hack": {}
+    "nuclide-health": {}
+    "nuclide-home":
+      showHome: false
+    "nuclide-ios-simulator-logs": {}
+    "nuclide-objc": {}
+    "nuclide-ocaml": {}
+    "nuclide-output": {}
+    "nuclide-quick-open":
+      useSelection: false
+    "nuclide-react-native": {}
+    "nuclide-remote-ctags":
+      disableWithHack: false
+    "nuclide-remote-projects":
+      shutdownServerAfterDisconnection: false
+    "nuclide-working-sets": {}
+    use:
+      "nuclide-arcanist": false
+      "nuclide-blame-provider-hg": false
+      "nuclide-buck-files": false
+      "nuclide-buck-toolbar": false
+      "nuclide-clang-atom": false
+      "nuclide-debugger-hhvm": false
+      "nuclide-debugger-lldb-client": false
+      "nuclide-debugger-lldb-server": false
+      "nuclide-diagnostics-store": false
+      "nuclide-file-tree": false
+      "nuclide-format-js": false
+      "nuclide-hack": false
+      "nuclide-hack-symbol-provider": false
+      "nuclide-hg-repository": false
+      "nuclide-hhvm-toolbar": false
+      "nuclide-home": false
+      "nuclide-language-hack": false
+      "nuclide-ocaml": false
+      "nuclide-remote-ctags": false
+      "nuclide-remote-projects": false
+      "nuclide-side-bar": false
   tabs:
     showIcons: false
-  "tree-view":
-    showOnRightSide: true
+  "tree-view": {}
   welcome:
     showOnStartup: false
   whitespace:

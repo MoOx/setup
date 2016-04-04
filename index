@@ -99,9 +99,11 @@ then
 
   # vm and shit
   brewcaskinstall "VirtualBox"
-  # brewinstall docker
-  # brewinstall docker-compose
-  # brewinstall docker-machine
+  brewinstall docker
+  brewinstall docker-compose
+  brewinstall docker-compose
+  brewinstall docker-machine
+  docker-machine create --driver virtualbox default
 
   # OSS / Package helpers
   brewinstall vitorgalvao/tiny-scripts/fastmerge
@@ -111,7 +113,6 @@ then
   npmig github-labels
   npmig npm-check
   npmig updatehammer
-
 
   # meta
   # https://github.com/caskroom/homebrew-cask/blob/master/CONTRIBUTING.md#updating-a-cask

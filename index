@@ -7,8 +7,8 @@ brewcaskinstall font-fira-code
 # brewcaskinstall font-fira-sans
 
 # browser
-brewcaskinstall "FirefoxNightly" "firefox-nightly"
-openifnot "FirefoxNightly"
+brewcaskinstall "FirefoxDeveloperEdition"
+openifnot "FirefoxDeveloperEdition"
 setupsh-recipe firefox-user.js
 
 ## Ssh

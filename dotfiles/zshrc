@@ -125,6 +125,7 @@ export NVM_DIR=$HOME/.nvm
 
 alias n="npm"
 alias ni="npm i"
+alias nio="npm --cache-min 0 i"
 alias nig="npm i -g"
 alias nis="npm i -S"
 alias nid="npm i -D"

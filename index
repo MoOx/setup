@@ -48,6 +48,9 @@ brewcaskinstall "GitHub Desktop"
 setupsh-recipe nvm
 nvm install node --reinstall-packages-from=node
 nvm alias default node
+npm config progress=false
+npm config cache-min=20000 # 6 hours (60*60*6)
+
 
 # MAXIMUM SECURITY
 brewcaskinstall "KeePassX"

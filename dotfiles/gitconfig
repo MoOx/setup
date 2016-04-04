@@ -29,6 +29,10 @@
   # More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
   trustctime = false
 
+  # faster git status
+  # https://news.ycombinator.com/item?id=11388479
+  untrackedCache = true
+
 [alias]
   co = checkout
   cb = checkout -b

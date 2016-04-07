@@ -8,14 +8,17 @@
 [github]
   user = MoOx
 
-[hub]
-  protocol = https
+[ghi]
+  token = !security find-internet-password -a MoOx -s github.com -l 'ghi token' -w
 
 [credential]
   helper = osxkeychain
 
 [commit]
   gpgsign = true
+
+[hub]
+  protocol = https
 
 [core]
   editor = atom -w
@@ -167,5 +170,3 @@
 
 [url "git://gist.github.com/"]
   insteadOf = "gist:"
-[ghi]
-  token = !security find-internet-password -a MoOx -s github.com -l 'ghi token' -w

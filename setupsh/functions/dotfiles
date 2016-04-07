@@ -5,14 +5,27 @@ function dotfiles() {
   backup_all=false
   skip_all=false
 
+  if [ "$1" = "" ]
+  then
+    echo_fail "dotfiles expect one argument (the folder to find files to links)"
+    return
+  fi
+  ORIGIN=$1
+
   if [ "$FIRSTRUN" = "true" ]
   then
     overwrite_all=true
   fi
 
-  for source in `find $SETUP_PATH/dotfiles/* -maxdepth 0`
+  for src in `ls -A1 $ORIGIN`
   do
-    dest="$HOME/.`basename $source`"
+    if [ "$src" = ".DS_Store" ]
+    then
+      continue
+    fi
+
+    source=$ORIGIN/$src
+    dest="$HOME/$src"
 
     if [ -f $dest ] || [ -d $dest ] || [ -h $dest ]
     then

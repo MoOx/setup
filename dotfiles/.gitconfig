@@ -18,7 +18,7 @@
 
   # properly handle line endings
   # https://help.github.com/articles/dealing-with-line-endings/
-	autocrlf = input
+  autocrlf = input
 
   # Treat spaces before tabs and all kinds of trailing whitespace as an error
   # [default] trailing-space: looks for spaces at the end of a line
@@ -107,7 +107,7 @@
   rebase = true
 
 [push]
-	default = current
+  default = current
 
 [branch]
   autosetuprebase = always
@@ -162,4 +162,4 @@
 [url "git://gist.github.com/"]
   insteadOf = "gist:"
 [ghi]
-	token = !security find-internet-password -a MoOx -s github.com -l 'ghi token' -w
+  token = !security find-internet-password -a MoOx -s github.com -l 'ghi token' -w

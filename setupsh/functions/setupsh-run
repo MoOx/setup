@@ -3,9 +3,9 @@
 function setupsh-run() {
   # Ask for the administrator password upfront
   sudo -v
-  
+
   echo_title_installupdate ".dotfiles"
-  dotfiles
+  dotfiles $SETUP_PATH/dotfiles
 
   # reload zshrc
   . $HOME/.zshrc

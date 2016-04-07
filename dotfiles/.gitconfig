@@ -1,3 +1,6 @@
+[include]
+  path = ~/.gitconfig_local
+
 [user]
   name = Maxime Thirouin
   email = m@moox.io
@@ -10,6 +13,9 @@
 
 [credential]
   helper = osxkeychain
+
+[commit]
+  gpgsign = true
 
 [core]
   editor = atom -w

@@ -10,6 +10,9 @@ then
   read -k
 fi
 
+# some unversionned stuff
+dotfiles $DIR_SYNC/.home
+
 # Sync/Library/*
 # (eg: Fonts, iTunes)
 setupsh-ls-subfolders $DIR_SYNC/Library $HOME/Library

@@ -15,8 +15,8 @@ setupsh-recipe firefox-user.js
 setupsh-recipe ssh
 
 ## GPG
-brewinstall gnupg gpg-agent
 brewcaskinstall gpgtools
+# contains gnupg gpg-agent pinentry + GPG keychain UI
 
 ## Zsh completion
 brewinstall zsh-completions

@@ -92,6 +92,7 @@ setupsh-recipe prey
 if [ "$FIRSTRUN" = "" ]
 then
   # messaging
+  brewcaskinstall "Caprine" # Facebook Messenger
   brewcaskinstall "Slack"
   brewcaskinstall "Discord"
   brewcaskinstall "Gitter"

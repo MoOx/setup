@@ -10,6 +10,9 @@
 [credential]
   helper = osxkeychain
 
+[hub]
+  protocol = https
+
 # Enforce SSH
 [url "ssh://git@github.com/"]
   insteadOf = https://github.com/
@@ -18,15 +21,38 @@
 [url "ssh://git@bitbucket.org/"]
   insteadOf = https://bitbucket.org/
 
+[gpg]
+  program = /usr/local/bin/gpg
+
 [commit]
   gpgsign = true
 
-[hub]
-  protocol = https
+[pull]
+  rebase = true
+
+[push]
+  # Push only current branch by default
+  default = current
+
+  # Push tags by default
+  followTags = true
+
+[branch]
+  autosetuprebase = always
+
+[merge]
+  # Include summaries of merged commits in newly created merge commit messages
+  log = true
+
+[apply]
+  # Detect whitespace errors when applying a patch
+  whitespace = fix
 
 [core]
-  quotepath = false
+  # ignore .DS_Store and shit here
   excludesfile = ~/.gitignore_global
+
+  quotepath = false
 
   # properly handle line endings
   # https://help.github.com/articles/dealing-with-line-endings/
@@ -45,31 +71,11 @@
   # https://news.ycombinator.com/item?id=11388479
   untrackedCache = true
 
-
-[pull]
-  rebase = true
-
-[push]
-  default = current
-
-[branch]
-  autosetuprebase = always
-
 [color]
   ui = auto
 
 [color "status"]
   untracked = cyan
-
-[merge]
-
-  # Include summaries of merged commits in newly created merge commit messages
-  log = true
-
-[apply]
-  # Detect whitespace errors when applying a patch
-  whitespace = fix
-
 
 # Filters
 
@@ -85,4 +91,3 @@
   clean = git lfs clean %f
   smudge = git lfs smudge %f
   required = true
-

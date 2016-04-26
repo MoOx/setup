@@ -165,10 +165,18 @@ alias gpf="g pf"
 alias gs="g sync" # git alias
 alias gpr="g am -3"
 
+## GitHub
 if [[ -f $HOME/.github_token ]]
 then
   export GITHUB_TOKEN=$(cat $HOME/.github_token)
   export HOMEBREW_GITHUB_API_TOKEN=$GITHUB_TOKEN
+fi
+
+## GitLab
+export GITLAB_API_ENDPOINT="https://gitlab.com/api/v3"
+if [[ -f $HOME/.gitlab_token ]]
+then
+  export GITLAB_API_PRIVATE_TOKEN=$(cat $HOME/.gitlab_token)
 fi
 
 ## Network
@@ -198,7 +206,7 @@ then
   alias phpini="e $PHP_INI"
 fi
 
-## LOCAL CRAP
+## LOCAL STUFF
 if [[ -f ~/.zshrc.local ]]; then; source ~/.zshrc.local; fi
 
 # custom aliases

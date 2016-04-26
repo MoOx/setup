@@ -136,6 +136,7 @@ alias nts="nr tests --"
 alias ntc="nr test-with-coverage --"
 alias np="nr release --"
 alias npf="nr release -- --skip-cleanup"
+ntm() { nts -- "web_modules/$1/__tests__/*.js" }
 
 ### allow local self signed https server
 export NODE_TLS_REJECT_UNAUTHORIZED="0"

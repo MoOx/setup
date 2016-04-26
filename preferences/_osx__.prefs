@@ -75,7 +75,7 @@ defaults write com.apple.screensaver askForPassword -int 0
 sudo nvram SystemAudioVolume=%00﻿
 
 # Play sound feedback when adjusting volume
-defaults write -g com.apple.sound.beep.feedback -boolean true
+defaults write -g com.apple.sound.beep.feedback -int 1
 
 # Enable subpixel font rendering on non-Apple LCDs
 defaults write NSGlobalDomain AppleFontSmoothing -int 2

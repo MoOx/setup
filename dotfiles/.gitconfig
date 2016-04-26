@@ -1,15 +1,9 @@
 [include]
+  # this include my user.signingkey
   path = ~/.gitconfig_local
+  # personal non sensible data
+  path = ~/.gitconfig_personal
 
-[user]
-  name = Maxime Thirouin
-  email = m@moox.io
-
-[github]
-  user = MoOx
-
-[ghi]
-  token = !security find-internet-password -a MoOx -s github.com -l 'ghi token' -w
 
 [credential]
   helper = osxkeychain
@@ -21,7 +15,6 @@
   protocol = https
 
 [core]
-  editor = atom -w
   quotepath = false
   excludesfile = ~/.gitignore_global
 

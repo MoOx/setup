@@ -4,6 +4,8 @@
   # personal non sensible data
   path = ~/.gitconfig_personal
 
+  # aliases
+  path = ~/.gitconfig_aliases
 
 [credential]
   helper = osxkeychain
@@ -35,75 +37,6 @@
   # https://news.ycombinator.com/item?id=11388479
   untrackedCache = true
 
-[alias]
-  co = checkout
-  cb = checkout -b
-
-  chp = cherry-pick
-
-  all = add -A .
-
-  c = commit
-  cm = commit -m
-  call = commit --all
-  cmall = commit --all -m
-  a = commit --amend --no-edit
-  ac = commit --amend --all --no-edit
-
-  r = rebase
-  rc = rebase --continue
-  ra = rebase --abort
-
-  pf = push -f
-
-  clear= clean -f -d
-
-  st = status
-  sts = status -s
-
-  s = stash
-  su = stash
-  ss = stash show -p stash@{0}
-
-  undo = reset --soft HEAD~1
-
-  amend-author = commit --amend --no-edit --author
-
-  hammer = "!git add -A . && git commit --amend --reuse-message=HEAD && git push -f"
-
-  # View abbreviated SHA, description, and history graph of the latest 20 commits
-  l = log --pretty=oneline -n 20 --graph --abbrev-commit
-
-  # stash, pull, stash pop
-  sync = "!git stash -u && git pull && git stash pop"
-
-  # Remove branches that have already been merged with the current branch
-  delete-merged = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
-
-  # Merge GitHub pull request on top of the `master` branch
-  mergepr = "!f() { \
-    if [ $(printf \"%s\" \"$1\" | grep '^[0-9]\\+$' > /dev/null; printf $?) -eq 0 ]; then \
-      git fetch origin refs/pull/$1/head:pr/$1 && \
-      git rebase master pr/$1 && \
-      git checkout master && \
-      git merge pr/$1 && \
-      git branch -D pr/$1 && \
-      git commit --amend -m \"$(git log -1 --pretty=%B)\n\nCloses #$1.\"; \
-    fi \
-  }; f"
-
-  # delete a tag on the remote and locally
-  delete-tag = "!f() { \
-    if [ \"$1\" != \"\" ]; then \
-      git tag -d $1 && git push --delete origin $1; \
-    fi \
-  }; f"
-
-  # List contributors with number of commits
-  contributors = shortlog --summary --numbered
-
-  # search in content
-  search = "!git rev-list --all | xargs git grep"
 
 [pull]
   rebase = true

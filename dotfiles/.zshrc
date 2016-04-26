@@ -159,9 +159,9 @@ alias mysqlstop="mysql.server stop"
 
 ## Git
 alias g="hub"
-alias gg="g pull"
-alias gp="g push"
-alias gpf="g push --force"
+alias gg="g g --all"
+alias gp="g p"
+alias gpf="g pf"
 alias gs="g sync" # git alias
 alias gpr="g am -3"
 

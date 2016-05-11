@@ -18,17 +18,3 @@ then
   brewinstall ghi
   ghi config --auth $USER
 fi
-
-if [ ! -e "$HOME/.github_token" ]
-then
-  echo_title "Saving a GitHub token"
-  echo_info "Press a key to start the process"
-  read -k
-  echo_info "Please login into your GitHub  account to get a token & paste it (or just type enter to bypass this step):"
-  open "https://github.com/settings/applications"
-  read GITHUB_TOKEN
-  if [ "$GITHUB_TOKEN" != "" ]
-  then
-    echo $GITHUB_TOKEN > $HOME/.github_token
-  fi
-fi

@@ -8,6 +8,7 @@ then
   apminstall atom-beautify
   apminstall auto-update-packages
   apminstall color-picker
+  apminstall docblockr
   apminstall duotone-dark-sea-syntax
   apminstall editorconfig
   apminstall git-blame
@@ -16,9 +17,11 @@ then
   apminstall highlight-selected
   apminstall language-apache
   apminstall language-babel
+  apminstall language-docker
   apminstall language-ini
   apminstall line-length-break
   apminstall linter
+  apminstall linter-docker
   apminstall linter-eslint
   apminstall linter-flow
   apminstall linter-jsonlint

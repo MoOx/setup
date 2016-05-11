@@ -6,16 +6,15 @@ function osxLoginItem {
 
 osascript -e 'tell application "System Events" to delete every login items'
 
-# Sync
-osxLoginItem "/Applications/BitTorrent Sync.app" "BitTorrent Sync"
-# osxLoginItem "/Applications/QSyncthingTray.app" "QSyncthingTray"
-
 # OS X enhancements
+osxLoginItem "/Applications/Tunnelblick.app" "Tunnelblick"
 osxLoginItem "/Applications/Flux.app" "Flux"
 osxLoginItem "/Applications/Flycut.app" "Flycut"
 osxLoginItem "/Applications/Spectacle.app" "Spectacle"
-osxLoginItem "/Applications/Tunnelblick.app" "Tunnelblick"
-osxLoginItem "/Applications/Synergy.app" "Synergy"
+
+# Sync
+osxLoginItem "/Applications/BitTorrent Sync.app" "BitTorrent Sync"
+# osxLoginItem "/Applications/QSyncthingTray.app" "QSyncthingTray"
 
 # debug with
 echo_info "OS X Login items: $(osascript -e 'tell application "System Events" to get the name of every login item')"

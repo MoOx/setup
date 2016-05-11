@@ -96,6 +96,7 @@ then
   brewcaskinstall "Slack"
   brewcaskinstall "Discord"
   brewcaskinstall "Gitter"
+  brewcaskinstall "Telegram"
 
   # MORE BROWSER
   brewcaskinstall "Firefox"

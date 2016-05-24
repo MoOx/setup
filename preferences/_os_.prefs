@@ -1,0 +1,5 @@
+#!/usr/bin/env zsh
+
+# Set wallpaper
+npmig wallpaper-cli
+wallpaper $DIR_SYNC/Wallpapers/current

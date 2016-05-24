@@ -9,7 +9,7 @@
   c = commit
   cm = commit -m
   ca = commit --all
-  cma = commit --all -m
+  cam = commit --all -m
   a = commit --amend --no-edit
   aa = commit --amend --all --no-edit
 

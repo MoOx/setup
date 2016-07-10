@@ -21,6 +21,7 @@
 
   p = push
   pf = push --force-with-lease
+  fp = push --force-with-lease
 
   clear= clean -f -d
 

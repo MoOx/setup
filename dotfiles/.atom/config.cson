@@ -10,33 +10,35 @@
       ]
       "source.json": [
         ".arcconfig"
+        "BUCK.autodeps"
       ]
       "source.python": [
         "BUCK"
       ]
     disabledPackages: [
-      "language-mustache"
-      "welcome"
-      "language-toml"
-      "language-ruby-on-rails"
-      "language-ruby"
-      "language-python"
-      "language-perl"
-      "language-objective-c"
-      "language-java"
-      "language-hyperlink"
-      "language-go"
-      "language-csharp"
-      "language-clojure"
       "bookmarks"
-      "language-sql"
-      "styleguide"
       "language-c"
+      "language-clojure"
       "language-coffee-script"
+      "language-csharp"
+      "language-go"
+      "language-hyperlink"
+      "language-java"
       "language-make"
+      "language-mustache"
+      "language-objective-c"
+      "language-perl"
+      "language-python"
+      "language-ruby"
+      "language-ruby-on-rails"
       "language-sass"
+      "language-sql"
+      "language-toml"
       "metrics"
-      "nuclide"
+      "styleguide"
+      "tree-view"
+      "welcome"
+      "linter"
     ]
     openEmptyEditorOnStart: false
     projectHome: "/Users/MoOx/Sync/Development"
@@ -46,7 +48,7 @@
     ]
   editor:
     fontFamily: "Operator Mono"
-    fontSize: 15
+    fontSize: 20
     invisibles:
       space: "‧"
     lineHeight: 1.45
@@ -61,63 +63,16 @@
   "git-log": {}
   "git-projects":
     rootPath: "/Users/MoOx/Sync/Development"
+  "linter-eslint":
+    fixOnSave: true
   "linter-flow": {}
   nuclide:
-    "nuclide-arcanist": {}
-    "nuclide-buck-files": {}
-    "nuclide-clang-atom": {}
-    "nuclide-datatip": {}
-    "nuclide-debugger-hhvm": {}
-    "nuclide-diff-view":
-      toolbarVisible: true
-    "nuclide-file-tree":
-      hideIgnoredNames: false
-      revealFileOnSwitch: true
-    "nuclide-flow":
-      diagnosticsOnFly: true
-      enableStructuredTypeHints: true
-    "nuclide-format-js": {}
-    "nuclide-hack": {}
-    "nuclide-health": {}
     "nuclide-home":
       showHome: false
-    "nuclide-ios-simulator-logs": {}
-    "nuclide-objc": {}
-    "nuclide-ocaml": {}
-    "nuclide-output": {}
-    "nuclide-quick-open":
-      useSelection: false
-    "nuclide-react-native": {}
-    "nuclide-remote-ctags":
-      disableWithHack: false
-    "nuclide-remote-projects":
-      shutdownServerAfterDisconnection: false
-    "nuclide-working-sets": {}
-    use:
-      "nuclide-arcanist": false
-      "nuclide-blame-provider-hg": false
-      "nuclide-buck-files": false
-      "nuclide-buck-toolbar": false
-      "nuclide-clang-atom": false
-      "nuclide-debugger-hhvm": false
-      "nuclide-debugger-lldb-client": false
-      "nuclide-debugger-lldb-server": false
-      "nuclide-diagnostics-store": false
-      "nuclide-file-tree": false
-      "nuclide-format-js": false
-      "nuclide-hack": false
-      "nuclide-hack-symbol-provider": false
-      "nuclide-hg-repository": false
-      "nuclide-hhvm-toolbar": false
-      "nuclide-home": false
-      "nuclide-language-hack": false
-      "nuclide-ocaml": false
-      "nuclide-remote-ctags": false
-      "nuclide-remote-projects": false
-      "nuclide-side-bar": false
   tabs:
     showIcons: false
-  "tree-view": {}
+  "tree-view":
+    showOnRightSide: true
   welcome:
     showOnStartup: false
   whitespace:

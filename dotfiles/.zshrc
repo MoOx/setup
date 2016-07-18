@@ -257,3 +257,15 @@ then
 else
   eval $(gpg-agent --daemon --write-env-file ~/.gnupg/.gpg-agent-info)
 fi
+
+# Show notification when long running command finishes
+# and your terminal is not in focus
+#
+# http://frantic.im/notify-on-completion
+function notify_cmd_result_when_terminal_not_focused {
+  LAST_EXIT_CODE=$?
+  CMD=$(fc -ln -1)
+  # No point in waiting for the command to complete
+  notify-if-terminal-is-in-the-background "$CMD" "$LAST_EXIT_CODE" &
+}
+export PS1='$(notify_cmd_result_when_terminal_not_focused)'$PS1

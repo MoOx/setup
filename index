@@ -1,10 +1,5 @@
 #!/usr/bin/env zsh
 
-# fonts
-brewtap caskroom/fonts
-brewcaskinstall font-fira-code
-# brewcaskinstall font-fira-mono
-# brewcaskinstall font-fira-sans
 brewcaskinstall "HyperTerm"
 
 # browser
@@ -52,8 +47,8 @@ brewcaskinstall "GitHub Desktop"
 
 ### Node
 setupsh-recipe nvm
-nvm install node --reinstall-packages-from=node
 nvm alias default 5
+nvm install default --reinstall-packages-from=node
 npm config set progress false
 npm config set cache-min 20000 # 6 hours (60*60*6)
 
@@ -66,9 +61,9 @@ if [ "$FIRSTRUN" = "true" ]; then osx-refresh; fi;
 # safer than rm
 npmig trash-cli
 
+brewcaskinstall "WebTorrent"
 brewcaskinstall "VLC"
 brewcaskinstall "MPlayerX"
-npmig peerflix
 
 # apps
 brewcaskinstall "Prefs Editor"
@@ -98,37 +93,30 @@ then
   brewcaskinstall "Discord"
   brewcaskinstall "Gitter"
   brewcaskinstall "Telegram"
+  brewcaskinstall "HipChat"
+  brewcaskinstall "Skype"
 
   # MORE BROWSER
   brewcaskinstall "Firefox"
   brewcaskinstall "Google Chrome"
-  brewcaskinstall "/usr/local/bin/phantomjs" "phantomjs"
-
-  # vm and shit
-  brewcaskinstall "VirtualBox"
-  brewinstall docker
-  brewinstall docker-compose
-  brewinstall docker-compose
-  brewinstall docker-machine
-  docker-machine create --driver virtualbox default
+  # brewcaskinstall "/usr/local/bin/phantomjs" "phantomjs"
 
   # OSS / Package helpers
-  brewinstall vitorgalvao/tiny-scripts/fastmerge
-  brewinstall vitorgalvao/tiny-scripts/prfixbranch
-  brewinstall vitorgalvao/tiny-scripts/prfixmaster
   npmig greenkeeper
   npmig github-labels
   npmig npm-check
-  npmig updatehammer
+  npmig updtr
+
+  # vm and shit
+  # brewcaskinstall "VirtualBox"
+  # Android development
+  # might be required http://software.intel.com/en-us/android/articles/intel-hardware-accelerated-execution-manager
+  # brewinstall android-sdk
+  # brewcaskinstall genymotion
 
   # meta
   # https://github.com/caskroom/homebrew-cask/blob/master/CONTRIBUTING.md#updating-a-cask
-  brewinstall vitorgalvao/tiny-scripts/cask-repair
-
-  # Android development
-  # might be required http://software.intel.com/en-us/android/articles/intel-hardware-accelerated-execution-manager
-  brewinstall android-sdk
-  brewcaskinstall genymotion
+  # brewinstall vitorgalvao/tiny-scripts/cask-repair
 
   # YEAH I USE THAT
   brewcaskinstall "/Library/Java/JavaVirtualMachines" "java"
@@ -145,7 +133,6 @@ then
   brewcaskinstall "Steam"
 
   # Because sometimes...
-  brewcaskinstall "Skype"
   brewcaskinstall "Transmission"
   brewcaskinstall "Cyberduck"
 

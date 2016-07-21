@@ -159,13 +159,8 @@ alias mysqlstart="mysql.server start"
 alias mysqlstop="mysql.server stop"
 
 ## Git
-alias g="hub"
-alias gg="g g --all"
-alias gp="g p"
-alias gpf="g pf"
-alias gs="g sync" # git alias
-alias gpr="g am -3"
-
+alias git="hub"
+alias g="git"
 
 ## Network
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"

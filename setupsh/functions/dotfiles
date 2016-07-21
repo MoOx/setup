@@ -7,8 +7,9 @@ function dotfiles() {
 
   if [ "$1" = "" ]
   then
-    echo_fail "dotfiles expect one argument (the folder to find files to links)"
-    return
+    1=$SETUP_PATH/dotfiles
+    # echo_fail "dotfiles expect one argument (the folder to find files to links)"
+    # return
   fi
   ORIGIN=$1
 

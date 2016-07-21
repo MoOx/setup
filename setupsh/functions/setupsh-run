@@ -5,7 +5,7 @@ function setupsh-run() {
   sudo -v
 
   echo_title_installupdate ".dotfiles"
-  dotfiles $SETUP_PATH/dotfiles
+  dotfiles
 
   # reload zshrc
   . $HOME/.zshrc

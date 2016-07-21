@@ -5,6 +5,7 @@ brewtap caskroom/fonts
 brewcaskinstall font-fira-code
 # brewcaskinstall font-fira-mono
 # brewcaskinstall font-fira-sans
+brewcaskinstall "HyperTerm"
 
 # browser
 brewcaskinstall "FirefoxDeveloperEdition"

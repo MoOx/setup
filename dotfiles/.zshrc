@@ -266,6 +266,6 @@ function notify_cmd_result_when_terminal_not_focused {
   LAST_EXIT_CODE=$?
   CMD=$(fc -ln -1)
   # No point in waiting for the command to complete
-  notify-if-terminal-is-in-the-background "$CMD" "$LAST_EXIT_CODE" &
+  notify-if-hyperterm-is-in-the-background "$CMD" "$LAST_EXIT_CODE" &
 }
 export PS1='$(notify_cmd_result_when_terminal_not_focused)'$PS1

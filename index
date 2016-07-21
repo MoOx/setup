@@ -8,8 +8,8 @@ brewcaskinstall font-fira-code
 brewcaskinstall "HyperTerm"
 
 # browser
-brewcaskinstall "FirefoxDeveloperEdition"
-openifnot "FirefoxDeveloperEdition"
+brewcaskinstall "FirefoxNightly"
+openifnot "FirefoxNightly"
 setupsh-recipe firefox-user.js
 
 ## Ssh

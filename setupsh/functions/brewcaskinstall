@@ -35,7 +35,7 @@ function brewcaskinstall() {
 
     # echo "$cuteName $cliName $dest"
     # install if not present already (skip "already installed" error)
-    if ! $(ls "$cuteName" &> /dev/null) && ! $(ls "/Applications/$cuteName.app" &> /dev/null) && ! $(ls "$HOME/Applications/$cuteName.app" &> /dev/null)
+    if ! $(ls "$cuteName" &> /dev/null) && ! $(ls "/Applications/$cuteName.app" &> /dev/null)
     then
       echo_title_install "$cuteName ($cliName) into $dest"
       brew cask install $cliName --appdir="$dest" --force

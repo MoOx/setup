@@ -48,7 +48,7 @@ dockutil --no-restart --add "/Applications/Slack.app"
 dockutil --no-restart --add "/Applications/Gitter.app"
 dockutil --no-restart --add "/Applications/Github Desktop.app"
 dockutil --no-restart --add "/Applications/Atom.app"
-dockutil --no-restart --add "/Applications/Utilities/Terminal.app"
+dockutil --no-restart --add "/Applications/HyperTerm.app"
 dockutil --no-restart --add "/Applications" --view grid --display folder --sort name
 
 osx-refresh

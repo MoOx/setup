@@ -1,5 +1,13 @@
 #!/usr/bin/env zsh
 
+## Sync
+## syncthing consume too much CPU for now (at least with 0.12)
+# brewcaskinstall "syncthing"
+# brewcaskinstall "QSyncthingTray"
+brewcaskinstall "BitTorrent Sync"
+openifnot "BitTorrent Sync"
+setupsh-recipe custom-folders
+
 brewcaskinstall "HyperTerm"
 
 # browser

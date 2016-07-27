@@ -26,7 +26,7 @@ brewcaskinstall "GPG Keychain" gpgtools
 brewinstall zsh-completions
 
 # one keyboard/mouse for multiples machines
-if ls /Applications/Synergy.app &> /dev/null
+if ! ls /Applications/Synergy.app &> /dev/null
 then
   open "http://synergy-project.org/"
   setupsh-accessibility-privacy-apps --insert synergy

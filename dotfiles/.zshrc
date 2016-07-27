@@ -99,9 +99,6 @@ alias search="list | grep"
 
 # Aliases
 
-alias fuck='eval $(thefuck $(fc -ln -1 | tail -n 1)); fc -R'
-alias fak='fuck'
-
 ## OS X
 alias osx-hidden-show="defaults write com.apple.finder AppleShowAllFiles -bool true && osx-refresh"
 alias osx-hidden-hide="defaults write com.apple.finder AppleShowAllFiles -bool false && osx-refresh"

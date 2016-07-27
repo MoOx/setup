@@ -7,7 +7,7 @@
 # set -x
 
 # export PATH
-# OS X 10.10+ doesn't execute /etc/launchd.conf
+# macOS 10.10+ doesn't execute /etc/launchd.conf
 # and GUI app doesn't get /etc/paths
 # in order to get the right PATH in Atom.app Terminal (atom-term2)
 # here is my PATH, hardcoded
@@ -99,20 +99,21 @@ alias search="list | grep"
 
 # Aliases
 
-## OS X
-alias osx-hidden-show="defaults write com.apple.finder AppleShowAllFiles -bool true && osx-refresh"
-alias osx-hidden-hide="defaults write com.apple.finder AppleShowAllFiles -bool false && osx-refresh"
-alias osx-desktop-show="defaults write com.apple.finder CreateDesktop -bool true && osx-refresh"
-alias osx-desktop-hide="defaults write com.apple.finder CreateDesktop -bool false && osx-refresh"
+## macOS
+alias macos-hidden-show="defaults write com.apple.finder AppleShowAllFiles -bool true && macos-refresh"
+alias macos-hidden-hide="defaults write com.apple.finder AppleShowAllFiles -bool false && macos-refresh"
+alias macos-desktop-show="defaults write com.apple.finder CreateDesktop -bool true && macos-refresh"
+alias macos-desktop-hide="defaults write com.apple.finder CreateDesktop -bool false && macos-refresh"
 # http://apple.stackexchange.com/a/181404/34887
-alias osx-internetsharing-on="sudo networksetup -setnetworkserviceenabled 'Ethernet sharing via Wifi' on"
-alias osx-internetsharing-off="sudo networksetup -setnetworkserviceenabled 'Ethernet sharing via Wifi' off"
-alias osx-resolutions="system_profiler SPDisplaysDataType | grep Resolution | tr -d ' '"
-alias osx-flushdns="dscacheutil -flushcache"
-alias osx-flushram="purge"
-export OSX_INSTALL_APP="/Applications/Install OS X El Capitan.app"
-alias osx-bootableusb="sudo \"$OSX_INSTALL_APP/Contents/Resources/createinstallmedia\" --volume /Volumes/Untitled --applicationpath \"$OSX_INSTALL_APP\" --nointeraction"
-alias osx-dsstore-delete="find . -type f -name '*.DS_Store' -ls -delete"
+alias macos-internetsharing-on="sudo networksetup -setnetworkserviceenabled 'Ethernet sharing via Wifi' on"
+alias macos-internetsharing-off="sudo networksetup -setnetworkserviceenabled 'Ethernet sharing via Wifi' off"
+alias macos-resolutions="system_profiler SPDisplaysDataType | grep Resolution | tr -d ' '"
+alias macos-flushdns="dscacheutil -flushcache"
+alias macos-flushram="purge"
+export MACOS_INSTALL_APP="/Volumes/Downloads/Softwares/macOS/Install macOS Sierra Developer Beta.app"
+export MACOS_INSTALL_VOLUME="/Volumes/USB_MAC"
+alias macos-bootableusb="sudo \"$MACOS_INSTALL_APP/Contents/Resources/createinstallmedia\" --volume $MACOS_INSTALL_VOLUME --applicationpath \"$MACOS_INSTALL_APP\" --nointeraction"
+alias macos-dsstore-delete="find . -type f -name '*.DS_Store' -ls -delete"
 
 ## NVM
 export NVM_DIR=$HOME/.nvm
@@ -193,8 +194,8 @@ if [[ -f ~/.zshrc.local ]]; then; source ~/.zshrc.local; fi
 alias gh="/Applications/GitHub\ Desktop.app/Contents/MacOS/github_cli"
 alias .e="setupsh-edit"
 alias .o="setupsh-open"
-alias wifi=osx-internetsharing-on
-alias wifi-off=osx-internetsharing-off
+alias wifi=macos-internetsharing-on
+alias wifi-off=macos-internetsharing-off
 alias echofliptable="echo '\n(╯°□°）╯︵ ┻━┻\n'"
 alias fliptable="echo \"$USER/setup\"; echofliptable; setupsh-update; setupsh-run"
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env zsh
-echo_title "Defining OS X options"
+echo_title "Defining macOS options"
 
 COMPUTER_NAME="$USER"
 COMPUTER_MODEL=`sysctl -n hw.model`
@@ -151,4 +151,4 @@ defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 # Disable local Time Machine backups
 hash tmutil &> /dev/null && sudo tmutil disablelocal
 
-if [ "$FIRSTRUN" = "true" ]; then osx-refresh; fi;
+if [ "$FIRSTRUN" = "true" ]; then macos-refresh; fi;

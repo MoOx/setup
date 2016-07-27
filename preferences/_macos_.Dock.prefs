@@ -51,4 +51,4 @@ dockutil --no-restart --add "/Applications/Atom.app"
 dockutil --no-restart --add "/Applications/HyperTerm.app"
 dockutil --no-restart --add "/Applications" --view grid --display folder --sort name
 
-osx-refresh
+macos-refresh

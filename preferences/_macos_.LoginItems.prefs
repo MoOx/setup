@@ -1,0 +1,20 @@
+#!/usr/bin/env zsh
+
+function macOSLoginItem {
+  osascript -e "tell application \"System Events\" to make login item at end with properties {hidden:false, path:\"$1\", name:\"$2\" }" > /dev/null
+}
+
+osascript -e 'tell application "System Events" to delete every login items'
+
+# macOS enhancements
+macOSLoginItem "/Applications/Tunnelblick.app" "Tunnelblick"
+macOSLoginItem "/Applications/Flux.app" "Flux"
+macOSLoginItem "/Applications/Flycut.app" "Flycut"
+macOSLoginItem "/Applications/Spectacle.app" "Spectacle"
+
+# Sync
+macOSLoginItem "/Applications/BitTorrent Sync.app" "BitTorrent Sync"
+# macOSLoginItem "/Applications/QSyncthingTray.app" "QSyncthingTray"
+
+# debug with
+echo_info "macOS Login items: $(osascript -e 'tell application "System Events" to get the name of every login item')"

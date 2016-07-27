@@ -10,7 +10,7 @@ smtp_sasl_password_maps=hash:/etc/postfix/sasl_passwd
 smtp_sasl_security_options = noanonymous
 smtp_sasl_mechanism_filter = plain
 
-# osx adjustements
+# macOS adjustements
 mail_owner = _postfix
 setgid_group = _postdrop
 

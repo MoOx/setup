@@ -25,7 +25,7 @@ then
   echo "or just open Xcode and agree the license..."
   echo ""
   echo "You may need Xcode Command line tools if you don't have Xcode setup"
-  echo "You can try the following if you are on a stable OS X version (with stable Xcode)"
+  echo "You can try the following if you are on a stable macOS version (with stable Xcode)"
   echo "  xcode-select --install"
   echo ""
   echo "  /!\ If you are on an Developer Preview/Beta try (replace {VERSION})"

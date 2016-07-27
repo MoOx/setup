@@ -23,8 +23,8 @@ export CHAR_STARTER=❯
 # stupid var to avoid Darwin test all the time
 # not sure it's better
 export OS=unix
-if [[ $(uname) = "Darwin" ]]; then; export OS=osx; fi
-#if [[ $OS == "osx" ]]; then; echo "yeahyyyy"; fi
+if [[ $(uname) = "Darwin" ]]; then; export OS=macOS; fi
+#if [[ $OS == "macOS" ]]; then; echo "yeahyyyy"; fi
 
 # load setupsh core functions
 for file in $SETUP_PATH/setupsh/functions/*

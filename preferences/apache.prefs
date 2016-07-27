@@ -14,7 +14,7 @@ if ! cat $APACHE_CONF | grep $APACHE_CONF_DEV_PATH > /dev/null
 then
   if ls $APACHE_CONF_DEV_PATH &> /dev/null
   then
-    echo_title "Configuring OS X Apache"
+    echo_title "Configuring macOS Apache"
     # enable mod_rewrite
     sudo sed -i '' -e 's/#LoadModule rewrite_module/LoadModule rewrite_module/' $APACHE_CONF
     # add global personam conf
@@ -30,7 +30,7 @@ then
   PHP_LATEST_LIB=$PHP_LATEST_PATH/$PHP_LATEST_VERSION/libexec/apache2/libphp5.so
   if ! cat $APACHE_CONF | grep $PHP_LATEST_LIB > /dev/null
   then
-    echo_title "Updating OS X Apache PHP version"
+    echo_title "Updating macOS Apache PHP version"
     # disable previous version
     sudo sed -i '' -e 's/LoadModule php5_module/#LoadModule php5_module/' $APACHE_CONF
     # ahem... (avoid #####LoadModule with time)

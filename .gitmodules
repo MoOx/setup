@@ -1,7 +1,7 @@
 [submodule "submodules/terminal/pure"]
 	path = submodules/pure
 	url = https://github.com/sindresorhus/pure.git
-[submodule "submodules/osx/dockutil"]
+[submodule "submodules/macOS/dockutil"]
 	path = submodules/dockutil
 	url = https://github.com/kcrawford/dockutil.git
 [submodule "submodules/zsh-syntax-highlighting"]

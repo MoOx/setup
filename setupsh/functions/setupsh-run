@@ -33,7 +33,7 @@ function setupsh-run() {
 
   source $SETUP_PATH/index
 
-  osx-refresh
+  macos-refresh
 
   notify "Setup complete ☑️"
 }

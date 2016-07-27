@@ -56,7 +56,7 @@ npm config set cache-min 20000 # 6 hours (60*60*6)
 # MAXIMUM SECURITY
 brewcaskinstall "KeePassX"
 
-if [ "$FIRSTRUN" = "true" ]; then osx-refresh; fi;
+if [ "$FIRSTRUN" = "true" ]; then macos-refresh; fi;
 
 # safer than rm
 npmig trash-cli

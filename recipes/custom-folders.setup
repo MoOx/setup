@@ -51,7 +51,7 @@ then
   fi
 fi
 
-# hide OS X unused folders
+# hide macOS unused folders
 chflags -h hidden $HOME/Documents
 chflags -h hidden $HOME/Movies
 chflags -h hidden $HOME/Music

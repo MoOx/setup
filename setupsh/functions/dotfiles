@@ -20,7 +20,7 @@ function dotfiles() {
 
   for src in `ls -A1 $ORIGIN`
   do
-    if [ "$src" = ".DS_Store" ]
+    if [ "$src" = ".DS_Store" ] || [ "$src" = ".git" ]
     then
       continue
     fi

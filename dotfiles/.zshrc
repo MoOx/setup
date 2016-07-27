@@ -216,29 +216,6 @@ export ANDROID_HOME=/usr/local/opt/android-sdk
 # set +x
 # exec 2>&3 3>&-
 
-echo_and_run() {
-  echo "\$ $@"
-  "$@"
-}
-
-pbstream() {
-  uri=$(pbpaste)
-  if [[ $uri == magnet:* ]]
-  then
-    export PBSTREAM_LATEST_URI=$uri
-  else
-    echo "pb contains invalid magnet URI, using latest valid URI."
-  fi
-  peerflix $PBSTREAM_LATEST_URI $@
-}
-
-alias mplayer-localhost="open -a MPlayerX --args -url http://localhost:8888/"
-alias pbstream-vlc="pbstream --vlc --not-on-top --no-quit"
-alias pbstream-mplayer="(sleep 120 && mplayer-localhost) & pbstream"
-export pbstream_folder="/tmp/torrent-stream"
-alias pbstream-clean="sudo trash $pbstream_folder"
-alias pbstream-folder="o $pbstream_folder"
-
 ## GPG
 # set up gpg-agent automatically for every shell
 # https://gist.github.com/yoshuawuyts/69f25b0384d41b46a126f9b42d1f9db2

@@ -29,7 +29,7 @@
   sts = status -s
 
   s = stash
-  su = stash
+  su = stash -u
   ss = stash show -p stash@{0}
 
   undo = reset --soft HEAD~1

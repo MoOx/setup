@@ -18,7 +18,7 @@ if [[ "$(uname -s)" == "Darwin" ]]
 then
   # todo add an alternative to grab xcode from another computer accessible by local network
 
-  echo "** Before running myself, please be sure you have 'git' command working **".
+  echo "⚠️ Before running myself, please be sure you have 'git' command working ⚠️".
   echo ""
   echo "To skip 'Agreeing to the Xcode/iOS license requires admin privileges, please re-run as root via sudo.'"
   echo "  sudo xcodebuild -license"
@@ -28,12 +28,12 @@ then
   echo "You can try the following if you are on a stable macOS version (with stable Xcode)"
   echo "  xcode-select --install"
   echo ""
-  echo "  /!\ If you are on an Developer Preview/Beta try (replace {VERSION})"
-  echo "    sudo xcode-select --switch /Applications/Xcode{VERSION}-Beta.app/Contents/Developer/"
+  echo "  /!\ If you are on an Developer Preview/Beta try"
+  echo "    sudo xcode-select --switch /Applications/Xcode-beta.app/Contents/Developer/"
   echo "    xcode-select --install"
   echo ""
   echo ""
-  echo "Press return when you are sure that 'git' command is available"
+  echo "➡️ Press return when you are sure that 'git' command is available"
   read -k
 fi
 
@@ -42,9 +42,9 @@ then
   git clone $REPOSITORY $SETUP_PATH
   if [[ ! -d $SETUP_PATH/.git ]]
   then
-    echo "setup have not been downloaded correctly"
+    echo "⚠️ setup have not been downloaded correctly"
     echo ""
-    echo "Aborting"
+    echo "⛔️ Aborting"
   else
     # register submodules
     git -C $SETUP_PATH submodule init
@@ -60,9 +60,9 @@ then
   # install submodule
   git -C $SETUP_PATH submodule update
 
-  echo "setup have been downloaded correctly"
+  echo "✅ setup have been downloaded correctly"
   echo ""
-  echo "Running installation"
+  echo "⬇️ Running installation"
 
   source $SETUP_PATH/setupsh/index
   source $SETUP_PATH/setupsh/functions/setupsh-update
@@ -70,5 +70,5 @@ then
   export FIRSTRUN=true
   setupsh-run
 
-  notify "Setup is done"
+  notify "✅ Setup is done"
 fi

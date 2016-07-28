@@ -20,7 +20,7 @@ function setupsh-run() {
   then
     echo_title "Opening AppStore\nInstall your apps ;)"
     appstore
-    echo_user "Hit enter when you are ready"
+    echo_user "➡️ Hit enter when you are ready"
     read -e stuff
   fi
 
@@ -35,5 +35,5 @@ function setupsh-run() {
 
   macos-refresh
 
-  notify "Setup complete ☑️"
+  notify "✅ Setup complete"
 }

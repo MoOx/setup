@@ -4,9 +4,6 @@ function setupsh-run() {
   # Ask for the administrator password upfront
   sudo -v
 
-  echo_title_installupdate ".dotfiles"
-  dotfiles
-
   # reload zshrc
   . $HOME/.zshrc
 
@@ -30,6 +27,9 @@ function setupsh-run() {
     sleep 5
     notify "Since it's a full run, it might be asked more than once. Check often until process is complete."
   fi
+
+  echo_title_installupdate ".dotfiles"
+  dotfiles
 
   source $SETUP_PATH/index
 

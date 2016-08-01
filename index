@@ -55,8 +55,8 @@ brewcaskinstall "GitHub Desktop"
 
 ### Node
 setupsh-recipe nvm
+nvm install 5 # --reinstall-packages-from=node
 nvm alias default 5
-nvm install default --reinstall-packages-from=node
 npm config set progress false
 npm config set cache-min 20000 # 6 hours (60*60*6)
 

@@ -2,7 +2,7 @@
 
 ## Sync
 ## syncthing consume too much CPU for now (at least with 0.12)
-brewcaskinstall "syncthing"
+brewcaskinstall "/usr/local/bin/syncthing" "syncthing"
 brewcaskinstall "QSyncthingTray"
 brewcaskinstall "BitTorrent Sync"
 openifnot "BitTorrent Sync"

@@ -220,12 +220,15 @@ export ANDROID_HOME=/usr/local/opt/android-sdk
 ## GPG
 # set up gpg-agent automatically for every shell
 # https://gist.github.com/yoshuawuyts/69f25b0384d41b46a126f9b42d1f9db2
-if [ -f ~/.gnupg/.gpg-agent-info ] && [ -n "$(pgrep gpg-agent)" ]
+if which gpg-agent &> /dev/null &&
 then
-  source ~/.gnupg/.gpg-agent-info
-  export GPG_AGENT_INFO
-else
-  eval $(gpg-agent --daemon --write-env-file ~/.gnupg/.gpg-agent-info)
+  if [ -f ~/.gnupg/.gpg-agent-info ] && [ -n "$(pgrep gpg-agent)" ]
+  then
+    source ~/.gnupg/.gpg-agent-info
+    export GPG_AGENT_INFO
+  else
+    eval $(gpg-agent --daemon --write-env-file ~/.gnupg/.gpg-agent-info)
+  fi
 fi
 
 # Show notification when long running command finishes

@@ -14,7 +14,7 @@ else
 fi
 
 # it seems lot's of brew package needs pygments this days...
-sudo gem install pygments.rb
+(gem list | grep "pygments.rb" &> /dev/null) || sudo gem install pygments.rb
 
 brewtap homebrew/dupes
 brewtap homebrew/versions

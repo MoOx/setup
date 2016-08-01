@@ -50,7 +50,7 @@ openifnot "iStat Menus"
 
 ## Development
 setupsh-recipe git
-brewcaskinstall atom
+brewcaskinstall "Atom"
 brewcaskinstall "GitHub Desktop"
 
 ### Node

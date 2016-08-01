@@ -56,6 +56,8 @@ module.exports = {
   //   `@company/project`
   //   `project#1.0.1`
   plugins: [
+    // auto links on url
+    "hyperlinks", // https://www.npmjs.com/package/hyperlinks
     // Cursor blink
     'hyperterm-blink', // https://www.npmjs.com/package/hyperterm-blink
     // Atom like One Dark theme
@@ -64,8 +66,8 @@ module.exports = {
     'hypercwd', // https://www.npmjs.com/package/hypercwd
     // Quake-like
     'hyperterm-visor', // https://www.npmjs.com/package/hyperterm-visor
-    // 'hyperline', // https://www.npmjs.com/package/hyperline
-    // 'hyperpower', // RAGE MODE https://www.npmjs.com/package/hyperpower
+    // Open a tab with the same directory as the current tab
+    "hypercwd", // https://www.npmjs.com/package/hypercwd
   ],
 
   // hyperterm-visor

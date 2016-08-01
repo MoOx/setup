@@ -10,9 +10,6 @@ function setupsh-run() {
   setupsh-recipe brew
   brewinstall terminal-notifier
 
-  echo_title_update "preferences"
-  sourceFiles $SETUP_PATH/preferences/*.prefs
-
   if [ "$FIRSTRUN" = "true" ]
   then
     echo_title "Opening AppStore\nInstall your apps ;)"
@@ -32,6 +29,9 @@ function setupsh-run() {
   dotfiles
 
   source $SETUP_PATH/index
+
+  echo_title_update "preferences"
+  sourceFiles $SETUP_PATH/preferences/*.prefs
 
   macos-refresh
 

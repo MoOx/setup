@@ -5,7 +5,7 @@ function setupsh-ls-subfolders() {
   # first remove all corresponding subfolders
   CWD=$(pwd)
   cd $2
-  ls -1 $1 | sed 's/\ /\\\ /g' | xargs rm -rf
+  ls -1 $1 | sed 's/\ /\\\ /g' | xargs sudo rm -rf
   cd $CWD
 
   # then ln children

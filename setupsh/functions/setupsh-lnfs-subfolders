@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 # link all subfolders of $1 as $2/*
-function setupsh-ls-subfolders() {
+function setupsh-lnfs-subfolders() {
   # first remove all corresponding subfolders
   CWD=$(pwd)
   cd $2

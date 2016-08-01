@@ -13,6 +13,9 @@ else
   brew upgrade
 fi
 
+# it seems lot's of brew package needs pygments this days...
+sudo gem install pygments.rb
+
 brewtap homebrew/dupes
 brewtap homebrew/versions
 

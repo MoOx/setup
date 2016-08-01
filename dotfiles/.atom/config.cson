@@ -47,7 +47,7 @@
       "duotone-dark-sea-syntax"
     ]
   editor:
-    fontFamily: "Operator Mono"
+    fontFamily: "Operator Mono, Fira Code, Monaco"
     fontSize: 20
     invisibles:
       space: "‧"

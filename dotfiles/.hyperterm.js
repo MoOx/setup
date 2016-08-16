@@ -57,17 +57,23 @@ module.exports = {
   //   `project#1.0.1`
   plugins: [
     // auto links on url
-    "hyperlinks", // https://www.npmjs.com/package/hyperlinks
+    // https://www.npmjs.com/package/hyperlinks
+    "hyperlinks",
     // Cursor blink
-    'hyperterm-blink', // https://www.npmjs.com/package/hyperterm-blink
+    // https://www.npmjs.com/package/hyperterm-blink
+    'hyperterm-blink',
     // Atom like One Dark theme
-    'hyperterm-atom-dark', // https://www.npmjs.com/package/hyperterm-atom-dark
-    // Open new tabs with the same CWD as the previous one
-    'hypercwd', // https://www.npmjs.com/package/hypercwd
+    // https://www.npmjs.com/package/hyperterm-atom-dark
+    'hyperterm-atom-dark',
     // Quake-like
-    'hyperterm-visor', // https://www.npmjs.com/package/hyperterm-visor
+    // https://www.npmjs.com/package/hyperterm-visor
+    'hyperterm-visor',
     // Open a tab with the same directory as the current tab
-    "hypercwd", // https://www.npmjs.com/package/hypercwd
+    // https://www.npmjs.com/package/hypercwd
+    "hypercwd",
+    // default working directory
+    // https://www.npmjs.com/package/hyperterm-working-directory
+    "hyperterm-working-directory",
   ],
 
   // hyperterm-visor
@@ -75,6 +81,8 @@ module.exports = {
     hotkey: 'CommandOrControl+Shift+Z',
     position: 'top', // or left, right, bottom
   },
+
+  workingDirectory: "~/Development",
 
   // in development, you can create a directory under
   // `~/.hyperterm_plugins/local/` and include it here

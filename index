@@ -61,6 +61,7 @@ if [ "$FIRSTRUN" = "true" ]; then macos-refresh; fi;
 # safer than rm
 npmig trash-cli
 
+brewcaskinstall "Tunnelblick"
 brewcaskinstall "WebTorrent"
 brewcaskinstall "VLC"
 brewcaskinstall "MPlayerX"

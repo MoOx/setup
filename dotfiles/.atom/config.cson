@@ -47,6 +47,7 @@
       "duotone-dark-sea-syntax"
     ]
   editor:
+    autoIndentOnPaste: false
     fontFamily: "Operator Mono, Fira Code, Monaco"
     fontSize: 20
     invisibles:
@@ -67,6 +68,8 @@
     fixOnSave: true
   "linter-flow": {}
   nuclide:
+    "nuclide-flow":
+      canUseFlowBin: true
     "nuclide-home":
       showHome: false
   tabs:

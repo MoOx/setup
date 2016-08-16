@@ -15,6 +15,7 @@ packages: [
   "linter-docker"
   "linter-eslint"
   "linter-jsonlint"
+  "merge-conflicts"
   "nuclide"
   "open-in-github-app"
   "package-sync"

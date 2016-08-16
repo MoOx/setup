@@ -14,7 +14,7 @@ macOSLoginItem "/Applications/Spectacle.app" "Spectacle"
 
 # Sync
 macOSLoginItem "/Applications/BitTorrent Sync.app" "BitTorrent Sync"
-# macOSLoginItem "/Applications/QSyncthingTray.app" "QSyncthingTray"
+macOSLoginItem "/Applications/QSyncthingTray.app" "QSyncthingTray"
 
 # debug with
 echo_info "macOS Login items: $(osascript -e 'tell application "System Events" to get the name of every login item')"

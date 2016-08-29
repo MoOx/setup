@@ -36,7 +36,6 @@
       "language-toml"
       "metrics"
       "styleguide"
-      "tree-view"
       "welcome"
       "linter"
     ]
@@ -68,14 +67,22 @@
     fixOnSave: true
   "linter-flow": {}
   nuclide:
+    "nuclide-file-tree":
+      allowKeyboardPrefixNavigation: false
+      hideIgnoredNames: false
+      showOpenFiles: false
     "nuclide-flow":
       canUseFlowBin: true
     "nuclide-home":
       showHome: false
+    use:
+      "nuclide-file-tree": false
+      "nuclide-side-bar": false
   tabs:
     showIcons: false
   "tree-view":
-    showOnRightSide: true
+    autoReveal: true
+    squashDirectoryNames: true
   welcome:
     showOnStartup: false
   whitespace:

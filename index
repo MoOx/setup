@@ -1,7 +1,6 @@
 #!/usr/bin/env zsh
 
 ## Sync
-## syncthing consume too much CPU for now (at least with 0.12)
 brewcaskinstall "/usr/local/bin/syncthing" "syncthing"
 brewcaskinstall "QSyncthingTray"
 brewcaskinstall "BitTorrent Sync"

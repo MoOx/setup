@@ -146,6 +146,7 @@ alias np="nr release --"
 alias npf="nr release -- --skip-cleanup"
 ntm() { nts -- "web_modules/$1/__tests__/*.js" }
 
+
 ### allow local self signed https server
 export NODE_TLS_REJECT_UNAUTHORIZED="0"
 
@@ -168,6 +169,13 @@ alias mysqlstop="mysql.server stop"
 ## Git
 alias git="hub"
 alias g="git"
+# need short alias with explicit pull for PURE
+# https://github.com/sindresorhus/pure/issues/162
+alias gg="git pull"
+alias gp="git pull"
+alias gre="git rebase master"
+alias grem="git rebase master"
+alias gremi="git rebase master -i"
 
 ## Network
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"

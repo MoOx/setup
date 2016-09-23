@@ -144,7 +144,6 @@ alias nts="nr tests --"
 alias ntc="nr test-with-coverage --"
 alias np="nr release --"
 alias npf="nr release -- --skip-cleanup"
-ntm() { nts -- "web_modules/$1/__tests__/*.js" }
 function nv() {
   echo "Node $(node --version)"
   echo "npm  v$(npm --version)"

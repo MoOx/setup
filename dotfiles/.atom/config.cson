@@ -7,6 +7,7 @@
       "source.ini": [
         ".buckconfig"
         ".flowconfig"
+        ".hgrc"
       ]
       "source.json": [
         ".arcconfig"
@@ -38,6 +39,7 @@
       "styleguide"
       "welcome"
       "linter"
+      "auto-update-packages"
     ]
     openEmptyEditorOnStart: false
     projectHome: "/Users/MoOx/Sync/Development"
@@ -82,6 +84,7 @@
     showIcons: false
   "tree-view":
     autoReveal: true
+    hideIgnoredNames: true
     squashDirectoryNames: true
   welcome:
     showOnStartup: false

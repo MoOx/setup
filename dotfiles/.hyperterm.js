@@ -1,5 +1,38 @@
 module.exports = {
+
+  // a list of plugins to fetch and install from npm
+  // format: [@org/]project[#version]
+  // examples:
+  //   `hyperpower`
+  //   `@company/project`
+  //   `project#1.0.1`
+  plugins: [
+    // auto links on url
+    // https://www.npmjs.com/package/hyperlinks
+    // "hyperlinks", // currently buggy, open links in the CURRENT TERMINAL 😱
+    // Cursor blink
+    // https://www.npmjs.com/package/hyperterm-blink
+    'hyperterm-blink',
+    // Atom like One Dark theme
+    // https://www.npmjs.com/package/hyperterm-atom-dark
+    'hyperterm-atom-dark',
+    // Open a tab with the same directory as the current tab
+    // https://www.npmjs.com/package/hypercwd
+    "hypercwd",
+    // default working directory
+    // https://www.npmjs.com/package/hyperterm-working-directory
+    "hyperterm-working-directory",
+  ],
+
+  // in development, you can create a directory under
+  // `~/.hyperterm_plugins/local/` and include it here
+  // to load it and avoid it being `npm install`ed
+  localPlugins: [
+  ],
+
   config: {
+    workingDirectory: "~/Sync/Development",
+
     // default font size in pixels for all tabs
     fontSize: 16,
 
@@ -46,47 +79,6 @@ module.exports = {
       '#cc00ff',
       '#00ffff',
       '#ffffff'
-    ]
+    ],
   },
-
-  // a list of plugins to fetch and install from npm
-  // format: [@org/]project[#version]
-  // examples:
-  //   `hyperpower`
-  //   `@company/project`
-  //   `project#1.0.1`
-  plugins: [
-    // auto links on url
-    // https://www.npmjs.com/package/hyperlinks
-    "hyperlinks",
-    // Cursor blink
-    // https://www.npmjs.com/package/hyperterm-blink
-    'hyperterm-blink',
-    // Atom like One Dark theme
-    // https://www.npmjs.com/package/hyperterm-atom-dark
-    'hyperterm-atom-dark',
-    // Quake-like
-    // https://www.npmjs.com/package/hyperterm-visor
-    'hyperterm-visor',
-    // Open a tab with the same directory as the current tab
-    // https://www.npmjs.com/package/hypercwd
-    "hypercwd",
-    // default working directory
-    // https://www.npmjs.com/package/hyperterm-working-directory
-    "hyperterm-working-directory",
-  ],
-
-  // hyperterm-visor
-  visor: {
-    hotkey: 'CommandOrControl+Shift+Z',
-    position: 'top', // or left, right, bottom
-  },
-
-  workingDirectory: "~/Development",
-
-  // in development, you can create a directory under
-  // `~/.hyperterm_plugins/local/` and include it here
-  // to load it and avoid it being `npm install`ed
-  localPlugins: [
-  ]
 };

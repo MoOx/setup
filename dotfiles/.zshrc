@@ -131,7 +131,6 @@ done
 ## NPM
 
 alias n="npm"
-alias nv="node --version && npm --version"
 alias ni="npm i"
 alias nio="npm --cache-min 0 i"
 alias nig="npm i -g"

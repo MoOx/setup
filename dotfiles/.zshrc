@@ -177,7 +177,7 @@ alias g="git"
 # need short alias with explicit pull for PURE
 # https://github.com/sindresorhus/pure/issues/162
 alias gg="git pull"
-alias gp="git pull"
+alias gp="git push"
 alias gre="git rebase master"
 alias grem="git rebase master"
 alias gremi="git rebase master -i"

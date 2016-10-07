@@ -1,6 +1,0 @@
-#!/usr/bin/env zsh
-
-defaults write com.bittorrent.Sync shouldShowAlretOnFolderRemoval -bool true
-defaults write com.bittorrent.Sync SUAutomaticallyUpdate -bool true
-defaults write com.bittorrent.Sync SUEnableAutomaticChecks -bool true
-defaults write com.bittorrent.Sync UserDidntAgreeWithLicense -bool false

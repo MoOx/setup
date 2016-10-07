@@ -3,8 +3,7 @@
 ## Sync
 brewcaskinstall "/usr/local/bin/syncthing" "syncthing"
 brewcaskinstall "QSyncthingTray"
-brewcaskinstall "BitTorrent Sync"
-openifnot "BitTorrent Sync"
+openifnot "QSyncthingTray"
 setupsh-recipe custom-folders
 
 brewcaskinstall "HyperTerm"

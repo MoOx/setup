@@ -13,7 +13,6 @@ macOSLoginItem "/Applications/Flycut.app" "Flycut"
 macOSLoginItem "/Applications/Spectacle.app" "Spectacle"
 
 # Sync
-macOSLoginItem "/Applications/BitTorrent Sync.app" "BitTorrent Sync"
 macOSLoginItem "/Applications/QSyncthingTray.app" "QSyncthingTray"
 
 # debug with

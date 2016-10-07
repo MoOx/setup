@@ -10,9 +10,12 @@
   cm = commit -m
   ca = commit --all
   cam = commit --all -m
+  caa = commit --all --amend
+  caam = commit --all --amend -m
   a = commit --amend --no-edit
-  aa = commit --amend --all --no-edit
+  aall = commit --amend --all --no-edit
 
+  rem = "!git checkout master && git pull && git checkout - && git rebase master"
   r = rebase
   rc = rebase --continue
   ra = rebase --abort
@@ -21,7 +24,7 @@
 
   p = push
   pf = push --force-with-lease
-  fp = push --force-with-lease
+  pff = push --force
 
   clear= clean -f -d
 
@@ -30,7 +33,7 @@
 
   s = stash
   su = stash -u
-  ss = stash show -p stash@{0}
+  sslast = stash show -p stash@{0}
 
   undo = reset --soft HEAD~1
 

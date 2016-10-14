@@ -50,7 +50,7 @@
   editor:
     autoIndentOnPaste: false
     fontFamily: "Operator Mono, Fira Code, Monaco"
-    fontSize: 20
+    fontSize: 16
     invisibles:
       space: "‧"
     lineHeight: 1.45
@@ -58,8 +58,6 @@
     showInvisibles: true
   "exception-reporting":
     userId: "acee8e04-1bbb-8674-25af-f5ccc0cd2d35"
-  "file-watcher":
-    promptWhenFileHasChangedOnDisk: false
   "find-and-replace":
     focusEditorAfterSearch: true
   "git-log": {}
@@ -83,9 +81,7 @@
   tabs:
     showIcons: false
   "tree-view":
-    autoReveal: true
     hideIgnoredNames: true
-    hideVcsIgnoredFiles: true
     squashDirectoryNames: true
   welcome:
     showOnStartup: false

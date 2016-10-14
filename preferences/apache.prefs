@@ -6,60 +6,25 @@ chmod o+x $HOME
 chmod o+x $DIR_SYNC
 chmod o+x $DIR_DEV
 
-APACHE_CONF="/etc/apache2/httpd.conf"
-
 # Apache dev configuration
-APACHE_CONF_DEV_PATH="$DIR_DEV/dev.apache.conf"
-if ! cat $APACHE_CONF | grep $APACHE_CONF_DEV_PATH > /dev/null
-then
-  if ls $APACHE_CONF_DEV_PATH &> /dev/null
-  then
-    echo_title "Configuring macOS Apache"
-    # enable mod_rewrite
-    sudo sed -i '' -e 's/#LoadModule rewrite_module/LoadModule rewrite_module/' $APACHE_CONF
-    # add global personam conf
-    echo "\nInclude $APACHE_CONF_DEV_PATH" | sudo tee -a $APACHE_CONF
-  fi
-fi
+echo_title "Configuring macOS Apache"
+sudo cp -v "/usr/local/opt/httpd$APACHE_VERSION/homebrew.mxcl.httpd$APACHE_VERSION.plist /Library/LaunchDaemons"
+sudo chown -v root:wheel "/Library/LaunchDaemons/homebrew.mxcl.httpd$APACHE_VERSION.plist"
+sudo chmod -v 644 "/Library/LaunchDaemons/homebrew.mxcl.httpd$APACHE_VERSION.plist"
+sudo launchctl load "/Library/LaunchDaemons/homebrew.mxcl.httpd$APACHE_VERSION.plist"
+sudo echo "Include $APACHE_CONF_DEV_PATH" > $APACHE_CONF
 
-# PHP
-PHP_LATEST_PATH=/usr/local/Cellar/php$PHP_VERSION
-if ls $PHP_LATEST_PATH &> /dev/null
-then
-  PHP_LATEST_VERSION=$(ls -t $PHP_LATEST_PATH | head -1)
-  PHP_LATEST_LIB=$PHP_LATEST_PATH/$PHP_LATEST_VERSION/libexec/apache2/libphp5.so
-  if ! cat $APACHE_CONF | grep $PHP_LATEST_LIB > /dev/null
-  then
-    echo_title "Updating macOS Apache PHP version"
-    # disable previous version
-    sudo sed -i '' -e 's/LoadModule php5_module/#LoadModule php5_module/' $APACHE_CONF
-    # ahem... (avoid #####LoadModule with time)
-    sudo sed -i '' -e 's/##LoadModule php5_module/#LoadModule php5_module/' $APACHE_CONF
-
-    PHP_NEW_MODULE="LoadModule php5_module $PHP_LATEST_LIB"
-    echo "Please add this line into httpd.conf:"
-    echo $PHP_NEW_MODULE
-    atom -w $APACHE_CONF
-    # fail to add a new line with sed
-    # sudo sed -i '' -e "#LoadModule php5_module libexec\/apache2\/libphp5.so#{N;N;s/$/\n$PHP_NEW_MODULE}" $APACHE_CONF
-    # if ! cat $APACHE_CONF | grep $PHP_LATEST_LIB > /dev/null
-    # then
-    #   echo_fail "Cannot include $PHP_LATEST_LIB in Apache conf (update failed)"
-    # fi
-  fi
-fi
-
-PUTAINDETAB=/Users/Shared/Photos
-if ! cat $APACHE_CONF | grep $PUTAINDETAB > /dev/null
-then
-  if ls $PUTAINDETAB &> /dev/null
-  then
-    echo_title "Configuring putaindetab"
-    echo "" | sudo tee -a $APACHE_CONF
-    echo "# putaindetab \"$PUTAINDETAB\"" | sudo tee -a $APACHE_CONF
-    echo "Include \"$PUTAINDETAB/index.apache.conf\"" | sudo tee -a $APACHE_CONF
-  fi
-fi
+# PUTAINDETAB=/Users/Shared/Photos
+# if ! cat $APACHE_CONF | grep $PUTAINDETAB > /dev/null
+# then
+#   if ls $PUTAINDETAB &> /dev/null
+#   then
+#     echo_title "Configuring putaindetab"
+#     echo "" | sudo tee -a $APACHE_CONF
+#     echo "# putaindetab \"$PUTAINDETAB\"" | sudo tee -a $APACHE_CONF
+#     echo "Include \"$PUTAINDETAB/index.apache.conf\"" | sudo tee -a $APACHE_CONF
+#   fi
+# fi
 
 if type apachectl > /dev/null; then
   apachectl configtest

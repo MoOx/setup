@@ -159,13 +159,19 @@ export NODE_TLS_REJECT_UNAUTHORIZED="0"
 export PATH=$PATH:./node_modules/.bin
 
 ## Apache
-APACHE_CONF_DEV_PATH=$DIR_DEV/_.conf/apache/
-alias apacheconf="e $APACHE_CONF"
-alias apachedevconf="e $APACHE_CONF_DEV_PATH"
+export APACHE_VERSION=24
+export APACHE_VERSION_DOT=2.4
+export APACHE_CONF=/usr/local/etc/apache2/$APACHE_VERSION_DOT/httpd.conf
+export APACHE_CONF_DEV_PATH=$DIR_DEV/.apache.conf
 alias apacheconfigtest="apachectl configtest"
 alias apachestart="sudo apachectl start"
 alias apacherestart="dscacheutil -flushcache && apachectl configtest && sudo apachectl restart"
-alias apacheaddconf="e $APACHE_CONF_DEV_PATH/local.conf /etc/hosts"
+
+# php
+export PHP_VERSION=56
+export PHP_VERSION_DOT=5.6
+export PHP_CONF=/usr/local/etc/php/$PHP_VERSION_DOT/php.ini
+alias phpini="e $PHP_CONF"
 
 ## MySQL (from brew)
 alias mysqlstart="mysql.server start"
@@ -199,15 +205,6 @@ alias synergychome="synergyc -n MacMoOx iMoOx.local"
 # ssh-copy-id
 # usage: sshcopy user@server [-p {port}]
 alias sshcopy="ssh-copy-id -i ~/.ssh/id_rsa.pub"
-
-# php
-export PHP_VERSION=56
-export PHP_VERSION_DOT=5.6
-if ls /usr/local/Cellar/php$PHP_VERSION &> /dev/null
-then
-  export PHP_INI=/usr/local/etc/php/$PHP_VERSION_DOT/php.ini
-  alias phpini="e $PHP_INI"
-fi
 
 ## LOCAL STUFF
 if [[ -f ~/.zshrc.local ]]; then; source ~/.zshrc.local; fi

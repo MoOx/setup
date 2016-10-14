@@ -133,14 +133,14 @@ load_nvm
 ## NPM
 
 alias n="npm"
-alias ni="npm i"
-alias nio="npm --cache-min 0 i"
-alias nig="npm i -g"
-alias nis="npm i -S"
-alias nid="npm i -D"
+alias ni="npm install"
+alias nio="npm --cache-min 0 install"
+alias nig="npm install -g"
+alias nis="npm install -S"
+alias nid="npm install -D"
 alias ns="npm -s start --"
 alias nt="npm -s test --"
-alias nr="npm run -s"
+alias nr="npm -s run"
 alias nts="nr tests --"
 alias ntc="nr test-with-coverage --"
 alias np="nr release --"
@@ -151,12 +151,23 @@ function nv() {
   echo "$(sw_vers)"
 }
 
-
 ### allow local self signed https server
 export NODE_TLS_REJECT_UNAUTHORIZED="0"
 
 ### to avoid npm install -g
 export PATH=$PATH:./node_modules/.bin
+
+## Yarn
+export PATH="$HOME/.yarn/bin:$PATH"
+alias y="yarn"
+alias yag="yarn global add"
+alias ya="yarn add"
+alias yad="yarn add --dev"
+alias ys="yarn run start --"
+alias yt="yarn run test --"
+alias yr="yarn run"
+alias yu="yarn upgrade"
+
 
 ## Apache
 export APACHE_VERSION=24

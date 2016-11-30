@@ -1,6 +1,7 @@
 #!/usr/bin/env zsh
 
-o "./iStat Menus Settings.ismp"
+# import by hand required for now...
+# open "$SETUP_PATH/preferences/iStat Menus Settings.ismp" -a "iStat Menus"
 # defaults write com.bjango.istatmenus ShownSetupScreen -bool true
 # defaults write com.bjango.istatmenus5.extras "CombinedDropdownDisplayMode" -string "1,2,4,5,3,6,7"
 # defaults write com.bjango.istatmenus5.extras "CombinedMenubarDisplayMode" -string "1,2,7"

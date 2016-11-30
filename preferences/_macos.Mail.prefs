@@ -13,5 +13,6 @@ defaults write com.apple.mail "NSToolbar Configuration MainWindow" -dict \
   "TB Display Mode" 2 \
   "TB Icon Size Mode" 1 \
   "TB Is Shown" 1 \
-  "TB Item Identifiers" '("deleteMessages:",NSToolbarFlexibleSpaceItem,NSToolbarSpaceItem,"orderFrontColorPanel:",NSToolbarFlexibleSpaceItem,"showComposeWindow:","checkNewMail:",NSToolbarSpaceItem,"reply_replyAll_forward","moveMessagesFromToolbar:",NSToolbarSpaceItem,"addSenderToContacts:","showAllHeaders:",NSToolbarFlexibleSpaceItem,Search)' \
+  # here is the interesting item column
+  "TB Item Identifiers" '("checkNewMail:",NSToolbarFlexibleSpaceItem,Search)' \
   "TB Size Mode" 1

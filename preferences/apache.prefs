@@ -8,7 +8,7 @@ chmod o+x $DIR_DEV
 
 # Apache dev configuration
 echo_title "Configuring macOS Apache"
-sudo cp -v "/usr/local/opt/httpd$APACHE_VERSION/homebrew.mxcl.httpd$APACHE_VERSION.plist /Library/LaunchDaemons"
+sudo cp -v "/usr/local/opt/httpd$APACHE_VERSION/homebrew.mxcl.httpd$APACHE_VERSION.plist" "/Library/LaunchDaemons"
 sudo chown -v root:wheel "/Library/LaunchDaemons/homebrew.mxcl.httpd$APACHE_VERSION.plist"
 sudo chmod -v 644 "/Library/LaunchDaemons/homebrew.mxcl.httpd$APACHE_VERSION.plist"
 sudo launchctl load "/Library/LaunchDaemons/homebrew.mxcl.httpd$APACHE_VERSION.plist"

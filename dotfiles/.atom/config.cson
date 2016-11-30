@@ -80,6 +80,8 @@
       "nuclide-side-bar": false
   tabs:
     showIcons: false
+  "tool-bar":
+    position: "Bottom"
   "tree-view":
     hideIgnoredNames: true
     squashDirectoryNames: true

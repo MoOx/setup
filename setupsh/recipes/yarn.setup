@@ -3,7 +3,7 @@
 if ! type yarn > /dev/null
 then
   echo_title_install "yarn"
-  curl -o- -L https://yarnpkg.com/install.sh | bash
+  brew install yarn
 else
   echo_title_update "yarn"
   yarn self-update

@@ -6,7 +6,7 @@ brewcaskinstall "QSyncthingTray"
 openifnot "QSyncthingTray"
 setupsh-recipe custom-folders
 
-brewcaskinstall "HyperTerm"
+brewcaskinstall "Hyper"
 
 # browser
 brewcaskinstall "FirefoxNightly"

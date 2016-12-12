@@ -3,7 +3,7 @@
 on run argv
   tell application "System Events"
     set frontApp to name of first application process whose frontmost is true
-    if frontApp is not "HyperTerm" then
+    if frontApp is not "Hyper" then
       set notifTitle to item 1 of argv
       set notifBody to "succeded"
       set errorCode to item 2 of argv

@@ -9,28 +9,35 @@ module.exports = {
   plugins: [
     // auto links on url
     // https://www.npmjs.com/package/hyperlinks
-    // "hyperlinks", // currently buggy, open links in the CURRENT TERMINAL 😱
+    "hyperlinks",
     // Cursor blink
-    // https://www.npmjs.com/package/hyperterm-blink
-    'hyperterm-blink',
+    // https://www.npmjs.com/package/hyper-blink
+    'hyper-blink',
     // Atom like One Dark theme
-    // https://www.npmjs.com/package/hyperterm-atom-dark
-    'hyperterm-atom-dark',
+    // https://www.npmjs.com/package/hyper-one-dark
+    'hyper-one-dark',
     // Open a tab with the same directory as the current tab
     // https://www.npmjs.com/package/hypercwd
     "hypercwd",
-    // default working directory
-    // https://www.npmjs.com/package/hyperterm-working-directory
-    "hyperterm-working-directory",
+    // Icons!
+    // https://www.npmjs.com/package/hyper-tab-icons
+    "hyper-tab-icons",
+    // status line
+    // https://www.npmjs.com/package/hyper-statusline
+    "hyper-statusline"
   ],
 
   // in development, you can create a directory under
-  // `~/.hyperterm_plugins/local/` and include it here
+  // `~/.hyper_plugins/local/` and include it here
   // to load it and avoid it being `npm install`ed
   localPlugins: [
   ],
 
   config: {
+    hyperlinks: {
+      defaultBrowser: false,
+    },
+
     workingDirectory: "~/Sync/Development",
 
     // default font size in pixels for all tabs

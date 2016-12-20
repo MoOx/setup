@@ -12,11 +12,10 @@ brewcaskinstall "FirefoxNightly"
 openifnot "FirefoxNightly"
 setupsh-recipe firefox-user.js
 
-## Ssh
 setupsh-recipe ssh
 
 ## GPG
-brewcaskinstall "GPG Keychain" gpgtools
+brewcaskinstall "/usr/local/bin/gpg" gpgtools
 # contains gnupg gpg-agent pinentry + GPG keychain UI
 
 ## Zsh completion
@@ -67,7 +66,6 @@ brewcaskinstall "MPlayerX"
 # apps
 brewcaskinstall "Prefs Editor"
 brewcaskinstall "AppCleaner"
-openifnot "AppCleaner"
 
 ##
 # Stuff that are slow to download
@@ -87,35 +85,16 @@ setupsh-recipe prey
 if [ "$FIRSTRUN" = "" ]
 then
   # messaging
-  brewcaskinstall "Caprine" # Facebook Messenger
-  brewcaskinstall "Slack"
-  brewcaskinstall "Discord"
   brewcaskinstall "Gitter"
-  brewcaskinstall "Telegram"
-  brewcaskinstall "HipChat"
+  brewcaskinstall "Discord"
+  brewcaskinstall "Slack"
   brewcaskinstall "Skype"
+  brewcaskinstall "Caprine" # Facebook Messenger
+  brewcaskinstall "Telegram"
 
   # MORE BROWSER
   brewcaskinstall "Firefox"
   brewcaskinstall "Google Chrome"
-  # brewcaskinstall "/usr/local/bin/phantomjs" "phantomjs"
-
-  # OSS / Package helpers
-  npmig greenkeeper
-  npmig github-labels
-  npmig npm-check
-  npmig updtr
-
-  # vm and shit
-  # brewcaskinstall "VirtualBox"
-  # Android development
-  # might be required http://software.intel.com/en-us/android/articles/intel-hardware-accelerated-execution-manager
-  # brewinstall android-sdk
-  # brewcaskinstall genymotion
-
-  # meta
-  # https://github.com/caskroom/homebrew-cask/blob/master/CONTRIBUTING.md#updating-a-cask
-  # brewinstall vitorgalvao/tiny-scripts/cask-repair
 
   # YEAH I USE THAT
   brewcaskinstall "/Library/Java/JavaVirtualMachines" "java"
@@ -136,18 +115,10 @@ then
   brewcaskinstall "Cyberduck"
 
   # Data/Disk related
-  brewcaskinstall "NameChanger"
   brewcaskinstall "GrandPerspective"
   brewcaskinstall "SuperDuper!" "superduper"
 fi
 
-if [[ $COMPUTER_NAME == "iMoOx" ]]
-then
-  # for my mouse
-  brewcaskinstall "/Library/PreferencePanes/Logitech Control Center.prefPane" "logitech-control-center"
-  brewcaskinstall "Utilities/Logitech Unifying Software" "logitech-unifying"
-
-  # Better perf for non Apple SSD
-  # at the end because need reboot
-  #sudo trimforce enable
-fi
+# for my mouse
+brewcaskinstall "/Library/PreferencePanes/Logitech Control Center.prefPane" "logitech-control-center"
+brewcaskinstall "Utilities/Logitech Unifying Software" "logitech-unifying"

@@ -22,9 +22,10 @@ module.exports = {
     // Icons!
     // https://www.npmjs.com/package/hyper-tab-icons
     "hyper-tab-icons",
+
     // status line
     // https://www.npmjs.com/package/hyper-statusline
-    "hyper-statusline"
+    "hyper-statusline",
 
     // https://www.npmjs.com/package/hyper-simple-vibrancy
     "hyper-simple-vibrancy",

@@ -270,3 +270,6 @@ function notify_cmd_result_when_terminal_not_focused {
   notify-if-hyper-is-in-the-background "$CMD" "$LAST_EXIT_CODE" &
 }
 export PS1='$(notify_cmd_result_when_terminal_not_focused)'$PS1
+
+alias syncthing-conflicts-show="find ~/ -name \"*.sync-conflict-*\""
+alias syncthing-conflicts-trash="find ~/ -name \"*.sync-conflict-*\" -exec trash {} +"

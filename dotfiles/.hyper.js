@@ -10,21 +10,24 @@ module.exports = {
     // auto links on url
     // https://www.npmjs.com/package/hyperlinks
     "hyperlinks",
-    // Cursor blink
-    // https://www.npmjs.com/package/hyper-blink
-    'hyper-blink',
+
     // Atom like One Dark theme
     // https://www.npmjs.com/package/hyper-one-dark
-    'hyper-one-dark',
+    "hyper-one-dark",
+
     // Open a tab with the same directory as the current tab
     // https://www.npmjs.com/package/hypercwd
     "hypercwd",
+
     // Icons!
     // https://www.npmjs.com/package/hyper-tab-icons
     "hyper-tab-icons",
     // status line
     // https://www.npmjs.com/package/hyper-statusline
     "hyper-statusline"
+
+    // https://www.npmjs.com/package/hyper-simple-vibrancy
+    "hyper-simple-vibrancy",
   ],
 
   // in development, you can create a directory under
@@ -34,6 +37,11 @@ module.exports = {
   ],
 
   config: {
+
+    tabIcons: {
+      disableColors: true
+    },
+
     hyperlinks: {
       defaultBrowser: false,
     },
@@ -44,48 +52,48 @@ module.exports = {
     fontSize: 16,
 
     // font family with optional fallbacks
-    fontFamily: 'Operator Mono, monospace',
+    fontFamily: "Operator Mono, monospace",
 
     // terminal cursor background color (hex)
-    cursorColor: '#F81CE5',
+    cursorColor: "#F81CE5",
 
     // color of the text
-    foregroundColor: '#fff',
+    foregroundColor: "#fff",
 
     // terminal background color
-    backgroundColor: '#000',
+    backgroundColor: "#000",
 
     // border color (window, tabs)
-    borderColor: '#333',
+    borderColor: "#333",
 
     // custom css to embed in the main window
-    css: '',
+    css: "",
 
     // custom css to embed in the terminal window
-    termCSS: '',
+    termCSS: "",
 
     // custom padding (css format, i.e.: `top right bottom left`)
-    padding: '1.5rem',
+    padding: "1.5rem",
 
     // some color overrides. see http://bit.ly/29k1iU2 for
     // the full list
     colors: [
-      '#000000',
-      '#ff0000',
-      '#33ff00',
-      '#ffff00',
-      '#0066ff',
-      '#cc00ff',
-      '#00ffff',
-      '#d0d0d0',
-      '#808080',
-      '#ff0000',
-      '#33ff00',
-      '#ffff00',
-      '#0066ff',
-      '#cc00ff',
-      '#00ffff',
-      '#ffffff'
+      "#000000",
+      "#ff0000",
+      "#33ff00",
+      "#ffff00",
+      "#0066ff",
+      "#cc00ff",
+      "#00ffff",
+      "#d0d0d0",
+      "#808080",
+      "#ff0000",
+      "#33ff00",
+      "#ffff00",
+      "#0066ff",
+      "#cc00ff",
+      "#00ffff",
+      "#ffffff",
     ],
   },
-};
+}

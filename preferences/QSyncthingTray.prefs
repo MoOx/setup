@@ -1,7 +1,0 @@
-#!/usr/bin/env zsh
-
-defaults write com.sieren.QSyncthingTray animationEnabled -bool true
-defaults write com.sieren.QSyncthingTray launchSyncthingAtStartup -bool true
-defaults write com.sieren.QSyncthingTray monochromeIcon -bool true
-defaults write com.sieren.QSyncthingTray notificationsEnabled -bool true
-defaults write com.sieren.QSyncthingTray syncthingpath -string "/usr/local/bin/syncthing"

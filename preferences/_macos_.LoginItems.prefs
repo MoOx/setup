@@ -13,7 +13,7 @@ macOSLoginItem "/Applications/Flycut.app" "Flycut"
 macOSLoginItem "/Applications/Spectacle.app" "Spectacle"
 
 # Sync
-macOSLoginItem "/Applications/QSyncthingTray.app" "QSyncthingTray"
+macOSLoginItem "/Applications/syncthing-bar.app" "syncthing-bar"
 
 # debug with
 echo_info "macOS Login items: $(osascript -e 'tell application "System Events" to get the name of every login item')"

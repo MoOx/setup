@@ -1,9 +1,8 @@
 #!/usr/bin/env zsh
 
 ## Sync
-brewcaskinstall "/usr/local/bin/syncthing" "syncthing"
-brewcaskinstall "QSyncthingTray"
-openifnot "QSyncthingTray"
+brewcaskinstall "syncthing-bar"
+openifnot "syncthing-bar"
 setupsh-recipe custom-folders
 
 brewcaskinstall "Hyper"

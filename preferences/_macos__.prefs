@@ -1,25 +1,6 @@
 #!/usr/bin/env zsh
 echo_title "Defining macOS options"
 
-COMPUTER_NAME="$USER"
-COMPUTER_MODEL=`sysctl -n hw.model`
-if [[ $COMPUTER_MODEL == "iMac"* ]]
-then
-  COMPUTER_NAME="i$COMPUTER_NAME"
-elif [[ $COMPUTER_MODEL == "MacBook"* ]]
-then
-  COMPUTER_NAME="Mac$COMPUTER_NAME"
-fi
-# notifying computer name update only if name will be changed
-if [[ $COMPUTER_NAME != $(sudo scutil --get ComputerName) ]]
-then
-  echo_info "Computer name set to $COMPUTER_NAME"
-fi
-sudo scutil --set ComputerName $COMPUTER_NAME
-sudo scutil --set HostName $COMPUTER_NAME
-sudo scutil --set LocalHostName $COMPUTER_NAME
-sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string $COMPUTER_NAME
-
 ###
 # SecAssessment system policy security
 ###

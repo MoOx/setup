@@ -1,4 +1,9 @@
 "*":
+  Zen:
+    gutter: true
+    minimap: true
+    tabs: "multiple"
+    width: 120
   "atom-beautify":
     general:
       _analyticsUserId: "c8ae3b6d-a781-4233-9780-a96292c2afa8"

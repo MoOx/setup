@@ -6,6 +6,11 @@ atom-text-editor {
   text-rendering: optimizeLegibility;
 }
 
+/* less visible flow coverage underline */
+atom-text-editor .nuclide-diagnostics-gutter-ui-highlight-warning > .region {
+    border-bottom: 1px dashed rgba(235, 222, 11, 0.1);
+}
+
 /* (almost) hide ; in JS  */
 atom-text-editor .syntax--js.syntax--punctuation.syntax--terminator {
   opacity: 0.4;

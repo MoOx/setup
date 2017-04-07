@@ -9,4 +9,4 @@
   token = !security find-internet-password -a MoOx -s github.com -l 'ghi token' -w
 
 [core]
-  editor = atom -w
+  editor = open -Wne

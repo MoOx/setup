@@ -84,6 +84,8 @@
     ]
     silent: true
   nuclide:
+    hyperclick:
+      darwinTriggerKeys: "altKey,metaKey"
     "nuclide-file-tree":
       allowKeyboardPrefixNavigation: false
       hideIgnoredNames: false

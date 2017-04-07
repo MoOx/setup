@@ -6,5 +6,5 @@ then
   brew install yarn
 else
   echo_title_update "yarn"
-  yarn self-update
+  brew upgrade yarn
 fi

@@ -156,7 +156,7 @@ export NODE_TLS_REJECT_UNAUTHORIZED="0"
 export PATH=$PATH:./node_modules/.bin
 
 ## Yarn
-export PATH="$HOME/.yarn/bin:$PATH"
+export PATH="$PATH:`yarn global bin`"
 alias y="yarn"
 alias yag="yarn global add"
 alias ya="yarn add"

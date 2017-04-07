@@ -43,6 +43,7 @@
       "metrics"
       "styleguide"
       "welcome"
+      "wrap-guide"
       "linter"
       "auto-update-packages"
     ]
@@ -71,6 +72,17 @@
   "linter-eslint":
     fixOnSave: true
   "linter-flow": {}
+  "multi-wrap-guide":
+    columns: [
+      80
+      120
+    ]
+    locked: true
+    rows: [
+      80
+      120
+    ]
+    silent: true
   nuclide:
     "nuclide-file-tree":
       allowKeyboardPrefixNavigation: false

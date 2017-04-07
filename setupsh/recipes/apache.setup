@@ -5,5 +5,5 @@ then
   echo_title_install "Apache"
   sudo apachectl stop
   sudo launchctl unload -w /System/Library/LaunchDaemons/org.apache.httpd.plist 2>/dev/null
-  brew install httpd24 --with-privileged-ports --with-http2
+  brew install homebrew/apache/httpd24 --with-privileged-ports --with-http2
 fi

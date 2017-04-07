@@ -3,6 +3,5 @@
 if ! ls $(brew --prefix)/bin/php &> /dev/null
 then
   echo_title_install "PHP"
-  brewtap homebrew/homebrew-php
-  brewinstall php56
+  brewinstall homebrew/php/php56
 fi

@@ -86,17 +86,29 @@
   nuclide:
     hyperclick:
       darwinTriggerKeys: "altKey,metaKey"
+    installRecommendedPackages: true
+    "nuclide-ctags":
+      disableWithHack: false
+    "nuclide-diagnostics-store": {}
+    "nuclide-diagnostics-ui": {}
+    "nuclide-diff-view":
+      shouldDockPublishView: false
     "nuclide-file-tree":
       allowKeyboardPrefixNavigation: false
       hideIgnoredNames: false
       showOpenFiles: false
     "nuclide-flow":
       canUseFlowBin: true
+      warnOnNotInstalled: false
     "nuclide-home":
       showHome: false
+    "nuclide-objc":
+      enableAutomaticSquareBracketInsertion: false
+    "nuclide-python": {}
     use:
       "nuclide-file-tree": false
       "nuclide-side-bar": false
+      "nuclide-source-control-side-bar": false
   tabs:
     showIcons: false
   "tool-bar":

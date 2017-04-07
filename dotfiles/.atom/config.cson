@@ -40,23 +40,22 @@
       "language-sass"
       "language-sql"
       "language-toml"
-      "metrics"
       "styleguide"
       "welcome"
       "wrap-guide"
       "linter"
-      "auto-update-packages"
+      "whitespace"
     ]
     openEmptyEditorOnStart: false
     projectHome: "/Users/MoOx/Sync/Development"
+    telemetryConsent: "limited"
     themes: [
       "one-dark-ui"
       "duotone-dark-sea-syntax"
     ]
+    useCustomTitleBar: true
   editor:
-    autoIndentOnPaste: false
     fontFamily: "Operator Mono, Fira Code, Monaco"
-    fontSize: 16
     invisibles:
       space: "‧"
     lineHeight: 1.45
@@ -70,6 +69,7 @@
   "git-projects":
     rootPath: "/Users/MoOx/Sync/Development"
   "linter-eslint":
+    disableWhenNoEslintConfig: false
     fixOnSave: true
   "linter-flow": {}
   "multi-wrap-guide":
@@ -109,6 +109,7 @@
       "nuclide-file-tree": false
       "nuclide-side-bar": false
       "nuclide-source-control-side-bar": false
+  "package-sync": {}
   tabs:
     showIcons: false
   "tool-bar":
@@ -119,4 +120,6 @@
   welcome:
     showOnStartup: false
   whitespace:
+    ensureSingleTrailingNewline: false
     ignoreWhitespaceOnCurrentLine: false
+    removeTrailingWhitespace: false

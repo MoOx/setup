@@ -12,6 +12,7 @@
       "linter"
     ]
   core:
+    closeDeletedFileTabs: true
     customFileTypes:
       "source.ini": [
         ".buckconfig"
@@ -57,9 +58,10 @@
       "one-dark-ui"
       "duotone-dark-sea-syntax"
     ]
-    useCustomTitleBar: true
+    titleBar: "custom"
   editor:
     fontFamily: "Operator Mono, Fira Code, Monaco"
+    fontSize: 15
     invisibles:
       space: "‧"
     lineHeight: 1.45
@@ -67,6 +69,9 @@
     showInvisibles: true
   "exception-reporting":
     userId: "acee8e04-1bbb-8674-25af-f5ccc0cd2d35"
+  "file-icons":
+    coloured: false
+    onChanges: true
   "find-and-replace":
     focusEditorAfterSearch: true
   "git-log": {}
@@ -76,6 +81,8 @@
     disableWhenNoEslintConfig: false
     fixOnSave: true
   "linter-flow": {}
+  "linter-ui-default":
+    panelHeight: 532
   "multi-wrap-guide":
     columns: [
       80
@@ -103,7 +110,6 @@
       showOpenFiles: false
     "nuclide-flow":
       canUseFlowBin: true
-      warnOnNotInstalled: false
     "nuclide-home":
       showHome: false
     "nuclide-objc":
@@ -114,12 +120,21 @@
       "nuclide-side-bar": false
       "nuclide-source-control-side-bar": false
   "package-sync": {}
+  "prettier-atom":
+    formatOnSaveOptions:
+      excludedGlobs: [
+        "*.json"
+      ]
+      respectEslintignore: false
+      showInStatusBar: true
+    prettierOptions:
+      parser: "flow"
+  "reason-refmt": {}
   tabs:
     showIcons: false
   "tool-bar":
     position: "Bottom"
   "tree-view":
-    hideIgnoredNames: true
     squashDirectoryNames: true
   welcome:
     showOnStartup: false

@@ -12,8 +12,9 @@ module.exports = {
     "hyperlinks",
 
     // Atom like One Dark theme
-    // https://www.npmjs.com/package/hyper-one-dark
-    "hyper-one-dark",
+    // // https://www.npmjs.com/package/hyper-one-dark
+    // "hyper-one-dark",
+    "hyper-snazzy",
 
     // Open a tab with the same directory as the current tab
     // https://www.npmjs.com/package/hypercwd
@@ -26,9 +27,6 @@ module.exports = {
     // status line
     // https://www.npmjs.com/package/hyper-statusline
     "hyper-statusline",
-
-    // https://www.npmjs.com/package/hyper-simple-vibrancy
-    "hyper-simple-vibrancy",
   ],
 
   // in development, you can create a directory under
@@ -62,7 +60,7 @@ module.exports = {
     foregroundColor: "#fff",
 
     // terminal background color
-    backgroundColor: "#000",
+    backgroundColor: "rgba(0,0,0, 0.1)",
 
     // border color (window, tabs)
     borderColor: "#333",

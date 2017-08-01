@@ -237,9 +237,6 @@ alias dockermachine="docker-machine start default; eval \"\$(docker-machine env 
 # see https://github.com/popomore/github-labels + MoOx/setup/dotfiles/github-issues-labels.json
 alias github-labels="labels -c $HOME/.github-issues-labels.json"
 
-# Android development
-export ANDROID_HOME=/usr/local/opt/android-sdk
-
 # Profiling zshrc speed
 # (see top of the file)
 # set +x
@@ -273,3 +270,8 @@ export PS1='$(notify_cmd_result_when_terminal_not_focused)'$PS1
 
 alias syncthing-conflicts-show="find ~/ -name \"*.sync-conflict-*\""
 alias syncthing-conflicts-trash="find ~/ -name \"*.sync-conflict-*\" -exec trash {} +"
+
+# Android Studio/Tools (react-native)
+export ANDROID_HOME=${HOME}/Library/Android/sdk
+export PATH=${PATH}:${ANDROID_HOME}/tools
+export PATH=${PATH}:${ANDROID_HOME}/platform-tools

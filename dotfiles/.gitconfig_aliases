@@ -13,7 +13,7 @@
   caa = commit --all --amend
   caam = commit --all --amend -m
   a = commit --amend --no-edit
-  aall = commit --amend --all --no-edit
+  aa = commit --amend --all --no-edit
 
   rem = "!git checkout master && git pull && git checkout - && git rebase master"
   r = rebase

@@ -219,7 +219,7 @@ alias sshcopy="ssh-copy-id -i ~/.ssh/id_rsa.pub"
 if [[ -f ~/.zshrc.local ]]; then; source ~/.zshrc.local; fi
 
 # custom aliases
-alias gh="/Applications/GitHub\ Desktop.app/Contents/MacOS/github_cli"
+alias gh="open -a /Applications/GitHub\ Desktop.app ."
 alias .e="setupsh-edit"
 alias .o="setupsh-open"
 alias wifi=macos-internetsharing-on

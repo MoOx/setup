@@ -169,6 +169,11 @@ alias yt="yarn test"
 alias yu="yarn upgrade"
 alias yb="yarn build"
 
+## Bundler
+alias b="bundler"
+alias bi="bundler install"
+alias bu="bundler update"
+alias be="bundler exec"
 
 ## Apache
 export APACHE_VERSION=24

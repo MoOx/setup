@@ -35,6 +35,7 @@ export PATH=$DIR_DEV/.bin:$PATH
 
 export EDITOR="atom"
 source $SETUP_PATH/submodules/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fpath=(/usr/local/share/zsh-completions $fpath)
 
 HISTFILE=~/.history
 HISTSIZE=SAVEHIST=1000

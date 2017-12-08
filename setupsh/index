@@ -48,7 +48,8 @@ typeset -U config_files
 autoload -U compinit
 compinit
 # load every completion after autocomplete loads
-sourceFiles $SETUP_PATH/setupsh/recipes/*.completion
+#sourceFiles $SETUP_PATH/setupsh/recipes/*.completion
+# zsh-completions FTW
 
 loadFunctionsFromPath $SETUP_PATH/setupsh/functions
 loadFunctionsFromPath $SETUP_PATH/functions

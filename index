@@ -7,11 +7,6 @@ setupsh-recipe custom-folders
 
 brewcaskinstall "Hyper"
 
-# browser
-brewcaskinstall "FirefoxNightly"
-openifnot "FirefoxNightly"
-setupsh-recipe firefox-user.js
-
 setupsh-recipe ssh
 
 ## GPG
@@ -28,11 +23,9 @@ then
   setupsh-accessibility-privacy-apps --insert synergy
 fi
 
-brewcaskinstall "Spectacle"
-
 ## Some utilities
-brewcaskinstall "Flux"
-openifnot "Flux"
+brewcaskinstall "Spectacle"
+openifnot "Spectacle"
 brewcaskinstall "iStat Menus"
 openifnot "iStat Menus"
 
@@ -50,6 +43,16 @@ npm config set cache-min 20000 # 6 hours (60*60*6)
 setupsh-recipe yarn
 brewinstall watchman
 
+# Reasonml/Ocaml
+yarn global add https://github.com/reasonml/reason-cli/archive/3.0.1-bin-darwin.tar.gz
+
+# react-native + expo
+yarn global add react-native-cli
+yarn global add create-react-native-app
+yarn global add exp
+
+# bundler
+sudo gem install bundler
 
 # MAXIMUM SECURITY
 brewcaskinstall "KeePassX"
@@ -57,7 +60,11 @@ brewcaskinstall "KeePassX"
 if [ "$FIRSTRUN" = "true" ]; then macos-refresh; fi;
 
 # safer than rm
-npmig trash-cli
+yarn global add trash-cli
+# lock cli command
+yarn global add lock-cli
+# npm update
+yarn global add npm-check-updates
 
 brewcaskinstall "Tunnelblick"
 brewcaskinstall "WebTorrent"
@@ -86,14 +93,15 @@ setupsh-recipe prey
 if [ "$FIRSTRUN" = "" ]
 then
   # messaging
-  brewcaskinstall "Gitter"
+  brewcaskinstall "Franz"
   brewcaskinstall "Discord"
   brewcaskinstall "Slack"
   brewcaskinstall "Skype"
-  brewcaskinstall "Caprine" # Facebook Messenger
   brewcaskinstall "Telegram"
 
   # MORE BROWSER
+  setupsh-recipe firefox-user.js
+  brewcaskinstall "FirefoxNightly"
   brewcaskinstall "Firefox"
   brewcaskinstall "Google Chrome"
 

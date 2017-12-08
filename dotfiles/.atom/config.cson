@@ -14,6 +14,10 @@
   core:
     closeDeletedFileTabs: true
     customFileTypes:
+      customFileTypes:
+        "source.ruby": [
+          "Podfile"
+        ]
       "source.ini": [
         ".buckconfig"
         ".flowconfig"
@@ -34,13 +38,10 @@
       "language-csharp"
       "language-go"
       "language-hyperlink"
-      "language-java"
       "language-make"
       "language-mustache"
-      "language-objective-c"
       "language-perl"
       "language-python"
-      "language-ruby"
       "language-ruby-on-rails"
       "language-sass"
       "language-sql"
@@ -53,15 +54,15 @@
     ]
     openEmptyEditorOnStart: false
     projectHome: "/Users/MoOx/Sync/Development"
+    restorePreviousWindowsOnStart: "always"
     telemetryConsent: "limited"
     themes: [
       "one-dark-ui"
       "duotone-dark-sea-syntax"
     ]
-    titleBar: "custom"
+    titleBar: "hidden"
   editor:
     fontFamily: "Operator Mono, Fira Code, Monaco"
-    fontSize: 15
     invisibles:
       space: "‧"
     lineHeight: 1.45
@@ -122,6 +123,7 @@
   "package-sync": {}
   "prettier-atom":
     formatOnSaveOptions:
+      enabled: true
       excludedGlobs: [
         "*.json"
       ]

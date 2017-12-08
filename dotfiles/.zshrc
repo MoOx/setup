@@ -157,14 +157,17 @@ export PATH=$PATH:./node_modules/.bin
 
 ## Yarn
 export PATH="$PATH:`yarn global bin`"
+# export PATH="$HOME/.yarn/bin:$PATH"
 alias y="yarn"
-alias yag="yarn global add"
+alias yg="yarn global"
+alias yga="yarn global add"
 alias ya="yarn add"
 alias yad="yarn add --dev"
-alias ys="yarn run start --"
-alias yt="yarn run test --"
-alias yr="yarn run"
+alias yr="yarn remove"
+alias ys="yarn start"
+alias yt="yarn test"
 alias yu="yarn upgrade"
+alias yb="yarn build"
 
 
 ## Apache

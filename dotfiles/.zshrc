@@ -171,6 +171,15 @@ alias yt="yarn test"
 alias yu="yarn upgrade"
 alias yb="yarn build"
 
+## React Native
+alias rn="react-native"
+alias rns="react-native run-ios"
+alias rni="react-native run-ios"
+alias rna="react-native run-android"
+alias rnl="react-native link"
+alias rnu="react-native unlink"
+alias floww="killall flow;flow"
+
 ## Bundler
 alias b="bundler"
 alias bi="bundler install"

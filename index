@@ -95,15 +95,15 @@ then
   # messaging
   brewcaskinstall "Franz"
   brewcaskinstall "Discord"
-  brewcaskinstall "Slack"
-  brewcaskinstall "Skype"
   brewcaskinstall "Telegram"
+  brewcaskinstall "Signal"
 
   # MORE BROWSER
   setupsh-recipe firefox-user.js
   brewcaskinstall "FirefoxNightly"
   brewcaskinstall "Firefox"
   brewcaskinstall "Google Chrome"
+  brewcaskinstall "Chromium"
 
   # YEAH I USE THAT
   brewcaskinstall "/Library/Java/JavaVirtualMachines" "java"
@@ -113,14 +113,12 @@ then
   brewcaskinstall "ImageOptim"
 
   # multimedia
-  brewcaskinstall "Last.fm" "lastfm"
   brewcaskinstall "Jubler"
 
   # VIDEO GAMES \o/
   brewcaskinstall "Steam"
 
   # Because sometimes...
-  brewcaskinstall "Transmission"
   brewcaskinstall "Cyberduck"
 
   # Data/Disk related

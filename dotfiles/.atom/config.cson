@@ -45,12 +45,13 @@
       "language-ruby-on-rails"
       "language-sass"
       "language-sql"
-      "language-toml"
       "styleguide"
       "welcome"
       "wrap-guide"
       "whitespace"
-      "linter"
+      "tester-jest"
+      "tree-view"
+      "teletype"
     ]
     openEmptyEditorOnStart: false
     projectHome: "/Users/MoOx/Sync/Development"
@@ -60,12 +61,14 @@
       "one-dark-ui"
       "duotone-dark-sea-syntax"
     ]
-    titleBar: "hidden"
+    titleBar: "custom"
   editor:
     fontFamily: "Operator Mono, Fira Code, Monaco"
+    fontSize: 19
     invisibles:
       space: "‧"
     lineHeight: 1.45
+    scrollPastEnd: true
     showIndentGuide: true
     showInvisibles: true
   "exception-reporting":
@@ -79,7 +82,6 @@
   "git-projects":
     rootPath: "/Users/MoOx/Sync/Development"
   "linter-eslint":
-    disableWhenNoEslintConfig: false
     fixOnSave: true
   "linter-flow": {}
   "linter-ui-default":
@@ -96,6 +98,7 @@
     ]
     silent: true
   nuclide:
+    "atom-ide-diagnostics-ui": {}
     hyperclick:
       darwinTriggerKeys: "altKey,metaKey"
     installRecommendedPackages: true
@@ -117,9 +120,109 @@
       enableAutomaticSquareBracketInsertion: false
     "nuclide-python": {}
     use:
-      "nuclide-file-tree": false
+      "atom-ide-busy-signal": "default"
+      "atom-ide-code-actions": "default"
+      "atom-ide-code-format": "default"
+      "atom-ide-code-highlight": "default"
+      "atom-ide-console": "default"
+      "atom-ide-datatip": "default"
+      "atom-ide-definitions": "default"
+      "atom-ide-diagnostics": "default"
+      "atom-ide-diagnostics-ui": "default"
+      "atom-ide-find-references": "default"
+      "atom-ide-global": "default"
+      "atom-ide-outline-view": "default"
+      "atom-ide-signature-help": "default"
+      hyperclick: "default"
+      "nuclide-adb-logcat": "default"
+      "nuclide-adb-sdb": "default"
+      "nuclide-atom-notifications": "default"
+      "nuclide-autocomplete": "default"
+      "nuclide-blame": "default"
+      "nuclide-blame-provider-hg": "default"
+      "nuclide-bookshelf": "default"
+      "nuclide-buck": "default"
+      "nuclide-buck-ios": "default"
+      "nuclide-clang": "default"
+      "nuclide-clipboard-path": "default"
+      "nuclide-code-search": "default"
+      "nuclide-context-view": "default"
+      "nuclide-cquery-lsp": "default"
+      "nuclide-ctags": "default"
+      "nuclide-current-working-directory": "default"
+      "nuclide-debugger": "default"
+      "nuclide-debugger-native": "default"
+      "nuclide-debugger-new": "default"
+      "nuclide-debugger-php": "default"
+      "nuclide-debugger-vsp": "default"
+      "nuclide-deep-link": "default"
+      "nuclide-definition-preview": "default"
+      "nuclide-definition-preview-provider": "default"
+      "nuclide-deprecation-cop": "default"
+      "nuclide-device-panel": "default"
+      "nuclide-device-panel-ios": "default"
+      "nuclide-diagnostics-extras": "default"
+      "nuclide-distraction-free-mode": "default"
+      "nuclide-file-family": "default"
+      "nuclide-file-family-projectionist": "default"
+      "nuclide-file-tree": "default"
+      "nuclide-file-watcher": "default"
+      "nuclide-flow": "default"
+      "nuclide-fuzzy-filename-provider": "default"
+      "nuclide-graphql": "default"
+      "nuclide-hack": "default"
+      "nuclide-health": "default"
+      "nuclide-hg-repository": "default"
+      "nuclide-hhvm": "default"
+      "nuclide-home": "default"
+      "nuclide-http-request-sender": "default"
+      "nuclide-infer-al": "default"
+      "nuclide-ios-simulator-logs": "default"
+      "nuclide-js-imports-client": "default"
+      "nuclide-json": "default"
+      "nuclide-key-binding-hint-status": "default"
+      "nuclide-language-hack": "default"
+      "nuclide-language-infer-al": "default"
+      "nuclide-language-reason": "default"
+      "nuclide-metro": "default"
+      "nuclide-move-item-to-available-pane": "default"
+      "nuclide-navigation-stack": "default"
+      "nuclide-navigation-stack-status-bar": "default"
+      "nuclide-notifications": "default"
+      "nuclide-nux": "default"
+      "nuclide-objc": "default"
+      "nuclide-ocaml": "default"
+      "nuclide-open-filenames-provider": "default"
+      "nuclide-outline-view-extras": "default"
+      "nuclide-project": "default"
+      "nuclide-python": "default"
+      "nuclide-quick-open": "default"
+      "nuclide-react-inspector": "default"
+      "nuclide-recent-files-provider": "default"
+      "nuclide-recent-files-service": "default"
+      "nuclide-refactorizer": "default"
+      "nuclide-related-files": "default"
+      "nuclide-remote-atom": "default"
+      "nuclide-remote-projects": "default"
+      "nuclide-settings": "default"
       "nuclide-side-bar": false
       "nuclide-source-control-side-bar": false
+      "nuclide-ssh-tunnel": "default"
+      "nuclide-swift": "default"
+      "nuclide-syntactic-selection": "default"
+      "nuclide-task-runner": "default"
+      "nuclide-terminal": "default"
+      "nuclide-test-runner": "default"
+      "nuclide-type-coverage": "default"
+      "nuclide-type-hint": "default"
+      "nuclide-ui": "default"
+      "nuclide-unicode-datatip": "default"
+      "nuclide-url-hyperclick": "default"
+      "nuclide-vcs-log": "default"
+      "nuclide-working-sets": "default"
+  "ocaml-merlin": {}
+  "one-vibrancy":
+    effect: "dark"
   "package-sync": {}
   "prettier-atom":
     formatOnSaveOptions:
@@ -129,9 +232,11 @@
       ]
       respectEslintignore: false
       showInStatusBar: true
-    prettierOptions:
-      parser: "flow"
+    prettierOptions: {}
   "reason-refmt": {}
+  "remote-ftp":
+    statusbar:
+      enable: true
   tabs:
     showIcons: false
   "tool-bar":

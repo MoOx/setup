@@ -101,6 +101,7 @@ alias search="list | grep"
 # Aliases
 
 ## macOS
+alias macos-sleep="osascript -e 'tell application \"System Events\" to sleep'"
 alias macos-hidden-show="defaults write com.apple.finder AppleShowAllFiles -bool true && macos-refresh"
 alias macos-hidden-hide="defaults write com.apple.finder AppleShowAllFiles -bool false && macos-refresh"
 alias macos-desktop-show="defaults write com.apple.finder CreateDesktop -bool true && macos-refresh"

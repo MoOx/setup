@@ -1,5 +1,5 @@
 # macOS metadata
 .DS_Store
 
-# npm
-npm-debug.log
+# random log files
+*.log

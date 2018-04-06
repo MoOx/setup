@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 # Set wallpaper
-CURRENT_WALLPAPER=$DIR_SYNC/Wallpapers/current
+CURRENT_WALLPAPER=$DIR_SYNC/Wallpapers/wallpaper_mikael_gustafsson.png
 echo_title "Updating wallpaper to $CURRENT_WALLPAPER"
 # npmig wallpaper-cli
 # wallpaper $CURRENT_WALLPAPER

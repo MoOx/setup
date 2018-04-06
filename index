@@ -44,7 +44,11 @@ setupsh-recipe yarn
 brewinstall watchman
 
 # Reasonml/Ocaml
-yarn global add https://github.com/reasonml/reason-cli/archive/3.0.1-bin-darwin.tar.gz
+brewinstall opam
+opam update
+opam switch 4.02.3
+eval $(opam config env)
+opam install reason.3.0.4 merlin.2.5.4
 
 # react-native + expo
 yarn global add react-native-cli

@@ -294,3 +294,6 @@ alias syncthing-conflicts-trash="find ~/ -name \"*.sync-conflict-*\" -exec trash
 export ANDROID_HOME=${HOME}/Library/Android/sdk
 export PATH=${PATH}:${ANDROID_HOME}/tools
 export PATH=${PATH}:${ANDROID_HOME}/platform-tools
+
+# OPAM configuration
+. /Users/MoOx/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true

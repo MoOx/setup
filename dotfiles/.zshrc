@@ -212,9 +212,6 @@ alias g="git"
 # https://github.com/sindresorhus/pure/issues/162
 alias gg="git pull"
 alias gp="git push"
-alias gre="git rebase master"
-alias grem="git rebase master"
-alias gremi="git rebase master -i"
 
 ## Network
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"

@@ -73,10 +73,6 @@ module.exports = {
   //   `@company/project`
   //   `project#1.0.1`
   plugins: [
-    // auto links on url
-    // https://www.npmjs.com/package/hyperlinks
-    "hyperlinks",
-
     // Open a tab with the same directory as the current tab
     // https://www.npmjs.com/package/hypercwd
     "hypercwd",

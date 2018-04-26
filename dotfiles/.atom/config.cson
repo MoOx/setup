@@ -71,6 +71,7 @@
       "node_modules"
       ".apm"
       "compile-cache"
+      ".node-gyp"
       "dist"
       "build"
     ]

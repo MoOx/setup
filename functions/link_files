@@ -1,6 +1,0 @@
-#!/usr/bin/env zsh
-
-function link_files () {
-  ln -s $1 $2
-  echo_success "linked $1 to $2"
-}

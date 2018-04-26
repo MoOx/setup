@@ -1,0 +1,69 @@
+tap "homebrew/versions"
+tap "caskroom/cask"
+
+brew "git"
+brew "ghi"
+brew "hub"
+brew "mas"
+
+brew "yarn", args: ["without-node"]
+
+cask "gpgtools"
+mas "Flycut", id: 442160987
+
+cask "atom"
+cask "spectacle"
+cask "istats-menus"
+cask "gitHub-desktop"
+cask "keepassx"
+mas "Tweetbot", id: 557168941
+cask "franz"
+mas "The Unarchiver", id: 425424353
+mas "Xcode", id: 497799835
+
+brew "watchman"
+brew "terminal-notifier", link: false
+brew "cocoapods"
+brew "gradle"
+brew "imagemagick"
+brew "python"
+brew "tree"
+brew "lyft/formulae/set-simulator-location"
+brew "wix/brew/applesimutils", args: ["HEAD"]
+cask "android-file-transfer"
+cask "android-platform-tools"
+cask "android-sdk"
+cask "android-studio"
+cask "appcleaner"
+cask "chromium"
+cask "firefox"
+cask "fastlane"
+cask "genymotion"
+cask "imageoptim"
+cask "cyberduck"
+cask "grandperspective"
+cask "discord"
+cask "telegram"
+cask "signal"
+cask "vlc"
+cask "iina"
+cask "libreoffice"
+cask "licecap"
+cask "name-mangler"
+cask "prefs-editor"
+cask "jubler"
+cask "sketch"
+cask "sourcetree"
+cask "steam"
+cask "syncthing-bar"
+cask "teamviewer"
+cask "transmission"
+cask "tunnelblick"
+cask "webtorrent"
+mas "JPEGmini Pro", id: 887163276
+mas "Pixelmator", id: 407963104
+mas "Keynote", id: 409183694
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
+mas "Final Cut Pro", id: 424389933
+cask "prey"

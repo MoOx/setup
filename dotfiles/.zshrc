@@ -18,11 +18,7 @@ fi
 if [[ -f ~/.zshrc.local ]]; then; source ~/.zshrc.local; fi
 
 # load setupsh core functions
-for file in $SETUP_PATH/functions/*
-do
-  # echo "Sourcing $file"
-  source $file
-done
+for file in $SETUP_PATH/functions/*; do; source $file; done
 
 export DIR_SYNC=$HOME/Sync
 export DIR_DEV=$DIR_SYNC/Development
@@ -140,9 +136,6 @@ export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 ####
 ####
 
-# OPAM configuration
-source $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
-
 ## GPG
 # set up gpg-agent automatically for every shell
 # https://gist.github.com/yoshuawuyts/69f25b0384d41b46a126f9b42d1f9db2
@@ -168,3 +161,8 @@ function notify_cmd_result_when_terminal_not_focused {
   notify-if-hyper-is-in-the-background "$CMD" "$LAST_EXIT_CODE" &
 }
 export PS1='$(notify_cmd_result_when_terminal_not_focused)'$PS1
+
+export NVS_HOME="$HOME/.nvs"
+group_lazy_load "$NVS_HOME/nvs.sh" nvs node npm yarn
+
+unset -f group_lazy_load

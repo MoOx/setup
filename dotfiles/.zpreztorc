@@ -29,16 +29,15 @@ zstyle ':prezto:*:*' color 'yes'
 zstyle ':prezto:load' pmodule \
   'environment' \
   'terminal' \
-  # 'editor' \ # no idea what this is
   'history' \
   'directory' \
   'spectrum' \
   'utility' \
-  'completion' \ # must be after 'utility'
+  'completion' \
   'prompt' \
   'history-substring-search' \
   'syntax-highlighting' \
-  'autosuggestions' \ # must be after 'history-substring-search' 'syntax-highlighting'
+  'autosuggestions' \
   'command-not-found' \
   'gpg'
 

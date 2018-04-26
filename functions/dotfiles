@@ -8,7 +8,7 @@ function dotfiles() {
   if [ "$1" = "" ]
   then
     1=$SETUP_PATH/dotfiles
-    # echo_fail "dotfiles expect one argument (the folder to find files to links)"
+    # echo "dotfiles expect one argument (the folder to find files to links)"
     # return
   fi
   ORIGIN=$1
@@ -40,7 +40,7 @@ function dotfiles() {
       else
         if [ $overwrite_all = "false" ] && [ $backup_all = "false" ] && [ $skip_all = "false" ]
         then
-          echo_user "File already exists: `basename $source`, what do you want to do? [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?"
+          echo "File already exists: `basename $source`, what do you want to do? [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?"
           read -k action
           echo ''
 
@@ -58,24 +58,24 @@ function dotfiles() {
         if [ $overwrite = "true" ] || [ $overwrite_all = "true" ]
         then
           rm -rf $dest
-          echo_success "removed $dest"
+          echo "removed $dest"
         fi
 
         if [ $backup = "true" ] || [ $backup_all = "true" ]
         then
           mv $dest $dest\.backup
-          echo_success "moved $dest to $dest.backup"
+          echo "moved $dest to $dest.backup"
         fi
 
         if [ $skip = "false" ] && [ $skip_all = "false" ]
         then
-          link_files $source $dest
+          ln -s $source $dest
         else
-          echo_success "skipped $source"
+          echo "skipped $source"
         fi
       fi
     else
-      link_files $source $dest
+      ln -s $source $dest
     fi
   done
 }

@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh
+
+function macos-refresh() {
+  killall -u $USER cfprefsd
+  sleep 2 # wait for cfprefsd restart
+  killall Dock Finder SystemUIServer NotificationCenter
+}

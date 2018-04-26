@@ -1,3 +1,0 @@
-#!/usr/bin/env zsh
-
-function echo_title () { echo "${COLOR_CYAN}${CHAR_STARTER} $@${COLOR_RESET}" }

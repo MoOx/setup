@@ -1,7 +1,0 @@
-#!/usr/bin/env zsh
-
-function setupsh-submodules-update-all() {
-  git -C $SETUP_PATH submodule foreach git pull origin master
-  git -C $SETUP_PATH add -A submodules
-  git -C $SETUP_PATH commit -m "Updated: submodules"
-}

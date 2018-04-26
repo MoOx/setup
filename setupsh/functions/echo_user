@@ -1,3 +1,0 @@
-#!/usr/bin/env zsh
-
-function echo_user () { echo "${COLOR_YELLOW}?${COLOR_RESET} $1" }

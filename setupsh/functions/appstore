@@ -1,5 +1,0 @@
-#!/usr/bin/env zsh
-
-function appstore() {
-  open /Applications/"App Store.app"
-}

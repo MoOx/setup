@@ -1,4 +1,0 @@
-#!/usr/bin/env zsh
-
-defaults write fm.last checkForUpdates -bool true
-defaults write fm.last showDock -bool false

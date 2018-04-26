@@ -1,4 +1,0 @@
-#!/usr/bin/env zsh
-
-defaults write org.tempel.prefseditor SUEnableAutomaticChecks 1
-defaults write org.tempel.prefseditor SUHasLaunchedBefore 1

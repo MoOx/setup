@@ -1,3 +1,0 @@
-#!/usr/bin/env zsh
-
-function echo_title_update () { echo_title "Updating" $1 "..." }

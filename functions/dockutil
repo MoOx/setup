@@ -1,5 +1,0 @@
-#!/usr/bin/env zsh
-
-function dockutil() {
-  $SETUP_PATH/submodules/dockutil/scripts/dockutil ${@}
-}

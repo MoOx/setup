@@ -4,103 +4,45 @@
 # https://kev.inburke.com/kevin/profiling-zsh-startup-time/
 # https://github.com/raboof/zshprof
 
-# export PATH
-# macOS 10.10+ doesn't execute /etc/launchd.conf
-# and GUI app doesn't get /etc/paths
-# in order to get the right PATH in Atom.app Terminal (atom-term2)
-# here is my PATH, hardcoded
-# https://github.com/webBoxio/atom-term2/issues/50
-# export PATH=$(cat /etc/paths | xargs | tr " " :)
-#export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin
-
-#$SETUP_PATH doesn't exist yet
-source $HOME/setup/setupsh/index
-
-# find $SETUP_PATH if not defined using symlink real dirname
-#__FILENAME__=${0} # only for sourced file, .zshrc is not sourced
 __FILENAME__=${ZDOTDIR-~}/.zshrc
 if [[ -z "$SETUP_PATH" ]] then
-  export SETUP_PATH=$(cd $(dirname $(readlink $__FILENAME__))/../../ && pwd)
+  export SETUP_PATH=$(cd $(dirname $(readlink $__FILENAME__))/../ && pwd)
 fi
+
+# Source Prezto.
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
+## LOCAL STUFF
+if [[ -f ~/.zshrc.local ]]; then; source ~/.zshrc.local; fi
+
+# load setupsh core functions
+for file in $SETUP_PATH/functions/*
+do
+  # echo "Sourcing $file"
+  source $file
+done
 
 export DIR_SYNC=$HOME/Sync
 export DIR_DEV=$DIR_SYNC/Development
 
 # add personal bin in the path
-export PATH=$PATH:./bin:./.bin
-export PATH=$DIR_DEV/.bin:$PATH
+export PATH=$DIR_DEV/.bin:$SETUP_PATH/bin:$PATH:./bin:./.bin
 export EDITOR="atom"
 
-source $SETUP_PATH/submodules/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-fpath=(/usr/local/share/zsh-completions $fpath)
-
-HISTFILE=~/.history
-HISTSIZE=SAVEHIST=1000
-setopt APPEND_HISTORY
-setopt HIST_EXPIRE_DUPS_FIRST
-setopt HIST_FCNTL_LOCK
-setopt HIST_IGNORE_ALL_DUPS
-setopt HIST_IGNORE_DUPS
-setopt HIST_IGNORE_SPACE
-setopt HIST_NO_STORE
-setopt HIST_SAVE_NO_DUPS
-setopt HIST_VERIFY
-setopt INC_APPEND_HISTORY
-#setopt PRINT_EXIT_VALUE
-
-export LC_CTYPE=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
-export LANGUAGE=en_US.UTF-8
+# export LC_CTYPE=en_US.UTF-8
+# export LC_ALL=en_US.UTF-8
+# export LANG=en_US.UTF-8
+# export LANGUAGE=en_US.UTF-8
 #export CC=llvm-gcc-4.2
 
-###
-# Pure prompt
-# https://github.com/sindresorhus/pure
-###
-
-## ensure pure is setup
-ZSH_SITE_FUNCTION=/usr/local/share/zsh/site-functions
-if [ ! -e  $ZSH_SITE_FUNCTION/prompt_pure_setup ]
-then
-  mkdir -p $ZSH_SITE_FUNCTION
-  silent-rm $ZSH_SITE_FUNCTION/prompt_pure_setup
-  ln -s "$SETUP_PATH/submodules/pure/pure.zsh" $ZSH_SITE_FUNCTION/prompt_pure_setup
-fi
-if [ ! -e  $ZSH_SITE_FUNCTION/async ]
-then
-  mkdir -p $ZSH_SITE_FUNCTION
-  silent-rm $ZSH_SITE_FUNCTION/async
-  ln -s "$SETUP_PATH/submodules/pure/async.zsh" $ZSH_SITE_FUNCTION/async
-fi
-fpath=("/usr/local/share/zsh/site-functions" $fpath)
-# load pure
-#PURE_CMD_MAX_EXEC_TIME=2
-autoload -U promptinit && promptinit
-prompt pure
-# add %F{red}%(?..[%?] )%f to include exit code [code]
-PROMPT='%(?.%F{green}.%F{red}❯%F{green})❯%f '
-
-
 export OS_ICONS_DIR=/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources
-
-# load aliases from projets (slow)
-# if [[ -d $DIR_DEV ]]
-# then
-#   for source in `find $DIR_DEV -d -maxdepth 4 -name \*.aliases  | perl -lne 'print tr:/::, " $_"' | sort -n | cut -d' ' -f2`
-#   do
-#     source $source
-#   done
-# fi
 
 # disable ._ file
 export COPYFILE_DISABLE=true
 
 # Aliases
-alias list-aliases="alias | sed 's/=.*//'"
-alias list-functions="declare -f | grep '^[a-z].* () {' | sed 's/{$//'" # show non _prefixed functions
-alias list="cat <(list-aliases) <(list-functions) | sort"
-alias search="list | grep"
 
 ## macOS
 alias macos-sleep="osascript -e 'tell application \"System Events\" to sleep'"
@@ -111,13 +53,8 @@ alias macos-desktop-hide="defaults write com.apple.finder CreateDesktop -bool fa
 # http://apple.stackexchange.com/a/181404/34887
 alias macos-internetsharing-on="sudo networksetup -setnetworkserviceenabled 'Ethernet sharing via Wifi' on"
 alias macos-internetsharing-off="sudo networksetup -setnetworkserviceenabled 'Ethernet sharing via Wifi' off"
-alias macos-resolutions="system_profiler SPDisplaysDataType | grep Resolution | tr -d ' '"
 alias macos-flushdns="dscacheutil -flushcache"
 alias macos-flushram="purge"
-# MACOS_INSTALL_VOLUME must be GUID
-export MACOS_INSTALL_APP="/Volumes/Downloads/Softwares/macOS/Install macOS High Sierra.app"
-export MACOS_INSTALL_VOLUME="/Volumes/Untitled"
-alias macos-bootableusb="sudo \"$MACOS_INSTALL_APP/Contents/Resources/createinstallmedia\" --volume $MACOS_INSTALL_VOLUME --applicationpath \"$MACOS_INSTALL_APP\" --nointeraction"
 alias macos-dsstore-delete="find . -type f -name '*.DS_Store' -ls -delete"
 
 alias syncthing-conflicts-show="find ~/ -name \"*.sync-conflict-*\""
@@ -127,7 +64,6 @@ alias syncthing-conflicts-trash="find ~/ -name \"*.sync-conflict-*\" -exec trash
 
 alias n="npm"
 alias ni="npm install"
-alias nio="npm --cache-min 0 install"
 alias nig="npm install -g"
 alias nis="npm install -S"
 alias nid="npm install -D"
@@ -136,11 +72,6 @@ alias nt="npm test --"
 alias nr="npm run"
 alias np="nr release --"
 alias npf="nr release -- --skip-cleanup"
-function nv() {
-  echo "Node $(node --version)"
-  echo "npm  v$(npm --version)"
-  echo "$(sw_vers)"
-}
 
 ### allow local self signed https server
 export NODE_TLS_REJECT_UNAUTHORIZED="0"
@@ -164,11 +95,11 @@ alias yb="yarn build"
 
 ## React Native
 alias rn="react-native"
-alias rns="react-native run-ios"
 alias rni="react-native run-ios"
 alias rna="react-native run-android"
 alias rnl="react-native link"
 alias rnu="react-native unlink"
+
 alias floww="killall flow;flow"
 
 ## Bundler
@@ -176,25 +107,6 @@ alias b="bundler"
 alias bi="bundler install"
 alias bu="bundler update"
 alias be="bundler exec"
-
-## Apache
-export APACHE_VERSION=24
-export APACHE_VERSION_DOT=2.4
-export APACHE_CONF=/usr/local/etc/apache2/$APACHE_VERSION_DOT/httpd.conf
-export APACHE_CONF_DEV_PATH=$DIR_DEV/.apache.conf
-alias apacheconfigtest="apachectl configtest"
-alias apachestart="sudo apachectl start"
-alias apacherestart="dscacheutil -flushcache && apachectl configtest && sudo apachectl restart"
-
-# php
-export PHP_VERSION=56
-export PHP_VERSION_DOT=5.6
-export PHP_CONF=/usr/local/etc/php/$PHP_VERSION_DOT/php.ini
-alias phpini="e $PHP_CONF"
-
-## MySQL (from brew)
-alias mysqlstart="mysql.server start"
-alias mysqlstop="mysql.server stop"
 
 ## Git
 alias git="hub"
@@ -204,37 +116,12 @@ alias g="git"
 alias gg="git pull"
 alias gp="git push"
 
-## Network
-alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
-alias localip="ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p'"
-alias elocalip="export LOCAL_IP=$(localip)"
-alias ips="ifconfig -a | grep -o 'inet6\? \(\([0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+\)\|[a-fA-F0-9:]\+\)' | sed -e 's/inet6* //'"
-alias whois="whois -h whois-servers.net" # Enhanced WHOIS lookups
-
-## Synergy.app
-alias synergy="/Applications/Synergy.app/Contents/MacOS/synergy"
-alias synergys="/Applications/Synergy.app/Contents/MacOS/synergys"
-alias synergyc="/Applications/Synergy.app/Contents/MacOS/synergyc"
-alias synergyshome="synergys -n iMoOx"
-alias synergychome="synergyc -n MacMoOx iMoOx.local"
-
-# ssh-copy-id
-# usage: sshcopy user@server [-p {port}]
-alias ssh-copy="ssh-copy-id -i ~/.ssh/id_rsa.pub"
-
 # custom aliases
 alias gh="github ."
-alias .e="setupsh-edit"
-alias .o="setupsh-open"
+alias .e="edit"
+alias .o="open"
 alias echofliptable="echo '\n(╯°□°）╯︵ ┻━┻\n'"
-alias fliptable="echo \"$USER/setup\"; echofliptable; setupsh-update; setupsh-run"
-
-# added by travis gem
-# [ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh # slow
-alias travis-init="source $HOME/.travis/travis.sh"
-
-# see https://github.com/popomore/github-labels + MoOx/setup/dotfiles/github-issues-labels.json
-alias github-labels="labels -c $HOME/.github-issues-labels.json"
+alias fliptable="echo \"$USER/setup\"; echofliptable; update; run"
 
 # Android Studio/Tools (react-native)
 export ANDROID_HOME=${HOME}/Library/Android/sdk
@@ -253,34 +140,22 @@ export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 ####
 ####
 
-## NVM
-export NVM_DIR="$HOME/.nvm"
-export NVM_SH="$NVM_DIR/nvm.sh"
-load_nvm () { [ -s "$NVM_SH" ] && . "$NVM_SH" }
-# # https://github.com/creationix/nvm/issues/860
-# declare -a NODE_GLOBALS=(`find $NVM_DIR/versions/node -maxdepth 3 -type l -wholename '*/bin/*' | xargs -n1 basename | sort | uniq`)
-# NODE_GLOBALS+=("node")
-# NODE_GLOBALS+=("nvm")
-# for cmd in "${NODE_GLOBALS[@]}"; do
-#   eval "${cmd}(){ unset -f ${NODE_GLOBALS}; load_nvm; ${cmd} \$@ }"
-# done
-# The script above cause issue with some programs that are looking for
-# node/nvm path using "which"
-load_nvm
+# OPAM configuration
+source $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
 ## GPG
 # set up gpg-agent automatically for every shell
 # https://gist.github.com/yoshuawuyts/69f25b0384d41b46a126f9b42d1f9db2
-if which gpg-agent &> /dev/null &&
-then
-  if [ -f ~/.gnupg/.gpg-agent-info ] && [ -n "$(pgrep gpg-agent)" ]
-  then
-    source ~/.gnupg/.gpg-agent-info
-    export GPG_AGENT_INFO
-  else
-    eval $(gpg-agent --daemon --write-env-file ~/.gnupg/.gpg-agent-info)
-  fi
-fi
+# if which gpg-agent &> /dev/null &&
+# then
+#   if [ -f ~/.gnupg/.gpg-agent-info ] && [ -n "$(pgrep gpg-agent)" ]
+#   then
+#     source ~/.gnupg/.gpg-agent-info
+#     export GPG_AGENT_INFO
+#   else
+#     eval $(gpg-agent --daemon --write-env-file ~/.gnupg/.gpg-agent-info)
+#   fi
+# fi
 
 # Show notification when long running command finishes
 # and your terminal is not in focus
@@ -293,9 +168,3 @@ function notify_cmd_result_when_terminal_not_focused {
   notify-if-hyper-is-in-the-background "$CMD" "$LAST_EXIT_CODE" &
 }
 export PS1='$(notify_cmd_result_when_terminal_not_focused)'$PS1
-
-# OPAM configuration
-. /Users/MoOx/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
-
-## LOCAL STUFF
-if [[ -f ~/.zshrc.local ]]; then; source ~/.zshrc.local; fi

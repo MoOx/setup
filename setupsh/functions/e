@@ -1,7 +1,0 @@
-#!/usr/bin/env zsh
-
-# `e` with no arguments opens the current directory in Sublime Text, otherwise
-# opens the given location
-function e() {
-  $EDITOR ${@:-.}
-}

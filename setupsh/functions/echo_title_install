@@ -1,3 +1,0 @@
-#!/usr/bin/env zsh
-
-function echo_title_install () { echo_title "Installing" $1 "..." }

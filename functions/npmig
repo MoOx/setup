@@ -1,8 +1,0 @@
-#!/usr/bin/env zsh
-
-function npmig() {
-  if ! ls $(npm root -g) | grep -e "^$1" &> /dev/null
-  then
-    npm i -g $1
-  fi
-}

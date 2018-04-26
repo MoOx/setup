@@ -3,25 +3,15 @@
 ## Sync
 brewcaskinstall "syncthing-bar"
 openifnot "syncthing-bar"
-setupsh-recipe custom-folders
+recipe custom-folders
 
 brewcaskinstall "Hyper"
 
-setupsh-recipe ssh
+recipe ssh
 
 ## GPG
 brewcaskinstall "/usr/local/bin/gpg" gpgtools
 # contains gnupg gpg-agent pinentry + GPG keychain UI
-
-## Zsh completion
-brewinstall zsh-completions
-
-# one keyboard/mouse for multiples machines
-if ! ls /Applications/Synergy.app &> /dev/null
-then
-  open "http://synergy-project.org/"
-  setupsh-accessibility-privacy-apps --insert synergy
-fi
 
 ## Some utilities
 brewcaskinstall "Spectacle"
@@ -30,17 +20,11 @@ brewcaskinstall "iStat Menus"
 openifnot "iStat Menus"
 
 ## Development
-setupsh-recipe git
 brewcaskinstall "Atom"
 brewcaskinstall "GitHub Desktop"
 
 ### Node
-setupsh-recipe nvm
-nvm install 8 # --reinstall-packages-from=node
-nvm alias default 8
-npm config set progress false
-npm config set cache-min 20000 # 6 hours (60*60*6)
-setupsh-recipe yarn
+recipe yarn
 brewinstall watchman
 
 # Reasonml/Ocaml
@@ -67,27 +51,16 @@ if [ "$FIRSTRUN" = "true" ]; then macos-refresh; fi;
 yarn global add trash-cli
 # lock cli command
 yarn global add lock-cli
-# npm update
-yarn global add npm-check-updates
 
 brewcaskinstall "Tunnelblick"
 brewcaskinstall "WebTorrent"
 brewcaskinstall "VLC"
-brewcaskinstall "MPlayerX"
 
 # apps
-brewcaskinstall "Prefs Editor"
 brewcaskinstall "AppCleaner"
 
-##
-# Stuff that are slow to download
-# or that require human interaction
-##
-# dyndns
-setupsh-recipe ddclient
-
 # anti-thef
-setupsh-recipe prey
+recipe prey
 
 ##
 # Less important stuff
@@ -103,10 +76,7 @@ then
   brewcaskinstall "Signal"
 
   # MORE BROWSER
-  setupsh-recipe firefox-user.js
-  brewcaskinstall "FirefoxNightly"
   brewcaskinstall "Firefox"
-  brewcaskinstall "Google Chrome"
   brewcaskinstall "Chromium"
 
   # YEAH I USE THAT
@@ -129,7 +99,3 @@ then
   brewcaskinstall "GrandPerspective"
   brewcaskinstall "SuperDuper!" "superduper"
 fi
-
-# for my mouse
-brewcaskinstall "/Library/PreferencePanes/Logitech Control Center.prefPane" "logitech-control-center"
-brewcaskinstall "Utilities/Logitech Unifying Software" "logitech-unifying"

@@ -1,5 +1,0 @@
-#!/usr/bin/env zsh
-
-function setupsh-open() {
-  o $SETUP_PATH
-}

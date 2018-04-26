@@ -15,14 +15,14 @@ dotfiles $DIR_SYNC/.home
 
 # Sync/Library/*
 # (eg: Fonts, iTunes)
-setupsh-lnfs-subfolders $DIR_SYNC/Library $HOME/Library
+lnfs-subfolders $DIR_SYNC/Library $HOME/Library
 
 # Sync/Library/Application Support/*
-setupsh-lnfs-subfolders "$DIR_SYNC/Library_Application Support" "$HOME/Library/Application Support"
+lnfs-subfolders "$DIR_SYNC/Library_Application Support" "$HOME/Library/Application Support"
 
 # Sync/Library/Containers/*
 # (eg: iBooks)
-setupsh-lnfs-subfolders "$DIR_SYNC/Library_Containers" "$HOME/Library/Containers"
+lnfs-subfolders "$DIR_SYNC/Library_Containers" "$HOME/Library/Containers"
 
 # Sync/iTunes
 if ls $DIR_SYNC/iTunes &> /dev/null

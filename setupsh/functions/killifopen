@@ -1,8 +1,0 @@
-#!/usr/bin/env zsh
-
-function killifopen() {
-  if isopen $1
-  then
-    killall $1
-  fi
-}

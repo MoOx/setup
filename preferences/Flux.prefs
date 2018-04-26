@@ -1,4 +1,0 @@
-#!/usr/bin/env zsh
-
-defaults write org.herf.Flux moveToApplicationsFolderAlertSuppress -bool true
-defaults write org.herf.Flux SUAutomaticallyUpdate 1

@@ -1,6 +1,0 @@
-#!/usr/bin/env zsh
-
-function setupsh-accessibility-privacy-apps() {
-  sudo $SETUP_PATH/submodules/tccutil/tccutil.py $@
-}
-

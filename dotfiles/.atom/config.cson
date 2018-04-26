@@ -31,6 +31,9 @@
       "source.python": [
         "BUCK"
       ]
+      "source.shell": [
+        "zpreztorc"
+      ]
     disabledPackages: [
       "bookmarks"
       "language-c"
@@ -54,6 +57,7 @@
       "tree-view"
       "teletype"
       "linter"
+      "auto-update-packages"
     ]
     excludeVcsIgnoredPaths: false
     ignoredNames: [
@@ -65,6 +69,8 @@
       "Thumbs.db"
       "desktop.ini"
       "node_modules"
+      ".apm"
+      "compile-cache"
       "dist"
       "build"
     ]
@@ -79,7 +85,7 @@
     titleBar: "custom"
   editor:
     fontFamily: "Operator Mono, Fira Code, Monaco"
-    fontSize: 19
+    fontSize: 15
     invisibles:
       space: "‧"
     lineHeight: 1.45

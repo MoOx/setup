@@ -1,8 +1,0 @@
-#!/usr/bin/env zsh
-
-function openifnot() {
-  if ! isopen $1
-  then
-    open -a $1
-  fi
-}

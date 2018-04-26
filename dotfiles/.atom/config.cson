@@ -113,6 +113,10 @@
     ]
     silent: true
   nuclide:
+    "atom-ide-code-format":
+      formatOnType: false
+    "atom-ide-debugger":
+      showDebuggerOnBpSet: false
     "atom-ide-diagnostics-ui": {}
     hyperclick:
       darwinTriggerKeys: "altKey,metaKey"

@@ -1,10 +1,8 @@
 #!/usr/bin/env zsh
 
-# Profiling zshrc speed
-# http://www.rosipov.com/blog/profiling-slow-bashrc/
-# PS4='+ $(date "+%s.%N")\011 '
-# exec 3>&2 2>$HOME/Desktop/zshstart.$$.log
-# set -x
+# Want to do some profiling on zshrc speed ?
+# https://kev.inburke.com/kevin/profiling-zsh-startup-time/
+# https://github.com/raboof/zshprof
 
 # export PATH
 # macOS 10.10+ doesn't execute /etc/launchd.conf
@@ -13,7 +11,7 @@
 # here is my PATH, hardcoded
 # https://github.com/webBoxio/atom-term2/issues/50
 # export PATH=$(cat /etc/paths | xargs | tr " " :)
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin
+#export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin
 
 #$SETUP_PATH doesn't exist yet
 source $HOME/setup/setupsh/index
@@ -29,11 +27,10 @@ export DIR_SYNC=$HOME/Sync
 export DIR_DEV=$DIR_SYNC/Development
 
 # add personal bin in the path
-export PATH=$PATH:./bin
-export PATH=$PATH:./.bin
+export PATH=$PATH:./bin:./.bin
 export PATH=$DIR_DEV/.bin:$PATH
-
 export EDITOR="atom"
+
 source $SETUP_PATH/submodules/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fpath=(/usr/local/share/zsh-completions $fpath)
 
@@ -55,9 +52,14 @@ export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
-
 #export CC=llvm-gcc-4.2
 
+###
+# Pure prompt
+# https://github.com/sindresorhus/pure
+###
+
+## ensure pure is setup
 ZSH_SITE_FUNCTION=/usr/local/share/zsh/site-functions
 if [ ! -e  $ZSH_SITE_FUNCTION/prompt_pure_setup ]
 then
@@ -72,11 +74,13 @@ then
   ln -s "$SETUP_PATH/submodules/pure/async.zsh" $ZSH_SITE_FUNCTION/async
 fi
 fpath=("/usr/local/share/zsh/site-functions" $fpath)
+# load pure
 #PURE_CMD_MAX_EXEC_TIME=2
 autoload -U promptinit && promptinit
 prompt pure
 # add %F{red}%(?..[%?] )%f to include exit code [code]
 PROMPT='%(?.%F{green}.%F{red}❯%F{green})❯%f '
+
 
 export OS_ICONS_DIR=/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources
 
@@ -92,13 +96,11 @@ fi
 # disable ._ file
 export COPYFILE_DISABLE=true
 
-
+# Aliases
 alias list-aliases="alias | sed 's/=.*//'"
 alias list-functions="declare -f | grep '^[a-z].* () {' | sed 's/{$//'" # show non _prefixed functions
 alias list="cat <(list-aliases) <(list-functions) | sort"
 alias search="list | grep"
-
-# Aliases
 
 ## macOS
 alias macos-sleep="osascript -e 'tell application \"System Events\" to sleep'"
@@ -117,20 +119,8 @@ export MACOS_INSTALL_VOLUME="/Volumes/USB_MAC"
 alias macos-bootableusb="sudo \"$MACOS_INSTALL_APP/Contents/Resources/createinstallmedia\" --volume $MACOS_INSTALL_VOLUME --applicationpath \"$MACOS_INSTALL_APP\" --nointeraction"
 alias macos-dsstore-delete="find . -type f -name '*.DS_Store' -ls -delete"
 
-## NVM
-export NVM_DIR="$HOME/.nvm"
-export NVM_SH="$NVM_DIR/nvm.sh"
-load_nvm () { [ -s "$NVM_SH" ] && . "$NVM_SH" }
-# # https://github.com/creationix/nvm/issues/860
-# declare -a NODE_GLOBALS=(`find $NVM_DIR/versions/node -maxdepth 3 -type l -wholename '*/bin/*' | xargs -n1 basename | sort | uniq`)
-# NODE_GLOBALS+=("node")
-# NODE_GLOBALS+=("nvm")
-# for cmd in "${NODE_GLOBALS[@]}"; do
-#   eval "${cmd}(){ unset -f ${NODE_GLOBALS}; load_nvm; ${cmd} \$@ }"
-# done
-# The script above cause issue with some programs that are looking for
-# node/nvm path using "which"
-load_nvm
+alias syncthing-conflicts-show="find ~/ -name \"*.sync-conflict-*\""
+alias syncthing-conflicts-trash="find ~/ -name \"*.sync-conflict-*\" -exec trash {} +"
 
 ## NPM
 
@@ -229,22 +219,17 @@ alias synergychome="synergyc -n MacMoOx iMoOx.local"
 
 # ssh-copy-id
 # usage: sshcopy user@server [-p {port}]
-alias sshcopy="ssh-copy-id -i ~/.ssh/id_rsa.pub"
-
-## LOCAL STUFF
-if [[ -f ~/.zshrc.local ]]; then; source ~/.zshrc.local; fi
+alias ssh-copy="ssh-copy-id -i ~/.ssh/id_rsa.pub"
 
 # custom aliases
 alias gh="github ."
 alias .e="setupsh-edit"
 alias .o="setupsh-open"
-alias wifi=macos-internetsharing-on
-alias wifi-off=macos-internetsharing-off
 alias echofliptable="echo '\n(╯°□°）╯︵ ┻━┻\n'"
 alias fliptable="echo \"$USER/setup\"; echofliptable; setupsh-update; setupsh-run"
 
 # added by travis gem
-# [ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
+# [ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh # slow
 alias travis-init="source $HOME/.travis/travis.sh"
 
 # Docker
@@ -253,10 +238,37 @@ alias dockermachine="docker-machine start default; eval \"\$(docker-machine env 
 # see https://github.com/popomore/github-labels + MoOx/setup/dotfiles/github-issues-labels.json
 alias github-labels="labels -c $HOME/.github-issues-labels.json"
 
-# Profiling zshrc speed
-# (see top of the file)
-# set +x
-# exec 2>&3 3>&-
+# Android Studio/Tools (react-native)
+export ANDROID_HOME=${HOME}/Library/Android/sdk
+export PATH=${PATH}:${ANDROID_HOME}/tools
+export PATH=${PATH}:${ANDROID_HOME}/platform-tools
+
+# Fastlane (ios/android publish tool)
+export PATH="$HOME/.fastlane/bin:$PATH"
+
+# python
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+
+####
+####
+#### Start of dynamic stuff
+####
+####
+
+## NVM
+export NVM_DIR="$HOME/.nvm"
+export NVM_SH="$NVM_DIR/nvm.sh"
+load_nvm () { [ -s "$NVM_SH" ] && . "$NVM_SH" }
+# # https://github.com/creationix/nvm/issues/860
+# declare -a NODE_GLOBALS=(`find $NVM_DIR/versions/node -maxdepth 3 -type l -wholename '*/bin/*' | xargs -n1 basename | sort | uniq`)
+# NODE_GLOBALS+=("node")
+# NODE_GLOBALS+=("nvm")
+# for cmd in "${NODE_GLOBALS[@]}"; do
+#   eval "${cmd}(){ unset -f ${NODE_GLOBALS}; load_nvm; ${cmd} \$@ }"
+# done
+# The script above cause issue with some programs that are looking for
+# node/nvm path using "which"
+load_nvm
 
 ## GPG
 # set up gpg-agent automatically for every shell
@@ -284,13 +296,8 @@ function notify_cmd_result_when_terminal_not_focused {
 }
 export PS1='$(notify_cmd_result_when_terminal_not_focused)'$PS1
 
-alias syncthing-conflicts-show="find ~/ -name \"*.sync-conflict-*\""
-alias syncthing-conflicts-trash="find ~/ -name \"*.sync-conflict-*\" -exec trash {} +"
-
-# Android Studio/Tools (react-native)
-export ANDROID_HOME=${HOME}/Library/Android/sdk
-export PATH=${PATH}:${ANDROID_HOME}/tools
-export PATH=${PATH}:${ANDROID_HOME}/platform-tools
-
 # OPAM configuration
 . /Users/MoOx/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
+## LOCAL STUFF
+if [[ -f ~/.zshrc.local ]]; then; source ~/.zshrc.local; fi

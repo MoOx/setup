@@ -84,14 +84,14 @@ PROMPT='%(?.%F{green}.%F{red}❯%F{green})❯%f '
 
 export OS_ICONS_DIR=/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources
 
-# also load aliases from projets
-if [[ -d $DIR_DEV ]]
-then
-  for source in `find $DIR_DEV -d -maxdepth 4 -name \*.aliases  | perl -lne 'print tr:/::, " $_"' | sort -n | cut -d' ' -f2`
-  do
-    source $source
-  done
-fi
+# load aliases from projets (slow)
+# if [[ -d $DIR_DEV ]]
+# then
+#   for source in `find $DIR_DEV -d -maxdepth 4 -name \*.aliases  | perl -lne 'print tr:/::, " $_"' | sort -n | cut -d' ' -f2`
+#   do
+#     source $source
+#   done
+# fi
 
 # disable ._ file
 export COPYFILE_DISABLE=true

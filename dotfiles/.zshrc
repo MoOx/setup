@@ -114,8 +114,9 @@ alias macos-internetsharing-off="sudo networksetup -setnetworkserviceenabled 'Et
 alias macos-resolutions="system_profiler SPDisplaysDataType | grep Resolution | tr -d ' '"
 alias macos-flushdns="dscacheutil -flushcache"
 alias macos-flushram="purge"
-export MACOS_INSTALL_APP="/Volumes/Downloads/Softwares/macOS/Install macOS Sierra Developer Beta.app"
-export MACOS_INSTALL_VOLUME="/Volumes/USB_MAC"
+# MACOS_INSTALL_VOLUME must be GUID
+export MACOS_INSTALL_APP="/Volumes/Downloads/Softwares/macOS/Install macOS High Sierra.app"
+export MACOS_INSTALL_VOLUME="/Volumes/Untitled"
 alias macos-bootableusb="sudo \"$MACOS_INSTALL_APP/Contents/Resources/createinstallmedia\" --volume $MACOS_INSTALL_VOLUME --applicationpath \"$MACOS_INSTALL_APP\" --nointeraction"
 alias macos-dsstore-delete="find . -type f -name '*.DS_Store' -ls -delete"
 

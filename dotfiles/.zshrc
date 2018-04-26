@@ -233,9 +233,6 @@ alias fliptable="echo \"$USER/setup\"; echofliptable; setupsh-update; setupsh-ru
 # [ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh # slow
 alias travis-init="source $HOME/.travis/travis.sh"
 
-# Docker
-alias dockermachine="docker-machine start default; eval \"\$(docker-machine env default)\""
-
 # see https://github.com/popomore/github-labels + MoOx/setup/dotfiles/github-issues-labels.json
 alias github-labels="labels -c $HOME/.github-issues-labels.json"
 

@@ -14,6 +14,9 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
+# set by pretzo
+unsetopt CORRECT
+
 ## LOCAL STUFF
 if [[ -f ~/.zshrc.local ]]; then; source ~/.zshrc.local; fi
 
@@ -22,10 +25,12 @@ for file in $SETUP_PATH/functions/*; do; source $file; done
 
 export DIR_SYNC=$HOME/Sync
 export DIR_DEV=$DIR_SYNC/Development
+alias dev="cd $DIR_DEV"
 
 # add personal bin in the path
 export PATH=$DIR_DEV/.bin:$SETUP_PATH/bin:$PATH:./bin:./.bin
 export EDITOR="atom"
+alias e="$EDITOR ."
 
 # export LC_CTYPE=en_US.UTF-8
 # export LC_ALL=en_US.UTF-8
@@ -114,7 +119,7 @@ alias gp="git push"
 
 # custom aliases
 alias gh="github ."
-alias .e="edit"
+alias .e="$EDITOR $SETUP_PATH"
 alias .o="open"
 alias echofliptable="echo '\n(╯°□°）╯︵ ┻━┻\n'"
 alias fliptable="echo \"$USER/setup\"; echofliptable; update; run"

@@ -6,6 +6,5 @@ function group_lazy_load() {
   shift 1
   for cmd in "$@"; do
     alias $cmd="lazy_load \"$*\" $script $cmd"
-    echo $cmd="lazy_load \"$*\" $script $cmd"
   done
 }

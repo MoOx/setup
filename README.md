@@ -11,6 +11,7 @@ Open App Store, get your apps you download from this place (hello Xcode), then
 ```console
 export SETUPSH_GIT_NAME=MoOx
 export SETUPSH_GIT_EMAIL=
+export SETUP_PATH=$HOME/setup
 
 # Ask for the administrator password upfront
 sudo -v
@@ -32,15 +33,21 @@ sudo xcodebuild -license
 # Install Homebrew
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-git clone https://github.com/$SETUPSH_GIT_NAME/setup.git $HOME/setup
+git clone https://github.com/$SETUPSH_GIT_NAME/setup.git $SETUP_PATH
 
-for file in $HOME/setup/functions/*; do; source $file; done
+for file in $SETUP_PATH/functions/* do; source $file; done
 
 sourceFiles $SETUP_PATH/preferences/*.prefs
 
 dotfiles
 
+source $SETUP_PATH/.zshrc
+
+macos-hidden-show
+
 brew cask install "syncthing-bar"
+
+# then configure syncthing and way for the sync
 
 ./setup/scripts/custom-folders.sh
 
@@ -54,7 +61,7 @@ brew bundle
 export NVS_HOME="$HOME/.nvs"
 git clone https://github.com/jasongin/nvs "$NVS_HOME"
 . "$NVS_HOME/nvs.sh" install
-nvs add node/8trash
+nvs add node/8
 nvs link 8
 
 # safer than rm

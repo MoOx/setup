@@ -6,16 +6,24 @@
 
 ## First run
 
+Open App Store, get your apps you download from this place (hello Xcode), then
+
 ```console
 export SETUPSH_GIT_NAME=MoOx
 export SETUPSH_GIT_EMAIL=
+
+# Ask for the administrator password upfront
+sudo -v
 
 # security
 defaults write com.apple.screensaver askForPassword -int 1
 defaults write com.apple.screensaver askForPasswordDelay -int 0
 sudo defaults write /Library/Preferences/com.apple.alf globalstate -int 1
 sudo launchctl load /System/Library/LaunchDaemons/com.apple.alf.agent.plist 2>/dev/null
-sudo defaults write /Library/Preferences/com.apple.loginwindow LoginwindowText  "Found this computer? Please contact $SETUPSH_GIT_NAME at $SETUPSH_GIT_EMAIL for a reward. Vous avez trouver cet ordinateur? Merci de contacter $SETUPSH_GIT_NAME à $SETUPSH_GIT_EMAIL pour une récompense."
+sudo defaults write /Library/Preferences/com.apple.loginwindow LoginwindowText  "Found this computer? Please contact $SETUPSH_GIT_NAME at $SETUPSH_GIT_EMAIL for a reward.\nVous avez trouver cet ordinateur? Merci de contacter $SETUPSH_GIT_NAME à $SETUPSH_GIT_EMAIL pour une récompense."
+
+# define zsh as default shell
+chsh -s /bin/zsh $USER
 
 # Command Line Tools (CLT) for Xcode
 xcode-select --install

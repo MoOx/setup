@@ -4,7 +4,6 @@
 if ! ls $DIR_SYNC &> /dev/null
 then
   mkdir $DIR_SYNC
-  setfileicon $OS_ICONS_DIR/GroupFolder.icns $DIR_SYNC
 
   echo "Please configure your Sync system, then type Enter to continue"
   read -k

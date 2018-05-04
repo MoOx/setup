@@ -110,7 +110,9 @@ alias bu="bundler update"
 alias be="bundler exec"
 
 ## Git
-alias git="hub"
+if [[  "$(command -v hub)" != ""  ]] then
+  alias git="hub"
+fi
 alias g="git"
 # need short alias with explicit pull for PURE
 # https://github.com/sindresorhus/pure/issues/162

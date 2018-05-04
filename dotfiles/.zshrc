@@ -6,7 +6,7 @@
 
 __FILENAME__=${ZDOTDIR-~}/.zshrc
 if [[ -z "$SETUP_PATH" ]] then
-  export SETUP_PATH=$(cd $(dirname $(readlink $__FILENAME__))/../ && pwd)
+  export SETUP_PATH=$HOME/setup
 fi
 
 # Source Prezto.

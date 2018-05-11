@@ -7,7 +7,7 @@ function dotfiles() {
 
   if [ "$1" = "" ]
   then
-    1=$SETUP_PATH/dotfiles
+    1=$HOME/setup/dotfiles
     # echo "dotfiles expect one argument (the folder to find files to links)"
     # return
   fi

@@ -172,6 +172,6 @@ export PS1='$(notify_cmd_result_when_terminal_not_focused)'$PS1
 export NVS_HOME="$HOME/.nvs"
 # too many tool in my toolchain rely on node being available at any moment
 # group_lazy_load "$NVS_HOME/nvs.sh" nvs node npm yarn
-source "$NVS_HOME/nvs.sh"
+if [[ -f "$NVS_HOME/nvs.sh" ]]; then; source "$NVS_HOME/nvs.sh"; fi
 
 unset -f group_lazy_load

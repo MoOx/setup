@@ -23,6 +23,10 @@ sudo defaults write /Library/Preferences/com.apple.alf globalstate -int 1
 sudo launchctl load /System/Library/LaunchDaemons/com.apple.alf.agent.plist 2>/dev/null
 sudo defaults write /Library/Preferences/com.apple.loginwindow LoginwindowText  "Found this computer? Please contact $SETUPSH_GIT_NAME at $SETUPSH_GIT_EMAIL for a reward.\nVous avez trouver cet ordinateur? Merci de contacter $SETUPSH_GIT_NAME à $SETUPSH_GIT_EMAIL pour une récompense."
 
+# install pretzo
+# https://github.com/sorin-ionescu/prezto/#installation
+git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+
 # define zsh as default shell
 chsh -s /bin/zsh $USER
 
@@ -73,7 +77,13 @@ yarn global add lock-cli
 ## From time to time
 
 ```console
+git -C $SETUP_PATH pull origin master
+
+source $SETUP_PATH/.zshrc
+
 sourceFiles $SETUP_PATH/preferences/*.prefs
+
+brew upgrade
 
 brew bundle check
 ```

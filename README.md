@@ -49,7 +49,7 @@ brew cask install "syncthing-bar"
 
 # then configure syncthing and way for the sync
 
-./setup/scripts/custom-folders.sh
+source ./setup/scripts/custom-folders.sh
 
 brew install mas
 

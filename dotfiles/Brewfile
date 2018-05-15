@@ -66,6 +66,8 @@ cask "chromium"
 cask "firefox"
 cask "fastlane"
 
+# android...
+cask "java"
 cask "genymotion"
 brew "gradle"
 cask "android-file-transfer"

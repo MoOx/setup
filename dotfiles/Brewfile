@@ -10,6 +10,7 @@ brew "yarn", args: ["without-node"]
 cask "gpg-suite"
 mas "Flycut", id: 442160987
 
+cask "iterm2"
 cask "atom"
 cask "spectacle"
 cask "istat-menus"

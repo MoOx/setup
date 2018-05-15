@@ -74,6 +74,12 @@ yarn global add trash-cli
 yarn global add lock-cli
 ```
 
+Also good to do
+
+- Safari uBlock Origin https://safari-extensions.apple.com/details/?id=com.el1t.uBlock-3NU33NW2M3
+- Safari Pocket https://safari-extensions.apple.com/details/?id=com.ideashower.pocket.safari-ET279A6R5N
+- Remove Google as default search engine
+
 ## From time to time
 
 ```console

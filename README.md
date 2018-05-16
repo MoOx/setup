@@ -83,6 +83,8 @@ Also good to do
 ## From time to time
 
 ```console
+zprezto-update
+
 git -C $SETUP_PATH pull origin master
 
 source $SETUP_PATH/.zshrc

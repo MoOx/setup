@@ -59,7 +59,6 @@
       "linter"
       "auto-update-packages"
     ]
-    excludeVcsIgnoredPaths: false
     ignoredNames: [
       ".git"
       ".hg"
@@ -85,8 +84,8 @@
     ]
     titleBar: "custom"
   editor:
-    fontFamily: "Operator Mono, Fira Code, Monaco"
-    fontSize: 15
+    fontFamily: "Dank Mono, Operator Mono, Fira Code, Monaco"
+    fontSize: 18
     invisibles:
       space: "‧"
     lineHeight: 1.45
@@ -137,6 +136,7 @@
     "nuclide-file-tree":
       allowKeyboardPrefixNavigation: false
       hideIgnoredNames: false
+      hideVcsIgnoredPaths: false
       showOpenFiles: false
     "nuclide-flow":
       canUseFlowBin: true
@@ -146,6 +146,7 @@
       enableAutomaticSquareBracketInsertion: false
     "nuclide-python": {}
     use:
+      "atom-ide-debugger-java": "default"
       "nuclide-side-bar": false
       "nuclide-source-control-side-bar": false
   "ocaml-merlin": {}
@@ -160,6 +161,7 @@
     prettierEslintOptions:
       prettierLast: true
     prettierOptions: {}
+    useEditorConfig: false
   "reason-refmt": {}
   "remote-ftp":
     statusbar:

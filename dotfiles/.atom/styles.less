@@ -15,3 +15,14 @@ atom-text-editor .nuclide-diagnostics-gutter-ui-highlight-warning > .region {
 atom-text-editor .syntax--js.syntax--punctuation.syntax--terminator {
   opacity: 0.4;
 }
+
+.tab .title {
+  // text-align: right;
+  // font-size: 0.8em;
+}
+
+// hide custom title bar, but doing this instead of native "hidden" atom option
+// allow you to keep macOS buttons (minimize etc)
+.custom-title-bar .title-bar {
+  display: none;
+}

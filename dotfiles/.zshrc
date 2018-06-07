@@ -16,6 +16,7 @@ fi
 
 # set by pretzo
 unsetopt CORRECT
+unsetopt SHARE_HISTORY
 
 ## LOCAL STUFF
 if [[ -f ~/.zshrc.local ]]; then; source ~/.zshrc.local; fi

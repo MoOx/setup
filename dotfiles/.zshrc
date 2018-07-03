@@ -138,6 +138,20 @@ export PATH="$HOME/.fastlane/bin:$PATH"
 # python
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 
+# ruby
+# --user-install by default https://github.com/rubygems/rubygems/issues/1394
+gem() {
+  if [[ $1 == "install" ]]; then
+    gemargs="$@"
+    command gem install --user-install ${gemargs:8}
+  else
+    command gem "$@"
+  fi
+}
+if hash ruby 2>/dev/null; then
+  export PATH="$(ruby -e 'puts Gem.user_dir')/bin:$PATH"
+fi
+
 ####
 ####
 #### Start of dynamic stuff

@@ -190,3 +190,6 @@ export NVS_HOME="$HOME/.nvs"
 if [[ -f "$NVS_HOME/nvs.sh" ]]; then; source "$NVS_HOME/nvs.sh"; fi
 
 unset -f group_lazy_load
+
+# eval `opam config env`
+. /Users/MoOx/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true

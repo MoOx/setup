@@ -4,6 +4,22 @@
 
 ![kaboom](https://raw.githubusercontent.com/MoOx/setup/master/.kaboom.gif)
 
+## From time to time
+
+```console
+zprezto-update
+
+git -C $SETUP_PATH pull origin master
+
+source $SETUP_PATH/dotfiles/.zshrc
+
+sourceFiles $SETUP_PATH/preferences/*.prefs
+
+brew upgrade
+
+brew bundle check
+```
+
 ## First run
 
 Open App Store, get your apps you download from this place (hello Xcode), then
@@ -79,19 +95,3 @@ Also good to do
 - Safari uBlock Origin https://safari-extensions.apple.com/details/?id=com.el1t.uBlock-3NU33NW2M3
 - Safari Pocket https://safari-extensions.apple.com/details/?id=com.ideashower.pocket.safari-ET279A6R5N
 - Remove Google as default search engine
-
-## From time to time
-
-```console
-zprezto-update
-
-git -C $SETUP_PATH pull origin master
-
-source $SETUP_PATH/.zshrc
-
-sourceFiles $SETUP_PATH/preferences/*.prefs
-
-brew upgrade
-
-brew bundle check
-```

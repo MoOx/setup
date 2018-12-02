@@ -7,6 +7,10 @@
   "atom-beautify":
     general:
       _analyticsUserId: "c8ae3b6d-a781-4233-9780-a96292c2afa8"
+    ocaml:
+      beautify_on_save: true
+  "atom-ide-ui":
+    hideNuclideWarning: true
   "atom-package-deps":
     ignored: [
       "linter"
@@ -85,7 +89,6 @@
     titleBar: "custom"
   editor:
     fontFamily: "Dank Mono, Operator Mono, Fira Code, Monaco"
-    fontSize: 18
     invisibles:
       space: "‧"
     lineHeight: 1.45
@@ -102,6 +105,11 @@
   "git-log": {}
   "git-projects":
     rootPath: "/Users/MoOx/Sync/Development"
+  "ide-reason":
+    ols:
+      format:
+        width: 80
+    rls: {}
   "linter-eslint":
     fixOnSave: true
   "linter-flow": {}

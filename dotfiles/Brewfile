@@ -12,6 +12,7 @@ mas "Flycut", id: 442160987
 
 cask "iterm2"
 cask "atom"
+cask "visual-studio-code"
 cask "spectacle"
 cask "istat-menus"
 cask "github"

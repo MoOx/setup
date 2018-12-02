@@ -61,6 +61,9 @@ sourceFiles $SETUP_PATH/preferences/*.prefs
 
 dotfiles
 
+mv $HOME/Library/Application\ Support/Code/User SETUP_PATH/dotfiles/.vscode-Library___Application\ Support___Code___User || mkdir -p $HOME/Library/Application\ Support/Code
+ln -s SETUP_PATH/dotfiles/.vscode-Library___Application\ Support___Code___User $HOME/Library/Application\ Support/Code/User
+
 source $SETUP_PATH/.zshrc
 
 macos-hidden-show

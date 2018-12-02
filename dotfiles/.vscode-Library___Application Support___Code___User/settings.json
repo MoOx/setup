@@ -1,0 +1,14 @@
+{
+  // "search.location": "panel",
+  "editor.fontFamily": "Dank Mono, Operator Mono, Fira Code, Monaco",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 16,
+  "editor.lineHeight": 26,
+  "editor.formatOnSave": true,
+  "editor.formatOnSaveTimeout": 250,
+  "editor.formatOnPaste": true,
+  "editor.renderWhitespace": "all",
+  "window.zoomLevel": -1,
+  "window.nativeFullScreen": false,
+  "workbench.iconTheme": "file-icons-colourless"
+}

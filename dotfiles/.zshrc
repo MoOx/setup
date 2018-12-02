@@ -32,7 +32,9 @@ alias dev="cd $DIR_DEV"
 
 # add personal bin in the path
 export PATH=$DIR_DEV/.bin:$SETUP_PATH/bin:$PATH:./bin:./.bin
-export EDITOR="atom"
+# Add Visual Studio Code (code)
+export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+export EDITOR="code"
 alias e="$EDITOR ."
 
 # export LC_CTYPE=en_US.UTF-8

@@ -126,6 +126,7 @@ alias gp="git push"
 alias gh="github ."
 alias .e="$EDITOR $SETUP_PATH"
 alias .o="open"
+alias .up="git -C $SETUP_PATH pull origin master; source $SETUP_PATH/dotfiles/.zshrc; sourceFiles $SETUP_PATH/preferences/*.prefs"
 alias echofliptable="echo '\n(╯°□°）╯︵ ┻━┻\n'"
 alias fliptable="echo \"$USER/setup\"; echofliptable; update; run"
 

@@ -128,7 +128,7 @@ alias .e="$EDITOR $SETUP_PATH"
 alias .o="open"
 alias .up="git -C $SETUP_PATH pull origin master; source $SETUP_PATH/dotfiles/.zshrc; sourceFiles $SETUP_PATH/preferences/*.prefs"
 alias echofliptable="echo '\n(╯°□°）╯︵ ┻━┻\n'"
-alias fliptable="echo \"$USER/setup\"; echofliptable; update; run"
+alias fliptable="echo \"$USER/setup\"; echofliptable; zprezto-update; .up; brew upgrade; brew bundle check"
 
 # Android Studio/Tools (react-native)
 export ANDROID_HOME=${HOME}/Library/Android/sdk

@@ -1,5 +1,7 @@
 #!/usr/bin/env zsh
 
+export LANG="en_US.UTF-8"
+
 # Want to do some profiling on zshrc speed ?
 # https://kev.inburke.com/kevin/profiling-zsh-startup-time/
 # https://github.com/raboof/zshprof

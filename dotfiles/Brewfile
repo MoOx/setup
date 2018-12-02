@@ -11,7 +11,6 @@ cask "gpg-suite"
 mas "Flycut", id: 442160987
 
 cask "iterm2"
-cask "atom"
 cask "visual-studio-code"
 cask "spectacle"
 cask "istat-menus"
@@ -21,18 +20,11 @@ mas "Tweetbot", id: 557168941
 cask "franz"
 mas "The Unarchiver", id: 425424353
 # mas "Xcode", id: 497799835
-
 brew "watchman"
 brew "terminal-notifier", link: false
-brew "cocoapods"
-brew "imagemagick"
-brew "python"
-brew "tree"
-tap "lyft/formulae"
-brew "lyft/formulae/set-simulator-location"
-tap "wix/brew"
-brew "wix/brew/applesimutils", args: ["HEAD"]
 
+cask "transmission"
+cask "tunnelblick"
 cask "appcleaner"
 cask "imageoptim"
 cask "cyberduck"
@@ -49,9 +41,6 @@ cask "jubler"
 cask "sketch"
 cask "sourcetree"
 # cask "syncthing-bar"
-cask "teamviewer"
-cask "transmission"
-cask "tunnelblick"
 cask "webtorrent"
 mas "JPEGmini Pro", id: 887163276
 
@@ -64,16 +53,26 @@ mas "Pages", id: 409201541
 # mas "Final Cut Pro", id: 424389933
 
 cask "chromium"
+cask "google-chrome" # for react-native debugging
 cask "firefox"
+
 cask "fastlane"
+brew "cocoapods"
+brew "imagemagick"
+brew "python"
+brew "tree"
+tap "lyft/formulae"
+brew "lyft/formulae/set-simulator-location"
+tap "wix/brew"
+brew "wix/brew/applesimutils", args: ["HEAD"]
 
 # android...
 cask "java"
-cask "genymotion"
-brew "gradle"
-cask "android-file-transfer"
-cask "android-platform-tools"
-cask "android-sdk"
-cask "android-studio"
+#cask "genymotion"
+#brew "gradle"
+#cask "android-file-transfer"
+#cask "android-platform-tools"
+#cask "android-sdk"
+#cask "android-studio"
 
 cask "prey"

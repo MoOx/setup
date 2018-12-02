@@ -185,7 +185,7 @@ function notify_cmd_result_when_terminal_not_focused {
   # No point in waiting for the command to complete
   notify-if-iterm-is-in-the-background "$CMD" "$LAST_EXIT_CODE" &
 }
-export PS1='$(notify_cmd_result_when_terminal_not_focused)'$PS1
+#export PS1='$(notify_cmd_result_when_terminal_not_focused)'$PS1
 
 export NVS_HOME="$HOME/.nvs"
 # too many tool in my toolchain rely on node being available at any moment

@@ -76,7 +76,7 @@ source ./setup/scripts/custom-folders.sh
 
 brew install mas
 
-mas signin $SETUPSH_GIT_EMAIL
+mas signin --dialog $SETUPSH_GIT_EMAIL
 
 brew bundle
 

@@ -89,8 +89,6 @@ git clone https://github.com/jasongin/nvs "$NVS_HOME"
 nvs add node/8
 nvs link 8
 
-# safer than rm
-yarn global add trash-cli
 # lock cli command
 yarn global add lock-cli
 ```

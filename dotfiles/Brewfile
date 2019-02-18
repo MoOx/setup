@@ -22,6 +22,7 @@ mas "The Unarchiver", id: 425424353
 # mas "Xcode", id: 497799835
 brew "watchman"
 brew "terminal-notifier", link: false
+brew "trash"
 
 cask "transmission"
 cask "tunnelblick"

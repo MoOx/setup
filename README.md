@@ -18,6 +18,8 @@ sourceFiles $SETUP_PATH/preferences/*.prefs
 brew upgrade
 
 brew bundle check
+
+$SETUP_PATH/scripts/vscode-backup.sh
 ```
 
 ## First run

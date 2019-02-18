@@ -5,7 +5,7 @@ brew "ghi"
 brew "hub"
 brew "mas"
 
-brew "yarn", args: ["without-node"]
+brew "yarn"
 
 cask "gpg-suite"
 mas "Flycut", id: 442160987

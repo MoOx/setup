@@ -82,15 +82,9 @@ mas signin --dialog $SETUPSH_GIT_EMAIL
 
 brew bundle
 
-# https://github.com/jasongin/nvs
-export NVS_HOME="$HOME/.nvs"
-git clone https://github.com/jasongin/nvs "$NVS_HOME"
-. "$NVS_HOME/nvs.sh" install
-nvs add node/8
-nvs link 8
-
-# lock cli command
-yarn global add lock-cli
+# https://github.com/Schniz/fnm
+#curl https://raw.githubusercontent.com/Schniz/fnm/master/.ci/install.sh | bash
+#fnm install latest-v10.x
 ```
 
 Also good to do

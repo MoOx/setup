@@ -82,10 +82,6 @@ brew install mas
 mas signin --dialog $SETUPSH_GIT_EMAIL
 
 brew bundle
-
-# https://github.com/Schniz/fnm
-#curl https://raw.githubusercontent.com/Schniz/fnm/master/.ci/install.sh | bash
-#fnm install latest-v10.x
 ```
 
 Also good to do

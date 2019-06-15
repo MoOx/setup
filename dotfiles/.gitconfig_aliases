@@ -19,6 +19,8 @@
   remi = "!git checkout master && git pull && git checkout - && git rebase master -i"
   red = "!git checkout dev && git pull && git checkout - && git rebase dev"
   redi = "!git checkout dev && git pull && git checkout - && git rebase dev -i"
+  redev = "!git checkout develop && git pull && git checkout - && git rebase develop"
+  redevi = "!git checkout develop && git pull && git checkout - && git rebase develop -i"
   r = rebase
   rc = rebase --continue
   ra = rebase --abort
@@ -49,7 +51,7 @@
   l = log --pretty=oneline -n 20 --graph --abbrev-commit
 
   # stash, pull, stash pop
-  sync = "!git stash -u && git pull && git stash pop"
+  sp = "!git stash -u && git pull && git stash pop"
 
   # Remove branches that have already been merged with the current branch
   delete-merged = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"

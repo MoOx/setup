@@ -6,6 +6,7 @@ brew "hub"
 brew "mas"
 
 brew "yarn"
+brew "Schniz/tap/fnm"
 
 cask "gpg-suite"
 mas "Flycut", id: 442160987

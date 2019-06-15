@@ -189,9 +189,9 @@ function notify_cmd_result_when_terminal_not_focused {
 }
 #export PS1='$(notify_cmd_result_when_terminal_not_focused)'$PS1
 
-# fnm
-export PATH=$HOME/.fnm:$PATH
-eval `fnm env --multi`
-
 # eval `opam config env`
 . /Users/MoOx/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
+# fnm
+export PATH=$HOME/.fnm:$PATH
+eval "`fnm env --multi --use-on-cd`"

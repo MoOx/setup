@@ -62,6 +62,7 @@
       "teletype"
       "linter"
       "auto-update-packages"
+      "image-view"
     ]
     ignoredNames: [
       ".git"
@@ -111,7 +112,8 @@
         width: 80
     rls: {}
   "linter-eslint":
-    fixOnSave: true
+    autofix:
+      fixOnSave: true
   "linter-flow": {}
   "linter-ui-default":
     panelHeight: 532
@@ -172,8 +174,15 @@
     useEditorConfig: false
   "reason-refmt": {}
   "remote-ftp":
+    connector:
+      sshConfigPath: "~/.ssh/known_hosts"
+    notifications:
+      enableTransfer: true
+      enableWatchFileChange: true
     statusbar:
       enable: true
+    tree:
+      showProjectName: "remote"
   tabs:
     showIcons: false
   "tool-bar":

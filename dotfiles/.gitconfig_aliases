@@ -75,6 +75,15 @@
     fi \
   }; f"
 
+  # Delete all local branches but master and the current one, only if they are fully merged with master.
+  cleanup-branches = "!f(){\
+      git branch | grep -v "master" | grep -v ^* | xargs git branch -d;\
+  }; f"
+  # Delete all local branches but master and the current one.
+  cleanup-branches-brute = "!f(){\
+      git branch | grep -v "master" | grep -v ^* | xargs git branch -D;\
+  }; f"
+
   # List contributors with number of commits
   contributors = shortlog --summary --numbered
 

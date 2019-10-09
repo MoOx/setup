@@ -1,7 +1,6 @@
 {
   // "search.location": "panel",
   "editor.fontFamily": "Dank Mono, Operator Mono, Fira Code, Monaco",
-  "editor.fontLigatures": true,
   "editor.fontSize": 16,
   "editor.lineHeight": 26,
   "editor.formatOnSaveTimeout": 250,
@@ -10,7 +9,6 @@
   // if window.nativeFullScreen: false, "custom" title bar doesn't work
   "window.nativeFullScreen": true,
   "window.restoreWindows": "all",
-  "window.zoomLevel": -1,
   "workbench.colorTheme": "Dark Sea",
   "workbench.iconTheme": "file-icons-colourless",
   "explorer.confirmDragAndDrop": false,
@@ -19,18 +17,35 @@
     "**/bower_components": false,
     "**/node_modules": false
   },
-  "files.trimTrailingWhitespace": true,
-  "files.insertFinalNewline": true,
-  "files.trimFinalNewlines": true,
-  "colorize.languages": ["javascript", "reason"],
+  "colorize.languages": [
+    "javascript",
+    "reason"
+  ],
   "debug.showInStatusBar": "always",
   "workbench.panel.defaultLocation": "bottom",
   "explorer.confirmDelete": false,
-  "editor.formatOnSave": true,
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "nightswitch.location": "43.60426,1.44367",
+  "nightswitch.themeDay": "Highland Winter",
+  "nightswitch.themeNight": "Dark Sea",
+  "editor.fontLigatures": true,
+  "editor.fontWeight": "500",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "prettier.requireConfig": true,
+  "editor.formatOnSave": true,
+  "prettier.disableLanguages": [
+    "vue",
+    "html"
+  ],
+  "editor.trimAutoWhitespace": false,
+  "files.insertFinalNewline": true,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "window.zoomLevel": 0
 }

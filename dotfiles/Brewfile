@@ -8,6 +8,8 @@ brew "mas"
 brew "yarn"
 brew "Schniz/tap/fnm"
 
+brew "rbenv"
+
 cask "gpg-suite"
 mas "Flycut", id: 442160987
 
@@ -36,7 +38,7 @@ cask "telegram"
 cask "signal"
 cask "vlc"
 cask "iina"
-cask "licecap"
+cask "kap"
 cask "name-mangler"
 cask "prefs-editor"
 cask "jubler"
@@ -46,20 +48,10 @@ cask "sourcetree"
 cask "webtorrent"
 mas "JPEGmini Pro", id: 887163276
 
-cask "steam"
-cask "libreoffice"
-mas "Pixelmator", id: 407963104
-mas "Keynote", id: 409183694
-mas "Numbers", id: 409203825
-mas "Pages", id: 409201541
-# mas "Final Cut Pro", id: 424389933
-
 cask "chromium"
 cask "google-chrome" # for react-native debugging
 cask "firefox"
 
-cask "fastlane"
-brew "cocoapods"
 brew "imagemagick"
 brew "python"
 brew "tree"
@@ -70,6 +62,8 @@ brew "wix/brew/applesimutils", args: ["HEAD"]
 
 # android...
 cask "java"
+tap "AdoptOpenJDK/openjdk"
+cask "AdoptOpenJDK/openjdk/adoptopenjdk8"
 cask "genymotion"
 brew "gradle"
 cask "android-file-transfer"
@@ -77,4 +71,10 @@ cask "android-platform-tools"
 cask "android-sdk"
 cask "android-studio"
 
-cask "prey"
+cask "steam"
+cask "libreoffice"
+mas "Pixelmator", id: 407963104
+mas "Keynote", id: 409183694
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
+# mas "Final Cut Pro", id: 424389933

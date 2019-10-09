@@ -27,7 +27,7 @@ if [[ -f ~/.zshrc.local ]]; then; source ~/.zshrc.local; fi
 for file in $SETUP_PATH/functions/*; do; source $file; done
 
 export DIR_SYNC=$HOME/Sync
-export DIR_DEV=$DIR_SYNC/Development
+export DIR_DEV=$HOME/Development
 alias dev="cd $DIR_DEV"
 
 # add personal bin in the path
@@ -66,6 +66,10 @@ alias macos-dsstore-delete="find . -type f -name '*.DS_Store' -ls -delete"
 alias syncthing-conflicts-show="find ~/ -name \"*.sync-conflict-*\""
 alias syncthing-conflicts-trash="find ~/ -name \"*.sync-conflict-*\" -exec trash {} +"
 
+## Node via fnm
+export PATH=$HOME/.fnm:$PATH
+eval "`fnm env --multi --use-on-cd`"
+
 ## NPM
 
 alias n="npm"
@@ -98,6 +102,7 @@ alias ys="yarn start"
 alias yt="yarn test"
 alias yu="yarn upgrade"
 alias yb="yarn build"
+alias yyt="yarn && yarn test"
 
 ## React Native
 alias rn="react-native"
@@ -108,11 +113,14 @@ alias rnu="react-native unlink"
 
 alias floww="killall flow;flow"
 
-## Bundler
+## Ruby / Bundler
 alias b="bundler"
 alias bi="bundler install"
 alias bu="bundler update"
 alias be="bundler exec"
+export GEM_HOME=$HOME/.gem
+export PATH=$PATH:$HOME/.gem/bin
+eval "$(rbenv init -)"
 
 ## Git
 if [[  "$(command -v hub)" != ""  ]] then
@@ -133,29 +141,16 @@ alias echofliptable="echo '\n(╯°□°）╯︵ ┻━┻\n'"
 alias fliptable="echo \"$USER/setup\"; echofliptable; zprezto-update; .up; brew upgrade; brew bundle check"
 
 # Android Studio/Tools (react-native)
-export ANDROID_HOME=${HOME}/Library/Android/sdk
-export PATH=${PATH}:${ANDROID_HOME}/tools
-export PATH=${PATH}:${ANDROID_HOME}/platform-tools
-
-# Fastlane (ios/android publish tool)
-export PATH="$HOME/.fastlane/bin:$PATH"
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
+#export JAVA_HOME=/Library/Java/JavaVirtualMachines/openjdk-12.0.1.jdk/Contents/Home
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 # python
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
-
-# ruby
-# --user-install by default https://github.com/rubygems/rubygems/issues/1394
-gem() {
-  if [[ $1 == "install" ]]; then
-    gemargs="$@"
-    command gem install --user-install ${gemargs:8}
-  else
-    command gem "$@"
-  fi
-}
-if hash ruby 2>/dev/null; then
-  export PATH="$(ruby -e 'puts Gem.user_dir')/bin:$PATH"
-fi
 
 ####
 ####
@@ -192,6 +187,5 @@ function notify_cmd_result_when_terminal_not_focused {
 # eval `opam config env`
 . /Users/MoOx/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
-# fnm
-export PATH=$HOME/.fnm:$PATH
-eval "`fnm env --multi --use-on-cd`"
+# nix
+. $HOME/.nix-profile/etc/profile.d/nix.sh

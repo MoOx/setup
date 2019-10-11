@@ -1,5 +1,8 @@
 #!/usr/bin/env zsh
 
+# hide "Last login" message, because why not
+clear
+
 export LANG="en_US.UTF-8"
 
 # Want to do some profiling on zshrc speed ?
@@ -186,6 +189,3 @@ function notify_cmd_result_when_terminal_not_focused {
 
 # eval `opam config env`
 . /Users/MoOx/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
-
-# nix
-. $HOME/.nix-profile/etc/profile.d/nix.sh

@@ -107,6 +107,11 @@ alias yu="yarn upgrade"
 alias yb="yarn build"
 alias yyt="yarn && yarn test"
 
+## Reason
+alias "bsbm"="bsb -make-world"
+alias "bsbc"="bsb -clean-world"
+alias "bsbcm"="bsb -make-world -clean-world"
+
 ## React Native
 alias rn="react-native"
 alias rni="react-native run-ios"

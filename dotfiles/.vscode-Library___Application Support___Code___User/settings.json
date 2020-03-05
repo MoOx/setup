@@ -1,6 +1,6 @@
 {
   // "search.location": "panel",
-  "editor.fontFamily": "Dank Mono, Operator Mono, Fira Code, Monaco",
+  "editor.fontFamily": "SF Mono, Cascadia, Dank Mono, Operator Mono, Fira Code, Monaco",
   "editor.fontSize": 16,
   "editor.lineHeight": 26,
   "editor.formatOnSaveTimeout": 250,
@@ -39,13 +39,21 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "prettier.requireConfig": true,
-  "editor.formatOnSave": true,
-  "prettier.disableLanguages": [
-    "vue",
-    "html"
-  ],
   "editor.trimAutoWhitespace": false,
   "files.insertFinalNewline": true,
   "javascript.updateImportsOnFileMove.enabled": "always",
-  "window.zoomLevel": 0
+  "window.zoomLevel": -1,
+  "files.associations": {
+    "bsconfig.json": "jsonc"
+  },
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "files.exclude": {
+    "**/.classpath": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.factorypath": true
+  },
+  "eslint.alwaysShowStatus": true,
+  "editor.formatOnSave": true
 }

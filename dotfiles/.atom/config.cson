@@ -90,6 +90,7 @@
     titleBar: "custom"
   editor:
     fontFamily: "Dank Mono, Operator Mono, Fira Code, Monaco"
+    fontSize: 15
     invisibles:
       space: "‧"
     lineHeight: 1.45

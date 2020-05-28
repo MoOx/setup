@@ -1,7 +1,7 @@
 {
   // "search.location": "panel",
-  "editor.fontFamily": "SF Mono, Cascadia, Dank Mono, Operator Mono, Fira Code, Monaco",
-  "editor.fontSize": 16,
+  "editor.fontFamily": "Dank Mono, Operator Mono, Fira Code, Monaco",
+  "editor.fontSize": 14,
   "editor.lineHeight": 26,
   "editor.formatOnSaveTimeout": 250,
   "editor.renderWhitespace": "all",
@@ -42,7 +42,7 @@
   "editor.trimAutoWhitespace": false,
   "files.insertFinalNewline": true,
   "javascript.updateImportsOnFileMove.enabled": "always",
-  "window.zoomLevel": -1,
+  "window.zoomLevel": 0,
   "files.associations": {
     "bsconfig.json": "jsonc"
   },
@@ -55,5 +55,9 @@
     "**/.factorypath": true
   },
   "eslint.alwaysShowStatus": true,
-  "editor.formatOnSave": true
+  "java.autobuild.enabled": false,
+  "editor.formatOnSave": true,
+  "git.autofetch": true,
+  "git.enableSmartCommit": true,
+  "liveshare.featureSet": "insiders"
 }

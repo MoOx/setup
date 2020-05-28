@@ -190,7 +190,7 @@ function notify_cmd_result_when_terminal_not_focused {
   # No point in waiting for the command to complete
   notify-if-iterm-is-in-the-background "$CMD" "$LAST_EXIT_CODE" &
 }
-#export PS1='$(notify_cmd_result_when_terminal_not_focused)'$PS1
+export PS1='$(notify_cmd_result_when_terminal_not_focused)'$PS1
 
 # eval `opam config env`
 . /Users/MoOx/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true

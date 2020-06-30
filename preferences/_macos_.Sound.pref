@@ -1,4 +1,0 @@
-#!/usr/bin/env zsh
-
-# Play feedback when volume is changed
-defaults write com.apple.sound.uiaudio.enabled -bool true

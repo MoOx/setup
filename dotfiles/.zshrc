@@ -29,7 +29,6 @@ if [[ -f ~/.zshrc.local ]]; then; source ~/.zshrc.local; fi
 # load setupsh core functions
 for file in $SETUP_PATH/functions/*; do; source $file; done
 
-export DIR_SYNC=$HOME/Sync
 export DIR_DEV=$HOME/Development
 alias dev="cd $DIR_DEV"
 
@@ -55,15 +54,6 @@ export COPYFILE_DISABLE=true
 
 ## macOS
 alias macos-sleep="osascript -e 'tell application \"System Events\" to sleep'"
-alias macos-hidden-show="defaults write com.apple.finder AppleShowAllFiles -bool true && macos-refresh"
-alias macos-hidden-hide="defaults write com.apple.finder AppleShowAllFiles -bool false && macos-refresh"
-alias macos-desktop-show="defaults write com.apple.finder CreateDesktop -bool true && macos-refresh"
-alias macos-desktop-hide="defaults write com.apple.finder CreateDesktop -bool false && macos-refresh"
-# http://apple.stackexchange.com/a/181404/34887
-alias macos-internetsharing-on="sudo networksetup -setnetworkserviceenabled 'Ethernet sharing via Wifi' on"
-alias macos-internetsharing-off="sudo networksetup -setnetworkserviceenabled 'Ethernet sharing via Wifi' off"
-alias macos-flushdns="dscacheutil -flushcache"
-alias macos-flushram="purge"
 alias macos-dsstore-delete="find . -type f -name '*.DS_Store' -ls -delete"
 
 alias syncthing-conflicts-show="find ~/ -name \"*.sync-conflict-*\""
@@ -179,18 +169,6 @@ export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 #     eval $(gpg-agent --daemon --write-env-file ~/.gnupg/.gpg-agent-info)
 #   fi
 # fi
-
-# Show notification when long running command finishes
-# and your terminal is not in focus
-#
-# http://frantic.im/notify-on-completion
-function notify_cmd_result_when_terminal_not_focused {
-  LAST_EXIT_CODE=$?
-  CMD=$(fc -ln -1)
-  # No point in waiting for the command to complete
-  notify-if-iterm-is-in-the-background "$CMD" "$LAST_EXIT_CODE" &
-}
-export PS1='$(notify_cmd_result_when_terminal_not_focused)'$PS1
 
 # eval `opam config env`
 . /Users/MoOx/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true

@@ -15,50 +15,34 @@ mas "Flycut", id: 442160987
 
 cask "iterm2"
 cask "visual-studio-code"
-cask "spectacle"
+cask "rectangle"
 cask "istat-menus"
 cask "github"
-cask "keepassx"
 mas "Tweetbot", id: 557168941
-cask "franz"
 mas "The Unarchiver", id: 425424353
 # mas "Xcode", id: 497799835
 brew "watchman"
-brew "terminal-notifier", link: false
 brew "trash"
 
 cask "transmission"
-cask "tunnelblick"
 cask "appcleaner"
 cask "imageoptim"
 cask "cyberduck"
 cask "grandperspective"
 cask "discord"
 cask "telegram"
-cask "signal"
 cask "vlc"
-cask "iina"
 cask "kap"
-cask "name-mangler"
-cask "prefs-editor"
 cask "jubler"
 cask "sketch"
-cask "sourcetree"
-# cask "syncthing-bar"
 cask "webtorrent"
 mas "JPEGmini Pro", id: 887163276
 
-cask "chromium"
 cask "google-chrome" # for react-native debugging
-cask "firefox"
 
 brew "imagemagick"
 brew "python"
 brew "tree"
-#tap "lyft/formulae"
-#brew "lyft/formulae/set-simulator-location"
-tap "wix/brew"
-brew "wix/brew/applesimutils", args: ["HEAD"]
 
 # android...
 cask "java"
@@ -72,7 +56,6 @@ cask "android-sdk"
 cask "android-studio"
 
 cask "steam"
-cask "libreoffice"
 mas "Pixelmator", id: 407963104
 mas "Keynote", id: 409183694
 mas "Numbers", id: 409203825

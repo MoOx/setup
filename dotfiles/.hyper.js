@@ -98,7 +98,7 @@ module.exports = {
         disableColors: true
       },
 
-      workingDirectory: "~/Sync/Development"
+      workingDirectory: "~/Development"
     },
     theme
   )

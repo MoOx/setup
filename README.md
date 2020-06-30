@@ -70,12 +70,11 @@ ln -s SETUP_PATH/dotfiles/.vscode-Library___Application\ Support___Code___User $
 source $SETUP_PATH/.zshrc
 
 macos-hidden-show
+chflags -h nohidden $HOME/Library
 
-brew cask install "syncthing-bar"
-
-# then configure syncthing and way for the sync
-
-source ./setup/scripts/custom-folders.sh
+dotfiles "$HOME/Library/Mobile Documents/com~apple~CloudDocs/.home"
+# lnfs-subfolders $DIR_SYNC/Library $HOME/Library
+# lnfs-subfolders "$DIR_SYNC/Library_Application Support" "$HOME/Library/Application Support"
 
 brew install mas
 

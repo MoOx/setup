@@ -11,6 +11,23 @@ Everything that has a cask has been adopted with `brew install --cask --adopt`,
 so it keeps the installed app in place and makes Homebrew manage it from now on.
 Those apps are in the `Brewfile`. What follows is the remainder.
 
+## A cask exists but the installed copy is too old to adopt
+
+`brew install --cask --adopt` only takes over a copy **identical** to what the
+cask would install. These eight refused on a version mismatch, which means the
+installed app is behind. GrandPerspective is the clearest case: 2.2.3 here
+against 3.8.1 in the cask.
+
+Replacing an app is a visible change, so it is left to a decision rather than
+done in passing. One command each, and it updates the app on the way:
+
+```sh
+brew install --cask --force capcut djstudio google-drive grandperspective \
+  knockknock libreoffice microsoft-teams musicbrainz-picard
+```
+
+Once that is done they belong in the `Brewfile` like the others.
+
 ## No cask exists: reinstall by hand
 
 | App | Last used | Where it comes from |

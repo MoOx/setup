@@ -58,9 +58,42 @@ brew "ollama"                       # run local LLMs
 # GPG, kept only because poppler depends on gnupg
 brew "pinentry-mac"                 # lets gnupg read its passphrase from the keychain
 
-cask "openlogi"                     # local-first alternative to Logitech Options+
-cask "temurin@21"                   # JDK, for Android builds
+# Casks. Everything here was already installed by hand and adopted with
+# `brew install --cask --adopt`, so the app stayed in place and Homebrew took
+# it over. On a new machine they install normally.
+
+# Daily
+cask "claude"
+cask "visual-studio-code"
+cask "slack"
+cask "discord"
+cask "notion"
+cask "figma"
+cask "google-chrome"
+cask "firefox"
+cask "microsoft-edge"
+
+# Desktop
 cask "maccy"                        # clipboard history, replaces Flycut
+cask "rectangle"                    # window shortcuts
+cask "betterdisplay"
+cask "istat-menus"
+cask "nightfall"
+cask "openlogi"                     # local-first alternative to Logitech Options+
+cask "pearcleaner"                  # browse and clean, replaces the mole CLI
+cask "appcleaner"
+
+# Mobile and build
+cask "android-studio"
+cask "expo-orbit"
+cask "temurin@21"                   # JDK, for Android builds
+
+# Media and files
+cask "vlc"
+cask "imageoptim"
+cask "webtorrent"
+cask "sketch"
+cask "steam"
 
 # Mac App Store, listed by `mas list`. These reinstall without a browser and
 # without a licence key, which is why they are worth declaring. TODO Max: prune

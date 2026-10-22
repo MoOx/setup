@@ -15,7 +15,6 @@ tap "symfony-cli/tap"
 # Shell and system
 brew "direnv"                       # per-directory environment variables
 brew "trash"                        # move to the trash instead of rm
-brew "mole"                         # deep clean and optimize the Mac
 brew "unbound"                      # local validating DNS resolver
 brew "mas"                          # Mac App Store CLI, needed to inventory installed apps
 brew "terminal-notifier"            # clickable notification for the weekly setup --check
@@ -31,8 +30,6 @@ brew "rbenv"                        # Ruby version manager
 brew "php@8.4"
 brew "composer"                     # PHP dependency manager
 brew "symfony-cli/tap/symfony-cli"
-brew "python@3.13"
-brew "python@3.11"                  # TODO Max: still needed, or a leftover?
 brew "pipx"                         # run Python CLI tools in isolated environments
 
 # Mobile
@@ -82,6 +79,14 @@ mas "Pages", id: 361309726
 mas "Balatro", id: 6502451661
 
 # Deliberately absent, so the reasons are not lost:
+#
+# - No python at all. Four were installed: 3.11 and 3.13 had no dependent and
+#   were uninstalled, while `python3` actually resolves to 3.15, which arrives
+#   with ollama, pipx and watchman. 3.14 arrives with ocrmypdf and yt-dlp.
+#   Declaring a version would pin something that ages for no gain; if `python3`
+#   ever disappears, `brew install python3` is one command.
+# - mole, uninstalled. Its CLI was not the right shape for browsing and
+#   cleaning, which is what Pearcleaner already does with a window.
 #
 # - 8 orphan libraries that were installed by hand and that nothing needs any
 #   more: jpeg-xl, libass, libbluray, libraw, librist, librsvg, libssh, srt.

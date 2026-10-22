@@ -167,6 +167,15 @@ step_packages() {
   for pkg in $d_tap; do
     [[ -n $pkg ]] && (( ! ${i_tap[(Ie)$pkg]} )) && missing+=("$pkg (tap)")
   done
+  # App Store apps, compared by name: `mas list` prints "id Name (version)".
+  local -a d_mas i_mas
+  if have mas; then
+    d_mas=("${(@f)$(brew bundle list --mas --file="$file" 2>/dev/null)}")
+    i_mas=("${(@f)$(mas list 2>/dev/null | sed -E 's/^ *[0-9]+ +//; s/ +\([^)]*\) *$//')}")
+    for pkg in $d_mas; do
+      [[ -n $pkg ]] && (( ! ${i_mas[(Ie)$pkg]} )) && missing+=("$pkg (App Store)")
+    done
+  fi
   if (( $#missing )); then
     todo "$#missing declared but not installed: ${(j:, :)missing}"
     # --no-upgrade on purpose: re-running setup installs what is missing and
@@ -189,6 +198,9 @@ step_packages() {
     [[ -n $pkg ]] || continue
     (( ${declared[(Ie)$pkg]} )) && continue
     extra+=("$pkg (cask)")
+  done
+  for pkg in $i_mas; do
+    [[ -n $pkg ]] && (( ! ${d_mas[(Ie)$pkg]} )) && extra+=("$pkg (App Store)")
   done
   if (( $#extra )); then
     todo "$#extra installed on purpose but absent from the Brewfile:"

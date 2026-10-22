@@ -64,6 +64,23 @@ brew "pinentry-mac"                 # lets gnupg read its passphrase from the ke
 cask "openlogi"                     # local-first alternative to Logitech Options+
 cask "temurin@21"                   # JDK, for Android builds
 
+# Mac App Store, listed by `mas list`. These reinstall without a browser and
+# without a licence key, which is why they are worth declaring. TODO Max: prune
+# what you no longer want, the list is only what is installed today.
+mas "Xcode", id: 497799835
+mas "Pixelmator Pro", id: 1289583905
+mas "Infuse", id: 1136220934
+mas "One Markdown", id: 1507139439
+mas "Flycut", id: 442160987
+mas "DevCleaner", id: 1388020431
+mas "The Unarchiver", id: 425424353
+mas "1Blocker", id: 1365531024
+mas "WhatsApp", id: 310633997
+mas "Keynote", id: 361285480
+mas "Numbers", id: 361304891
+mas "Pages", id: 361309726
+mas "Balatro", id: 6502451661
+
 # Deliberately absent, so the reasons are not lost:
 #
 # - 8 orphan libraries that were installed by hand and that nothing needs any

@@ -134,29 +134,61 @@ step_packages() {
     return
   fi
 
-  # --no-upgrade on purpose: re-running setup installs what is missing and
-  # never silently upgrades the rest. Upgrading is its own deliberate act.
-  local missing
-  missing=$(brew bundle check --verbose --file="$file" 2>/dev/null | grep -E '^→' || true)
-  if [[ -z $missing ]]; then
-    ok "everything in the Brewfile is installed"
-  else
-    todo "$(print -r -- "$missing" | grep -c .) entries to install or update:"
-    print -r -- "$missing" | sed 's/^→/       /'
+  # Both directions are plain set differences. `brew bundle check` was tried
+  # first and dropped: it writes its report to stderr, and it says "needs to be
+  # installed or updated" for missing and merely outdated alike, which turns an
+  # ordinary upgrade backlog into a false alarm.
+  #
+  # Formulae, casks and taps are three separate namespaces: comparing them in
+  # one bucket reports every declared tap as a missing package, since `brew
+  # list` does not list taps.
+  local -a declared missing extra
+  local -a d_formula d_cask d_tap i_formula i_cask i_tap
+  d_formula=("${(@f)$(brew bundle list --formula --file="$file" 2>/dev/null)}")
+  d_cask=("${(@f)$(brew bundle list --cask --file="$file" 2>/dev/null)}")
+  d_tap=("${(@f)$(brew bundle list --tap --file="$file" 2>/dev/null)}")
+  i_formula=("${(@f)$(brew list --formula --full-name 2>/dev/null)}")
+  i_cask=("${(@f)$(brew list --cask 2>/dev/null)}")
+  i_tap=("${(@f)$(brew tap 2>/dev/null)}")
+  declared=($d_formula $d_cask $d_tap)
+
+  local pkg
+  missing=()
+  for pkg in $d_formula; do
+    [[ -n $pkg ]] || continue
+    # A tapped formula is declared as tap/name, listed by its short name too.
+    (( ${i_formula[(Ie)$pkg]} )) && continue
+    (( ${i_formula[(Ie)${pkg:t}]} )) && continue
+    missing+=("$pkg")
+  done
+  for pkg in $d_cask; do
+    [[ -n $pkg ]] && (( ! ${i_cask[(Ie)$pkg]} )) && missing+=("$pkg (cask)")
+  done
+  for pkg in $d_tap; do
+    [[ -n $pkg ]] && (( ! ${i_tap[(Ie)$pkg]} )) && missing+=("$pkg (tap)")
+  done
+  if (( $#missing )); then
+    todo "$#missing declared but not installed: ${(j:, :)missing}"
+    # --no-upgrade on purpose: re-running setup installs what is missing and
+    # never silently upgrades the rest. Upgrading is its own deliberate act.
     [[ $MODE == check ]] || brew bundle install --no-upgrade --file="$file"
+  else
+    ok "everything in the Brewfile is installed"
   fi
 
   # The other direction: installed on purpose but never written down. This is
   # the "I ran brew install by hand three weeks ago" case.
-  local -a declared extra
-  declared=("${(@f)$(brew bundle list --file="$file" 2>/dev/null)}")
   extra=()
-  local pkg
   for pkg in "${(@f)$(brew leaves --installed-on-request 2>/dev/null)}"; do
-    [[ -n $pkg ]] && (( ! ${declared[(Ie)$pkg]} )) && extra+=("$pkg")
+    [[ -n $pkg ]] || continue
+    (( ${declared[(Ie)$pkg]} )) && continue
+    (( ${declared[(Ie)${pkg:t}]} )) && continue
+    extra+=("$pkg")
   done
   for pkg in "${(@f)$(brew list --cask 2>/dev/null)}"; do
-    [[ -n $pkg ]] && (( ! ${declared[(Ie)$pkg]} )) && extra+=("$pkg (cask)")
+    [[ -n $pkg ]] || continue
+    (( ${declared[(Ie)$pkg]} )) && continue
+    extra+=("$pkg (cask)")
   done
   if (( $#extra )); then
     todo "$#extra installed on purpose but absent from the Brewfile:"

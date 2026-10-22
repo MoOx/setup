@@ -231,7 +231,9 @@ step_ssh() {
   fi
   todo "this machine has no ed25519 key"
   [[ $MODE == check ]] && return
-  if confirm "Generate ${key/#$HOME/\~} for $(hostname -s)?"; then
+  # Precomputed: inside double quotes the backslash of \~ would be printed.
+  local pretty=${key/#$HOME/\~}
+  if confirm "Generate $pretty for $(hostname -s)?"; then
     mkdir -p -m 700 -- "$HOME/.ssh"
     # Interactive: ssh-keygen asks for a passphrase, which is the point, and
     # ssh/config stores it in the keychain so it is asked once ever. Without a

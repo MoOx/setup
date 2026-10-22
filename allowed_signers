@@ -1,0 +1,12 @@
+# Public SSH keys allowed to sign commits, for `git log --show-signature`.
+#
+# GitHub verifies against the keys registered on the account; this file is what
+# lets local git verify too. Pointed at by gpg.ssh.allowedSignersFile.
+#
+# One line per key: the identities it may sign for, then the public key.
+# A retired key stays here so old commits keep verifying. To say a key was only
+# valid for a period, add valid-after and valid-before, for example:
+#   valid-after="20261022",valid-before="20301231" git@moox.io ssh-ed25519 AAAA...
+#
+# MaxBook, created 2026-10-22, SHA256:nJZ0XzoygMLN+bruzkJ5ey3UqcWfyh15chAN588hl4Q
+git@moox.io,m@moox.io ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKGW2kOzZQG6VvjRks0h7vKl+fQ4ISS/oF+aov271Bnl moox@MaxBook

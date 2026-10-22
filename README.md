@@ -7,10 +7,15 @@ My macOS machine, versioned.
 ## New machine
 
 ```sh
+xcode-select --install
 git clone git@github.com:MoOx/setup.git ~/setup
 cd ~/setup
 ./setup
 ```
+
+macOS ships no git: `/usr/bin/git` is a stub that asks to install the developer
+tools, and it shares its inode with `clang`, `make` and `swift`. The first line
+gets that out of the way.
 
 ## Commands
 

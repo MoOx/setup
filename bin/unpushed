@@ -4,6 +4,7 @@
 #
 #   unpushed              # compact report on ~/dev
 #   unpushed --full       # one line per branch and per stash
+#   unpushed --clean      # interactive triage: push, delete or keep, one at a time
 #   unpushed ~/some/dir   # another root
 #
 # Exits 1 when something is local-only, so `setup --check` and the weekly agent
@@ -12,15 +13,23 @@
 emulate -L zsh
 set -uo pipefail
 
+SCRIPT=${0:A}
 full=0
+clean=0
 root="$HOME/dev"
 for arg in "$@"; do
   case "$arg" in
     --full) full=1 ;;
-    -h|--help) sed -n '2,12p' "$0" | sed 's/^# \{0,1\}//'; exit 0 ;;
+    --clean) clean=1; full=1 ;;
+    -h|--help) sed -n '2,/^$/p' "$SCRIPT" | sed 's/^# \{0,1\}//'; exit 0 ;;
     *) root="${arg%/}" ;;
   esac
 done
+
+if (( clean )) && [[ ! -t 0 ]]; then
+  print -u2 "unpushed: --clean needs a terminal, it asks questions"
+  exit 2
+fi
 
 [[ -d "$root" ]] || { print -u2 "unpushed: no such directory: $root"; exit 2 }
 
@@ -101,5 +110,114 @@ printf '%d repos: %d unpushed commits, %d stashes, %d with uncommitted changes' 
   "$n_repos" "$n_commits" "$n_stashes" "$n_dirty"
 (( n_noremote > 0 )) && printf ', %d WITH NO REMOTE' "$n_noremote"
 print .
-(( full )) || print "Run with --full for the per-branch detail."
-exit 1
+
+if (( ! clean )); then
+  (( full )) || print "Run with --full for the per-branch detail, --clean to triage."
+  exit 1
+fi
+
+# --- interactive triage --------------------------------------------------
+# One item at a time, default is always to keep. Nothing is ever force-pushed,
+# and a delete asks a second time because it is the only irreversible action
+# here (the reflog keeps it for about 90 days, and that is not a backup).
+
+ask_one() {   # ask_one <prompt> <allowed chars> -> $REPLY_CHAR
+  local prompt=$1 allowed=$2 c
+  while :; do
+    print -n -- "$prompt"
+    read -k 1 c || { print; REPLY_CHAR=q; return }
+    print
+    [[ $c == $'\n' ]] && { REPLY_CHAR=s; return }          # bare enter keeps
+    [[ $allowed == *${c:l}* ]] && { REPLY_CHAR=${c:l}; return }
+    print -- "  pick one of: $allowed"
+  done
+}
+
+print
+print -- "Triage. Enter keeps the item, q quits."
+
+for gitdir in $repos; do
+  [[ -n "$gitdir" ]] || continue
+  d="${gitdir:h}"
+  name="${d#$root/}"
+  remote=$(git -C "$d" remote 2>/dev/null | head -1)
+  current=$(git -C "$d" symbolic-ref --short -q HEAD 2>/dev/null)
+
+  # Read the refs into an array first: a `| while read` would eat the answers.
+  refs=("${(@f)$(git -C "$d" for-each-ref --format='%(refname:short)|%(upstream:short)' refs/heads 2>/dev/null)}")
+
+  for ref in $refs; do
+    [[ -n "$ref" ]] || continue
+    branch="${ref%%|*}"
+    upstream="${ref#*|}"
+    [[ $upstream == $ref ]] && upstream=''
+
+    bc=$(git -C "$d" log "$branch" --not --remotes --format='    %h %ad %s' --date=short 2>/dev/null)
+    [[ -n "$bc" ]] || continue
+    count=$(print -r -- "$bc" | grep -c .)
+
+    print
+    print -r -- "$name  $branch  $count commits  ${upstream:-NO UPSTREAM}"
+    print -r -- "$bc" | head -5
+    (( count > 5 )) && print -r -- "    ... and $(( count - 5 )) more"
+
+    if [[ -z "$remote" ]]; then
+      print -- "  no remote on this repo, so pushing is not an option yet"
+      ask_one "  [d]elete / [s]kip / [q]uit: " "dsq"
+    else
+      ask_one "  [p]ush / [d]elete / [s]kip / [q]uit: " "pdsq"
+    fi
+
+    case $REPLY_CHAR in
+      q) print; print -- "Stopped. Nothing else was touched."; exit 0 ;;
+      s) print -- "  kept" ;;
+      p) if [[ -n "$upstream" ]]; then
+           git -C "$d" push && print -- "  pushed" || print -u2 -- "  push failed"
+         else
+           git -C "$d" push -u "$remote" "$branch" \
+             && print -- "  pushed and now tracking $remote/$branch" \
+             || print -u2 -- "  push failed"
+         fi ;;
+      d) if [[ "$branch" == "$current" ]]; then
+           print -- "  this branch is checked out, switch away first. Kept."
+         else
+           ask_one "  really delete $branch and its $count commits? [y]es / [n]o: " "yn"
+           if [[ $REPLY_CHAR == y ]]; then
+             git -C "$d" branch -D "$branch" >/dev/null \
+               && print -- "  deleted (git reflog in $name keeps it for about 90 days)" \
+               || print -u2 -- "  delete failed"
+           else
+             print -- "  kept"
+           fi
+         fi ;;
+    esac
+  done
+
+  # Stashes. The selector is the position in the list, never the %gd rendering:
+  # with --date=short git prints stash@{2026-10-22}, which is ambiguous as soon
+  # as two stashes share a day. Dropped from the highest index down so the
+  # remaining ones keep their number.
+  stash_list=("${(@f)$(git -C "$d" stash list --date=short --format='%cd %s' 2>/dev/null)}")
+  [[ -n "${stash_list[1]:-}" ]] || continue
+  to_drop=()
+  for (( i = 1; i <= $#stash_list; i++ )); do
+    [[ -n "$stash_list[i]" ]] || continue
+    print
+    print -r -- "$name  stash@{$(( i - 1 ))}  $stash_list[i]"
+    ask_one "  [d]rop / [s]kip / [q]uit: " "dsq"
+    case $REPLY_CHAR in
+      q) print; print -- "Stopped. Nothing else was touched."; exit 0 ;;
+      d) to_drop+=($(( i - 1 ))) ;;
+      *) print -- "  kept" ;;
+    esac
+  done
+  for (( i = $#to_drop; i >= 1; i-- )); do
+    git -C "$d" stash drop "stash@{$to_drop[i]}" >/dev/null \
+      && print -- "dropped $name stash@{$to_drop[i]}" \
+      || print -u2 -- "could not drop $name stash@{$to_drop[i]}"
+  done
+done
+
+print
+print -- "Triage done. Run unpushed again to see what is left."
+exit 0

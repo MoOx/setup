@@ -1,0 +1,414 @@
+#!/usr/bin/env zsh
+#
+# setup - the single entry point for this machine.
+#
+# This script is the documentation. Anything you would be tempted to write in a
+# README is a missing step here: add the step instead of describing it.
+#
+#   ./setup            interactive: report, propose, ask
+#   ./setup --check     read-only, exits non-zero on drift
+#   ./setup --yes       non-interactive, takes the defaults (new machine, CI)
+#   ./setup <step>      run a single step, e.g. ./setup brew
+#   ./setup --help      the list of steps, generated from the registry below
+#
+# Dependencies: zsh, shipped with macOS. Homebrew is installed by the brew step,
+# everything else comes from the Brewfile.
+
+emulate -L zsh
+setopt no_unset pipe_fail
+zmodload zsh/datetime
+
+SCRIPT=${0:A}        # captured here: inside a zsh function, $0 is the function name
+REPO=${SCRIPT:h}
+STAMP=$HOME/.setup-last-check
+
+MODE=apply          # apply | check
+ASSUME_YES=0
+typeset -i DRIFT=0  # number of things that need doing
+
+# --- the step registry ---------------------------------------------------
+# One entry per step, in run order. --help prints this, so the help can never
+# go stale. Each step is implemented by step_<name> below.
+
+STEPS=(
+  xcode    'Xcode Command Line Tools'
+  brew     'Homebrew itself'
+  packages 'Packages, casks and App Store apps from the Brewfile'
+  home     'Dotfiles, symlinked from home/ into ~'
+  claude   'Claude Code config, symlinked from claude/ into ~/.claude'
+  macos    'macOS preferences from preferences/ and macos.sh'
+  ssh      'This machine own SSH key'
+  secrets  'Secrets in the login keychain, from secrets.tsv'
+  dev      'Repos under ~/dev, and what exists only on this machine'
+)
+
+# --- output helpers ------------------------------------------------------
+
+title() { print -r -- $'\n'"$1" }
+ok()    { print -r -- "  ok    $1" }
+todo()  { print -r -- "  TODO  $1"; (( DRIFT++ )) }
+note()  { print -r -- "  note  $1" }
+fail()  { print -ru2 -- "  ERROR $1"; (( DRIFT++ )) }
+
+# Ask a yes/no question. Never asks in check mode, never asks with --yes.
+confirm() {
+  [[ $MODE == check ]] && return 1
+  (( ASSUME_YES )) && return 0
+  local answer
+  read -q "answer?  $1 [y/N] " || true
+  print
+  [[ $answer == y ]]
+}
+
+have() { (( $+commands[$1] )) }
+
+# Ensure dest is a symlink to src. The single place that touches the user home,
+# so a real file is never destroyed: it is moved aside first.
+ensure_link() {
+  local src=$1 dest=$2 pretty=${2/#$HOME/\~}
+  if [[ ! -e $src && ! -L $src ]]; then
+    note "$pretty skipped, ${src/#$REPO\//} is not in the repo yet"
+    return 1
+  fi
+  if [[ -L $dest && ${dest:A} == ${src:A} ]]; then
+    ok "$pretty"
+    return 0
+  fi
+  if [[ $MODE == check ]]; then
+    if [[ -L $dest ]]; then
+      todo "$pretty points at ${dest:A/#$HOME/\~} instead of the repo"
+    elif [[ -e $dest ]]; then
+      todo "$pretty is a real file, not a link to the repo"
+    else
+      todo "$pretty is missing"
+    fi
+    return 1
+  fi
+  if [[ -e $dest || -L $dest ]]; then
+    local backup=$dest.before-setup-$(strftime '%Y%m%d%H%M%S' $EPOCHSECONDS)
+    mv -- "$dest" "$backup" || { fail "could not move $pretty aside"; return 1 }
+    note "moved the previous $pretty to ${backup:t}"
+  fi
+  mkdir -p -- "${dest:h}"
+  ln -s -- "$src" "$dest" && ok "$pretty linked"
+}
+
+# --- steps ---------------------------------------------------------------
+
+step_xcode() {
+  if /usr/bin/xcode-select -p >/dev/null 2>&1; then
+    ok "installed at $(/usr/bin/xcode-select -p)"
+  elif [[ $MODE == check ]]; then
+    todo "Xcode Command Line Tools are missing"
+  else
+    todo "Xcode Command Line Tools are missing"
+    note "running xcode-select --install, finish it in the window that opens"
+    /usr/bin/xcode-select --install 2>/dev/null || true
+  fi
+}
+
+step_brew() {
+  if have brew; then
+    ok "$(brew --version | head -1)"
+    return
+  fi
+  # Apple Silicon puts it here; pick it up if it exists but is not on PATH yet.
+  if [[ -x /opt/homebrew/bin/brew ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+    ok "found at /opt/homebrew, not on PATH yet (the home step fixes that)"
+    return
+  fi
+  todo "Homebrew is not installed"
+  [[ $MODE == check ]] && return
+  note 'install command: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
+  if confirm "Download and run the official Homebrew installer?"; then
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  fi
+}
+
+step_packages() {
+  have brew || { note "skipped, Homebrew first"; return }
+  local file=$REPO/Brewfile
+  if [[ ! -f $file ]]; then
+    note "skipped, Brewfile is not in the repo yet"
+    return
+  fi
+
+  # --no-upgrade on purpose: re-running setup installs what is missing and
+  # never silently upgrades the rest. Upgrading is its own deliberate act.
+  local missing
+  missing=$(brew bundle check --verbose --file="$file" 2>/dev/null | grep -E '^→' || true)
+  if [[ -z $missing ]]; then
+    ok "everything in the Brewfile is installed"
+  else
+    todo "$(print -r -- "$missing" | grep -c .) entries to install or update:"
+    print -r -- "$missing" | sed 's/^→/       /'
+    [[ $MODE == check ]] || brew bundle install --no-upgrade --file="$file"
+  fi
+
+  # The other direction: installed on purpose but never written down. This is
+  # the "I ran brew install by hand three weeks ago" case.
+  local -a declared extra
+  declared=("${(@f)$(brew bundle list --file="$file" 2>/dev/null)}")
+  extra=()
+  local pkg
+  for pkg in "${(@f)$(brew leaves --installed-on-request 2>/dev/null)}"; do
+    [[ -n $pkg ]] && (( ! ${declared[(Ie)$pkg]} )) && extra+=("$pkg")
+  done
+  for pkg in "${(@f)$(brew list --cask 2>/dev/null)}"; do
+    [[ -n $pkg ]] && (( ! ${declared[(Ie)$pkg]} )) && extra+=("$pkg (cask)")
+  done
+  if (( $#extra )); then
+    todo "$#extra installed on purpose but absent from the Brewfile:"
+    print -r -- "       ${(j:, :)extra}"
+    note "add them with: brew bundle add <name> --file=Brewfile"
+  else
+    ok "nothing installed outside the Brewfile"
+  fi
+
+  local outdated
+  outdated=$(brew outdated --quiet 2>/dev/null | grep -c . || true)
+  (( outdated > 0 )) && note "$outdated packages are behind, run: brew upgrade"
+}
+
+step_home() {
+  local dir=$REPO/home
+  if [[ ! -d $dir ]]; then
+    note "skipped, home/ does not exist yet (dotfiles still live in iCloud .home)"
+    return
+  fi
+  local entry
+  for entry in "$dir"/*(ND); do
+    [[ ${entry:t} == .DS_Store ]] && continue
+    ensure_link "$entry" "$HOME/${entry:t}"
+  done
+}
+
+step_claude() {
+  # One link per entry, never the skills/ directory itself: it also holds
+  # synced/, which Claude manages, and skills that are not ours.
+  ensure_link "$REPO/claude/CLAUDE.md"              "$HOME/.claude/CLAUDE.md"
+  ensure_link "$REPO/claude/settings.json"          "$HOME/.claude/settings.json"
+  ensure_link "$REPO/claude/skills/grill-me"        "$HOME/.claude/skills/grill-me"
+  ensure_link "$REPO/claude/commands/unpushed.md"   "$HOME/.claude/commands/unpushed.md"
+}
+
+step_macos() {
+  local dir=$REPO/preferences
+  if [[ -d $dir ]]; then
+    local plist count=0
+    for plist in "$dir"/*.plist(ND); do
+      (( count++ ))
+      if [[ $MODE == check ]]; then
+        note "${plist:t:r} would be re-imported (defaults import cannot be dry-run)"
+      else
+        defaults import "${plist:t:r}" "$plist" && ok "${plist:t:r} imported"
+      fi
+    done
+    (( count )) || note "preferences/ holds no .plist yet"
+  else
+    note "skipped, preferences/ does not exist yet"
+  fi
+
+  if [[ -x $REPO/macos.sh ]]; then
+    if [[ $MODE == check ]]; then
+      note "macos.sh exists and is not checkable, run ./setup macos to apply it"
+    else
+      "$REPO/macos.sh" && ok "macos.sh applied"
+    fi
+  else
+    note "skipped, macos.sh does not exist yet"
+  fi
+}
+
+step_ssh() {
+  # One key per machine, never copied, never overwritten.
+  local key=$HOME/.ssh/id_ed25519
+  if [[ -f $key.pub ]]; then
+    ok "$(ssh-keygen -lf "$key.pub" 2>/dev/null)"
+    note "register it on GitHub twice, as an auth key and as a signing key"
+    return
+  fi
+  todo "this machine has no ed25519 key"
+  [[ $MODE == check ]] && return
+  if confirm "Generate ${key/#$HOME/\~} for $(hostname -s)?"; then
+    mkdir -p -m 700 -- "$HOME/.ssh"
+    ssh-keygen -t ed25519 -C "$(whoami)@$(hostname -s)" -f "$key" \
+      && ok "created, public key:" && print -r -- "       $(<$key.pub)"
+  fi
+}
+
+step_secrets() {
+  local file=$REPO/secrets.tsv
+  if [[ ! -f $file ]]; then
+    note "skipped, secrets.tsv is not in the repo yet"
+    return
+  fi
+
+  # Rotation walk only when the step is asked for by name. In a full run the
+  # step only fills what is missing, so a machine that is already set up has
+  # nothing to answer.
+  local rotate=0
+  [[ ${SINGLE_STEP:-} == secrets ]] && rotate=1
+
+  local -a names wheres recoveries
+  local name where what recovery
+  while IFS=$'\t' read -r name where what recovery; do
+    [[ -z $name || $name == \#* ]] && continue
+    names+=("$name"); wheres+=("$where"); recoveries+=("$recovery")
+  done < "$file"
+
+  local -i set_count=0 missing=0
+  local -a missing_names
+  for name in "${names[@]}"; do
+    if security find-generic-password -a "$USER" -s "$name" >/dev/null 2>&1; then
+      (( set_count++ ))
+    else
+      (( missing++ )); missing_names+=("$name")
+    fi
+  done
+
+  print -r -- "  secrets: $set_count/$#names set"
+  if (( missing )); then
+    todo "missing: ${(j:, :)missing_names}"
+  fi
+  [[ $MODE == check ]] && return
+  (( missing == 0 )) && (( ! rotate )) && { ok "nothing to do"; return }
+
+  local i=0 value again
+  for name in "${names[@]}"; do
+    (( i++ ))
+    where=${wheres[$i]}
+    local critical=0
+    [[ ${recoveries[$i]} == critical ]] && critical=1
+    local is_set=0
+    security find-generic-password -a "$USER" -s "$name" >/dev/null 2>&1 && is_set=1
+
+    (( is_set && ! rotate )) && continue
+
+    print
+    print -r -- "$name  $( (( is_set )) && print -n 'set' || print -n 'not set')"
+    [[ -n $where ]] && print -r -- "  $( (( is_set )) && print -n 'rotate' || print -n 'create') at $where"
+    if (( critical )); then
+      print -r -- "  CRITICAL: this one cannot be recreated, it decrypts data that exists nowhere else."
+      if (( is_set )); then
+        print -r -- "  Replacing it here does not re-encrypt anything. Only do this as part of a"
+        print -r -- "  real rotation, see docs/05-rotation.md in MoOx/certificates."
+      fi
+    fi
+
+    if (( is_set )); then
+      # A value already exists, so pressing enter keeps it.
+      IFS= read -rs "value?  new value (enter to keep): " || true
+      print
+      [[ -z $value ]] && { print -r -- "  kept"; continue }
+    else
+      # Nothing stored, so leaving is explicit: only "skip" moves on.
+      while :; do
+        IFS= read -rs 'value?  value (or "skip"): ' || true
+        print
+        [[ $value == skip ]] && break
+        [[ -n $value ]] && break
+        print -r -- '  type the value, or "skip" to leave it unset'
+      done
+      [[ $value == skip ]] && { print -r -- "  skipped, still unset"; continue }
+    fi
+
+    # A critical secret is typed twice: a typo would store fine, look fine, and
+    # only surface much later as a failed decryption.
+    if (( critical )); then
+      IFS= read -rs "again?  type it again to confirm: " || true
+      print
+      if [[ $value != $again ]]; then
+        fail "the two entries differ, $name left unchanged"
+        value=''; again=''
+        continue
+      fi
+      again=''
+    fi
+
+    if security add-generic-password -a "$USER" -s "$name" -U -w "$value" 2>/dev/null; then
+      print -r -- "  stored, ${#value} characters"
+    else
+      fail "could not store $name in the keychain"
+    fi
+    value=''
+  done
+}
+
+step_dev() {
+  if [[ -x $REPO/bin/unpushed ]]; then
+    "$REPO/bin/unpushed" || (( DRIFT++ ))
+  else
+    note "skipped, bin/unpushed is missing"
+  fi
+}
+
+# --- driver --------------------------------------------------------------
+
+usage() {
+  sed -n '3,16p' "$SCRIPT" | sed 's/^#\{1,\} \{0,1\}//'
+  print "Steps, in run order:"
+  local i
+  for (( i = 1; i <= $#STEPS; i += 2 )); do
+    printf '  %-9s %s\n' "$STEPS[i]" "$STEPS[i+1]"
+  done
+}
+
+run_step() {
+  local name=$1 i
+  for (( i = 1; i <= $#STEPS; i += 2 )); do
+    if [[ $STEPS[i] == $name ]]; then
+      title "$name: $STEPS[i+1]"
+      step_$name
+      return 0
+    fi
+  done
+  print -ru2 -- "setup: unknown step: $name"
+  print -ru2 -- "setup: known steps: $(for (( i = 1; i <= $#STEPS; i += 2 )); do print -n "$STEPS[i] "; done)"
+  return 2
+}
+
+SINGLE_STEP=''
+for arg in "$@"; do
+  case $arg in
+    --check)     MODE=check ;;
+    --yes|-y)    ASSUME_YES=1 ;;
+    -h|--help)   usage; exit 0 ;;
+    -*)          print -ru2 -- "setup: unknown option: $arg"; exit 2 ;;
+    *)           SINGLE_STEP=$arg ;;
+  esac
+done
+
+# Watching the watcher: say when the last check ran, so a silent agent shows up.
+if [[ $MODE == apply && -f $STAMP ]]; then
+  local -i age=$(( (EPOCHSECONDS - $(<$STAMP)) / 86400 ))
+  if (( age > 14 )); then
+    print -r -- "last check: $age days ago, the weekly agent may have stopped"
+  else
+    print -r -- "last check: $age days ago"
+  fi
+fi
+
+if [[ -n $SINGLE_STEP ]]; then
+  run_step "$SINGLE_STEP" || exit $?
+else
+  for (( i = 1; i <= $#STEPS; i += 2 )); do
+    run_step "$STEPS[i]"
+  done
+fi
+
+print
+if (( DRIFT == 0 )); then
+  print -r -- "Nothing to do."
+  [[ $MODE == check ]] && print -n $EPOCHSECONDS >| $STAMP
+  exit 0
+fi
+
+if [[ $MODE == check ]]; then
+  print -n $EPOCHSECONDS >| $STAMP
+  print -r -- "$DRIFT things need attention. Run ./setup to deal with them."
+  exit 1
+fi
+print -r -- "$DRIFT things still need attention, see the TODO lines above."
+exit 1

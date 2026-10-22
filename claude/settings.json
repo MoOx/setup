@@ -1,0 +1,35 @@
+{
+  "language": "french",
+  "theme": "light",
+  "agentPushNotifEnabled": true,
+  "inputNeededNotifEnabled": true,
+  "attribution": {
+    "commit": "",
+    "pr": "",
+    "sessionUrl": false
+  },
+  "permissions": {
+    "deny": [
+      "mcp__claude_ai_Notion__notion-create-pages",
+      "mcp__claude_ai_Notion__notion-update-page",
+      "mcp__claude_ai_Notion__notion-move-pages",
+      "mcp__claude_ai_Notion__notion-duplicate-page",
+      "mcp__claude_ai_Notion__notion-create-database",
+      "mcp__claude_ai_Notion__notion-update-database",
+      "mcp__claude_ai_Notion__notion-create-data-source",
+      "mcp__claude_ai_Notion__notion-update-data-source",
+      "mcp__claude_ai_Notion__notion-create-view",
+      "mcp__claude_ai_Notion__notion-update-view",
+      "mcp__claude_ai_Notion__notion-create-comment",
+      "mcp__claude_ai_Notion__notion-create-attachment",
+      "mcp__claude_ai_Notion__notion-create-file-upload",
+      "mcp__claude_ai_Notion__notion-create-folder",
+      "mcp__claude_ai_Notion__notion-update-folder",
+      "mcp__claude_ai_Notion__notion-upload-skill",
+      "mcp__claude_ai_Notion__notion-convert-page-to-skill",
+      "mcp__claude_ai_Notion__notion-spawn-session",
+      "mcp__claude_ai_Notion__notion-send-message-to-session",
+      "mcp__claude_ai_Notion__notion-stop-session"
+    ]
+  }
+}

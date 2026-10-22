@@ -1,0 +1,97 @@
+#!/usr/bin/env zsh
+# Report git work that exists only on this machine: unpushed commits, stashes,
+# local-only branches and repos with no remote at all.
+#
+#   unpushed              # compact report on ~/dev
+#   unpushed --full       # one line per branch and per stash
+#   unpushed ~/some/dir   # another root
+#
+# Exits 1 when something is local-only, so `setup --check` and the weekly agent
+# can use it as a plain test.
+
+emulate -L zsh
+set -uo pipefail
+
+full=0
+root="$HOME/dev"
+for arg in "$@"; do
+  case "$arg" in
+    --full) full=1 ;;
+    -h|--help) sed -n '2,12p' "$0" | sed 's/^# \{0,1\}//'; exit 0 ;;
+    *) root="${arg%/}" ;;
+  esac
+done
+
+[[ -d "$root" ]] || { print -u2 "unpushed: no such directory: $root"; exit 2 }
+
+# Depth 4 reaches ~/dev/_clients/<client>/<repo>/.git. Pruning keeps it quick
+# and avoids walking vendored checkouts.
+repos=("${(@f)$(find "$root" -maxdepth 4 \( -name node_modules -o -name .venv -o -name vendor \) -prune \
+  -o -name .git -type d -print 2>/dev/null | sort)}")
+
+typeset -i n_repos=0 n_commits=0 n_stashes=0 n_noremote=0 n_dirty=0
+
+for gitdir in $repos; do
+  [[ -n "$gitdir" ]] || continue
+  d="${gitdir:h}"
+  name="${d#$root/}"
+
+  remotes=$(git -C "$d" remote 2>/dev/null)
+  # --branches --not --remotes is "commits on a local branch that no remote has".
+  unpushed=$(git -C "$d" log --branches --not --remotes --oneline 2>/dev/null)
+  stashes=$(git -C "$d" stash list 2>/dev/null)
+  dirty=$(git -C "$d" status --porcelain 2>/dev/null | grep -c . || true)
+
+  nc=0; [[ -n "$unpushed" ]] && nc=$(print -r -- "$unpushed" | grep -c .)
+  ns=0; [[ -n "$stashes" ]] && ns=$(print -r -- "$stashes" | grep -c .)
+
+  # A repo with no remote is the worst case: every commit is local-only.
+  if [[ -z "$remotes" ]]; then
+    (( n_noremote++ ))
+  elif (( nc == 0 && ns == 0 && dirty == 0 )); then
+    continue
+  fi
+
+  (( n_repos++ ))
+  (( n_commits += nc ))
+  (( n_stashes += ns ))
+  (( dirty > 0 )) && (( n_dirty++ ))
+
+  flag=""
+  [[ -z "$remotes" ]] && flag="  <-- NO REMOTE"
+  printf '%-38s %3d commits  %2d stash  %3d dirty%s\n' "$name" "$nc" "$ns" "$dirty" "$flag"
+
+  (( full )) || continue
+
+  # Per branch, so a branch no remote tracks is visible as such.
+  git -C "$d" for-each-ref --format='%(refname:short)|%(upstream:short)' refs/heads 2>/dev/null \
+  | while IFS='|' read -r branch upstream; do
+      bc=$(git -C "$d" log "$branch" --not --remotes --oneline 2>/dev/null)
+      [[ -n "$bc" ]] || continue
+      count=$(print -r -- "$bc" | grep -c .)
+      if [[ -n "$upstream" ]]; then
+        printf -- '    %-34s %3d commits (tracks %s)\n' "$branch" "$count" "$upstream"
+      else
+        printf -- '    %-34s %3d commits  NO UPSTREAM\n' "$branch" "$count"
+      fi
+      git -C "$d" log "$branch" --not --remotes --format='      %h %ad %s' --date=short 2>/dev/null | head -5
+      (( count > 5 )) && printf -- '      ... and %d more\n' $(( count - 5 ))
+    done
+
+  if [[ -n "$stashes" ]]; then
+    git -C "$d" stash list --date=short --format='    stash %gd %cd %s' 2>/dev/null
+  fi
+done
+
+print
+if (( n_repos == 0 )); then
+  print "Nothing local-only under $root."
+  exit 0
+fi
+
+printf '%d repos: %d unpushed commits, %d stashes, %d with uncommitted changes' \
+  "$n_repos" "$n_commits" "$n_stashes" "$n_dirty"
+(( n_noremote > 0 )) && printf ', %d WITH NO REMOTE' "$n_noremote"
+print .
+(( full )) || print "Run with --full for the per-branch detail."
+exit 1

@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "additionalDirectories": [
+      "/Users/moox/Library/Mobile Documents/com~apple~CloudDocs/.home"
+    ],
+    "deny": [
+      "Read(~/.ssh/id_*)",
+      "Read(**/.ssh/id_*)",
+      "Read(**/id_rsa)",
+      "Read(**/id_ed25519)",
+      "Read(**/id_ecdsa)",
+      "Read(**/*.pem)",
+      "Read(**/.env*)",
+      "Read(~/Library/Keychains/**)",
+      "Bash(security find-generic-password:*)",
+      "Bash(security find-internet-password:*)"
+    ]
+  }
+}

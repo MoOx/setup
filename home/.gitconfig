@@ -1,0 +1,159 @@
+[user]
+  name = Max Thirouin
+  email = git@moox.io
+	signingkey = ~/.ssh/id_ed25519.pub
+
+[github]
+  user = MoOx
+
+[core]
+  editor = open -Wne
+
+[credential]
+  helper = osxkeychain
+
+[url "ssh://git@github.com/"]
+  insteadOf = https://github.com/
+[url "ssh://git@gitlab.com/"]
+  insteadOf = https://gitlab.com/
+[url "ssh://git@bitbucket.org/"]
+  insteadOf = https://bitbucket.org/
+
+[gpg]
+	format = ssh
+
+[commit]
+  gpgsign = true
+
+[pull]
+  rebase = true
+
+[push]
+  # Push only current branch by default
+  default = current
+
+  # Push tags by default
+  followTags = true
+	autoSetupRemote = true
+
+[branch]
+  autosetuprebase = always
+	autoSetupMerge = simple
+
+[merge]
+  # Include summaries of merged commits in newly created merge commit messages
+  log = true
+
+[apply]
+  # Detect whitespace errors when applying a patch
+  whitespace = fix
+
+[core]
+  # ignore .DS_Store and shit here
+	excludesfile = ~/.gitignore_global
+
+  quotepath = false
+
+  # properly handle line endings
+  # https://help.github.com/articles/dealing-with-line-endings/
+  autocrlf = input
+
+  # Treat spaces before tabs and all kinds of trailing whitespace as an error
+  # [default] trailing-space: looks for spaces at the end of a line
+  # [default] space-before-tab: looks for spaces before tabs at the beginning of a line
+  whitespace = space-before-tab,-indent-with-non-tab,trailing-space
+
+  # Make `git rebase` safer on macOS
+  # More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
+  trustctime = false
+
+  # faster git status
+  # https://news.ycombinator.com/item?id=11388479
+  untrackedCache = true
+
+[color]
+  ui = auto
+
+[color "status"]
+  untracked = cyan
+
+[alias]
+  co = checkout
+  cb = checkout -b
+
+  chp = cherry-pick
+
+  all = add -A .
+
+  c = commit
+  cm = commit -m
+  ca = commit --all
+  cam = commit --all -m
+  caa = commit --all --amend
+  caam = commit --all --amend -m
+  a = commit --amend --no-edit
+  aa = commit --amend --all --no-edit
+
+  rem = "!git checkout main && git pull && git checkout - && git rebase main"
+  remi = "!git checkout main && git pull && git checkout - && git rebase main -i"
+  rema = "!git checkout master && git pull && git checkout - && git rebase master"
+  remai = "!git checkout master && git pull && git checkout - && git rebase master -i"
+  red = "!git checkout dev && git pull && git checkout - && git rebase dev"
+  redi = "!git checkout dev && git pull && git checkout - && git rebase dev -i"
+  redev = "!git checkout develop && git pull && git checkout - && git rebase develop"
+  redevi = "!git checkout develop && git pull && git checkout - && git rebase develop -i"
+  r = rebase
+  rc = rebase --continue
+  ra = rebase --abort
+  rs = rebase --skip
+
+  g = pull --all
+
+  p = push
+  pf = push --force-with-lease
+  pff = push --force
+
+  clear= clean -f -d
+
+  st = status
+  sts = status -s
+
+  s = stash
+  su = stash -u
+  sslast = stash show -p stash@{0}
+
+  undo = reset --soft HEAD~1
+
+  amend-author = commit --amend --no-edit --author
+
+  hammer = "!git add -A . && git commit --amend --reuse-message=HEAD && git push -f"
+
+  # View abbreviated SHA, description, and history graph of the latest 20 commits
+  l = log --pretty=oneline -n 20 --graph --abbrev-commit
+
+  # stash, pull, stash pop
+  sp = "!git stash -u && git pull && git stash pop"
+
+  # delete a tag on the remote and locally
+  delete-tag = "!f() { \
+    if [ \"$1\" != \"\" ]; then \
+      git tag -d $1 && git push --delete origin $1; \
+    fi \
+  }; f"
+
+  delete-all-except-main = !git branch | grep -v main | xargs git branch -D
+  delete-all-except-master = !git branch | grep -v master | xargs git branch -D
+
+  # List contributors with number of commits
+  contributors = shortlog --summary --numbered
+
+  # search in content
+  search = "!git rev-list --all | xargs git grep"
+  
+  # move current work into a new branch
+  cut = "!git stash -u && git checkout main && git pull && git checkout -b $1 && git stash pop"
+  
+[init]
+  defaultBranch = main
+[gpg "ssh"]
+	allowedSignersFile = ~/setup/allowed_signers

@@ -1,0 +1,7 @@
+# macOS metadata
+.DS_Store
+
+# random log files
+*.log
+
+**/.claude/settings.local.json

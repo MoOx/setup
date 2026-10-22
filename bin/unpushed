@@ -59,7 +59,15 @@ for gitdir in $repos; do
 
   flag=""
   [[ -z "$remotes" ]] && flag="  <-- NO REMOTE"
-  printf '%-38s %3d commits  %2d stash  %3d dirty%s\n' "$name" "$nc" "$ns" "$dirty" "$flag"
+
+  # The date of the most recent local-only commit: a branch from 2016 and a
+  # commit from last week are not the same risk, and without the date the recent
+  # work drowns in the archaeology.
+  local last=''
+  (( nc > 0 )) && last=$(git -C "$d" log --branches --not --remotes -1 --format=%ad --date=short 2>/dev/null)
+
+  printf '%-32s %3d commits  %2d stash  %3d dirty  %-10s%s\n' \
+    "$name" "$nc" "$ns" "$dirty" "$last" "$flag"
 
   (( full )) || continue
 

@@ -60,6 +60,7 @@ brew "pinentry-mac"                 # lets gnupg read its passphrase from the ke
 
 cask "openlogi"                     # local-first alternative to Logitech Options+
 cask "temurin@21"                   # JDK, for Android builds
+cask "maccy"                        # clipboard history, replaces Flycut
 
 # Mac App Store, listed by `mas list`. These reinstall without a browser and
 # without a licence key, which is why they are worth declaring. TODO Max: prune
@@ -68,7 +69,7 @@ mas "Xcode", id: 497799835
 mas "Pixelmator Pro", id: 1289583905
 mas "Infuse", id: 1136220934
 mas "One Markdown", id: 1507139439
-mas "Flycut", id: 442160987
+mas "Flycut", id: 442160987         # TODO Max: unmaintained since 2020, remove once Maccy has replaced the habit
 mas "DevCleaner", id: 1388020431
 mas "The Unarchiver", id: 425424353
 mas "1Blocker", id: 1365531024

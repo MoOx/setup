@@ -69,7 +69,6 @@ mas "Xcode", id: 497799835
 mas "Pixelmator Pro", id: 1289583905
 mas "Infuse", id: 1136220934
 mas "One Markdown", id: 1507139439
-mas "Flycut", id: 442160987         # TODO Max: unmaintained since 2020, remove once Maccy has replaced the habit
 mas "DevCleaner", id: 1388020431
 mas "The Unarchiver", id: 425424353
 mas "1Blocker", id: 1365531024
@@ -88,6 +87,9 @@ mas "Balatro", id: 6502451661
 #   ever disappears, `brew install python3` is one command.
 # - mole, uninstalled. Its CLI was not the right shape for browsing and
 #   cleaning, which is what Pearcleaner already does with a window.
+# - Flycut, replaced by Maccy: its last release was 2020. Until the App Store
+#   copy is removed with `sudo mas uninstall 442160987`, `setup --check` will
+#   report it as installed and undeclared, which is the reminder.
 #
 # - 8 orphan libraries that were installed by hand and that nothing needs any
 #   more: jpeg-xl, libass, libbluray, libraw, librist, librsvg, libssh, srt.

@@ -233,7 +233,12 @@ step_ssh() {
   [[ $MODE == check ]] && return
   if confirm "Generate ${key/#$HOME/\~} for $(hostname -s)?"; then
     mkdir -p -m 700 -- "$HOME/.ssh"
-    ssh-keygen -t ed25519 -C "$(whoami)@$(hostname -s)" -f "$key" \
+    # Interactive: ssh-keygen asks for a passphrase, which is the point, and
+    # ssh/config stores it in the keychain so it is asked once ever. Without a
+    # terminal (CI) there is nobody to ask, and the key is a throwaway anyway.
+    local -a pass_args=()
+    [[ -t 0 ]] || pass_args=(-N '')
+    ssh-keygen -t ed25519 -C "$(whoami)@$(hostname -s)" -f "$key" $pass_args \
       && ok "created, public key:" && print -r -- "       $(<$key.pub)"
   fi
 }

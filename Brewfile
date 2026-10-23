@@ -22,6 +22,7 @@ brew "mas"                          # Mac App Store CLI, needed to inventory ins
 brew "gh"                           # GitHub CLI
 brew "git-cliff"                    # changelog generator, used by the changelog function
 brew "gitleaks"                     # secret scanner, run by this repo pre-commit hook
+brew "age"                          # encrypts the offsite archive, see bin/offsite
 
 # Languages and version managers
 brew "fnm"                          # Node version manager

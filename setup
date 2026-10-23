@@ -42,6 +42,7 @@ STEPS=(
   ssh      'This machine own SSH key'
   secrets  'Secrets in the login keychain, from secrets.tsv'
   dev      'Repos under ~/dev, and what exists only on this machine'
+  backup   'Fonts, Claude projects and .env files, copied to iCloud Drive'
   agent    'The weekly check, as a LaunchAgent'
 )
 
@@ -223,6 +224,29 @@ step_packages() {
     brew upgrade && ok "up to date" || fail "brew upgrade did not finish"
   fi
 
+  # Apps with no cask, declared in apps-manual.md as "- Name: url". Matched by
+  # prefix, because some ship their version in the application name.
+  local manual=$REPO/apps-manual.md
+  if [[ -f $manual ]]; then
+    local -a absent urls found
+    local line mname murl
+    while IFS= read -r line; do
+      [[ $line == -\ *:\ http* ]] || continue
+      mname=${${line#- }%%:*}
+      murl=${line#*: }
+      found=(/Applications/$mname*.app(N) $HOME/Applications/$mname*.app(N))
+      (( $#found )) && continue
+      absent+=("$mname"); urls+=("$murl")
+    done < "$manual"
+    if (( $#absent )); then
+      local aplural=s; (( $#absent == 1 )) && aplural=
+      todo "$#absent app$aplural to reinstall by hand: ${(j:, :)absent}"
+      if [[ $MODE != check ]] && confirm "Open their download pages?"; then
+        open -- $urls
+      fi
+    fi
+  fi
+
   # Apps installed from a website that a cask could take over. A note and not a
   # TODO on purpose: it is a standing opportunity, not something broken, and
   # turning it into drift would nag about twenty apps forever.
@@ -353,7 +377,7 @@ step_secrets() {
   # step only fills what is missing, so a machine that is already set up has
   # nothing to answer.
   local rotate=0
-  [[ ${SINGLE_STEP:-} == secrets ]] && rotate=1
+  [[ $#STEP_ARGS == 1 && ${STEP_ARGS[1]:-} == secrets ]] && rotate=1
 
   local -a names wheres recoveries
   local name where what recovery
@@ -438,6 +462,34 @@ step_secrets() {
     fi
     value=''
   done
+}
+
+step_backup() {
+  if [[ ! -x $REPO/bin/backup ]]; then
+    note "skipped, bin/backup is missing"
+    return
+  fi
+  if [[ ! -f $REPO/backup.pub ]]; then
+    todo "no key pair yet, run: ./bin/backup init"
+    return
+  fi
+
+  local dir=$("$REPO/bin/backup" path)
+  local pretty=${dir/#$HOME/\~}
+
+  # No fonts here but fonts in the backup: this is a new machine.
+  if [[ -d $dir/Library/Fonts && ! -d $HOME/Library/Fonts ]]; then
+    todo "$pretty holds a backup to paste"
+    [[ $MODE == check ]] && return
+    confirm "Paste it now?" && "$REPO/bin/backup" paste
+    return
+  fi
+
+  if [[ $MODE == check ]]; then
+    [[ -d $dir ]] && ok "$pretty" || todo "nothing copied to $pretty yet"
+  else
+    "$REPO/bin/backup" copy
+  fi
 }
 
 step_agent() {

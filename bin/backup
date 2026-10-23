@@ -1,0 +1,109 @@
+#!/usr/bin/env zsh
+# Copy what no declaration can rebuild to iCloud Drive, and paste it back on
+# another machine.
+#
+#   bin/backup copy     push to iCloud Drive
+#   bin/backup paste    pull back, never overwriting a local file
+#   bin/backup init     create the key pair that encrypts the .env files, once
+#   bin/backup path     print the backup directory
+#
+# Fonts and Claude projects travel as plain files: nothing in them is secret and
+# rsync only sends what changed. The .env files travel in one age archive,
+# because the rule here is that no secret value sits outside the keychain, and
+# iCloud Drive is outside it.
+
+emulate -L zsh
+set -uo pipefail
+
+REPO=${0:A:h:h}
+dir="$HOME/Library/Mobile Documents/com~apple~CloudDocs/setup/backup"
+pretty=${dir/#$HOME/\~}
+pub=$REPO/backup.pub
+keyname=BACKUP_KEY
+
+# Relative to $HOME. Add a line to back something else up.
+PLAIN=(Library/Fonts .claude/projects)
+
+die() { print -u2 -- "$1"; exit 2 }
+
+# The .env files under ~/dev that git does not track: the .env.example are
+# versioned already, the real ones exist nowhere else.
+env_files() {
+  find "$HOME/dev" -maxdepth 5 \( -name node_modules -o -name .venv -o -name vendor \) -prune \
+    -o -name '.env*' -type f -print 2>/dev/null | sort | while read -r f; do
+    git -C "${f:h}" ls-files --error-unmatch "$f" >/dev/null 2>&1 || print -r -- "${f#$HOME/}"
+  done
+}
+
+identity() {
+  security find-generic-password -a "$USER" -s "$keyname" -w 2>/dev/null \
+    || die "$keyname is not in the keychain, run: bin/backup init"
+}
+
+case ${1:-} in
+  path) print -r -- "$dir"; exit 0 ;;
+
+  init)
+    [[ -f $pub ]] && die "$pub already exists"
+    security find-generic-password -a "$USER" -s "$keyname" >/dev/null 2>&1 \
+      && die "$keyname already in the keychain"
+    (( $+commands[age-keygen] )) || die "age is missing, run ./setup packages"
+    # A directory, not mktemp: age-keygen refuses to write over a file that
+    # already exists, and mktemp creates one.
+    umask 077
+    tmpdir=$(mktemp -d)
+    tmp=$tmpdir/key.txt
+    pubkey=$(age-keygen -o "$tmp" 2>&1 | sed -n 's/^Public key: //p')
+    [[ -n $pubkey ]] || { rm -rf -- "$tmpdir"; die "age-keygen gave no public key" }
+    security add-generic-password -a "$USER" -s "$keyname" -U -w "$(cat "$tmp")" 2>/dev/null \
+      || { rm -rf -- "$tmpdir"; die "could not store $keyname in the keychain" }
+    rm -rf -- "$tmpdir"
+    print -r -- "$pubkey" >| "$pub"
+    print "key pair created, public half in ${pub#$REPO/}"
+    print "put the private half on paper, nothing else decrypts the .env archive:"
+    print '  security find-generic-password -a $USER -s BACKUP_KEY -w'
+    exit 0
+    ;;
+
+  copy)
+    [[ -f $pub ]] || die "no $pub, run: bin/backup init"
+    (( $+commands[age] )) || die "age is missing, run ./setup packages"
+    mkdir -p -- "$dir"
+    for p in $PLAIN; do
+      [[ -d $HOME/$p ]] || continue
+      mkdir -p -- "$dir/${p:h}"
+      # No --delete: a backup that mirrors a local deletion is not a backup.
+      rsync -a "$HOME/$p/" "$dir/$p/" || die "rsync failed on $p"
+      print "copied   $p"
+    done
+    files=("${(@f)$(env_files)}")
+    files=(${files:#})
+    if (( $#files )); then
+      tmp=${TMPDIR:-/tmp}/backup-env.$$
+      tar czf - -C "$HOME" -- $files | age -r "$(cat "$pub")" -o "$tmp" \
+        || { rm -f -- "$tmp"; die "could not encrypt the .env files" }
+      mv -- "$tmp" "$dir/env.age"
+      print "copied   $#files .env files, encrypted"
+    fi
+    print "in $pretty"
+    exit 0
+    ;;
+
+  paste)
+    [[ -d $dir ]] || die "no backup at $pretty"
+    for p in $PLAIN; do
+      [[ -d $dir/$p ]] || continue
+      mkdir -p -- "$HOME/$p"
+      # --ignore-existing: a local file always wins.
+      rsync -a --ignore-existing "$dir/$p/" "$HOME/$p/" || die "rsync failed on $p"
+      print "pasted   $p"
+    done
+    if [[ -f $dir/env.age ]]; then
+      age -d -i =(identity) "$dir/env.age" | tar xzkf - -C "$HOME" 2>/dev/null
+      print "pasted   the .env files, existing ones left alone"
+    fi
+    exit 0
+    ;;
+
+  *) die "usage: ${0:t} copy|paste|init|path" ;;
+esac

@@ -21,6 +21,7 @@ print "=== $(date '+%Y-%m-%d %H:%M') ==="
 # records where the repositories came from, which is only useful if it is
 # current.
 [[ -x bin/dev-snapshot ]] && ./bin/dev-snapshot >/dev/null 2>&1
+[[ -x bin/backup && -f backup.pub ]] && ./bin/backup copy >/dev/null 2>&1
 
 output=$(./setup --check 2>&1)
 # `status` is read-only in zsh, a synonym for $?, so the result needs its own name.

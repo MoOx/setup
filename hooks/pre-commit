@@ -30,7 +30,7 @@ if gitleaks git --pre-commit --staged --no-banner --redact --log-level warn 2>/d
   exit 0
 fi
 
-gitleaks git --pre-commit --staged --no-banner --redact >&2
+gitleaks git --pre-commit --staged --no-banner --redact --verbose >&2
 
 print -u2 ""
 print -u2 "pre-commit: gitleaks found a secret in what you are about to commit."

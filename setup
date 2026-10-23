@@ -275,6 +275,11 @@ step_macos() {
 }
 
 step_ssh() {
+  # ssh/config is linked here and not by step_home, because home/ links its
+  # top-level entries: a home/.ssh directory would turn ~/.ssh itself into a
+  # link to the repo, and the private keys with it.
+  ensure_link "$REPO/home/.ssh/config" "$HOME/.ssh/config"
+
   # One key per machine, never copied, never overwritten.
   local key=$HOME/.ssh/id_ed25519
   if [[ -f $key.pub ]]; then

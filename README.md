@@ -27,7 +27,11 @@ gets that out of the way.
 ./setup --help     # the list of steps
 bin/unpushed       # git work that exists only on this machine
 bin/unpushed --clean   # triage it: push, delete or keep
+bin/apps           # apps Homebrew does not manage, and the casks that could
+bin/apps --all     # every app, its source and its last use
 ```
+
+To look a cask up in a browser: <https://formulae.brew.sh/cask/>
 
 ## Contents
 

@@ -1,0 +1,106 @@
+#!/usr/bin/env zsh
+# Report applications Homebrew does not manage, and say which ones a cask could
+# take over. The point is the habit: an app installed from a website is fine
+# until the machine has to be rebuilt, and then nobody remembers where it came
+# from.
+#
+#   apps            # only what is not managed, with the cask when there is one
+#   apps --all      # every app, its source and its last use
+#
+# Exits 1 when an unmanaged app has a cask available, so `setup --check` and the
+# weekly agent can use it as a plain test.
+
+emulate -L zsh
+set -uo pipefail
+
+all=0
+for arg in "$@"; do
+  case "$arg" in
+    --all) all=1 ;;
+    -h|--help) sed -n '2,/^$/p' "${0:A}" | sed 's/^# \{0,1\}//'; exit 0 ;;
+    *) print -u2 "apps: unknown option: $arg"; exit 2 ;;
+  esac
+done
+
+CASK_NAMES=${HOMEBREW_CACHE:-$HOME/Library/Caches/Homebrew}/api/cask_names.txt
+
+# An app installed by a cask gets a symlink to it in the Caskroom, which is a
+# filesystem fact: it needs no `brew` call, so this stays fast and works while
+# brew is busy installing something else.
+typeset -A managed
+for link in /opt/homebrew/Caskroom/*/*/*.app(N) /usr/local/Caskroom/*/*/*.app(N); do
+  managed[${link:t:r}]=${${link:h:h}:t}
+done
+
+# Deriving a token from the app name is right most of the time and wrong often
+# enough to matter, so the known exceptions are listed rather than guessed.
+typeset -A alias_token=(
+  'iTerm'                 'iterm2'
+  'Docker'                'docker-desktop'
+  'GitHub Desktop'        'github'
+  'Epic Games Launcher'   'epic-games'
+  'Mixed In Key 11'       'mixed-in-key'
+  'DJ.Studio'             'djstudio'
+  'BlockBlock Helper'     'blockblock'
+  'BlockBlock Installer'  'blockblock'
+)
+
+token_for() {
+  local name=$1
+  [[ -n ${alias_token[$name]:-} ]] && { print -r -- "${alias_token[$name]}"; return }
+  print -r -- "${${name:l}//[^a-z0-9]/-}" | sed -E 's/-+/-/g; s/^-|-$//g'
+}
+
+typeset -i n_unmanaged=0 n_available=0
+typeset -a rows
+
+for app in /Applications/*.app(N) $HOME/Applications/*.app(N); do
+  name=${app:t:r}
+
+  if [[ -e $app/Contents/_MASReceipt ]]; then
+    source='App Store'; cask=''
+  elif [[ -n ${managed[$name]:-} ]]; then
+    source='cask'; cask=${managed[$name]}
+  else
+    source='by hand'
+    (( n_unmanaged++ ))
+    cask=''
+    if [[ -r $CASK_NAMES ]]; then
+      tok=$(token_for "$name")
+      if grep -qxF -- "$tok" "$CASK_NAMES" 2>/dev/null; then
+        cask=$tok
+        (( n_available++ ))
+      fi
+    fi
+  fi
+
+  (( all )) || [[ $source == 'by hand' ]] || continue
+
+  used=$(mdls -name kMDItemLastUsedDate -raw "$app" 2>/dev/null | cut -d' ' -f1)
+  [[ -z $used || $used == '(null)' ]] && used='never'
+
+  if [[ $source == 'by hand' && -n $cask ]]; then
+    rows+=("$(printf '%-34s %-10s %-11s cask available: %s' "$name" "$source" "$used" "$cask")")
+  else
+    rows+=("$(printf '%-34s %-10s %-11s %s' "$name" "$source" "$used" "$cask")")
+  fi
+done
+
+print -rl -- ${(o)rows}
+print
+
+if [[ ! -r $CASK_NAMES ]]; then
+  print "Cask list not cached, run any brew command once to fetch it."
+  exit 0
+fi
+
+if (( n_available == 0 )); then
+  print "$n_unmanaged apps installed by hand, none of which a cask covers."
+  exit 0
+fi
+
+print "$n_unmanaged apps installed by hand, $n_available of which a cask covers."
+print "Adopt one with: brew install --cask --adopt <token>"
+print "An adoption refused on a version mismatch means the installed copy is behind:"
+print "  brew install --cask --force <token>   # replaces it with the current version"
+exit 1

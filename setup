@@ -213,6 +213,15 @@ step_packages() {
   local outdated
   outdated=$(brew outdated --quiet 2>/dev/null | grep -c . || true)
   (( outdated > 0 )) && note "$outdated packages are behind, run: brew upgrade"
+
+  # Apps installed from a website that a cask could take over. A note and not a
+  # TODO on purpose: it is a standing opportunity, not something broken, and
+  # turning it into drift would nag about twenty apps forever.
+  if [[ -x $REPO/bin/apps ]]; then
+    local summary
+    summary=$("$REPO/bin/apps" 2>/dev/null | grep 'installed by hand' | head -1)
+    [[ -n $summary ]] && note "$summary, see bin/apps"
+  fi
 }
 
 step_home() {

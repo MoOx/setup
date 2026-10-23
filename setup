@@ -8,7 +8,7 @@
 #   ./setup            interactive: report, propose, ask
 #   ./setup --check     read-only, exits non-zero on drift
 #   ./setup --yes       non-interactive, takes the defaults (new machine, CI)
-#   ./setup <step>      run a single step, e.g. ./setup brew
+#   ./setup <step>...   run only those steps, e.g. ./setup home claude
 #   ./setup --help      the list of steps, generated from the registry below
 #
 # Dependencies: zsh, shipped with macOS. Homebrew is installed by the brew step,
@@ -463,14 +463,21 @@ step_agent() {
 }
 
 step_dev() {
-  if [[ -x $REPO/bin/unpushed ]]; then
-    # unpushed prints its own table and summary. The todo line is there so the
-    # drift has a name, because the weekly notification is built from the TODO
-    # lines and a bare counter gives it nothing to show.
-    "$REPO/bin/unpushed" || todo "work exists only on this machine, triage it with ./bin/unpushed --clean"
-  else
+  if [[ ! -x $REPO/bin/unpushed ]]; then
     note "skipped, bin/unpushed is missing"
+    return
   fi
+  # A fresh machine has no ~/dev, which is not drift. Without this, unpushed
+  # exits 2 for the missing directory and the step reported unpushed work on a
+  # machine that holds no repository at all.
+  if [[ ! -d $HOME/dev ]]; then
+    note "no ~/dev yet"
+    return
+  fi
+  # unpushed prints its own table and summary. The todo line is there so the
+  # drift has a name, because the weekly notification is built from the TODO
+  # lines and a bare counter gives it nothing to show.
+  "$REPO/bin/unpushed" || todo "work exists only on this machine, triage it with ./bin/unpushed --clean"
 }
 
 # --- driver --------------------------------------------------------------
@@ -498,14 +505,16 @@ run_step() {
   return 2
 }
 
-SINGLE_STEP=''
+# A list, not one name: `setup hooks macos` used to keep only the last one and
+# run it without a word about the others.
+STEP_ARGS=()
 for arg in "$@"; do
   case $arg in
     --check)     MODE=check ;;
     --yes|-y)    ASSUME_YES=1 ;;
     -h|--help)   usage; exit 0 ;;
     -*)          print -ru2 -- "setup: unknown option: $arg"; exit 2 ;;
-    *)           SINGLE_STEP=$arg ;;
+    *)           STEP_ARGS+=("$arg") ;;
   esac
 done
 
@@ -519,8 +528,10 @@ if [[ $MODE == apply && -f $STAMP ]]; then
   fi
 fi
 
-if [[ -n $SINGLE_STEP ]]; then
-  run_step "$SINGLE_STEP" || exit $?
+if (( $#STEP_ARGS )); then
+  for arg in $STEP_ARGS; do
+    run_step "$arg" || exit $?
+  done
 else
   for (( i = 1; i <= $#STEPS; i += 2 )); do
     run_step "$STEPS[i]"

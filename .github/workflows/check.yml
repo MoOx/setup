@@ -1,0 +1,75 @@
+# The one thing a machine cannot tell you: that `setup` still runs.
+#
+# The risk this repository exists to cover is a typo in `setup` that shows up
+# the day a machine has to be rebuilt, which is the one day there is no time to
+# debug it. So every push runs the script on a clean macOS runner, free on a
+# public repository.
+#
+# What a runner cannot reach, and stays a manual check on a real machine:
+# casks and Mac App Store apps, which want a desktop session and an Apple
+# account; the login keychain secrets; the LaunchAgent, since there is no GUI
+# launchd domain to load it into.
+
+name: check
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Every script parses
+        run: |
+          for f in setup macos.sh bin/* hooks/*; do
+            [ -f "$f" ] || continue
+            zsh -n "$f"
+          done
+
+      - name: The help text builds from the step registry
+        run: ./setup --help
+
+      - name: An unknown step is refused
+        run: |
+          set +e
+          ./setup --check nope >/dev/null 2>&1
+          code=$?
+          set -e
+          [ "$code" -eq 2 ] || { echo "expected exit 2, got $code"; exit 1; }
+
+      - name: setup --check walks every step
+        run: |
+          set +e
+          out=$(./setup --check 2>&1)
+          code=$?
+          set -e
+          printf '%s\n' "$out"
+          # Drift is expected on a runner, a crash is not, and both exit 1. The
+          # summary line is the proof: it prints only once every step has run.
+          printf '%s\n' "$out" | tail -1 \
+            | grep -Eq 'Nothing to do\.|thing needs attention\.|things need attention\.' \
+            || { echo "setup --check stopped before its summary (exit $code)"; exit 1; }
+
+      - name: The Brewfile parses
+        run: brew bundle list --file=Brewfile >/dev/null
+
+      - name: The steps that need no account apply from scratch
+        run: |
+          ./setup --yes hooks home claude macos
+          # And report clean afterwards, which is what proves they really ran.
+          ./setup --check hooks home claude macos
+
+      - name: No secret in the tree
+        run: |
+          brew install gitleaks
+          # The working tree, which is what the pre-commit hook guards. History
+          # is not scanned here: a finding in a six-year-old commit would paint
+          # every later run red without being something a push can fix.
+          gitleaks dir . --no-banner --redact

@@ -21,8 +21,14 @@ pretty=${dir/#$HOME/\~}
 pub=$REPO/backup.pub
 keyname=BACKUP_KEY
 
-# Relative to $HOME. Add a line to back something else up.
-PLAIN=(Library/Fonts .claude/projects)
+# Relative to $HOME, a directory or a single file. Add an entry to back
+# something else up.
+#
+# .claude/projects holds the conversations, one .jsonl per session, plus the
+# per-project memory. Its directory names encode absolute paths, as in
+# -Users-moox-dev--clients-lyv, so the history is found again only on a machine
+# with the same user name and the same layout under ~/dev.
+PLAIN=(Library/Fonts .claude/projects .claude/history.jsonl)
 
 die() { print -u2 -- "$1"; exit 2 }
 
@@ -69,11 +75,16 @@ case ${1:-} in
     [[ -f $pub ]] || die "no $pub, run: bin/backup init"
     (( $+commands[age] )) || die "age is missing, run ./setup packages"
     mkdir -p -- "$dir"
+    # No --delete anywhere: a backup that mirrors a local deletion is not one.
     for p in $PLAIN; do
-      [[ -d $HOME/$p ]] || continue
       mkdir -p -- "$dir/${p:h}"
-      # No --delete: a backup that mirrors a local deletion is not a backup.
-      rsync -a "$HOME/$p/" "$dir/$p/" || die "rsync failed on $p"
+      if [[ -d $HOME/$p ]]; then
+        rsync -a "$HOME/$p/" "$dir/$p/" || die "rsync failed on $p"
+      elif [[ -f $HOME/$p ]]; then
+        rsync -a "$HOME/$p" "$dir/$p" || die "rsync failed on $p"
+      else
+        continue
+      fi
       print "copied   $p"
     done
     files=("${(@f)$(env_files)}")
@@ -91,11 +102,17 @@ case ${1:-} in
 
   paste)
     [[ -d $dir ]] || die "no backup at $pretty"
+    # --ignore-existing: a local file always wins.
     for p in $PLAIN; do
-      [[ -d $dir/$p ]] || continue
-      mkdir -p -- "$HOME/$p"
-      # --ignore-existing: a local file always wins.
-      rsync -a --ignore-existing "$dir/$p/" "$HOME/$p/" || die "rsync failed on $p"
+      if [[ -d $dir/$p ]]; then
+        mkdir -p -- "$HOME/$p"
+        rsync -a --ignore-existing "$dir/$p/" "$HOME/$p/" || die "rsync failed on $p"
+      elif [[ -f $dir/$p ]]; then
+        mkdir -p -- "$HOME/${p:h}"
+        rsync -a --ignore-existing "$dir/$p" "$HOME/$p" || die "rsync failed on $p"
+      else
+        continue
+      fi
       print "pasted   $p"
     done
     if [[ -f $dir/env.age ]]; then

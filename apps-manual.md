@@ -2,71 +2,28 @@
 
 What the `Brewfile` cannot reinstall on its own, and why.
 
-Inventory taken on 2026-10-22: **69 apps**, 11 from the App Store, 56 installed
-by hand, the rest from Homebrew. Sources were read locally, not guessed: an App
-Store app carries a `_MASReceipt` inside its bundle, and last use comes from
-Spotlight's `kMDItemLastUsedDate`.
+Run `bin/apps` for the current state; this file only holds what a command cannot
+work out by itself.
 
-Everything that has a cask has been adopted with `brew install --cask --adopt`,
-so it keeps the installed app in place and makes Homebrew manage it from now on.
-Those apps are in the `Brewfile`. What follows is the remainder.
+## Reinstall by hand
 
-## A cask exists but the installed copy is too old to adopt
-
-`brew install --cask --adopt` only takes over a copy **identical** to what the
-cask would install. These eight refused on a version mismatch, which means the
-installed app is behind. GrandPerspective is the clearest case: 2.2.3 here
-against 3.8.1 in the cask.
-
-Replacing an app is a visible change, so it is left to a decision rather than
-done in passing. One command each, and it updates the app on the way:
-
-```sh
-brew install --cask --force capcut djstudio google-drive grandperspective \
-  knockknock libreoffice microsoft-teams musicbrainz-picard
-```
-
-Once that is done they belong in the `Brewfile` like the others.
-
-## No cask exists: reinstall by hand
-
-| App | Last used | Where it comes from |
-| --- | --- | --- |
-| Safari | daily | ships with macOS, nothing to do |
-| Xcode | 2026-10-20 | App Store, or `xcodes` which is in the Brewfile |
-| SF Symbols Beta | 2026-08-27 | Apple Developer downloads |
-| JPEGmini Pro | 2026-10-21 | **paid**, licence to record |
-| AzireVPN | 2026-10-21 | vendor download |
-| Mixed In Key 11 | 2026-03-08 | **paid**, licence to record. A `mixed-in-key` cask exists but tracks another version |
-| The Tagger | 2026-03-08 | **paid**, licence to record |
-| LG Switch | 2026-02-17 | LG, monitor utility |
-| FAZUA Toolbox | 2026-07-31 | FAZUA, bike drive utility |
-| Nicotine+ | 2026-06-07 | open source, vendor download |
-| Epic Games Launcher | 2026-01-22 | an `epic-games` cask exists, worth adopting |
-
-TODO Max: fill in the licences for the three paid ones. They are what a new
-machine cannot get back on its own.
-
-## Never launched on this machine
-
-Spotlight has no use date for these. Decide once, then either remove them or
-leave them alone knowingly.
-
-| App | Cask available |
+| App | Where it comes from |
 | --- | --- |
-| Conductor | yes |
-| Icon Composer | yes |
-| SF Symbols | yes |
-| Transmission | yes |
-| Yate | yes |
-| iTermAI | yes |
-| Fallout 2 | no |
-| Google Docs, Google Sheets, Google Slides | no, these are Chrome web app shortcuts |
+| JPEGmini Pro | paid, vendor download |
+| The Tagger | paid, vendor download |
+| AzireVPN | vendor download |
+| FAZUA Toolbox | FAZUA, bike drive utility |
+
+## Not quite a cask
+
+| App | What to do |
+| --- | --- |
+| Nicotine+ | `nicotine-plus` exists as a **formula**, not a cask, so it cannot adopt the standalone `.app`. Either keep the app and reinstall it by hand, or switch to the formula and drop the app |
+| iTermAI | ships with iTerm, nothing of its own to install |
 
 ## Settings that do not travel
 
-Apps whose configuration follows no sync and is not worth versioning either.
-Redo them by hand on a new machine.
+No sync, and not worth versioning either. Redo them by hand.
 
 | App | What to redo |
 | --- | --- |
@@ -76,19 +33,23 @@ Redo them by hand on a new machine.
 | rekordbox | library and settings, and the library is irreplaceable |
 | Infuse | library |
 
-## Method, to repeat it later
+## Deliberately not listed
 
-```sh
-# source of each app
-test -e "/Applications/<app>.app/Contents/_MASReceipt" && echo "App Store"
-brew list --cask
+- **Apps that ship with macOS**, Safari first among them.
+- **Xcode**, which comes from the App Store. Note that `xcode-select --install`
+  installs **only the Command Line Tools**, a couple of gigabytes of compiler,
+  git and headers. Xcode itself is a separate install an order of magnitude
+  bigger, and `xcodes` in the `Brewfile` is there to manage its versions.
+- **Beta builds sitting next to a stable one**, such as SF Symbols Beta.
+- **Vendor utilities tied to a device**, such as LG Switch.
+- Games.
 
-# real usage
-mdls -name kMDItemLastUsedDate "/Applications/<app>.app"
+## A trap in the usage dates
 
-# does a cask exist
-grep -x "<token>" ~/Library/Caches/Homebrew/api/cask_names.txt
-```
+`bin/apps` reads `kMDItemLastUsedDate`, and an app that an updater has replaced
+looks **never launched**, because the date belongs to the bundle and the bundle
+is new. SF Symbols, Transmission and Yate all showed `never` for that reason,
+having been updated by Pearcleaner and not opened since.
 
-Deriving the token from the app name misses a lot: iTerm is `iterm2`, Docker is
-`docker-desktop`, GitHub Desktop is `github`. Search the list rather than guess.
+So `never` means "worth asking about", not "unused". Only its owner can tell
+the difference.

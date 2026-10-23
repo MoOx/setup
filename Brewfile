@@ -93,7 +93,28 @@ cask "vlc"
 cask "imageoptim"
 cask "webtorrent"
 cask "sketch"
+cask "capcut"
+cask "djstudio"
+cask "musicbrainz-picard"
+cask "transmission"
+cask "yate"
+
+# Office and cloud
+cask "libreoffice"
+cask "microsoft-teams"
+cask "google-drive"
+
+# Utilities
+cask "grandperspective"             # disk usage treemap
+cask "knockknock"                   # what is persistently installed on the Mac
+
+# Design
+cask "sf-symbols"
+
+# Games and music
 cask "steam"
+cask "epic-games"
+cask "mixed-in-key"
 
 # Mac App Store, listed by `mas list`. These reinstall without a browser and
 # without a licence key, which is why they are worth declaring. TODO Max: prune

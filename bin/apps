@@ -32,6 +32,14 @@ for link in /opt/homebrew/Caskroom/*/*/*.app(N) /usr/local/Caskroom/*/*/*.app(N)
   managed[${link:t:r}]=${${link:h:h}:t}
 done
 
+# A cask that ships a .pkg leaves no app symlink behind, only the installer, so
+# the symlink test alone reports Microsoft Teams or Google Drive as unmanaged
+# right after installing them. Their token still has a Caskroom directory.
+typeset -A installed_token
+for dir in /opt/homebrew/Caskroom/*(N/) /usr/local/Caskroom/*(N/); do
+  installed_token[${dir:t}]=1
+done
+
 # Deriving a token from the app name is right most of the time and wrong often
 # enough to matter, so the known exceptions are listed rather than guessed.
 typeset -A alias_token=(
@@ -57,10 +65,14 @@ typeset -a rows
 for app in /Applications/*.app(N) $HOME/Applications/*.app(N); do
   name=${app:t:r}
 
+  tok=$(token_for "$name")
+
   if [[ -e $app/Contents/_MASReceipt ]]; then
     source='App Store'; cask=''
   elif [[ -n ${managed[$name]:-} ]]; then
     source='cask'; cask=${managed[$name]}
+  elif [[ -n ${installed_token[$tok]:-} ]]; then
+    source='cask'; cask=$tok
   else
     source='by hand'
     (( n_unmanaged++ ))

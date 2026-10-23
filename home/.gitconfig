@@ -155,5 +155,3 @@
   
 [init]
   defaultBranch = main
-[gpg "ssh"]
-	allowedSignersFile = ~/setup/allowed_signers

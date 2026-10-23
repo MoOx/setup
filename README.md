@@ -45,7 +45,6 @@ To look a cask up in a browser: <https://formulae.brew.sh/cask/>
 | `claude/` | Claude Code config, symlinked into `~/.claude` |
 | `preferences/` | macOS and terminal preferences |
 | `secrets.tsv` | secret names and where to get them |
-| `allowed_signers` | SSH keys allowed to sign commits |
 | `bin/` | small tools |
 
 No secret is in this repo. They live in the login keychain.

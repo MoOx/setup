@@ -80,9 +80,10 @@ cask "betterdisplay"
 cask "istat-menus"
 cask "nightfall"
 cask "openlogi"                     # local-first alternative to Logitech Options+
-# Its Homebrew auto-update agent stays off: it ran `brew upgrade --greedy`
-# every Friday and applied where this repository reports. The agent step
-# checks that it has not come back.
+# Its Homebrew auto-update agent was turned off and is not coming back: it ran
+# `brew upgrade --greedy` every Friday, with an askpass helper so its sudo
+# prompts never reached the screen. The packages step upgrades instead, when
+# the command is run.
 cask "pearcleaner"                  # browse and clean, replaces the mole CLI
 cask "appcleaner"
 

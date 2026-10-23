@@ -522,16 +522,6 @@ step_agent() {
   # What the app opens. Without it the notification still shows, the click just
   # does nothing.
   [[ -x $REPO/bin/setup.command ]] || todo "bin/setup.command is missing or not executable"
-
-  # Pearcleaner offers an agent that runs `brew upgrade --greedy` every Friday,
-  # with an askpass helper so its sudo prompts never reach the screen. It
-  # applies where this repository reports, and autoremove can take out a
-  # package the Brewfile declares, so it stays off. If it is back, something
-  # turned it on.
-  local foreign=com.alienator88.Pearcleaner.homebrew-autoupdate
-  if launchctl print "gui/$UID/$foreign" >/dev/null 2>&1; then
-    todo "$foreign upgrades unattended, turn it off: launchctl bootout gui/$UID/$foreign"
-  fi
 }
 
 step_dev() {
@@ -557,7 +547,16 @@ step_dev() {
   (( rc == 0 )) && return
   local summary
   summary=$(print -r -- "$out" | grep -m1 'repos:')
-  todo "${summary:-work exists only on this machine} Triage: ./bin/unpushed --clean"
+  todo "${summary:-work exists only on this machine}"
+
+  # And offer the triage here, because a second command to remember is a second
+  # command to forget. --clean asks a question per repository, so it is only
+  # offered when there is someone to answer: not in check mode, not under
+  # --yes, not without a terminal.
+  [[ $MODE == check ]] && return
+  (( ASSUME_YES )) && return
+  [[ -t 0 ]] || return
+  confirm "Go through them now?" && "$REPO/bin/unpushed" --clean
 }
 
 # --- driver --------------------------------------------------------------

@@ -22,9 +22,15 @@ fi
 # --pre-commit makes it read `git diff`, --staged restricts that to the index.
 # --staged alone reports "0 commits scanned" and finds nothing, which looks
 # exactly like a clean result.
-if gitleaks git --pre-commit --staged --no-banner --redact; then
+#
+# Twice on purpose: quiet when there is nothing to say, since this runs on
+# every commit, then again verbosely to show what was found. The findings
+# themselves are logged at info level, so the quiet pass hides them.
+if gitleaks git --pre-commit --staged --no-banner --redact --log-level warn 2>/dev/null; then
   exit 0
 fi
+
+gitleaks git --pre-commit --staged --no-banner --redact >&2
 
 print -u2 ""
 print -u2 "pre-commit: gitleaks found a secret in what you are about to commit."

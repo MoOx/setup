@@ -460,6 +460,16 @@ step_agent() {
   else
     todo "not loaded in launchd"
   fi
+
+  # Pearcleaner offers an agent that runs `brew upgrade --greedy` every Friday,
+  # with an askpass helper so its sudo prompts never reach the screen. It
+  # applies where this repository reports, and autoremove can take out a
+  # package the Brewfile declares, so it stays off. If it is back, something
+  # turned it on.
+  local foreign=com.alienator88.Pearcleaner.homebrew-autoupdate
+  if launchctl print "gui/$UID/$foreign" >/dev/null 2>&1; then
+    todo "$foreign upgrades unattended, turn it off: launchctl bootout gui/$UID/$foreign"
+  fi
 }
 
 step_dev() {

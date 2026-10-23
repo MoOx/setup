@@ -220,7 +220,7 @@ step_packages() {
   if [[ -x $REPO/bin/apps ]]; then
     local summary
     summary=$("$REPO/bin/apps" 2>/dev/null | grep 'installed by hand' | head -1)
-    [[ -n $summary ]] && note "$summary, see bin/apps"
+    [[ -n $summary ]] && note "${summary%.} (bin/apps)"
   fi
 }
 

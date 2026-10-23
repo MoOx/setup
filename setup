@@ -233,6 +233,9 @@ step_home() {
   local entry
   for entry in "$dir"/*(ND); do
     [[ ${entry:t} == .DS_Store ]] && continue
+    # .ssh is handled file by file in step_ssh. Linking it here would replace
+    # ~/.ssh itself with a link to the repo and take the private keys with it.
+    [[ ${entry:t} == .ssh ]] && continue
     ensure_link "$entry" "$HOME/${entry:t}"
   done
 }

@@ -29,6 +29,8 @@ bin/unpushed       # git work that exists only on this machine
 bin/unpushed --clean   # triage it: push, delete or keep
 bin/apps           # apps Homebrew does not manage, and the casks that could
 bin/apps --all     # every app, its source and its last use
+bin/ssh-keys       # local keys, and what GitHub authorises
+bin/ssh-keys --probe   # also try the old keys against every known host
 ```
 
 To look a cask up in a browser: <https://formulae.brew.sh/cask/>

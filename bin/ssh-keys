@@ -1,0 +1,103 @@
+#!/usr/bin/env zsh
+# Where this machine's SSH keys are, and what still accepts the old ones.
+#
+#   ssh-keys           # local keys, and what GitHub authorises
+#   ssh-keys --probe   # also try every host in known_hosts with the old keys
+#
+# This replaces a hand-written registry. GitHub, GitLab and every server
+# already know what they authorise, so asking them beats maintaining a table
+# that goes stale the first time a key is added somewhere.
+#
+# If a machine is stolen:
+#   1. Revoke its AUTHENTICATION key everywhere below. That is the urgent part,
+#      it grants write access.
+#   2. The signing key can be deleted too. Since 2022 GitHub records a
+#      verification result when a commit is pushed and never re-verifies, so
+#      past commits keep their Verified badge after the key is gone.
+#   3. FileVault protects a disk at rest only. Stolen awake and unlocked it
+#      protects nothing, so assume the keys were readable.
+
+emulate -L zsh
+set -uo pipefail
+
+probe=0
+for arg in "$@"; do
+  case "$arg" in
+    --probe) probe=1 ;;
+    -h|--help) sed -n '2,/^$/p' "${0:A}" | sed 's/^# \{0,1\}//'; exit 0 ;;
+    *) print -u2 "ssh-keys: unknown option: $arg"; exit 2 ;;
+  esac
+done
+
+MACHINE_KEY=$HOME/.ssh/id_ed25519
+
+print "Local keys"
+for pub in $HOME/.ssh/*.pub(N); do
+  line=$(ssh-keygen -lf "$pub" 2>/dev/null) || continue
+  tag=''
+  [[ ${pub:r} == $MACHINE_KEY ]] && tag='  <- this machine'
+  printf '  %-16s %s%s\n' "${pub:t:r}" "$line" "$tag"
+done
+
+print
+print "GitHub"
+if (( $+commands[gh] )); then
+  gh api /user/keys --jq '.[] | "\(.id)\t\(.title)\t\(.key)"' 2>/dev/null \
+  | while IFS=$'\t' read -r id title key; do
+      fp=$(print -r -- "$key" | ssh-keygen -lf /dev/stdin 2>/dev/null | awk '{print $2}')
+      printf '  auth     id=%-11s %-24s %s\n' "$id" "$title" "$fp"
+    done
+  # Listing signing keys needs the admin:ssh_signing_key scope, which the token
+  # may not carry. Their absence here is not proof of anything.
+  if ! gh api /user/ssh_signing_keys --jq '.[] | "\(.id)\t\(.title)"' 2>/dev/null \
+     | while IFS=$'\t' read -r id title; do printf '  signing  id=%-11s %s\n' "$id" "$title"; done \
+     | grep -q .; then
+    print '  signing  not readable with this token (needs admin:ssh_signing_key)'
+  fi
+else
+  print '  gh not installed'
+fi
+
+if (( ! probe )); then
+  print
+  print "Run with --probe to try the old keys against every host in known_hosts."
+  exit 0
+fi
+
+# Hosts come from known_hosts: the places this machine has actually reached.
+# A hashed known_hosts hides them, and then there is nothing to probe.
+print
+print "Hosts, probed with the keys that are not this machine's"
+hosts=("${(@f)$(awk '{print $1}' $HOME/.ssh/known_hosts 2>/dev/null | tr ',' '\n' | grep -v '^|' | sort -u)}")
+if (( ! $#hosts )); then
+  print '  known_hosts is empty or hashed, nothing to probe'
+  exit 0
+fi
+
+typeset -i still=0
+for pub in $HOME/.ssh/*.pub(N); do
+  key=${pub:r}
+  [[ $key == $MACHINE_KEY ]] && continue
+  for host in $hosts; do
+    [[ -n $host ]] || continue
+    out=$(timeout 12 ssh -o BatchMode=yes -o ConnectTimeout=6 \
+            -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o IdentityAgent=none \
+            -i "$key" -v -T "$host" 2>&1)
+    if print -r -- "$out" | grep -q 'Server accepts key'; then
+      printf '  %-28s %-14s STILL AUTHORISED\n' "$host" "${key:t}"
+      (( still++ ))
+    elif print -r -- "$out" | grep -qiE 'refused|no route|not known|nodename|timed out'; then
+      printf '  %-28s %-14s unreachable\n' "$host" "${key:t}"
+    else
+      printf '  %-28s %-14s refused\n' "$host" "${key:t}"
+    fi
+  done
+done
+
+print
+if (( still )); then
+  print "$still host/key pairs still accept an old key. Remove it there before deleting it."
+  exit 1
+fi
+print "No reachable host accepts an old key."
+exit 0

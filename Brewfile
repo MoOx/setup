@@ -155,9 +155,8 @@ mas "Balatro", id: 6502451661
 #   delivery that never came and stayed alive for minutes. launchd starts no
 #   second instance of a job still running, so that would have made it skip the
 #   following Monday. bin/weekly-check uses osascript instead.
-# - Flycut, replaced by Maccy: its last release was 2020. Until the App Store
-#   copy is removed with `sudo mas uninstall 442160987`, `setup --check` will
-#   report it as installed and undeclared, which is the reminder.
+# - Flycut, replaced by Maccy: its last release was 2020. The Mac App Store
+#   copy has been uninstalled too, so nothing reports it any more.
 #
 # - 8 orphan libraries that were installed by hand and that nothing needs any
 #   more: jpeg-xl, libass, libbluray, libraw, librist, librsvg, libssh, srt.

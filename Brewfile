@@ -22,6 +22,7 @@ brew "terminal-notifier"            # clickable notification for the weekly setu
 # Git and GitHub
 brew "gh"                           # GitHub CLI
 brew "git-cliff"                    # changelog generator, used by the changelog function
+brew "gitleaks"                     # secret scanner, run by this repo pre-commit hook
 
 # Languages and version managers
 brew "fnm"                          # Node version manager

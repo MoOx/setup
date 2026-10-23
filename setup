@@ -34,6 +34,7 @@ STEPS=(
   xcode    'Xcode Command Line Tools'
   brew     'Homebrew itself'
   packages 'Packages, casks and App Store apps from the Brewfile'
+  hooks    'This repo own git hooks, so gitleaks runs before each commit'
   home     'Dotfiles, symlinked from home/ into ~'
   claude   'Claude Code config, symlinked from claude/ into ~/.claude'
   macos    'macOS preferences from preferences/ and macos.sh'
@@ -222,6 +223,22 @@ step_packages() {
     summary=$("$REPO/bin/apps" 2>/dev/null | grep 'installed by hand' | head -1)
     [[ -n $summary ]] && note "${summary%.} (bin/apps)"
   fi
+}
+
+step_hooks() {
+  # core.hooksPath rather than .git/hooks: the hook is then versioned and a
+  # fresh clone has it, instead of a file that exists only on this machine.
+  local want=hooks
+  local current
+  current=$(git -C "$REPO" config --get core.hooksPath 2>/dev/null)
+  if [[ $current == $want ]]; then
+    ok "core.hooksPath = $want"
+  else
+    todo "core.hooksPath is ${current:-unset}, should be $want"
+    [[ $MODE == check ]] || { git -C "$REPO" config core.hooksPath "$want" && ok "set"; }
+  fi
+  have gitleaks && ok "gitleaks $(gitleaks version 2>/dev/null)" \
+    || todo "gitleaks is missing, the hook will refuse every commit"
 }
 
 step_home() {

@@ -1,0 +1,33 @@
+#!/usr/bin/env zsh
+# Refuse a commit that carries a secret.
+#
+# This repository is public and holds shell config, a secret registry and
+# machine inventories, so the one mistake that cannot be taken back is
+# committing a value instead of a name. gitleaks reads what is staged.
+#
+# Installed by `setup` through core.hooksPath, so the hook is versioned
+# instead of living in .git/hooks where it would not survive a clone.
+#
+# To commit anyway, when a finding is a false positive and you have checked it:
+#   git commit --no-verify
+
+emulate -L zsh
+set -uo pipefail
+
+if ! (( $+commands[gitleaks] )); then
+  print -u2 "pre-commit: gitleaks is missing, run ./setup brew"
+  exit 1
+fi
+
+# --pre-commit makes it read `git diff`, --staged restricts that to the index.
+# --staged alone reports "0 commits scanned" and finds nothing, which looks
+# exactly like a clean result.
+if gitleaks git --pre-commit --staged --no-banner --redact; then
+  exit 0
+fi
+
+print -u2 ""
+print -u2 "pre-commit: gitleaks found a secret in what you are about to commit."
+print -u2 "Values are redacted above. Nothing has been committed."
+print -u2 "If it is a false positive: git commit --no-verify"
+exit 1

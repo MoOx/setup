@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  The weekly check. Monday at 09:00 it runs `setup --check`, which touches
+  nothing, and notifies only when something drifted.
+
+  StartCalendarInterval rather than StartInterval: launchd catches up after a
+  sleep instead of skipping the run, which matters on a laptop closed on Monday
+  morning.
+
+  A template. launchd does not expand ~ or environment variables in paths, so
+  `setup agent` renders __REPO__ and __HOME__ and writes the result into
+  ~/Library/LaunchAgents. Rendering rather than symlinking also keeps launchd
+  away from a link into the repo.
+-->
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>io.moox.setup.check</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>__REPO__/bin/weekly-check</string>
+  </array>
+
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Weekday</key><integer>1</integer>
+    <key>Hour</key><integer>9</integer>
+    <key>Minute</key><integer>0</integer>
+  </dict>
+
+  <key>RunAtLoad</key>
+  <false/>
+
+  <!-- A persistent log, unlike Pearcleaner's agent which wrote to /tmp and
+       lost everything on reboot. -->
+  <key>StandardOutPath</key>
+  <string>__HOME__/Library/Logs/setup-check.log</string>
+  <key>StandardErrorPath</key>
+  <string>__HOME__/Library/Logs/setup-check.log</string>
+</dict>
+</plist>

@@ -1,0 +1,52 @@
+#!/usr/bin/env zsh
+# What the Monday agent runs. Reports, never applies.
+#
+# It notifies only when `setup --check` finds something, so a quiet week is
+# silent. The notification names what drifted; the log holds the detail.
+
+emulate -L zsh
+set -uo pipefail
+
+REPO=${0:A:h:h}
+
+cd "$REPO" || exit 1
+
+print "=== $(date '+%Y-%m-%d %H:%M') ==="
+
+# Once, not twice. --check walks ~/dev and reads the usage date of every
+# application, so running it again just to extract a summary doubled a job that
+# already takes a while.
+output=$(./setup --check 2>&1)
+# `status` is read-only in zsh, a synonym for $?, so the result needs its own name.
+rc=$?
+
+print -r -- "$output"
+
+if (( rc == 0 )); then
+  print "nothing to report"
+  exit 0
+fi
+
+# One line, because a notification is not a report: the log holds the detail.
+summary=$(print -r -- "$output" | grep '  TODO' | sed 's/^ *TODO  //' | paste -sd'; ' - | cut -c1-180)
+[[ -n $summary ]] || summary="setup --check found something"
+
+# osascript rather than terminal-notifier, which hung for five minutes instead
+# of returning. Homebrew builds it as fr.julienxx.oss.terminal-notifier, the
+# same bundle identifier as a copy shipped inside a Ruby gem, and that identity
+# is set to hide its own notifications, so it waited for a delivery that never
+# came. A job that never exits is worse than a plain notification: launchd
+# starts no second instance of a job still running, so the next Monday would be
+# skipped. Nothing here is clickable, which is the whole cost of the change:
+# the notification says what drifted, `cd ~/setup && ./setup` does the rest.
+#
+# The summary goes in as an argument, never interpolated into the script, so a
+# quote in a repository name cannot break it.
+osascript \
+  -e 'on run argv' \
+  -e 'display notification (item 1 of argv) with title "Setup"' \
+  -e 'end run' \
+  "$summary" 2>/dev/null
+
+print "notified: $summary"
+exit 0

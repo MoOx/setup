@@ -41,6 +41,7 @@ STEPS=(
   ssh      'This machine own SSH key'
   secrets  'Secrets in the login keychain, from secrets.tsv'
   dev      'Repos under ~/dev, and what exists only on this machine'
+  agent    'The weekly check, as a LaunchAgent'
 )
 
 # --- output helpers ------------------------------------------------------
@@ -421,9 +422,52 @@ step_secrets() {
   done
 }
 
+step_agent() {
+  local label=io.moox.setup.check
+  local src=$REPO/launchd/$label.plist
+  local dest=$HOME/Library/LaunchAgents/$label.plist
+
+  if [[ ! -f $src ]]; then
+    note "skipped, $src is missing"
+    return
+  fi
+
+  # Rendered, not linked: launchd expands neither ~ nor environment variables
+  # in a path, so the real ones have to be written in.
+  local rendered
+  rendered=$(sed -e "s|__REPO__|$REPO|g" -e "s|__HOME__|$HOME|g" "$src")
+
+  local pretty=${dest/#$HOME/\~}
+  # The right side is quoted: unquoted it would be a glob pattern, and the `?`
+  # of `<?xml` matches any character, so a plist that differs there would pass
+  # for identical.
+  if [[ -f $dest ]] && [[ $(<$dest) == "$rendered" ]]; then
+    ok "$pretty"
+  elif [[ $MODE == check ]]; then
+    todo "$pretty is missing or out of date"
+  else
+    mkdir -p -- "${dest:h}"
+    print -r -- "$rendered" >| "$dest" && ok "written"
+    # bootout first so a changed plist is actually reloaded; it fails
+    # harmlessly when nothing was loaded.
+    launchctl bootout "gui/$UID/$label" 2>/dev/null
+    launchctl bootstrap "gui/$UID" "$dest" 2>/dev/null && ok "loaded" \
+      || todo "could not load it, try: launchctl bootstrap gui/$UID $dest"
+  fi
+
+  if launchctl print "gui/$UID/$label" >/dev/null 2>&1; then
+    ok "loaded in launchd"
+  else
+    todo "not loaded in launchd"
+  fi
+}
+
 step_dev() {
   if [[ -x $REPO/bin/unpushed ]]; then
-    "$REPO/bin/unpushed" || (( DRIFT++ ))
+    # unpushed prints its own table and summary. The todo line is there so the
+    # drift has a name, because the weekly notification is built from the TODO
+    # lines and a bare counter gives it nothing to show.
+    "$REPO/bin/unpushed" || todo "work exists only on this machine, triage it with ./bin/unpushed --clean"
   else
     note "skipped, bin/unpushed is missing"
   fi
@@ -490,10 +534,13 @@ if (( DRIFT == 0 )); then
   exit 0
 fi
 
+label="things need"
+(( DRIFT == 1 )) && label="thing needs"
+
 if [[ $MODE == check ]]; then
   print -n $EPOCHSECONDS >| $STAMP
-  print -r -- "$DRIFT things need attention. Run ./setup to deal with them."
+  print -r -- "$DRIFT $label attention. Run ./setup."
   exit 1
 fi
-print -r -- "$DRIFT things still need attention, see the TODO lines above."
+print -r -- "Still $DRIFT $label attention, see the TODO lines above."
 exit 1

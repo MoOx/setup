@@ -17,7 +17,6 @@ brew "direnv"                       # per-directory environment variables
 brew "trash"                        # move to the trash instead of rm
 brew "unbound"                      # local validating DNS resolver
 brew "mas"                          # Mac App Store CLI, needed to inventory installed apps
-brew "terminal-notifier"            # clickable notification for the weekly setup --check
 
 # Git and GitHub
 brew "gh"                           # GitHub CLI
@@ -145,6 +144,14 @@ mas "Balatro", id: 6502451661
 #   ever disappears, `brew install python3` is one command.
 # - mole, uninstalled. Its CLI was not the right shape for browsing and
 #   cleaning, which is what Pearcleaner already does with a window.
+# - terminal-notifier, dropped, and it never belonged here: fastlane pulls it
+#   in, so it was a library listed as an intention. It is also broken for this
+#   use. Homebrew builds it as fr.julienxx.oss.terminal-notifier, the same
+#   bundle identifier as the copy inside the terminal-notifier Ruby gem, and
+#   macOS is set to hide the notifications of that identity, so it waited for a
+#   delivery that never came and stayed alive for minutes. launchd starts no
+#   second instance of a job still running, so that would have made it skip the
+#   following Monday. bin/weekly-check uses osascript instead.
 # - Flycut, replaced by Maccy: its last release was 2020. Until the App Store
 #   copy is removed with `sudo mas uninstall 442160987`, `setup --check` will
 #   report it as installed and undeclared, which is the reminder.

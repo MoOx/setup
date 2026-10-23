@@ -89,6 +89,7 @@ cask "expo-orbit"
 cask "temurin@21"                   # JDK, for Android builds
 cask "iterm2"
 cask "github"                       # GitHub Desktop
+cask "docker-desktop"               # a .pkg cask: install it, never --adopt it
 
 # Media and files
 cask "vlc"

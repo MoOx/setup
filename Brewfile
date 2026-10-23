@@ -87,6 +87,8 @@ cask "appcleaner"
 cask "android-studio"
 cask "expo-orbit"
 cask "temurin@21"                   # JDK, for Android builds
+cask "iterm2"
+cask "github"                       # GitHub Desktop
 
 # Media and files
 cask "vlc"

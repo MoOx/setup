@@ -115,4 +115,11 @@ print "$n_unmanaged apps installed by hand, $n_available of which a cask covers.
 print "Adopt one with: brew install --cask --adopt <token>"
 print "An adoption refused on a version mismatch means the installed copy is behind:"
 print "  brew install --cask --force <token>   # replaces it with the current version"
+print
+print "Check first whether the cask ships a .pkg: brew info --cask <token>."
+print "A failed adoption of one of those can delete the application that was"
+print "already there, as happened to Docker Desktop on 2026-10-23. Its data"
+print "survived, only the app went. Install those with a plain"
+print "  brew install --cask <token>"
+print "and be ready to type a password."
 exit 1

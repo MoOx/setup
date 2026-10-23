@@ -21,6 +21,7 @@ zmodload zsh/datetime
 SCRIPT=${0:A}        # captured here: inside a zsh function, $0 is the function name
 REPO=${SCRIPT:h}
 STAMP=$HOME/.setup-last-check
+NOTIFY=$HOME/.setup-notify   # the weekly check drops its summary here, Setup.app posts it
 
 MODE=apply          # apply | check
 ASSUME_YES=0
@@ -212,9 +213,24 @@ step_packages() {
     ok "nothing installed outside the Brewfile"
   fi
 
-  local outdated
-  outdated=$(brew outdated --quiet 2>/dev/null | grep -c . || true)
-  (( outdated > 0 )) && note "$outdated packages are behind, run: brew upgrade"
+  # Upgrading belongs to the one command. `setup` is what gets run without
+  # thinking, so it has to leave the machine up to date instead of printing
+  # homework. Never --greedy, which is what the Pearcleaner agent did: it
+  # reinstalls the applications that update themselves, gigabytes at a time,
+  # and overrides a version that was picked on purpose. Plain upgrade touches
+  # only what Homebrew actually owns.
+  local -a outdated
+  outdated=(${(f)"$(brew outdated --quiet 2>/dev/null)"})
+  outdated=(${outdated:#})
+  if (( ! $#outdated )); then
+    ok "everything is up to date"
+  elif [[ $MODE == check ]]; then
+    todo "$#outdated packages behind"
+    print -r -- "       ${(j:, :)outdated}"
+  else
+    note "upgrading $#outdated: ${(j:, :)outdated}"
+    brew upgrade && ok "up to date" || fail "brew upgrade did not finish"
+  fi
 
   # Apps installed from a website that a cask could take over. A note and not a
   # TODO on purpose: it is a standing opportunity, not something broken, and
@@ -461,6 +477,52 @@ step_agent() {
     todo "not loaded in launchd"
   fi
 
+  # The clickable half. Clicking a notification activates the application that
+  # posted it, which is the only thing that gives a notification a click
+  # target, so the weekly check posts through Setup.app instead of osascript,
+  # whose notifications belong to Script Editor and lead nowhere. The rendered
+  # source is kept inside the bundle because a compiled .scpt cannot be diffed
+  # against the template.
+  local app=$HOME/Applications/Setup.app
+  local app_src=$REPO/launchd/Setup.applescript
+  local app_pretty=${app/#$HOME/\~}
+  local app_stamp=$app/Contents/Resources/source.applescript
+  if [[ ! -f $app_src ]]; then
+    note "skipped, ${app_src/#$REPO\//} is missing"
+  else
+    local app_rendered
+    app_rendered=$(sed -e "s|__FLAG__|$NOTIFY|g" \
+                       -e "s|__COMMAND__|$REPO/bin/setup.command|g" "$app_src")
+    if [[ -f $app_stamp ]] && [[ $(<$app_stamp) == "$app_rendered" ]]; then
+      ok "$app_pretty"
+    elif [[ $MODE == check ]]; then
+      todo "$app_pretty is missing or out of date"
+    else
+      local tmp=${TMPDIR:-/tmp}/setup-applet.$$
+      mkdir -p -- "$tmp" "${app:h}"
+      print -r -- "$app_rendered" >| "$tmp/Setup.applescript"
+      rm -rf -- "$app"
+      if osacompile -o "$app" "$tmp/Setup.applescript" 2>/dev/null; then
+        print -r -- "$app_rendered" >| "$app_stamp"
+        # osacompile leaves the bundle without a CFBundleIdentifier, and a
+        # notification with no identity behind it is the kind that silently
+        # never shows. It also gives System Settings a stable row to allow
+        # once. Re-signed last, since writing into the bundle invalidates the
+        # ad hoc signature osacompile put there.
+        plutil -replace CFBundleIdentifier -string io.moox.setup "$app/Contents/Info.plist" >/dev/null 2>&1
+        codesign -f -s - "$app" >/dev/null 2>&1
+        ok "$app_pretty built"
+      else
+        fail "could not compile $app_pretty"
+      fi
+      rm -rf -- "$tmp"
+    fi
+  fi
+
+  # What the app opens. Without it the notification still shows, the click just
+  # does nothing.
+  [[ -x $REPO/bin/setup.command ]] || todo "bin/setup.command is missing or not executable"
+
   # Pearcleaner offers an agent that runs `brew upgrade --greedy` every Friday,
   # with an askpass helper so its sudo prompts never reach the screen. It
   # applies where this repository reports, and autoremove can take out a
@@ -484,10 +546,18 @@ step_dev() {
     note "no ~/dev yet"
     return
   fi
-  # unpushed prints its own table and summary. The todo line is there so the
-  # drift has a name, because the weekly notification is built from the TODO
-  # lines and a bare counter gives it nothing to show.
-  "$REPO/bin/unpushed" || todo "work exists only on this machine, triage it with ./bin/unpushed --clean"
+  # unpushed prints its own table and summary. Its output is captured so the
+  # todo line can carry the numbers: the weekly notification is built from the
+  # TODO lines, and a count that visibly drops is what makes the triage feel
+  # worth doing.
+  local out
+  out=$("$REPO/bin/unpushed" 2>&1)
+  local rc=$?
+  print -r -- "$out"
+  (( rc == 0 )) && return
+  local summary
+  summary=$(print -r -- "$out" | grep -m1 'repos:')
+  todo "${summary:-work exists only on this machine} Triage: ./bin/unpushed --clean"
 }
 
 # --- driver --------------------------------------------------------------

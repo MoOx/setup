@@ -70,6 +70,8 @@ export LANGUAGE=en_US.UTF-8
 
 # Aliases
 
+# The whole point of the repository: one command, from anywhere.
+alias setup="$HOME/setup/setup"
 alias dev="cd $HOME/dev"
 alias icloud="cd $HOME/Library/Mobile\ Documents/com~apple~CloudDocs"
 alias xcodedefault="sudo xcode-select --switch /Applications/Xcode.app"

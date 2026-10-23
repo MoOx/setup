@@ -2,7 +2,8 @@
 # What the Monday agent runs. Reports, never applies.
 #
 # It notifies only when `setup --check` finds something, so a quiet week is
-# silent. The notification names what drifted; the log holds the detail.
+# silent. The notification names what drifted, with numbers, and clicking it
+# opens the repository. The log holds the detail.
 
 emulate -L zsh
 set -uo pipefail
@@ -28,25 +29,40 @@ if (( rc == 0 )); then
 fi
 
 # One line, because a notification is not a report: the log holds the detail.
-summary=$(print -r -- "$output" | grep '  TODO' | sed 's/^ *TODO  //' | paste -sd'; ' - | cut -c1-180)
+# paste -d takes a list of delimiters and cycles through them, so '; ' joined
+# the first pair with ';' and the next with a space. One delimiter, then the
+# space.
+summary=$(print -r -- "$output" | grep '  TODO' | sed 's/^ *TODO  //' \
+  | paste -sd';' - | sed 's/;/; /g' | cut -c1-180)
 [[ -n $summary ]] || summary="setup --check found something"
 
-# osascript rather than terminal-notifier, which hung for five minutes instead
-# of returning. Homebrew builds it as fr.julienxx.oss.terminal-notifier, the
-# same bundle identifier as a copy shipped inside a Ruby gem, and that identity
-# is set to hide its own notifications, so it waited for a delivery that never
-# came. A job that never exits is worse than a plain notification: launchd
-# starts no second instance of a job still running, so the next Monday would be
-# skipped. Nothing here is clickable, which is the whole cost of the change:
-# the notification says what drifted, `cd ~/setup && ./setup` does the rest.
+# Setup.app posts it, not osascript. Clicking a notification activates the
+# application that posted it, so a notification from osascript belongs to
+# Script Editor and the click leads nowhere, while this one opens the
+# repository in Terminal. The app reads the summary from the flag file and
+# removes it, which is also how it tells a fresh click apart from this launch.
 #
-# The summary goes in as an argument, never interpolated into the script, so a
-# quote in a repository name cannot break it.
-osascript \
-  -e 'on run argv' \
-  -e 'display notification (item 1 of argv) with title "Setup"' \
-  -e 'end run' \
-  "$summary" 2>/dev/null
+# terminal-notifier did the clicking before and was dropped: Homebrew builds it
+# as fr.julienxx.oss.terminal-notifier, the same bundle identifier as the copy
+# inside a Ruby gem, and macOS is set to hide the notifications of that
+# identity, so it waited five minutes for a delivery that never came. launchd
+# starts no second instance of a job still running, so the next Monday would
+# have been skipped.
+notify=$HOME/.setup-notify   # same path as NOTIFY in setup
+app=$HOME/Applications/Setup.app
+
+if [[ -d $app ]]; then
+  print -rn -- "$summary" >| "$notify"
+  open -a "$app"
+else
+  # No app yet. Still say it, since a missed week is worse than a dead click.
+  osascript \
+    -e 'on run argv' \
+    -e 'display notification (item 1 of argv) with title "Setup"' \
+    -e 'end run' \
+    "$summary" 2>/dev/null
+  print "Setup.app is missing, the notification is not clickable: run ./setup agent"
+fi
 
 print "notified: $summary"
 exit 0

@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>NSSplitView Subview Frames NSColorPanelSplitView</key>
+	<array>
+		<string>0.000000, 0.000000, 224.000000, 258.000000, NO, NO</string>
+		<string>0.000000, 259.000000, 224.000000, 48.000000, NO, NO</string>
+	</array>
+	<key>NSStatusItem Preferred Position Item-0</key>
+	<real>1000</real>
+	<key>NSToolbar Configuration com.apple.NSColorPanel</key>
+	<dict>
+		<key>TB Is Shown</key>
+		<integer>1</integer>
+	</dict>
+	<key>NSWindow Frame SUAutomaticUpdateAlert</key>
+	<string>556 661 616 193 0 0 1728 1079 </string>
+	<key>NSWindow Frame SUStatusFrame</key>
+	<string>742 261 400 135 0 0 1920 1080 </string>
+	<key>NSWindow Frame SUUpdateAlert</key>
+	<string>1281 690 637 398 0 0 3200 1319 </string>
+	<key>NSWindow Frame SUUpdateAlert2</key>
+	<string>1306 688 589 402 0 0 3200 1320 </string>
+	<key>NSWindow Frame SUUpdateAlertSmall</key>
+	<string>970 997 620 183 0 0 2560 1415 </string>
+	<key>SUAutomaticallyUpdate</key>
+	<true/>
+	<key>SUEnableAutomaticChecks</key>
+	<true/>
+	<key>SUHasLaunchedBefore</key>
+	<true/>
+	<key>SULastCheckTime</key>
+	<date>2026-10-23T07:59:21Z</date>
+	<key>SUUpdateGroupIdentifier</key>
+	<integer>2754612931</integer>
+	<key>SUUpdateRelaunchingMarker</key>
+	<false/>
+	<key>allowAnyShortcut</key>
+	<true/>
+	<key>almostMaximize</key>
+	<dict>
+		<key>keyCode</key>
+		<integer>76</integer>
+		<key>modifierFlags</key>
+		<integer>786432</integer>
+	</dict>
+	<key>alternateDefaultShortcuts</key>
+	<true/>
+	<key>bottomLeft</key>
+	<dict>
+		<key>keyCode</key>
+		<integer>83</integer>
+		<key>modifierFlags</key>
+		<integer>393216</integer>
+	</dict>
+	<key>bottomRight</key>
+	<dict>
+		<key>keyCode</key>
+		<integer>85</integer>
+		<key>modifierFlags</key>
+		<integer>393216</integer>
+	</dict>
+	<key>centerThird</key>
+	<data>
+	YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMS
+	AAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRyb290gAChC1UkbnVsbAgRGiQpMjdJTFFT
+	VQAAAAAAAAEBAAAAAAAAAAwAAAAAAAAAAAAAAAAAAABb
+	</data>
+	<key>cycleSizesIsChanged</key>
+	<true/>
+	<key>firstThird</key>
+	<data>
+	YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMS
+	AAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRyb290gAGjCwwTVSRudWxs0w0ODxAREldL
+	ZXlDb2RlViRjbGFzc11Nb2RpZmllckZsYWdzEACAAhIADAAA0hQVFhdaJGNsYXNzbmFt
+	ZVgkY2xhc3Nlc1tNQVNTaG9ydGN1dKIYGVtNQVNTaG9ydGN1dFhOU09iamVjdAgRGiQp
+	MjdJTFFTV11kbHOBg4WKj5qjr7K+AAAAAAAAAQEAAAAAAAAAGgAAAAAAAAAAAAAAAAAA
+	AMc=
+	</data>
+	<key>firstTwoThirds</key>
+	<dict>
+		<key>keyCode</key>
+		<integer>50</integer>
+		<key>modifierFlags</key>
+		<integer>786432</integer>
+	</dict>
+	<key>footprintAnimationDurationMultiplier</key>
+	<real>0.75</real>
+	<key>gapSize</key>
+	<real>16</real>
+	<key>hapticFeedbackOnSnap</key>
+	<integer>1</integer>
+	<key>hideMenubarIcon</key>
+	<false/>
+	<key>internalTilingNotified</key>
+	<true/>
+	<key>larger</key>
+	<dict>
+		<key>keyCode</key>
+		<integer>69</integer>
+		<key>modifierFlags</key>
+		<integer>786432</integer>
+	</dict>
+	<key>lastThird</key>
+	<dict>
+		<key>keyCode</key>
+		<integer>6</integer>
+		<key>modifierFlags</key>
+		<integer>786432</integer>
+	</dict>
+	<key>lastTwoThirds</key>
+	<data>
+	YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMS
+	AAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRyb290gAGjCwwTVSRudWxs0w0ODxAREldL
+	ZXlDb2RlViRjbGFzc11Nb2RpZmllckZsYWdzEAGAAhIADAAA0hQVFhdaJGNsYXNzbmFt
+	ZVgkY2xhc3Nlc1tNQVNTaG9ydGN1dKIYGVtNQVNTaG9ydGN1dFhOU09iamVjdAgRGiQp
+	MjdJTFFTV11kbHOBg4WKj5qjr7K+AAAAAAAAAQEAAAAAAAAAGgAAAAAAAAAAAAAAAAAA
+	AMc=
+	</data>
+	<key>lastVersion</key>
+	<string>110</string>
+	<key>launchOnLogin</key>
+	<true/>
+	<key>maximizeHeight</key>
+	<data>
+	YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMS
+	AAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRyb290gAGjCwwTVSRudWxs0w0ODxAREldL
+	ZXlDb2RlViRjbGFzc11Nb2RpZmllckZsYWdzEB6AAhIADAAA0hQVFhdaJGNsYXNzbmFt
+	ZVgkY2xhc3Nlc1tNQVNTaG9ydGN1dKIYGVtNQVNTaG9ydGN1dFhOU09iamVjdAgRGiQp
+	MjdJTFFTV11kbHOBg4WKj5qjr7K+AAAAAAAAAQEAAAAAAAAAGgAAAAAAAAAAAAAAAAAA
+	AMc=
+	</data>
+	<key>moveDown</key>
+	<data>
+	YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMS
+	AAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRyb290gAGjCwwTVSRudWxs0w0ODxAREldL
+	ZXlDb2RlViRjbGFzc11Nb2RpZmllckZsYWdzEFSAAhIADAAA0hQVFhdaJGNsYXNzbmFt
+	ZVgkY2xhc3Nlc1tNQVNTaG9ydGN1dKIYGVtNQVNTaG9ydGN1dFhOU09iamVjdAgRGiQp
+	MjdJTFFTV11kbHOBg4WKj5qjr7K+AAAAAAAAAQEAAAAAAAAAGgAAAAAAAAAAAAAAAAAA
+	AMc=
+	</data>
+	<key>moveLeft</key>
+	<data>
+	YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMS
+	AAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRyb290gAGjCwwTVSRudWxs0w0ODxAREldL
+	ZXlDb2RlViRjbGFzc11Nb2RpZmllckZsYWdzEFaAAhIADAAA0hQVFhdaJGNsYXNzbmFt
+	ZVgkY2xhc3Nlc1tNQVNTaG9ydGN1dKIYGVtNQVNTaG9ydGN1dFhOU09iamVjdAgRGiQp
+	MjdJTFFTV11kbHOBg4WKj5qjr7K+AAAAAAAAAQEAAAAAAAAAGgAAAAAAAAAAAAAAAAAA
+	AMc=
+	</data>
+	<key>moveRight</key>
+	<data>
+	YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMS
+	AAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRyb290gAGjCwwTVSRudWxs0w0ODxAREldL
+	ZXlDb2RlViRjbGFzc11Nb2RpZmllckZsYWdzEFiAAhIADAAA0hQVFhdaJGNsYXNzbmFt
+	ZVgkY2xhc3Nlc1tNQVNTaG9ydGN1dKIYGVtNQVNTaG9ydGN1dFhOU09iamVjdAgRGiQp
+	MjdJTFFTV11kbHOBg4WKj5qjr7K+AAAAAAAAAQEAAAAAAAAAGgAAAAAAAAAAAAAAAAAA
+	AMc=
+	</data>
+	<key>moveUp</key>
+	<data>
+	YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMS
+	AAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRyb290gAGjCwwTVSRudWxs0w0ODxAREldL
+	ZXlDb2RlViRjbGFzc11Nb2RpZmllckZsYWdzEFuAAhIADAAA0hQVFhdaJGNsYXNzbmFt
+	ZVgkY2xhc3Nlc1tNQVNTaG9ydGN1dKIYGVtNQVNTaG9ydGN1dFhOU09iamVjdAgRGiQp
+	MjdJTFFTV11kbHOBg4WKj5qjr7K+AAAAAAAAAQEAAAAAAAAAGgAAAAAAAAAAAAAAAAAA
+	AMc=
+	</data>
+	<key>nextDisplay</key>
+	<dict>
+		<key>keyCode</key>
+		<integer>123</integer>
+		<key>modifierFlags</key>
+		<integer>393216</integer>
+	</dict>
+	<key>previousDisplay</key>
+	<dict>
+		<key>keyCode</key>
+		<integer>124</integer>
+		<key>modifierFlags</key>
+		<integer>393216</integer>
+	</dict>
+	<key>reflowTodo</key>
+	<dict/>
+	<key>selectedCycleSizes</key>
+	<integer>31</integer>
+	<key>smaller</key>
+	<dict>
+		<key>keyCode</key>
+		<integer>78</integer>
+		<key>modifierFlags</key>
+		<integer>786432</integer>
+	</dict>
+	<key>subsequentExecutionMode</key>
+	<integer>0</integer>
+	<key>todo</key>
+	<integer>2</integer>
+	<key>toggleTodo</key>
+	<dict>
+		<key>keyCode</key>
+		<integer>11</integer>
+		<key>modifierFlags</key>
+		<integer>786432</integer>
+	</dict>
+	<key>topLeft</key>
+	<dict>
+		<key>keyCode</key>
+		<integer>89</integer>
+		<key>modifierFlags</key>
+		<integer>393216</integer>
+	</dict>
+	<key>topRight</key>
+	<dict>
+		<key>keyCode</key>
+		<integer>92</integer>
+		<key>modifierFlags</key>
+		<integer>393216</integer>
+	</dict>
+	<key>windowSnapping</key>
+	<integer>2</integer>
+</dict>
+</plist>

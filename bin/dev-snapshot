@@ -1,0 +1,67 @@
+#!/usr/bin/env zsh
+# Record every repository under ~/dev and where it came from, so a new machine
+# can clone them back.
+#
+#   bin/dev-snapshot            write the snapshot
+#   bin/dev-snapshot --restore  clone back what is missing
+#   bin/dev-snapshot --path     print where the snapshot lives
+#
+# It goes to iCloud Drive, not into this repository: it carries client
+# repository URLs, and a new machine has iCloud before it has anything else.
+
+emulate -L zsh
+set -uo pipefail
+
+root=$HOME/dev
+file="$HOME/Library/Mobile Documents/com~apple~CloudDocs/setup/dev.tsv"
+pretty=${file/#$HOME/\~}
+
+case ${1:-} in
+  --path)
+    print -r -- "$file"
+    exit 0
+    ;;
+  --restore)
+    [[ -f $file ]] || { print -u2 "no snapshot at $pretty"; exit 2 }
+    cloned=0
+    # Not `path`: in zsh that is the array tied to PATH, and reading into it
+    # wipes the command search path.
+    while IFS=$'\t' read -r rel url branch; do
+      [[ -n $rel ]] || continue
+      dest=$root/$rel
+      [[ -d $dest ]] && continue
+      if [[ -z $url ]]; then
+        print -u2 "no remote, cannot clone: $rel"
+        continue
+      fi
+      mkdir -p -- "${dest:h}"
+      # An array, because zsh does not word-split an expansion: a single
+      # "--branch main" word would reach git as one unknown option.
+      opt=()
+      [[ -n $branch ]] && opt=(--branch "$branch")
+      if git clone $opt -- "$url" "$dest"; then
+        (( cloned++ ))
+      else
+        print -u2 "failed: $rel"
+      fi
+    done < "$file"
+    print "cloned $cloned"
+    exit 0
+    ;;
+  "") ;;
+  *) print -u2 "usage: ${0:t} [--restore|--path]"; exit 2 ;;
+esac
+
+[[ -d $root ]] || { print -u2 "no such directory: $root"; exit 2 }
+mkdir -p -- "${file:h}"
+
+tmp=${TMPDIR:-/tmp}/dev-snapshot.$$
+find "$root" -maxdepth 4 \( -name node_modules -o -name .venv -o -name vendor \) -prune \
+  -o -name .git -type d -print 2>/dev/null | sort | while read -r git_dir; do
+  repo=${git_dir:h}
+  printf '%s\t%s\t%s\n' "${repo#$root/}" \
+    "$(git -C "$repo" remote get-url origin 2>/dev/null)" \
+    "$(git -C "$repo" symbolic-ref --short HEAD 2>/dev/null)"
+done >| "$tmp"
+mv -- "$tmp" "$file"
+print "$(grep -c . "$file") repos recorded in $pretty"

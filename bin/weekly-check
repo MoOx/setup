@@ -17,6 +17,11 @@ print "=== $(date '+%Y-%m-%d %H:%M') ==="
 # Once, not twice. --check walks ~/dev and reads the usage date of every
 # application, so running it again just to extract a summary doubled a job that
 # already takes a while.
+# setup --check is read-only, so the snapshot is refreshed here instead: it
+# records where the repositories came from, which is only useful if it is
+# current.
+[[ -x bin/dev-snapshot ]] && ./bin/dev-snapshot >/dev/null 2>&1
+
 output=$(./setup --check 2>&1)
 # `status` is read-only in zsh, a synonym for $?, so the result needs its own name.
 rc=$?
@@ -36,18 +41,9 @@ summary=$(print -r -- "$output" | grep '  TODO' | sed 's/^ *TODO  //' \
   | paste -sd';' - | sed 's/;/; /g' | cut -c1-180)
 [[ -n $summary ]] || summary="setup --check found something"
 
-# Setup.app posts it, not osascript. Clicking a notification activates the
-# application that posted it, so a notification from osascript belongs to
-# Script Editor and the click leads nowhere, while this one opens the
-# repository in Terminal. The app reads the summary from the flag file and
-# removes it, which is also how it tells a fresh click apart from this launch.
-#
-# terminal-notifier did the clicking before and was dropped: Homebrew builds it
-# as fr.julienxx.oss.terminal-notifier, the same bundle identifier as the copy
-# inside a Ruby gem, and macOS is set to hide the notifications of that
-# identity, so it waited five minutes for a delivery that never came. launchd
-# starts no second instance of a job still running, so the next Monday would
-# have been skipped.
+# Setup.app posts it, not osascript: clicking a notification activates the app
+# that posted it, and an osascript one belongs to Script Editor. The flag file
+# carries the summary, and its absence is what marks a later launch as a click.
 notify=$HOME/.setup-notify   # same path as NOTIFY in setup
 app=$HOME/Applications/Setup.app
 

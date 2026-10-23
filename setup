@@ -137,14 +137,8 @@ step_packages() {
     return
   fi
 
-  # Both directions are plain set differences. `brew bundle check` was tried
-  # first and dropped: it writes its report to stderr, and it says "needs to be
-  # installed or updated" for missing and merely outdated alike, which turns an
-  # ordinary upgrade backlog into a false alarm.
-  #
-  # Formulae, casks and taps are three separate namespaces: comparing them in
-  # one bucket reports every declared tap as a missing package, since `brew
-  # list` does not list taps.
+  # Set differences, both ways. Formulae, casks and taps are separate
+  # namespaces: in one bucket every declared tap looks like a missing package.
   local -a declared missing extra
   local -a d_formula d_cask d_tap i_formula i_cask i_tap
   d_formula=("${(@f)$(brew bundle list --formula --file="$file" 2>/dev/null)}")
@@ -213,19 +207,16 @@ step_packages() {
     ok "nothing installed outside the Brewfile"
   fi
 
-  # Upgrading belongs to the one command. `setup` is what gets run without
-  # thinking, so it has to leave the machine up to date instead of printing
-  # homework. Never --greedy, which is what the Pearcleaner agent did: it
-  # reinstalls the applications that update themselves, gigabytes at a time,
-  # and overrides a version that was picked on purpose. Plain upgrade touches
-  # only what Homebrew actually owns.
+  # Never --greedy: it reinstalls the applications that update themselves and
+  # overrides a version picked on purpose.
   local -a outdated
   outdated=(${(f)"$(brew outdated --quiet 2>/dev/null)"})
   outdated=(${outdated:#})
   if (( ! $#outdated )); then
     ok "everything is up to date"
   elif [[ $MODE == check ]]; then
-    todo "$#outdated packages behind"
+    local plural=s; (( $#outdated == 1 )) && plural=
+    todo "$#outdated package$plural behind"
     print -r -- "       ${(j:, :)outdated}"
   else
     note "upgrading $#outdated: ${(j:, :)outdated}"
@@ -286,16 +277,27 @@ step_claude() {
 step_macos() {
   local dir=$REPO/preferences
   if [[ -d $dir ]]; then
+    # Only domains still empty, which is the new machine case: casks install
+    # without launching. On a machine in use the live settings win, so a GUI
+    # tweak is never reverted. Record one with bin/prefs.
     local plist count=0
+    local -a restore
     for plist in "$dir"/*.plist(ND); do
       (( count++ ))
-      if [[ $MODE == check ]]; then
-        note "${plist:t:r} would be re-imported (defaults import cannot be dry-run)"
-      else
-        defaults import "${plist:t:r}" "$plist" && ok "${plist:t:r} imported"
-      fi
+      defaults export "${plist:t:r}" - 2>/dev/null | grep -q '<key>' && continue
+      restore+=("$plist")
     done
-    (( count )) || note "preferences/ holds no .plist yet"
+    if (( ! count )); then
+      note "preferences/ holds no .plist yet"
+    elif (( ! $#restore )); then
+      ok "$count app preferences already set"
+    elif [[ $MODE == check ]]; then
+      todo "$#restore app preferences to restore: ${(j:, :)${(@)restore:t:r}}"
+    else
+      for plist in $restore; do
+        defaults import "${plist:t:r}" "$plist" && ok "${plist:t:r} imported"
+      done
+    fi
   else
     note "skipped, preferences/ does not exist yet"
   fi
@@ -477,12 +479,9 @@ step_agent() {
     todo "not loaded in launchd"
   fi
 
-  # The clickable half. Clicking a notification activates the application that
-  # posted it, which is the only thing that gives a notification a click
-  # target, so the weekly check posts through Setup.app instead of osascript,
-  # whose notifications belong to Script Editor and lead nowhere. The rendered
-  # source is kept inside the bundle because a compiled .scpt cannot be diffed
-  # against the template.
+  # Clicking a notification activates the app that posted it, which is the only
+  # click target a notification has. The rendered source stays in the bundle
+  # because a compiled .scpt cannot be diffed.
   local app=$HOME/Applications/Setup.app
   local app_src=$REPO/launchd/Setup.applescript
   local app_pretty=${app/#$HOME/\~}
@@ -504,11 +503,9 @@ step_agent() {
       rm -rf -- "$app"
       if osacompile -o "$app" "$tmp/Setup.applescript" 2>/dev/null; then
         print -r -- "$app_rendered" >| "$app_stamp"
-        # osacompile leaves the bundle without a CFBundleIdentifier, and a
-        # notification with no identity behind it is the kind that silently
-        # never shows. It also gives System Settings a stable row to allow
-        # once. Re-signed last, since writing into the bundle invalidates the
-        # ad hoc signature osacompile put there.
+        # osacompile leaves no CFBundleIdentifier, and a notification with no
+        # identity never shows. Re-signed last: writing into the bundle
+        # invalidates osacompile's signature.
         plutil -replace CFBundleIdentifier -string io.moox.setup "$app/Contents/Info.plist" >/dev/null 2>&1
         codesign -f -s - "$app" >/dev/null 2>&1
         ok "$app_pretty built"
@@ -529,11 +526,19 @@ step_dev() {
     note "skipped, bin/unpushed is missing"
     return
   fi
-  # A fresh machine has no ~/dev, which is not drift. Without this, unpushed
-  # exits 2 for the missing directory and the step reported unpushed work on a
-  # machine that holds no repository at all.
+  local snapshot=''
+  [[ -x $REPO/bin/dev-snapshot ]] && snapshot=$("$REPO/bin/dev-snapshot" --path)
+
+  # A new machine has no ~/dev. The snapshot in iCloud Drive is what brings it
+  # back, since every repository there has a remote.
   if [[ ! -d $HOME/dev ]]; then
-    note "no ~/dev yet"
+    if [[ -n $snapshot && -f $snapshot ]]; then
+      todo "~/dev is missing, $(grep -c . -- "$snapshot") repos in the snapshot"
+      [[ $MODE == check ]] && return
+      confirm "Clone them now?" && "$REPO/bin/dev-snapshot" --restore
+    else
+      note "no ~/dev yet"
+    fi
     return
   fi
   # unpushed prints its own table and summary. Its output is captured so the
@@ -544,6 +549,9 @@ step_dev() {
   out=$("$REPO/bin/unpushed" 2>&1)
   local rc=$?
   print -r -- "$out"
+
+  [[ $MODE == check ]] || [[ -z $snapshot ]] || "$REPO/bin/dev-snapshot" >/dev/null
+
   (( rc == 0 )) && return
   local summary
   summary=$(print -r -- "$out" | grep -m1 'repos:')

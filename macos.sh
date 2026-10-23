@@ -1,14 +1,8 @@
 #!/usr/bin/env zsh
 #
-# macOS settings, one readable line per decision.
-#
-# Intent, not state, for the same reason as the Brewfile: a `defaults export`
-# of a whole domain also captures window positions, recent files and update
-# timestamps, which nobody chose and which differ on every machine. Everything
-# here was read off this machine and differs from the macOS default.
-#
-# Idempotent: `defaults write` sets a value, running it twice changes nothing.
-# Run it with `./setup macos`.
+# macOS settings, one readable line per decision. Intent, not state: a whole
+# `defaults export` also captures window positions and timestamps nobody chose.
+# Idempotent, since `defaults write` just sets a value. Run with `./setup macos`.
 
 emulate -L zsh
 set -uo pipefail

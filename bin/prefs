@@ -1,0 +1,42 @@
+#!/usr/bin/env zsh
+# Save app preferences into preferences/, which setup restores on a new machine.
+#
+#   bin/prefs                 re-save what preferences/ already holds
+#   bin/prefs <domain>...     add these domains
+#
+# A domain is a bundle identifier, e.g. com.knollsoft.Rectangle.
+
+emulate -L zsh
+set -uo pipefail
+
+dir=${0:A:h:h}/preferences
+mkdir -p -- "$dir"
+
+domains=("$@")
+for f in "$dir"/*.plist(N); do domains+=("${f:t:r}"); done
+
+typeset -A seen
+for d in $domains; do
+  [[ -n $d ]] && (( ! ${+seen[$d]} )) || continue
+  seen[$d]=1
+  # Converted to XML: defaults export writes a binary plist, which is an opaque
+  # blob in a diff.
+  if defaults export "$d" "$dir/$d.plist" 2>/dev/null \
+     && plutil -convert xml1 "$dir/$d.plist" 2>/dev/null \
+     && grep -q '<key>' "$dir/$d.plist"; then
+    # This repository is public and an export carries the whole domain, licence
+    # and token included: iStat Menus holds license6, serial and email, Yate a
+    # ServerAccessToken. Key names are matched, never values.
+    bad=$(grep -oE '<key>[^<]*</key>' "$dir/$d.plist" | sed 's/<[^>]*>//g' \
+      | grep -iE 'licen|serial|token|secret|passw|email|registrat|activat|receipt' | sort -u | paste -sd',' -)
+    if [[ -n $bad ]]; then
+      rm -f -- "$dir/$d.plist"
+      print -u2 "refused  $d: $bad"
+    else
+      print "saved    $d"
+    fi
+  else
+    rm -f -- "$dir/$d.plist"
+    print -u2 "no settings readable: $d"
+  fi
+done

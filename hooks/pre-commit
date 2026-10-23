@@ -1,14 +1,8 @@
 #!/usr/bin/env zsh
-# Refuse a commit that carries a secret.
+# Refuse a commit that carries a secret. Installed through core.hooksPath, so
+# the hook is versioned instead of living in .git/hooks.
 #
-# This repository is public and holds shell config, a secret registry and
-# machine inventories, so the one mistake that cannot be taken back is
-# committing a value instead of a name. gitleaks reads what is staged.
-#
-# Installed by `setup` through core.hooksPath, so the hook is versioned
-# instead of living in .git/hooks where it would not survive a clone.
-#
-# To commit anyway, when a finding is a false positive and you have checked it:
+# To commit anyway, when a finding is a checked false positive:
 #   git commit --no-verify
 
 emulate -L zsh
@@ -19,13 +13,9 @@ if ! (( $+commands[gitleaks] )); then
   exit 1
 fi
 
-# --pre-commit makes it read `git diff`, --staged restricts that to the index.
-# --staged alone reports "0 commits scanned" and finds nothing, which looks
-# exactly like a clean result.
-#
-# Twice on purpose: quiet when there is nothing to say, since this runs on
-# every commit, then again verbosely to show what was found. The findings
-# themselves are logged at info level, so the quiet pass hides them.
+# --pre-commit reads `git diff`, --staged restricts it to the index. --staged
+# alone scans nothing and looks clean. Run twice: quiet, then verbose to show
+# the findings, which are logged at info level.
 if gitleaks git --pre-commit --staged --no-banner --redact --log-level warn 2>/dev/null; then
   exit 0
 fi

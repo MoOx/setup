@@ -370,7 +370,28 @@ step_ssh() {
   local key=$HOME/.ssh/id_ed25519
   if [[ -f $key.pub ]]; then
     ok "$(ssh-keygen -lf "$key.pub" 2>/dev/null)"
-    note "register it on GitHub twice, as an auth key and as a signing key"
+
+    # Verified, not a standing reminder: a note printed on every run is one
+    # nobody reads any more. Only the auth key can be read back, since listing
+    # signing keys needs the admin:ssh_signing_key scope the token does not
+    # carry, so the signing side is checked locally.
+    local body=${$(<$key.pub)[2]}
+    local remote
+    if have gh && remote=$(gh api /user/keys --jq '.[].key' 2>/dev/null); then
+      if print -r -- "$remote" | awk '{print $2}' | grep -qxF -- "$body"; then
+        ok "registered on GitHub as an auth key"
+      else
+        todo "not on GitHub as an auth key: https://github.com/settings/keys"
+      fi
+    else
+      note "GitHub unreachable, registration unchecked"
+    fi
+    if [[ $(git config --global gpg.format) == ssh \
+       && -n $(git config --global user.signingkey) ]]; then
+      ok "git signs with it"
+    else
+      todo "git is not set to sign with this key"
+    fi
     return
   fi
   todo "this machine has no ed25519 key"

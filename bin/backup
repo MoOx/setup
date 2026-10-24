@@ -4,6 +4,7 @@
 #
 #   bin/backup copy     push to iCloud Drive
 #   bin/backup paste    pull back, never overwriting a local file
+#   bin/backup list     what the encrypted .env archive holds
 #   bin/backup init     create the key pair that encrypts the .env files, once
 #   bin/backup path     print the backup directory
 #
@@ -41,19 +42,26 @@ env_files() {
   done
 }
 
+# One line, never the file age-keygen writes: `security -w` returns a value in
+# hex as soon as it holds an unprintable character, a newline included, and the
+# hex then reaches age as line 1 of garbage.
 identity() {
-  security find-generic-password -a "$USER" -s "$keyname" -w 2>/dev/null \
+  local key
+  key=$(security find-generic-password -a "$USER" -s "$keyname" -w 2>/dev/null) \
     || die "$keyname is not in the keychain, run: bin/backup init"
+  [[ $key == AGE-SECRET-KEY-* ]] \
+    || die "$keyname is not an age identity, run: bin/backup init"
+  print -r -- "$key"
 }
 
 case ${1:-} in
   path) print -r -- "$dir"; exit 0 ;;
 
   init)
-    [[ -f $pub ]] && die "$pub already exists"
-    security find-generic-password -a "$USER" -s "$keyname" >/dev/null 2>&1 \
-      && die "$keyname already in the keychain"
+    [[ -f $pub ]] && die "$pub already exists, delete it first to start over"
     (( $+commands[age-keygen] )) || die "age is missing, run ./setup packages"
+    security find-generic-password -a "$USER" -s "$keyname" >/dev/null 2>&1 \
+      && print "replacing the $keyname already in the keychain, any existing archive stops decrypting"
     # A directory, not mktemp: age-keygen refuses to write over a file that
     # already exists, and mktemp creates one.
     umask 077
@@ -61,13 +69,21 @@ case ${1:-} in
     tmp=$tmpdir/key.txt
     pubkey=$(age-keygen -o "$tmp" 2>&1 | sed -n 's/^Public key: //p')
     [[ -n $pubkey ]] || { rm -rf -- "$tmpdir"; die "age-keygen gave no public key" }
-    security add-generic-password -a "$USER" -s "$keyname" -U -w "$(cat "$tmp")" 2>/dev/null \
+    # The key line alone, so the stored value stays printable ASCII.
+    security add-generic-password -a "$USER" -s "$keyname" -U \
+      -w "$(grep -m1 '^AGE-SECRET-KEY-' "$tmp")" 2>/dev/null \
       || { rm -rf -- "$tmpdir"; die "could not store $keyname in the keychain" }
     rm -rf -- "$tmpdir"
     print -r -- "$pubkey" >| "$pub"
     print "key pair created, public half in ${pub#$REPO/}"
     print "put the private half on paper, nothing else decrypts the .env archive:"
     print '  security find-generic-password -a $USER -s BACKUP_KEY -w'
+    exit 0
+    ;;
+
+  list)
+    [[ -f $dir/env.age ]] || die "no archive at $pretty/env.age"
+    age -d -i =(identity) "$dir/env.age" | tar tzf -
     exit 0
     ;;
 
@@ -122,5 +138,5 @@ case ${1:-} in
     exit 0
     ;;
 
-  *) die "usage: ${0:t} copy|paste|init|path" ;;
+  *) die "usage: ${0:t} copy|paste|list|init|path" ;;
 esac

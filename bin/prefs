@@ -15,6 +15,26 @@ mkdir -p -- "$dir"
 domains=("$@")
 for f in "$dir"/*.plist(N); do domains+=("${f:t:r}"); done
 
+# Key names that look like a credential, at any depth.
+cred_keys() {
+  grep -oE '<key>[^<]*</key>' "$1" | sed 's/<[^>]*>//g' \
+    | grep -iE 'licen|serial|token|secret|passw|email|apikey|credential|receipt|auth|signature' \
+    | sort -u
+}
+
+# Remove one, at the top level or one dict below it. iStat Menus keeps its
+# device authentication identifier in Device.Auth-Identifier, and a plutil
+# keypath is the only way to reach it. Deeper than that is refused rather than
+# guessed at.
+strip_key() {
+  local file=$1 key=$2 top
+  plutil -remove "$key" "$file" 2>/dev/null && return 0
+  for top in ${(f)"$(plutil -p "$file" | sed -n 's/^  "\([^"]*\)" => .*/\1/p')"}; do
+    plutil -remove "$top.$key" "$file" 2>/dev/null && return 0
+  done
+  return 1
+}
+
 typeset -A seen
 for d in $domains; do
   [[ -n $d ]] && (( ! ${+seen[$d]} )) || continue
@@ -24,25 +44,38 @@ for d in $domains; do
   if defaults export "$d" "$dir/$d.plist" 2>/dev/null \
      && plutil -convert xml1 "$dir/$d.plist" 2>/dev/null \
      && grep -q '<key>' "$dir/$d.plist"; then
-    # This repository is public and an export carries the whole domain. Two
-    # reasons to refuse it, both found in practice:
+    # This repository is public and an export carries the whole domain.
     #
-    # a credential, matched on key names and never on values. iStat Menus holds
-    # license6, serial and email, Yate a ServerAccessToken, Sketch a BCLicense.
-    # The pattern stays narrow on purpose: `activat` once rejected
-    # BetterDisplay over an activationPriority key.
-    bad=$(grep -oE '<key>[^<]*</key>' "$dir/$d.plist" | sed 's/<[^>]*>//g' \
-      | grep -iE 'licen|serial|token|secret|passw|email|apikey|credential|receipt' \
-      | sort -u | paste -sd',' -)
-    # or personal data in the values: VLC carries 42 absolute paths to media
-    # files, which belong in a public repository even less than a licence.
+    # Credential-looking keys are stripped rather than refusing the domain:
+    # iStat Menus keeps its licence next to 22 real settings, and the pattern
+    # has false positives anyway, having once caught BetterDisplay's
+    # activationPriority and iTerm's AiMaxTokens. A key stripped by mistake is
+    # one the application writes again; a licence in a public repository is
+    # not. Key names are matched, never values.
+    # Strip what can be stripped, then refuse only if something is left. A
+    # nested key often disappears with the dict above it: iStat Menus holds
+    # both License and a license inside it, and removing the first takes the
+    # second. Only a top level key is removable by name, so a credential buried
+    # elsewhere still costs the whole domain.
+    stripped=()
+    for k in ${(f)"$(cred_keys "$dir/$d.plist")"}; do
+      [[ -n $k ]] || continue
+      strip_key "$dir/$d.plist" "$k" && stripped+=("$k")
+    done
+    remaining=$(cred_keys "$dir/$d.plist" | paste -sd',' - | cut -c1-40)
+
+    # Personal data in the values cannot be stripped key by key, so the domain
+    # goes: VLC carries 42 absolute paths to media files.
     perso=$(grep -coE '/Users/|[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,}' "$dir/$d.plist")
-    if [[ -n $bad ]]; then
+
+    if [[ -n $remaining ]]; then
       rm -f -- "$dir/$d.plist"
-      print -u2 "refused  $d: credentials in $bad"
+      print -u2 "refused  $d: cannot strip $remaining"
     elif (( perso > 0 )); then
       rm -f -- "$dir/$d.plist"
       print -u2 "refused  $d: $perso personal paths or addresses in the values"
+    elif (( $#stripped )); then
+      print "saved    $d, without ${(j:, :)stripped}"
     else
       print "saved    $d"
     fi

@@ -7,3 +7,7 @@ unpushed.md
 # public. They are disposable by design, see the last step of HANDOFF.md.
 HANDOFF.md
 HOME-MAP.md
+
+# iStat Menus own export: it carries the licence, its signature and a device
+# identifier. preferences/*.plist holds the same settings without them.
+*.ismp7

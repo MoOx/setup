@@ -304,11 +304,16 @@ step_macos() {
     # Only domains still empty, which is the new machine case: casks install
     # without launching. On a machine in use the live settings win, so a GUI
     # tweak is never reverted. Record one with bin/prefs.
-    local plist count=0
+    local plist count=0 live
     local -a restore
     for plist in "$dir"/*.plist(ND); do
       (( count++ ))
-      defaults export "${plist:t:r}" - 2>/dev/null | grep -q '<key>' && continue
+      # No pipe into grep -q here: it exits on the first match, `defaults`
+      # takes SIGPIPE, and pipe_fail then turns a domain that does have
+      # settings into one reported as missing, non deterministically, since it
+      # depends on which side finishes first.
+      live=$(defaults export "${plist:t:r}" - 2>/dev/null)
+      [[ $live == *'<key>'* ]] && continue
       restore+=("$plist")
     done
     if (( ! count )); then
@@ -378,7 +383,8 @@ step_ssh() {
     local body=${$(<$key.pub)[2]}
     local remote
     if have gh && remote=$(gh api /user/keys --jq '.[].key' 2>/dev/null); then
-      if print -r -- "$remote" | awk '{print $2}' | grep -qxF -- "$body"; then
+      # grep -c, not -q: see the note in step_macos about SIGPIPE.
+      if (( $(print -r -- "$remote" | awk '{print $2}' | grep -cxF -- "$body") )); then
         ok "registered on GitHub as an auth key"
       else
         todo "not on GitHub as an auth key: https://github.com/settings/keys"

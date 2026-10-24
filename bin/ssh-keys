@@ -51,7 +51,7 @@ if (( $+commands[gh] )); then
   # may not carry. Their absence here is not proof of anything.
   if ! gh api /user/ssh_signing_keys --jq '.[] | "\(.id)\t\(.title)"' 2>/dev/null \
      | while IFS=$'\t' read -r id title; do printf '  signing  id=%-11s %s\n' "$id" "$title"; done \
-     | grep -q .; then
+     | grep -c . >/dev/null; then
     print '  signing  not readable with this token (needs admin:ssh_signing_key)'
   fi
 else
@@ -83,10 +83,10 @@ for pub in $HOME/.ssh/*.pub(N); do
     out=$(timeout 12 ssh -o BatchMode=yes -o ConnectTimeout=6 \
             -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o IdentityAgent=none \
             -i "$key" -v -T "$host" 2>&1)
-    if print -r -- "$out" | grep -q 'Server accepts key'; then
+    if [[ $out == *'Server accepts key'* ]]; then
       printf '  %-28s %-14s STILL AUTHORISED\n' "$host" "${key:t}"
       (( still++ ))
-    elif print -r -- "$out" | grep -qiE 'refused|no route|not known|nodename|timed out'; then
+    elif (( $(print -r -- "$out" | grep -ciE 'refused|no route|not known|nodename|timed out') )); then
       printf '  %-28s %-14s unreachable\n' "$host" "${key:t}"
     else
       printf '  %-28s %-14s refused\n' "$host" "${key:t}"

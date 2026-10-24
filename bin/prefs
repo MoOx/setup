@@ -24,14 +24,25 @@ for d in $domains; do
   if defaults export "$d" "$dir/$d.plist" 2>/dev/null \
      && plutil -convert xml1 "$dir/$d.plist" 2>/dev/null \
      && grep -q '<key>' "$dir/$d.plist"; then
-    # This repository is public and an export carries the whole domain, licence
-    # and token included: iStat Menus holds license6, serial and email, Yate a
-    # ServerAccessToken. Key names are matched, never values.
+    # This repository is public and an export carries the whole domain. Two
+    # reasons to refuse it, both found in practice:
+    #
+    # a credential, matched on key names and never on values. iStat Menus holds
+    # license6, serial and email, Yate a ServerAccessToken, Sketch a BCLicense.
+    # The pattern stays narrow on purpose: `activat` once rejected
+    # BetterDisplay over an activationPriority key.
     bad=$(grep -oE '<key>[^<]*</key>' "$dir/$d.plist" | sed 's/<[^>]*>//g' \
-      | grep -iE 'licen|serial|token|secret|passw|email|registrat|activat|receipt' | sort -u | paste -sd',' -)
+      | grep -iE 'licen|serial|token|secret|passw|email|apikey|credential|receipt' \
+      | sort -u | paste -sd',' -)
+    # or personal data in the values: VLC carries 42 absolute paths to media
+    # files, which belong in a public repository even less than a licence.
+    perso=$(grep -coE '/Users/|[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,}' "$dir/$d.plist")
     if [[ -n $bad ]]; then
       rm -f -- "$dir/$d.plist"
-      print -u2 "refused  $d: $bad"
+      print -u2 "refused  $d: credentials in $bad"
+    elif (( perso > 0 )); then
+      rm -f -- "$dir/$d.plist"
+      print -u2 "refused  $d: $perso personal paths or addresses in the values"
     else
       print "saved    $d"
     fi

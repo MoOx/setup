@@ -328,7 +328,30 @@ step_macos() {
 
   if [[ -x $REPO/macos.sh ]]; then
     if [[ $MODE == check ]]; then
-      note "macos.sh exists and is not checkable, run ./setup macos to apply it"
+      # No parsing: macos.sh is sourced with `defaults` shadowed by a function
+      # that compares instead of writing, so the file stays the only source of
+      # truth and a $HOME inside a value expands as it would on a real run.
+      # killall is shadowed too, or checking would restart the Dock.
+      local -a differing
+      local -i checked=0
+      defaults() {
+        [[ ${1:-} == write ]] || return 0
+        (( checked++ ))
+        local domain=$2 key=$3 type=${4:-} want=${5:-} got
+        [[ $type == -bool ]] && { [[ $want == true ]] && want=1 || want=0 }
+        got=$(command defaults read "$domain" "$key" 2>/dev/null)
+        [[ $got == $want ]] || differing+=("$key")
+      }
+      killall() { return 0 }
+      source "$REPO/macos.sh" >/dev/null 2>&1
+      unfunction defaults killall
+      if (( ! checked )); then
+        note "macos.sh declares no setting"
+      elif (( $#differing )); then
+        todo "$#differing of $checked macOS settings differ: ${(j:, :)differing}"
+      else
+        ok "$checked macOS settings as declared"
+      fi
     else
       "$REPO/macos.sh" && ok "macos.sh applied"
     fi

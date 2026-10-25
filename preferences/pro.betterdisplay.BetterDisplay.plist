@@ -8,24 +8,8 @@
 	<false/>
 	<key>NSStatusItem Preferred Position Item-0</key>
 	<real>456</real>
-	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>1281 688 637 402 0 0 3200 1320 </string>
-	<key>NSWindow Frame SUUpdateAlert2</key>
-	<string>-936 547 559 402 -1312 232 1312 822 </string>
-	<key>NSWindow Frame Settings</key>
-	<string>1874 608 800 600 0 0 3200 1320 </string>
 	<key>Paddle-BetterDisplay-762421-SD</key>
 	<string>e9eccecca789e500d1add57a9ffc7a933d54481246e26d6de268dd516f65600c</string>
-	<key>SUAutomaticallyUpdate</key>
-	<true/>
-	<key>SUEnableAutomaticChecks</key>
-	<true/>
-	<key>SUHasLaunchedBefore</key>
-	<true/>
-	<key>SULastCheckTime</key>
-	<date>2026-10-23T07:59:20Z</date>
-	<key>SUUpdateGroupIdentifier</key>
-	<integer>4112224648</integer>
 	<key>activationPriority@DisplayGroup:-1001</key>
 	<integer>0</integer>
 	<key>airPlay@Display:10</key>
@@ -151,13 +135,13 @@
 	<key>defaultWidth@Display:4</key>
 	<integer>1728</integer>
 	<key>displayConfigurationId</key>
-	<integer>3348</integer>
+	<integer>3356</integer>
 	<key>displayConfigurationId@Display:10</key>
-	<integer>3348</integer>
+	<integer>3356</integer>
 	<key>displayConfigurationId@Display:106</key>
-	<integer>3339</integer>
+	<integer>3355</integer>
 	<key>displayConfigurationId@Display:4</key>
-	<integer>3348</integer>
+	<integer>3356</integer>
 	<key>displayIsTV_overrideUndo@v7789m40634</key>
 	<integer>0</integer>
 	<key>displayModeMenuActiveFilterTagIds@Display:10</key>
@@ -235,15 +219,15 @@
 	<key>isUnavailable@hardwareAmbientLight-EnvironmentController</key>
 	<true/>
 	<key>lastConnected@Display:10</key>
-	<real>814522168.56142604</real>
+	<real>814638292.46242905</real>
 	<key>lastConnected@Display:106</key>
-	<real>814365419.89282799</real>
+	<real>814634364.17525399</real>
 	<key>lastConnected@Display:4</key>
-	<real>814522168.31178498</real>
+	<real>814638292.35567403</real>
 	<key>lastUnseen@Display:10</key>
-	<real>814365420.08511603</real>
+	<real>814634364.300282</real>
 	<key>lastUnseen@Display:106</key>
-	<real>814365420.81344903</real>
+	<real>814634365.24917901</real>
 	<key>lastUnseen@Display:4</key>
 	<real>811334497.76489997</real>
 	<key>manualResolutionList_overrideUndo@v7789m40634</key>
@@ -429,17 +413,11 @@
 	<key>smoothScaling_overrideUndo@v7789m40634</key>
 	<false/>
 	<key>storedIdentifiers@Display:10</key>
-	<string>[{"infoDictionarySerial":592433,"ioDisplayLocation":"IOService:\/AppleARMPE\/arm-io\/AppleT600xIO\/dispext0@88000000\/AppleCLCD2","vendorNumber":7789,"yearOfManufacture":2025,"edidProductName":"LG ULTRAFINE","modelNumber":40634,"edidData":"AP\/\/\/\/\/\/\/wAebbqeMQoJAAgjAQS1XSd4+dmlsE89sSQOUFQhCQDRwGFAgcABAQEBAQEBAQEB53xwoNCgKVAwIDoAooYxAAAaAAAA\/QwweBISjwEKICAgICAgAAAA\/ABMRyBVTFRSQUZJTkUKAAAA\/wA1MDhOVEhNSEU0MzMKAiwCAzNwIwlXB4MBAABHe3Y\/EAQDAeIPAuMFwADmBgUBdWUg4gBqbRoAAAIJMHgABHUgZSYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAinASeQMAAQAMTSRQDwAUcAiQeImZDwAKpCEODgcBIwAAAAMAUNcqAob\/E58AB4AfAG8IUAAgAAcAUdMBBv8TnwAHgB8AbwhoACwABwA9igEG\/xOfAAeAHwBvCFcAIwAHABETAQb\/E58AB4AfAG8IPQAWAAcAAAAAAAAAAAAAAJWQ","infoDictionaryModelNumber":40634,"portID":209764384,"systemUUID":"9F3C2177-537B-4518-87D9-DDC493CCA3D8","serial":592433,"infoDictionaryVendorNumber":7789,"alphanumericSerialNumber":"508NTHMHE433","productName":"LG ULTRAFINE","weekOfManufacture":8}]</string>
+	<string>[{"alphanumericSerialNumber":"508NTHMHE433","serial":592433,"vendorNumber":7789,"weekOfManufacture":8,"modelNumber":40634,"infoDictionaryVendorNumber":7789,"infoDictionaryModelNumber":40634,"infoDictionarySerial":592433,"ioDisplayLocation":"IOService:\/AppleARMPE\/arm-io\/AppleT600xIO\/dispext0@88000000\/AppleCLCD2","systemUUID":"9F3C2177-537B-4518-87D9-DDC493CCA3D8","edidData":"AP\/\/\/\/\/\/\/wAebbqeMQoJAAgjAQS1XSd4+dmlsE89sSQOUFQhCQDRwGFAgcABAQEBAQEBAQEB53xwoNCgKVAwIDoAooYxAAAaAAAA\/QwweBISjwEKICAgICAgAAAA\/ABMRyBVTFRSQUZJTkUKAAAA\/wA1MDhOVEhNSEU0MzMKAiwCAzNwIwlXB4MBAABHe3Y\/EAQDAeIPAuMFwADmBgUBdWUg4gBqbRoAAAIJMHgABHUgZSYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAinASeQMAAQAMTSRQDwAUcAiQeImZDwAKpCEODgcBIwAAAAMAUNcqAob\/E58AB4AfAG8IUAAgAAcAUdMBBv8TnwAHgB8AbwhoACwABwA9igEG\/xOfAAeAHwBvCFcAIwAHABETAQb\/E58AB4AfAG8IPQAWAAcAAAAAAAAAAAAAAJWQ","productName":"LG ULTRAFINE","edidProductName":"LG ULTRAFINE","portID":209764384,"yearOfManufacture":2025}]</string>
 	<key>storedIdentifiers@Display:106</key>
-	<string>[{"systemUUID":"UNKNOWN","serial":592433,"modelNumber":40634,"vendorNumber":7789,"productName":"Generic Display"}]</string>
+	<string>[{"serial":592433,"productName":"Generic Display","modelNumber":40634,"systemUUID":"UNKNOWN","vendorNumber":7789}]</string>
 	<key>storedIdentifiers@Display:4</key>
-	<string>[{"systemUUID":"37D8832A-2D66-02CA-B9F7-8F30A301B230","infoDictionaryVendorNumber":1552,"infoDictionaryModelNumber":41040,"serial":4251086178,"vendorNumber":1552,"infoDictionarySerial":4251086178,"productName":"Color LCD","modelNumber":41040,"edidProductName":"Color LCD","ioDisplayLocation":"IOService:\/AppleARMPE\/arm-io\/AppleT600xIO\/disp0@8A000000\/AppleCLCD2"}]</string>
-	<key>supportsHDR@Display:10</key>
-	<true/>
-	<key>supportsHDR@Display:106</key>
-	<false/>
-	<key>supportsHDR@Display:4</key>
-	<false/>
+	<string>[{"vendorNumber":1552,"serial":4251086178,"modelNumber":41040,"edidProductName":"Color LCD","ioDisplayLocation":"IOService:\/AppleARMPE\/arm-io\/AppleT600xIO\/disp0@8A000000\/AppleCLCD2","infoDictionaryVendorNumber":1552,"systemUUID":"37D8832A-2D66-02CA-B9F7-8F30A301B230","infoDictionaryModelNumber":41040,"infoDictionarySerial":4251086178,"productName":"Color LCD"}]</string>
 	<key>systemVirtual@Display:10</key>
 	<false/>
 	<key>systemVirtual@Display:106</key>

@@ -36,17 +36,5 @@
 	</data>
 	<key>NSTableView Supports v2 Files</key>
 	<true/>
-	<key>NSWindow Frame MainWindow</key>
-	<string>2239 187 861 660 0 0 3200 1320 </string>
-	<key>NSWindow Frame Prefs</key>
-	<string>564 921 663 398 0 0 3200 1319 </string>
-	<key>NSWindow Frame SUStatusFrame</key>
-	<string>1400 888 400 135 0 0 3200 1319 </string>
-	<key>SUHasLaunchedBefore</key>
-	<true/>
-	<key>SULastCheckTime</key>
-	<date>2026-10-23T07:59:20Z</date>
-	<key>SUUpdateRelaunchingMarker</key>
-	<false/>
 </dict>
 </plist>

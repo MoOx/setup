@@ -12,75 +12,92 @@ set -uo pipefail
 dir=${0:A:h:h}/preferences
 mkdir -p -- "$dir"
 
-domains=("$@")
-for f in "$dir"/*.plist(N); do domains+=("${f:t:r}"); done
-
-# Key names that look like a credential, at any depth.
+# This repository is public and an export carries the whole domain, so two
+# kinds of key are removed before it lands.
+#
+# A credential. The names are reported, never the values. iStat Menus keeps a
+# License and a Device.Auth-Identifier, Sketch a BCLicense and a crashLogEmail,
+# Yate a ServerAccessToken. Breadth is cheap here, since the answer is to strip
+# a key the application writes again: the pattern once caught BetterDisplay's
+# activationPriority and iTerm's AiMaxTokens, and losing those costs nothing.
 cred_keys() {
   grep -oE '<key>[^<]*</key>' "$1" | sed 's/<[^>]*>//g' \
     | grep -iE 'licen|serial|token|secret|passw|email|apikey|credential|receipt|auth|signature' \
     | sort -u
 }
 
-# Remove one, at the top level or one dict below it. iStat Menus keeps its
-# device authentication identifier in Device.Auth-Identifier, and a plutil
-# keypath is the only way to reach it. Deeper than that is refused rather than
-# guessed at.
+# Noise. Recent file lists, window geometry and update checker state are not
+# settings: they differ on every machine, they say which files were opened, and
+# they are what makes an export look personal. VLC kept 21 media paths in
+# recentlyPlayedMediaList alone.
+noise_keys() {
+  grep -oE '<key>[^<]*</key>' "$1" | sed 's/<[^>]*>//g' \
+    | grep -iE 'recent|history|lastused|lastopen|^NSNav|^NSWindow Frame|^NSSplitView|^NSToolbar|^SU[A-Z]|updatechecker' \
+    | sort -u
+}
+
+key_count() { grep -cF "<key>$2</key>" "$1" || true }
+
+# Remove one key, at the top level or one dict below, which is as deep as a
+# plutil keypath can be guessed. The removal is measured and not trusted:
+# plutil -remove returns 0 for a keypath that does not exist, so
+# Artists.ServerAccessToken once reported success on a dict that never held it.
 strip_key() {
-  local file=$1 key=$2 top
-  plutil -remove "$key" "$file" 2>/dev/null && return 0
+  local file=$1 key=$2 top before
+  before=$(key_count "$file" "$key")
+  (( before )) || return 1
+  plutil -remove "$key" "$file" 2>/dev/null
+  (( $(key_count "$file" "$key") < before )) && return 0
   for top in ${(f)"$(plutil -p "$file" | sed -n 's/^  "\([^"]*\)" => .*/\1/p')"}; do
-    plutil -remove "$top.$key" "$file" 2>/dev/null && return 0
+    plutil -remove "$top.$key" "$file" 2>/dev/null
+    (( $(key_count "$file" "$key") < before )) && return 0
   done
   return 1
 }
+
+domains=("$@")
+for f in "$dir"/*.plist(N); do domains+=("${f:t:r}"); done
 
 typeset -A seen
 for d in $domains; do
   [[ -n $d ]] && (( ! ${+seen[$d]} )) || continue
   seen[$d]=1
-  # Converted to XML: defaults export writes a binary plist, which is an opaque
-  # blob in a diff.
-  if defaults export "$d" "$dir/$d.plist" 2>/dev/null \
-     && plutil -convert xml1 "$dir/$d.plist" 2>/dev/null \
-     && grep -q '<key>' "$dir/$d.plist"; then
-    # This repository is public and an export carries the whole domain.
-    #
-    # Credential-looking keys are stripped rather than refusing the domain:
-    # iStat Menus keeps its licence next to 22 real settings, and the pattern
-    # has false positives anyway, having once caught BetterDisplay's
-    # activationPriority and iTerm's AiMaxTokens. A key stripped by mistake is
-    # one the application writes again; a licence in a public repository is
-    # not. Key names are matched, never values.
-    # Strip what can be stripped, then refuse only if something is left. A
-    # nested key often disappears with the dict above it: iStat Menus holds
-    # both License and a license inside it, and removing the first takes the
-    # second. Only a top level key is removable by name, so a credential buried
-    # elsewhere still costs the whole domain.
-    stripped=()
-    for k in ${(f)"$(cred_keys "$dir/$d.plist")"}; do
-      [[ -n $k ]] || continue
-      strip_key "$dir/$d.plist" "$k" && stripped+=("$k")
-    done
-    remaining=$(cred_keys "$dir/$d.plist" | paste -sd',' - | cut -c1-40)
+  file=$dir/$d.plist
 
-    # Personal data in the values cannot be stripped key by key, so the domain
-    # goes: VLC carries 42 absolute paths to media files.
-    perso=$(grep -coE '/Users/|[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,}' "$dir/$d.plist")
-
-    if [[ -n $remaining ]]; then
-      rm -f -- "$dir/$d.plist"
-      print -u2 "refused  $d: cannot strip $remaining"
-    elif (( perso > 0 )); then
-      rm -f -- "$dir/$d.plist"
-      print -u2 "refused  $d: $perso personal paths or addresses in the values"
-    elif (( $#stripped )); then
-      print "saved    $d, without ${(j:, :)stripped}"
-    else
-      print "saved    $d"
-    fi
-  else
-    rm -f -- "$dir/$d.plist"
+  # Converted to XML: defaults export writes a binary plist, an opaque blob in
+  # a diff.
+  if ! { defaults export "$d" "$file" 2>/dev/null \
+         && plutil -convert xml1 "$file" 2>/dev/null \
+         && grep -q '<key>' "$file" }; then
+    rm -f -- "$file"
     print -u2 "no settings readable: $d"
+    continue
+  fi
+
+  stripped=()
+  for k in ${(f)"$(cred_keys "$file")"}; do
+    [[ -n $k ]] || continue
+    strip_key "$file" "$k" && stripped+=("$k")
+  done
+  noise=0
+  for k in ${(f)"$(noise_keys "$file")"}; do
+    [[ -n $k ]] || continue
+    strip_key "$file" "$k" && (( noise++ ))
+  done
+
+  # The last word goes to gitleaks, not to the patterns above. Sketch keeps two
+  # JWTs inside remote-asset-libraries, a name no credential pattern would ever
+  # match, so guessing from key names is a first pass and this is the gate.
+  if ! (( $+commands[gitleaks] )); then
+    rm -f -- "$file"
+    print -u2 "refused  $d: gitleaks is missing, run ./setup packages"
+  elif ! gitleaks dir "$file" --no-banner --redact --log-level error >/dev/null 2>&1; then
+    rm -f -- "$file"
+    print -u2 "refused  $d: gitleaks found a secret in the export"
+  else
+    report="saved    $d"
+    (( $#stripped )) && report+=", without ${(j:, :)stripped}"
+    (( noise )) && report+=" ($noise noise key$( (( noise > 1 )) && print -n s) dropped)"
+    print -r -- "$report"
   fi
 done

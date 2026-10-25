@@ -37,6 +37,7 @@ STEPS=(
   packages 'Packages, casks and App Store apps from the Brewfile'
   hooks    'This repo own git hooks, so gitleaks runs before each commit'
   home     'Dotfiles, symlinked from home/ into ~'
+  prezto   'The zsh framework .zshrc sources and .zpreztorc configures'
   claude   'Claude Code config, symlinked from claude/ into ~/.claude'
   macos    'macOS preferences from preferences/ and macos.sh'
   ssh      'This machine own SSH key'
@@ -287,6 +288,22 @@ step_home() {
     [[ ${entry:t} == .ssh ]] && continue
     ensure_link "$entry" "$HOME/${entry:t}"
   done
+}
+
+step_prezto() {
+  # What .zshrc sources and .zpreztorc configures. Without it the shell still
+  # starts, silently, with no pure prompt, no syntax highlighting and no
+  # autosuggestions. https and not ssh: on a new machine the key is not on
+  # GitHub yet.
+  local dir=$HOME/.zprezto
+  if [[ -s $dir/init.zsh ]]; then
+    ok "~/.zprezto"
+  elif [[ $MODE == check ]]; then
+    todo "~/.zprezto is missing, the prompt and the highlighting would be silently absent"
+  else
+    git clone --recursive https://github.com/sorin-ionescu/prezto.git "$dir" \
+      && ok "~/.zprezto cloned" || fail "could not clone prezto"
+  fi
 }
 
 step_claude() {

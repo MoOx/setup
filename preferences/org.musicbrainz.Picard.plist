@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSNavPanelExpandedSizeForOpenMode</key>
-	<string>{880, 448}</string>
 	<key>NSOSPLastRootDirectory</key>
 	<data>
 	Ym9va3wCAAAAAAUQQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -20,7 +18,5 @@
 	AAAAMCAAAJwAAAAAAAAAAcAAAKQAAAAAAAAAEcAAACAAAAAAAAAAEsAAALQAAAAAAAAA
 	AdAAAJwAAAAAAAAAENAAAAQAAAAAAAAA
 	</data>
-	<key>NSWindow Frame GoToSheet</key>
-	<string>866 561 460 215 0 0 3200 1320 </string>
 </dict>
 </plist>

@@ -229,8 +229,6 @@
 	<real>352</real>
 	<key>InspectorSelected</key>
 	<string>Files</string>
-	<key>NSNavPanelExpandedSizeForOpenMode</key>
-	<string>{1022, 450}</string>
 	<key>NSOSPLastRootDirectory</key>
 	<data>
 	Ym9va0gDAAAAAAQQMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAIA
@@ -303,47 +301,12 @@
 	<true/>
 	<key>NSTableView Supports v2 InspectorTableWebSeeds</key>
 	<true/>
-	<key>NSToolbar Configuration TRMainToolbar</key>
-	<dict>
-		<key>TB Display Mode</key>
-		<integer>2</integer>
-		<key>TB Icon Size Mode</key>
-		<integer>1</integer>
-		<key>TB Is Shown</key>
-		<integer>1</integer>
-		<key>TB Size Mode</key>
-		<integer>1</integer>
-	</dict>
-	<key>NSWindow Frame AddMagnetWindow</key>
-	<string>492 529 443 257 0 0 1728 1083 </string>
-	<key>NSWindow Frame AddWindow</key>
-	<string>308 136 433 554 0 0 1728 1079 </string>
-	<key>NSWindow Frame InspectorWindow</key>
-	<string>932 327 796 461 0 0 1728 1083 </string>
-	<key>NSWindow Frame NSNavPanelAutosaveName</key>
-	<string>203 308 1022 450 0 0 1728 1083 </string>
-	<key>NSWindow Frame SUStatusFrame</key>
-	<string>1080 960 400 135 0 0 2560 1415 </string>
-	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>970 762 620 398 0 0 2560 1415 </string>
-	<key>NSWindow Frame TransmissionWindow</key>
-	<string>561 716 972 110 0 0 1728 1083 </string>
-	<key>NSWindow Frame URLSheetWindow</key>
-	<string>1174 730 400 199 0 0 1680 1027 </string>
 	<key>Queue</key>
 	<true/>
 	<key>QueueDownloadNumber</key>
 	<integer>4</integer>
 	<key>RemoveWhenFinishSeeding</key>
 	<true/>
-	<key>SUHasLaunchedBefore</key>
-	<true/>
-	<key>SULastCheckTime</key>
-	<date>2026-10-23T07:59:22Z</date>
-	<key>SUUpdateGroupIdentifier</key>
-	<integer>4166138589</integer>
-	<key>SUUpdateRelaunchingMarker</key>
-	<false/>
 	<key>SelectedPrefView</key>
 	<string>TOOLBAR_BANDWIDTH</string>
 	<key>SmallView</key>

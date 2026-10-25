@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>NSWindow Frame SwiftUI.ModifiedContent&lt;SwiftUI.ModifiedContent&lt;SwiftUI.ModifiedContent&lt;SwiftUI.ModifiedContent&lt;SwiftUI.ModifiedContent&lt;Pearcleaner.MainWindow, SwiftUI._EnvironmentKeyWritingModifier&lt;Swift.Optional&lt;Pearcleaner.AppState&gt;&gt;&gt;, SwiftUI._EnvironmentKeyWritingModifier&lt;Swift.Optional&lt;Pearcleaner.Locations&gt;&gt;&gt;, SwiftUI._EnvironmentKeyWritingModifier&lt;Swift.Optional&lt;Pearcleaner.FolderSettingsManager&gt;&gt;&gt;, SwiftUI._EnvironmentKeyWritingModifier&lt;Swift.Optional&lt;AlinFoundation.Updater&gt;&gt;&gt;, SwiftUI._EnvironmentKeyWritingModifier&lt;Swift.Optional&lt;Pearcleaner.PermissionManagerLocal&gt;&gt;&gt;-1-AppWindow-1</key>
+	<string>609 201 1537 938 0 0 3200 1320 </string>
+	<key>NSWindow Frame SwiftUI.WindowGroup&lt;SwiftUI.ModifiedContent&lt;SwiftUI.ModifiedContent&lt;SwiftUI.ModifiedContent&lt;SwiftUI.ModifiedContent&lt;SwiftUI.ModifiedContent&lt;Pearcleaner.MainWindow, SwiftUI._EnvironmentKeyWritingModifier&lt;Swift.Optional&lt;Pearcleaner.AppState&gt;&gt;&gt;, SwiftUI._EnvironmentKeyWritingModifier&lt;Swift.Optional&lt;Pearcleaner.Locations&gt;&gt;&gt;, SwiftUI._EnvironmentKeyWritingModifier&lt;Swift.Optional&lt;Pearcleaner.FolderSettingsManager&gt;&gt;&gt;, SwiftUI._EnvironmentKeyWritingModifier&lt;Swift.Optional&lt;AlinFoundation.Updater&gt;&gt;&gt;, SwiftUI._EnvironmentKeyWritingModifier&lt;Swift.Optional&lt;Pearcleaner.PermissionManagerLocal&gt;&gt;&gt;&gt;-1-AppWindow-1</key>
+	<string>1572 309 1202 702 0 0 3200 1320 </string>
+	<key>settings.brew.autoUpdateEnabled</key>
+	<true/>
+	<key>settings.brew.showOnlyInstalledOnRequest</key>
+	<true/>
+	<key>settings.folders.apps</key>
+	<array>
+		<string>/Applications</string>
+		<string>/Users/moox/Applications</string>
+	</array>
+	<key>settings.general.brew</key>
+	<true/>
+	<key>settings.general.cli</key>
+	<false/>
+	<key>settings.general.deepLevelAlertShown</key>
+	<true/>
+	<key>settings.general.filesWarning</key>
+	<true/>
+	<key>settings.general.leftoverWarning</key>
+	<true/>
+	<key>settings.general.oneshot</key>
+	<true/>
+	<key>settings.general.searchSensitivity</key>
+	<integer>0</integer>
+	<key>settings.general.selectedSort</key>
+	<string>name</string>
+	<key>settings.general.selectedTab</key>
+	<integer>5</integer>
+	<key>settings.general.sidebarWidth</key>
+	<real>400</real>
+	<key>settings.interface.fileListViewMode</key>
+	<string>Simple</string>
+	<key>settings.lipo.warning</key>
+	<true/>
+	<key>settings.sentinel.enable</key>
+	<true/>
+	<key>settings.tutorial.dragToExpandShown</key>
+	<false/>
+	<key>settings.tutorial.switchUtilitiesShown</key>
+	<false/>
+	<key>settings.updater.collapsedCategories</key>
+	<data>
+	WyJDdXJyZW50IiwiU3BhcmtsZSJd
+	</data>
+</dict>
+</plist>

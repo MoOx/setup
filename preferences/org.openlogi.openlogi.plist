@@ -4,11 +4,5 @@
 <dict>
 	<key>NSAutoFillHeuristicControllerEnabled</key>
 	<false/>
-	<key>SUAutomaticallyUpdate</key>
-	<true/>
-	<key>SULastCheckTime</key>
-	<date>2026-10-23T07:59:22Z</date>
-	<key>SUUpdateGroupIdentifier</key>
-	<integer>1062245967</integer>
 </dict>
 </plist>

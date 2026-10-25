@@ -2,11 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSSplitView Subview Frames NSColorPanelSplitView</key>
-	<array>
-		<string>0.000000, 0.000000, 224.000000, 258.000000, NO, NO</string>
-		<string>0.000000, 259.000000, 224.000000, 48.000000, NO, NO</string>
-	</array>
 	<key>NSStatusItem Preferred Position Item-0</key>
 	<real>1000</real>
 	<key>NSToolbar Configuration com.apple.NSColorPanel</key>
@@ -14,28 +9,6 @@
 		<key>TB Is Shown</key>
 		<integer>1</integer>
 	</dict>
-	<key>NSWindow Frame SUAutomaticUpdateAlert</key>
-	<string>556 661 616 193 0 0 1728 1079 </string>
-	<key>NSWindow Frame SUStatusFrame</key>
-	<string>742 261 400 135 0 0 1920 1080 </string>
-	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>1281 690 637 398 0 0 3200 1319 </string>
-	<key>NSWindow Frame SUUpdateAlert2</key>
-	<string>1306 688 589 402 0 0 3200 1320 </string>
-	<key>NSWindow Frame SUUpdateAlertSmall</key>
-	<string>970 997 620 183 0 0 2560 1415 </string>
-	<key>SUAutomaticallyUpdate</key>
-	<true/>
-	<key>SUEnableAutomaticChecks</key>
-	<true/>
-	<key>SUHasLaunchedBefore</key>
-	<true/>
-	<key>SULastCheckTime</key>
-	<date>2026-10-23T07:59:21Z</date>
-	<key>SUUpdateGroupIdentifier</key>
-	<integer>2754612931</integer>
-	<key>SUUpdateRelaunchingMarker</key>
-	<false/>
 	<key>allowAnyShortcut</key>
 	<true/>
 	<key>almostMaximize</key>
@@ -192,8 +165,6 @@
 		<key>modifierFlags</key>
 		<integer>786432</integer>
 	</dict>
-	<key>subsequentExecutionMode</key>
-	<integer>0</integer>
 	<key>todo</key>
 	<integer>2</integer>
 	<key>toggleTodo</key>

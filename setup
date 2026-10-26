@@ -331,32 +331,40 @@ step_claude() {
 step_macos() {
   local dir=$REPO/preferences
   if [[ -d $dir ]]; then
-    # Only domains still empty, which is the new machine case: casks install
-    # without launching. On a machine in use the live settings win, so a GUI
-    # tweak is never reverted. Record one with bin/prefs.
-    local plist count=0 live
+    # The versioned ones only, which is what .gitignore says: bin/prefs --all
+    # drops every domain this machine exposes in here to be read, and those are
+    # not ours to restore.
+    #
+    # Of those, only domains still empty, which is the new machine case since a
+    # cask installs without launching. On a machine in use the live settings
+    # win, so a GUI tweak is never reverted. Record one with bin/prefs.
+    local -a wanted=(${(f)"$("$REPO/bin/prefs" --versioned 2>/dev/null)"})
+    wanted=(${wanted:#})
+    local d count=0 live
     local -a restore
-    for plist in "$dir"/*.plist(ND); do
+    for d in $wanted; do
       (( count++ ))
       # No pipe into grep -q here: it exits on the first match, `defaults`
       # takes SIGPIPE, and pipe_fail then turns a domain that does have
       # settings into one reported as missing, non deterministically, since it
       # depends on which side finishes first.
-      live=$(defaults export "${plist:t:r}" - 2>/dev/null)
+      live=$(defaults export "$d" - 2>/dev/null)
       [[ $live == *'<key>'* ]] && continue
-      restore+=("$plist")
+      restore+=("$d")
     done
+    local -a present=("$dir"/*.plist(N))
     if (( ! count )); then
-      note "preferences/ holds no .plist yet"
+      note "preferences/ versions no domain yet"
     elif (( ! $#restore )); then
       ok "$count app preferences already set"
     elif [[ $MODE == check ]]; then
-      todo "$#restore app preferences to restore: ${(j:, :)${(@)restore:t:r}}"
+      todo "$#restore app preferences to restore: ${(j:, :)restore}"
     else
-      for plist in $restore; do
-        defaults import "${plist:t:r}" "$plist" && ok "${plist:t:r} imported"
+      for d in $restore; do
+        defaults import "$d" "$dir/$d.plist" && ok "$d imported"
       done
     fi
+    (( $#present > count )) && note "$(( $#present - count )) more generated here, not versioned"
   else
     note "skipped, preferences/ does not exist yet"
   fi

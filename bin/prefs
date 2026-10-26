@@ -1,9 +1,17 @@
 #!/usr/bin/env zsh
 # Save app preferences into preferences/, which setup restores on a new machine.
 #
-#   bin/prefs                 re-save what preferences/ already holds
-#   bin/prefs <domain>...     add these domains
-#   bin/prefs --check         name the domains that changed since they were saved
+#   bin/prefs                 re-save the versioned domains
+#   bin/prefs <domain>...     write these domains here
+#   bin/prefs --all           write every domain this machine exposes
+#   bin/prefs --check         name the versioned domains that changed
+#   bin/prefs --versioned     name the domains .gitignore keeps
+#
+# What is versioned is decided by .gitignore, not by this script: every plist
+# here is ignored except the ones named by a `!` line. So the whole set can sit
+# in preferences/ to be read and compared, and keeping one is a single line
+# rather than a command to remember. `git clean` only ever removes the rest,
+# which --all writes again.
 #
 # A domain is a bundle identifier, e.g. com.knollsoft.Rectangle.
 #
@@ -93,42 +101,36 @@ export_clean() {
   return 0
 }
 
+# Every bundle identifier that exposes more than a couple of keys.
+all_domains() {
+  local app id n
+  typeset -A seen_app
+  for app in /Applications/*.app(N) $HOME/Applications/*.app(N); do
+    [[ ${app:t:r} == Setup ]] && continue
+    id=$(/usr/libexec/PlistBuddy -c 'Print :CFBundleIdentifier' "$app/Contents/Info.plist" 2>/dev/null) || continue
+    [[ -n $id ]] && (( ! ${+seen_app[$id]} )) || continue
+    seen_app[$id]=1
+    n=$(defaults export "$id" - 2>/dev/null | grep -c '<key>')
+    (( n >= 3 )) && print -r -- "$id"
+  done
+}
+
+# The versioned ones: a plist .gitignore does not ignore.
+versioned_domains() {
+  local f
+  for f in "$dir"/*.plist(N); do
+    git -C "$dir" check-ignore -q "$f" 2>/dev/null || print -r -- "${f:t:r}"
+  done
+}
+
 domains=("$@")
 check=0
 case ${domains[1]:-} in
   --check) check=1; domains=() ;;
-  --candidates)
-    # What could be versioned, printed and nothing else. The whitelist is the
-    # set of files in preferences/, so finding a domain and choosing it stay
-    # two separate acts: `bin/prefs <domain>` adds one, deleting its file drops
-    # it, and nothing accumulates in the repository on its own.
-    printf '%-40s %5s  %s\n' DOMAIN KEYS STATE
-    typeset -A listed
-    {
-      for app in /Applications/*.app(N) $HOME/Applications/*.app(N); do
-        [[ ${app:t:r} == Setup ]] && continue
-        id=$(/usr/libexec/PlistBuddy -c 'Print :CFBundleIdentifier' "$app/Contents/Info.plist" 2>/dev/null) || continue
-        [[ -n $id ]] && (( ! ${+listed[$id]} )) || continue
-        listed[$id]=1
-        n=$(defaults export "$id" - 2>/dev/null | grep -c '<key>')
-        (( n >= 3 )) || continue
-        state=-
-        [[ -f $dir/$id.plist ]] && state=versioned
-        printf '%-40s %5s  %s\n' "$id" "$n" "$state"
-      done
-      # A versioned domain no application claims, such as iStat Menus keeping
-      # its settings in com.bjango.istatmenus.menubar.7 while the app bundle
-      # answers com.bjango.istatmenus.
-      for f in "$dir"/*.plist(N); do
-        id=${f:t:r}
-        (( ${+listed[$id]} )) && continue
-        printf '%-40s %5s  %s\n' "$id" "$(grep -c '<key>' "$f")" versioned
-      done
-    } | sort -k2 -rn
-    exit 0
-    ;;
+  --all) domains=(${(f)"$(all_domains)"}) ;;
+  --versioned) versioned_domains; exit 0 ;;
 esac
-for f in "$dir"/*.plist(N); do domains+=("${f:t:r}"); done
+(( $#domains )) || domains=(${(f)"$(versioned_domains)"})
 
 typeset -A seen
 for d in $domains; do

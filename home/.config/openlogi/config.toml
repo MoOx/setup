@@ -1,0 +1,182 @@
+schema_version = 7
+selected_device = "serial:2409lz01g708"
+
+[devices."serial:2222lz51ac48"]
+scroll_resolution = "low"
+
+[devices."serial:2222lz51ac48".identity]
+display_name = "MX Master 3S"
+codename = "MX Master 3S For Mac"
+kind = "mouse"
+
+[app_settings]
+launch_at_login = true
+check_for_updates = true
+auto_install_updates = true
+update_prompt_seen = true
+show_in_menu_bar = true
+capture_mouse_events = true
+smooth_scroll = false
+vertical_scroll_sensitivity = 14
+app_icon = "openlogi"
+auto_download_assets = true
+asset_source = "automatic"
+thumbwheel_sensitivity = 14
+appearance = "system"
+ui_scale = "normal"
+device_view_mode = "grid"
+mouse_profile_target = "pointer"
+
+[devices."serial:2222lz51ac48".identity.model_info]
+entity_count = 3
+unit_id = [
+    0,
+    0,
+    0,
+    0,
+]
+model_ids = [
+    45108,
+    0,
+    0,
+]
+extended_model_id = 4
+
+[devices."serial:2222lz51ac48".identity.model_info.transports]
+usb = false
+equad = false
+btle = true
+bluetooth = false
+
+[devices."serial:2222lz51ac48".identity.capabilities]
+buttons = true
+pointer = true
+lighting = false
+scroll_inversion = true
+hires_wheel = true
+thumbwheel = true
+haptic_feedback = false
+haptic_panel = false
+dpi_gestures = true
+fn_lock = false
+os_layout = false
+report_rate = false
+backlight = false
+easy_switch = true
+
+[devices."serial:2222lz51ac48".links."direct:046d:b034".capabilities]
+buttons = true
+pointer = true
+lighting = false
+scroll_inversion = true
+hires_wheel = true
+thumbwheel = true
+haptic_feedback = false
+haptic_panel = false
+dpi_gestures = true
+fn_lock = false
+os_layout = false
+report_rate = false
+backlight = false
+easy_switch = true
+
+[devices."serial:2222lz51ac48".bindings]
+ThumbwheelScrollUp = "VolumeUp"
+ThumbwheelScrollDown = "VolumeDown"
+Forward = "MissionControl"
+GestureButton = "AppExpose"
+
+[devices."serial:2222lz51ac48".bindings.Back ]
+CustomShortcut = "Cmd+H"
+
+[devices."serial:2222lz51ac48".disabled_gestures.Back]
+Up = "MissionControl"
+Down = "ShowDesktop"
+Left = "PrevTab"
+Right = "NextTab"
+Click = "BrowserBack"
+
+[devices."serial:2222lz51ac48".disabled_gestures.Forward]
+Up = "MissionControl"
+Down = "ShowDesktop"
+Left = "PrevTab"
+Right = "NextTab"
+Click = "BrowserForward"
+
+[keyboard]
+
+[devices."serial:2222lz51ac48".disabled_gestures.GestureButton]
+Up = "MissionControl"
+Down = "ShowDesktop"
+Left = "PrevTab"
+Right = "NextTab"
+Click = "AppExpose"
+
+[devices."serial:2409lz01g708".identity]
+display_name = "MX Anywhere 3S"
+codename = "MX Anywhere 3S for Mac"
+kind = "mouse"
+
+[devices."serial:2409lz01g708".identity.model_info]
+entity_count = 3
+unit_id = [
+    0,
+    0,
+    0,
+    0,
+]
+model_ids = [
+    45111,
+    0,
+    0,
+]
+extended_model_id = 5
+
+[devices."serial:2409lz01g708".identity.model_info.transports]
+usb = false
+equad = false
+btle = true
+bluetooth = false
+
+[devices."serial:2409lz01g708".identity.capabilities]
+buttons = true
+pointer = true
+lighting = false
+scroll_inversion = true
+hires_wheel = true
+thumbwheel = false
+haptic_feedback = false
+haptic_panel = false
+dpi_gestures = true
+fn_lock = false
+os_layout = false
+report_rate = false
+backlight = false
+easy_switch = false
+
+[devices."serial:2409lz01g708".links."direct:046d:b037".capabilities]
+buttons = true
+pointer = true
+lighting = false
+scroll_inversion = true
+hires_wheel = true
+thumbwheel = false
+haptic_feedback = false
+haptic_panel = false
+dpi_gestures = true
+fn_lock = false
+os_layout = false
+report_rate = false
+backlight = false
+easy_switch = false
+
+[devices."serial:2409lz01g708".bindings]
+Forward = "MissionControl"
+
+[devices."serial:2409lz01g708".bindings.Back]
+CustomShortcut = "Cmd+H"
+
+[devices."serial:2409lz01g708".smartshift]
+mode = "ratchet"
+auto_disengage = 12
+tunable_torque = 76

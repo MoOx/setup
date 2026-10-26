@@ -83,7 +83,15 @@ ensure_link() {
     if [[ -L $dest ]]; then
       todo "$pretty points at ${dest:A/#$HOME/\~} instead of the repo"
     elif [[ -e $dest ]]; then
-      todo "$pretty is a real file, not a link to the repo"
+      # Newer matters: an application that rewrites its config by replacing the
+      # file destroys the link, and then the real file holds changes the repo
+      # does not. Applying would move it aside and relink, which is recoverable
+      # but is still a revert, so it is named here rather than discovered after.
+      if [[ $dest -nt $src ]]; then
+        todo "$pretty is a real file, newer than the repo copy: it has changes to keep"
+      else
+        todo "$pretty is a real file, not a link to the repo"
+      fi
     else
       todo "$pretty is missing"
     fi
@@ -280,13 +288,18 @@ step_home() {
     note "skipped, home/ does not exist yet (dotfiles still live in iCloud .home)"
     return
   fi
-  local entry
-  for entry in "$dir"/*(ND); do
-    [[ ${entry:t} == .DS_Store ]] && continue
-    # .ssh is handled file by file in step_ssh. Linking it here would replace
-    # ~/.ssh itself with a link to the repo and take the private keys with it.
-    [[ ${entry:t} == .ssh ]] && continue
-    ensure_link "$entry" "$HOME/${entry:t}"
+  # Files, never directories. Linking home/.config would replace ~/.config
+  # itself with a link into the repo, and with it the gh, rclone, beets and
+  # git-cliff configs that live there and are not versioned here. Linking
+  # leaves is what lets one file be versioned inside a directory other tools
+  # also write to, and it is the same reason ~/.ssh keeps only its config
+  # linked.
+  local file rel
+  for file in ${(f)"$(find "$dir" -type f -not -name .DS_Store 2>/dev/null | sort)"}; do
+    rel=${file#$dir/}
+    # .ssh belongs to step_ssh, which owns it alongside the key.
+    [[ $rel == .ssh/* ]] && continue
+    ensure_link "$file" "$HOME/$rel"
   done
 }
 

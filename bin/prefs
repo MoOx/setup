@@ -95,7 +95,39 @@ export_clean() {
 
 domains=("$@")
 check=0
-[[ ${domains[1]:-} == --check ]] && { check=1; domains=() }
+case ${domains[1]:-} in
+  --check) check=1; domains=() ;;
+  --candidates)
+    # What could be versioned, printed and nothing else. The whitelist is the
+    # set of files in preferences/, so finding a domain and choosing it stay
+    # two separate acts: `bin/prefs <domain>` adds one, deleting its file drops
+    # it, and nothing accumulates in the repository on its own.
+    printf '%-40s %5s  %s\n' DOMAIN KEYS STATE
+    typeset -A listed
+    {
+      for app in /Applications/*.app(N) $HOME/Applications/*.app(N); do
+        [[ ${app:t:r} == Setup ]] && continue
+        id=$(/usr/libexec/PlistBuddy -c 'Print :CFBundleIdentifier' "$app/Contents/Info.plist" 2>/dev/null) || continue
+        [[ -n $id ]] && (( ! ${+listed[$id]} )) || continue
+        listed[$id]=1
+        n=$(defaults export "$id" - 2>/dev/null | grep -c '<key>')
+        (( n >= 3 )) || continue
+        state=-
+        [[ -f $dir/$id.plist ]] && state=versioned
+        printf '%-40s %5s  %s\n' "$id" "$n" "$state"
+      done
+      # A versioned domain no application claims, such as iStat Menus keeping
+      # its settings in com.bjango.istatmenus.menubar.7 while the app bundle
+      # answers com.bjango.istatmenus.
+      for f in "$dir"/*.plist(N); do
+        id=${f:t:r}
+        (( ${+listed[$id]} )) && continue
+        printf '%-40s %5s  %s\n' "$id" "$(grep -c '<key>' "$f")" versioned
+      done
+    } | sort -k2 -rn
+    exit 0
+    ;;
+esac
 for f in "$dir"/*.plist(N); do domains+=("${f:t:r}"); done
 
 typeset -A seen

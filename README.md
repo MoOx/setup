@@ -35,6 +35,8 @@ bin/backup copy    # fonts, Claude history and .env to iCloud Drive
 bin/backup paste   # pull them back, never overwriting a local file
 bin/backup list    # what the encrypted .env archive holds
 bin/prefs <domain>     # version an app preferences, e.g. com.knollsoft.Rectangle
+bin/prefs --candidates # domains that could be versioned, and which already are
+bin/prefs --check      # name the ones that changed since they were saved
 bin/dev-snapshot       # record the ~/dev repos and their remotes
 bin/dev-snapshot --restore   # clone them back
 ```
@@ -47,7 +49,7 @@ To look a cask up in a browser: <https://formulae.brew.sh/cask/>
 | --- | --- |
 | `setup` | the entry point |
 | `Brewfile` | packages, casks, App Store apps |
-| `home/` | dotfiles, symlinked into `~` |
+| `home/` | dotfiles, each file symlinked into `~`, nested paths included |
 | `claude/` | Claude Code config, symlinked into `~/.claude` |
 | `macos.sh` | macOS settings, one line per decision |
 | `preferences/` | app preferences, re-imported on a new machine |

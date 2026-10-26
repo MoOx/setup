@@ -3,8 +3,15 @@
 #
 #   bin/prefs                 re-save what preferences/ already holds
 #   bin/prefs <domain>...     add these domains
+#   bin/prefs --check         name the domains that changed since they were saved
 #
 # A domain is a bundle identifier, e.g. com.knollsoft.Rectangle.
+#
+# Not every app can go in here. Most of the daily ones keep their settings on
+# their account, so there is nothing to version; the sandboxed ones keep them
+# in a container no one can read without Full Disk Access; and BetterDisplay
+# keys its settings by monitor serial number, which neither travels nor exports
+# the same way twice.
 
 emulate -L zsh
 set -uo pipefail
@@ -16,23 +23,24 @@ mkdir -p -- "$dir"
 # kinds of key are removed before it lands.
 #
 # A credential. The names are reported, never the values. iStat Menus keeps a
-# License and a Device.Auth-Identifier, Sketch a BCLicense and a crashLogEmail,
-# Yate a ServerAccessToken. Breadth is cheap here, since the answer is to strip
-# a key the application writes again: the pattern once caught BetterDisplay's
-# activationPriority and iTerm's AiMaxTokens, and losing those costs nothing.
+# License and a Device.Auth-Identifier, Yate a ServerAccessToken. Breadth is
+# cheap here, since the answer is to strip a key the application writes again:
+# the pattern once caught BetterDisplay's activationPriority and iTerm's
+# AiMaxTokens, and losing those costs nothing.
 cred_keys() {
   grep -oE '<key>[^<]*</key>' "$1" | sed 's/<[^>]*>//g' \
     | grep -iE 'licen|serial|token|secret|passw|email|apikey|credential|receipt|auth|signature' \
     | sort -u
 }
 
-# Noise. Recent file lists, window geometry and update checker state are not
-# settings: they differ on every machine, they say which files were opened, and
-# they are what makes an export look personal. VLC kept 21 media paths in
+# Noise. Recent file lists, window geometry, update checker state and the
+# timestamps of what was last connected are not settings: they differ on every
+# machine, they say which files were opened, and they are what makes an export
+# look personal and change on every run. VLC kept 21 media paths in
 # recentlyPlayedMediaList alone.
 noise_keys() {
   grep -oE '<key>[^<]*</key>' "$1" | sed 's/<[^>]*>//g' \
-    | grep -iE 'recent|history|lastused|lastopen|^NSNav|^NSWindow Frame|^NSSplitView|^NSToolbar|^SU[A-Z]|updatechecker' \
+    | grep -iE 'recent|history|lastused|lastopen|lastconnected|lastunseen|lastseen|^NSNav|^NSWindow Frame|^NSSplitView|^NSToolbar|^SU[A-Z]|updatechecker' \
     | sort -u
 }
 
@@ -55,49 +63,72 @@ strip_key() {
   return 1
 }
 
+# Export a domain, stripped and converted to XML, into $2. Sets `stripped` and
+# `noise` for the caller. Converted because defaults export writes a binary
+# plist, an opaque blob in a diff.
+stripped=()
+noise=0
+export_clean() {
+  local d=$1 file=$2 skip_scan=${3:-0} k
+  stripped=()
+  noise=0
+  defaults export "$d" "$file" 2>/dev/null || return 1
+  plutil -convert xml1 "$file" 2>/dev/null || return 1
+  grep -q '<key>' "$file" || return 1
+  for k in ${(f)"$(cred_keys "$file")"}; do
+    [[ -n $k ]] || continue
+    strip_key "$file" "$k" && stripped+=("$k")
+  done
+  for k in ${(f)"$(noise_keys "$file")"}; do
+    [[ -n $k ]] || continue
+    strip_key "$file" "$k" && (( noise++ ))
+  done
+  # The last word goes to gitleaks, not to the patterns above. Sketch keeps two
+  # JWTs inside remote-asset-libraries, a key name nothing would flag. Skipped
+  # when only comparing bytes: the stored file passed already, and the
+  # pre-commit hook scans whatever gets staged anyway.
+  (( skip_scan )) && return 0
+  (( $+commands[gitleaks] )) || return 2
+  gitleaks dir "$file" --no-banner --redact --log-level error >/dev/null 2>&1 || return 3
+  return 0
+}
+
 domains=("$@")
+check=0
+[[ ${domains[1]:-} == --check ]] && { check=1; domains=() }
 for f in "$dir"/*.plist(N); do domains+=("${f:t:r}"); done
 
 typeset -A seen
 for d in $domains; do
   [[ -n $d ]] && (( ! ${+seen[$d]} )) || continue
   seen[$d]=1
-  file=$dir/$d.plist
 
-  # Converted to XML: defaults export writes a binary plist, an opaque blob in
-  # a diff.
-  if ! { defaults export "$d" "$file" 2>/dev/null \
-         && plutil -convert xml1 "$file" 2>/dev/null \
-         && grep -q '<key>' "$file" }; then
-    rm -f -- "$file"
-    print -u2 "no settings readable: $d"
+  if (( check )); then
+    # A live plist older than the stored one cannot have changed, and exporting
+    # and stripping a domain to compare it is the slow part. cfprefsd rewrites
+    # a plist without changing it, so a newer one only means the comparison has
+    # to happen, not that something drifted.
+    live=$HOME/Library/Preferences/$d.plist
+    if [[ -f $live && -f $dir/$d.plist ]] && [[ $dir/$d.plist -nt $live ]]; then
+      continue
+    fi
+    tmp=${TMPDIR:-/tmp}/prefs-check.$$
+    if export_clean "$d" "$tmp" 1; then
+      cmp -s "$tmp" "$dir/$d.plist" || print -r -- "$d"
+    fi
+    rm -f -- "$tmp"
     continue
   fi
 
-  stripped=()
-  for k in ${(f)"$(cred_keys "$file")"}; do
-    [[ -n $k ]] || continue
-    strip_key "$file" "$k" && stripped+=("$k")
-  done
-  noise=0
-  for k in ${(f)"$(noise_keys "$file")"}; do
-    [[ -n $k ]] || continue
-    strip_key "$file" "$k" && (( noise++ ))
-  done
-
-  # The last word goes to gitleaks, not to the patterns above. Sketch keeps two
-  # JWTs inside remote-asset-libraries, a name no credential pattern would ever
-  # match, so guessing from key names is a first pass and this is the gate.
-  if ! (( $+commands[gitleaks] )); then
-    rm -f -- "$file"
-    print -u2 "refused  $d: gitleaks is missing, run ./setup packages"
-  elif ! gitleaks dir "$file" --no-banner --redact --log-level error >/dev/null 2>&1; then
-    rm -f -- "$file"
-    print -u2 "refused  $d: gitleaks found a secret in the export"
-  else
-    report="saved    $d"
-    (( $#stripped )) && report+=", without ${(j:, :)stripped}"
-    (( noise )) && report+=" ($noise noise key$( (( noise > 1 )) && print -n s) dropped)"
-    print -r -- "$report"
-  fi
+  file=$dir/$d.plist
+  export_clean "$d" "$file"
+  case $? in
+    0) report="saved    $d"
+       (( $#stripped )) && report+=", without ${(j:, :)stripped}"
+       (( noise )) && report+=" ($noise noise key$( (( noise > 1 )) && print -n s) dropped)"
+       print -r -- "$report" ;;
+    2) rm -f -- "$file"; print -u2 "refused  $d: gitleaks is missing, run ./setup packages" ;;
+    3) rm -f -- "$file"; print -u2 "refused  $d: gitleaks found a secret in the export" ;;
+    *) rm -f -- "$file"; print -u2 "no settings readable: $d" ;;
+  esac
 done

@@ -348,6 +348,25 @@ step_macos() {
     note "skipped, preferences/ does not exist yet"
   fi
 
+  # The other direction: a setting changed in a GUI has to come back into the
+  # repository, or preferences/ becomes a snapshot of a machine that no longer
+  # exists. bin/prefs --check names what drifted.
+  if [[ -x $REPO/bin/prefs ]]; then
+    local changed
+    changed=$("$REPO/bin/prefs" --check 2>/dev/null)
+    if [[ -n $changed ]]; then
+      local -a names=(${(f)changed})
+      local word=preferences
+      (( $#names == 1 )) && word=preference
+      if [[ $MODE == check ]]; then
+        todo "$#names app $word changed since saved: ${(j:, :)names}"
+      else
+        "$REPO/bin/prefs" >/dev/null 2>&1
+        note "$#names app $word re-saved, review the diff and commit"
+      fi
+    fi
+  fi
+
   if [[ -x $REPO/macos.sh ]]; then
     if [[ $MODE == check ]]; then
       # No parsing: macos.sh is sourced with `defaults` shadowed by a function

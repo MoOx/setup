@@ -23,7 +23,7 @@ brew "gh"                           # GitHub CLI
 brew "git-cliff"                    # changelog generator, used by the changelog function
 brew "gitleaks"                     # secret scanner, run by this repo pre-commit hook
 brew "git-lfs"                      # required by the lfs filter in .gitconfig
-brew "age"                          # encrypts the offsite archive, see bin/offsite
+brew "age"                          # encrypts the .env backup, see bin/backup
 
 # Languages and version managers
 brew "fnm"                          # Node version manager
@@ -90,6 +90,7 @@ cask "pearcleaner"                  # browse and clean, replaces the mole CLI
 cask "appcleaner"
 
 # Mobile and build
+cask "android-commandlinetools"     # android CLI, for the android step of setup
 cask "android-studio"
 cask "expo-orbit"
 cask "temurin@21"                   # JDK, for Android builds

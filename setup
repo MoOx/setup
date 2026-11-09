@@ -36,6 +36,8 @@ STEPS=(
   brew     'Homebrew itself'
   packages 'Packages, casks and App Store apps from the Brewfile'
   xcodes   'Xcode versions pinned next to the App Store one, through xcodes'
+  node     'A default Node through fnm, projects pin theirs in .node-version'
+  android  'Android SDK base, projects handle their emulators'
   hooks    'This repo own git hooks, so gitleaks runs before each commit'
   home     'Dotfiles, symlinked from home/ into ~'
   prezto   'The zsh framework .zshrc sources and .zpreztorc configures'
@@ -185,10 +187,15 @@ step_packages() {
     done
   fi
   if (( $#missing )); then
-    todo "$#missing declared but not installed: ${(j:, :)missing}"
-    # --no-upgrade on purpose: re-running setup installs what is missing and
-    # never silently upgrades the rest. Upgrading is its own deliberate act.
-    [[ $MODE == check ]] || brew bundle install --no-upgrade --file="$file"
+    if [[ $MODE == check ]]; then
+      todo "$#missing declared but not installed: ${(j:, :)missing}"
+    else
+      note "installing $#missing: ${(j:, :)missing}"
+      # --no-upgrade: outdated packages are handled once, further down.
+      brew bundle install --no-upgrade --file="$file" \
+        && ok "everything in the Brewfile is installed" \
+        || fail "brew bundle did not install everything"
+    fi
   else
     ok "everything in the Brewfile is installed"
   fi
@@ -281,6 +288,39 @@ step_xcodes() {
       todo "Xcode $v is missing, run: xcodes install $v"
     fi
   done
+}
+
+step_node() {
+  have fnm || { note "skipped, fnm comes with the packages step"; return }
+  if fnm default >/dev/null 2>&1; then
+    ok "default Node: $(fnm default)"
+  elif [[ $MODE == check ]]; then
+    todo "no default Node, run: fnm install --lts"
+  else
+    # On an empty fnm, the first version installed becomes the default.
+    fnm install --lts && ok "default Node: $(fnm default)" || fail "fnm could not install Node"
+  fi
+}
+
+step_android() {
+  local sdk=${ANDROID_HOME:-$HOME/Library/Android/sdk}
+  local -a want present
+  want=($sdk/{licenses/android-sdk-license,cmdline-tools/latest/bin/sdkmanager,platform-tools/adb,emulator/emulator})
+  present=($^want(N))
+  if (( $#present == $#want )); then
+    ok "Android SDK in $sdk"
+  elif [[ $MODE == check ]]; then
+    todo "Android SDK incomplete: ${(j:, :)${want:|present}}"
+  elif ! have android; then
+    note "skipped, the android CLI comes with the packages step"
+  else
+    # Gradle downloads each project's platform, build-tools and NDK by itself.
+    android --no-metrics --sdk="$sdk" sdk install cmdline-tools/latest platform-tools emulator
+    # It exits 0 even when a package is not found, so check the disk.
+    present=($^want(N))
+    (( $#present == $#want )) && ok "Android SDK in $sdk" \
+      || fail "android could not install the Android SDK"
+  fi
 }
 
 step_hooks() {

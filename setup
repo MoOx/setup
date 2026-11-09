@@ -35,6 +35,7 @@ STEPS=(
   xcode    'Xcode Command Line Tools'
   brew     'Homebrew itself'
   packages 'Packages, casks and App Store apps from the Brewfile'
+  xcodes   'Xcode versions pinned next to the App Store one, through xcodes'
   hooks    'This repo own git hooks, so gitleaks runs before each commit'
   home     'Dotfiles, symlinked from home/ into ~'
   prezto   'The zsh framework .zshrc sources and .zpreztorc configures'
@@ -264,6 +265,22 @@ step_packages() {
     summary=$("$REPO/bin/apps" 2>/dev/null | grep 'installed by hand' | head -1)
     [[ -n $summary ]] && note "${summary%.} (bin/apps)"
   fi
+}
+
+step_xcodes() {
+  have xcodes || { note "skipped, xcodes comes with the packages step"; return }
+  local v
+  for v in 26.6; do
+    if xcodes installed "$v" >/dev/null 2>&1; then
+      ok "Xcode $v"
+    # Several GB and an Apple ID prompt, so only with someone there to answer.
+    elif [[ $MODE != check ]] && (( ! ASSUME_YES )) && [[ -t 0 ]] \
+         && confirm "Xcode $v is missing, download it now?"; then
+      xcodes install "$v" && ok "Xcode $v installed" || fail "xcodes could not install $v"
+    else
+      todo "Xcode $v is missing, run: xcodes install $v"
+    fi
+  done
 }
 
 step_hooks() {

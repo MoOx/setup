@@ -125,8 +125,7 @@ cask "epic-games"
 cask "mixed-in-key"
 
 # Mac App Store, listed by `mas list`. These reinstall without a browser and
-# without a licence key, which is why they are worth declaring. TODO Max: prune
-# what you no longer want, the list is only what is installed today.
+# without a licence key, which is why they are worth declaring.
 mas "Xcode", id: 497799835
 mas "Pixelmator Pro", id: 1289583905
 mas "Infuse", id: 1136220934

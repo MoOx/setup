@@ -105,6 +105,10 @@ alias ko="killall"
 
 ## NPM
 
+# Here and not in ~/.npmrc, which npm login rewrites to store its token.
+export npm_config_min_release_age=7 # only versions published 7+ days ago
+export npm_config_save_exact=true
+
 alias n="npm"
 alias ni="npm install"
 alias nig="npm install -g"

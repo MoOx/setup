@@ -291,9 +291,11 @@ step_hooks() {
   current=$(git -C "$REPO" config --get core.hooksPath 2>/dev/null)
   if [[ $current == $want ]]; then
     ok "core.hooksPath = $want"
-  else
+  elif [[ $MODE == check ]]; then
     todo "core.hooksPath is ${current:-unset}, should be $want"
-    [[ $MODE == check ]] || { git -C "$REPO" config core.hooksPath "$want" && ok "set"; }
+  else
+    git -C "$REPO" config core.hooksPath "$want" && ok "core.hooksPath set to $want" \
+      || fail "could not set core.hooksPath"
   fi
   have gitleaks && ok "gitleaks $(gitleaks version 2>/dev/null)" \
     || todo "gitleaks is missing, the hook will refuse every commit"

@@ -1,12 +1,6 @@
 .DS_Store
 unpushed.md
 
-# Working documents of the migration, deliberately never committed: they spell out
-# which secrets sit in clear and where, and they name a client host. This repo is
-# public. They are disposable by design, see the last step of HANDOFF.md.
-HANDOFF.md
-HOME-MAP.md
-
 # Every app preference plist is generated here by `bin/prefs --all`, so the
 # whole set can be read and compared. Only the ones named below are versioned:
 # keeping one is this single line, and `git clean` removes the rest, which

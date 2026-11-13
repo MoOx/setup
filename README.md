@@ -1,5 +1,8 @@
 # setup
 
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/MoOx/setup/check.yml?branch=main)](https://github.com/MoOx/setup/actions)
+[![License](https://img.shields.io/github/license/MoOx/setup)](https://github.com/MoOx/setup/blob/main/LICENSE)
+
 My macOS machine, versioned.
 
 ![kaboom](.kaboom.gif)
